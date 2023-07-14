@@ -1,0 +1,258 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net48;net7.0;net7.0-android;net7.0-ios;net7.0-windows</TargetFrameworks>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'=='net'">
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Windows.Forms" />
+		<Reference Include="System.Data.DataSetExtensions" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'!='net'">
+		<PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc"></PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Panels\Authentication.cs" />
+		<Compile Remove="Panels\Authentication.Designer.cs" />
+		<Compile Remove="Panels\BackButton.cs" />
+		<Compile Remove="Panels\BackButton.Designer.cs" />
+		<Compile Remove="Panels\DeviceScreen.cs" />
+		<Compile Remove="Panels\DeviceScreen.Designer.cs" />
+		<Compile Remove="Panels\DocumentScanner.cs" />
+		<Compile Remove="Panels\DocumentScanner.Designer.cs" />
+		<Compile Remove="Panels\HapticFeedback.cs" />
+		<Compile Remove="Panels\HapticFeedback.Designer.cs" />
+		<Compile Remove="Panels\JsBarcodeScanner.cs" />
+		<Compile Remove="Panels\JSBarcodeScanner.Designer.cs" />
+		<Compile Remove="Panels\Location.cs" />
+		<Compile Remove="Panels\Location.Designer.cs" />
+		<Compile Remove="Panels\MauiBarcodeScanner.cs" />
+		<Compile Remove="Panels\MauiBarcodeScanner.Designer.cs" />
+		<Compile Remove="Panels\NFC.cs" />
+		<Compile Remove="Panels\NFC.Designer.cs" />
+		<Compile Remove="Panels\Notifications.cs" />
+		<Compile Remove="Panels\Notifications.Designer.cs" />
+		<Compile Remove="Panels\Snackbar.cs" />
+		<Compile Remove="Panels\Snackbar.Designer.cs" />
+		<Compile Remove="Panels\Toast.cs" />
+		<Compile Remove="Panels\Toast.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Remove="Panels\Authentication.resx" />
+		<EmbeddedResource Remove="Panels\BackButton.resx" />
+		<EmbeddedResource Remove="Panels\DeviceScreen.resx" />
+		<EmbeddedResource Remove="Panels\DocumentScanner.resx" />
+		<EmbeddedResource Remove="Panels\HapticFeedback.resx" />
+		<EmbeddedResource Remove="Panels\JSBarcodeScanner.resx" />
+		<EmbeddedResource Remove="Panels\Location.resx" />
+		<EmbeddedResource Remove="Panels\MauiBarcodeScanner.resx" />
+		<EmbeddedResource Remove="Panels\NFC.resx" />
+		<EmbeddedResource Remove="Panels\Notifications.resx" />
+		<EmbeddedResource Remove="Panels\Snackbar.resx" />
+		<EmbeddedResource Remove="Panels\Toast.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Data\wisej.pdf" />
+		<None Remove="Images\face-id.png" />
+		<None Remove="Images\home-icon.png" />
+		<None Remove="Images\Icons\Alerts.svg" />
+		<None Remove="Images\Icons\Hardware.svg" />
+		<None Remove="Images\Icons\Information.svg" />
+		<None Remove="Images\Icons\Input.svg" />
+		<None Remove="Images\Icons\Media.svg" />
+		<None Remove="Images\Icons\Navigation.svg" />
+		<None Remove="Images\Icons\Permissions.svg" />
+		<None Remove="Images\Icons\Pickers.svg" />
+		<None Remove="Images\Icons\Popups.svg" />
+		<None Remove="Images\Icons\Security.svg" />
+		<None Remove="Images\Icons\Storage.svg" />
+		<None Remove="Images\Icons\theme.svg" />
+		<None Remove="Images\Icons\UI.svg" />
+		<None Remove="Images\logo-wisej-white.png" />
+		<None Remove="Images\more-icon.png" />
+		<None Remove="Images\options-icon.png" />
+		<None Remove="Images\passcode.png" />
+		<None Remove="Images\setting-icon.png" />
+		<None Remove="Images\splash.png" />
+		<None Remove="Images\splash.svg" />
+		<None Remove="Images\strike.png" />
+		<None Remove="Images\touch-id.png" />
+		<None Remove="Images\unknown.png" />
+		<None Remove="Images\wisej-128x128.png" />
+		<None Remove="Images\wisej-logo.png" />
+		<None Remove="Images\wisej.png" />
+		<None Remove="Themes\BootstrapDark-4.theme" />
+		<None Remove="Themes\Hybrid.mixin.theme" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Data\wisej.pdf" />
+		<EmbeddedResource Include="Images\face-id.png" />
+		<EmbeddedResource Include="Images\home-icon.png" />
+		<EmbeddedResource Include="Images\Icons\Alerts.svg" />
+		<EmbeddedResource Include="Images\Icons\Hardware.svg" />
+		<EmbeddedResource Include="Images\Icons\Information.svg" />
+		<EmbeddedResource Include="Images\Icons\Input.svg" />
+		<EmbeddedResource Include="Images\Icons\Media.svg" />
+		<EmbeddedResource Include="Images\Icons\Navigation.svg" />
+		<EmbeddedResource Include="Images\Icons\Permissions.svg" />
+		<EmbeddedResource Include="Images\Icons\Pickers.svg" />
+		<EmbeddedResource Include="Images\Icons\Popups.svg" />
+		<EmbeddedResource Include="Images\Icons\Security.svg" />
+		<EmbeddedResource Include="Images\Icons\Storage.svg" />
+		<EmbeddedResource Include="Images\Icons\theme.svg" />
+		<EmbeddedResource Include="Images\Icons\UI.svg" />
+		<EmbeddedResource Include="Images\logo-wisej-white.png" />
+		<EmbeddedResource Include="Images\more-icon.png" />
+		<EmbeddedResource Include="Images\options-icon.png" />
+		<EmbeddedResource Include="Images\passcode.png" />
+		<EmbeddedResource Include="Images\setting-icon.png" />
+		<EmbeddedResource Include="Images\splash.png" />
+		<EmbeddedResource Include="Images\splash.svg">
+			<Color>#F9F9F9</Color>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Images\strike.png" />
+		<EmbeddedResource Include="Images\touch-id.png" />
+		<EmbeddedResource Include="Images\unknown.png" />
+		<EmbeddedResource Include="Images\wisej-128x128.png" />
+		<EmbeddedResource Include="Images\wisej-logo.png" />
+		<EmbeddedResource Include="Images\wisej.png" />
+		<EmbeddedResource Include="Themes\BootstrapDark-4.theme" />
+		<EmbeddedResource Include="Themes\Hybrid.mixin.theme" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Wisej-3" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-Hybrid" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-MaterialDesign" Version="3.2.*-*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="MainPage.cs">
+			<SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Panels\Accelerometer.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\AppInfo.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Audio.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\BarButton.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Barometer.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Clipboard.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Compass.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Contacts.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\DeviceInfo.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Email.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Flashlight.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Flyout.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Gyroscope.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\iFrame.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Integrations.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Launcher.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Links.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Magnetometer.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Media.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\MenuBar.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Navigation.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\NewTab.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Permissions.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Popups.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Preferences.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Screen.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\SecureStorage.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Sharing.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Sms.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Speech.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Storage.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\TabBar.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\TestBase.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\TestItemView.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\TitleBar.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Toolbar.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Upload.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Panels\Window.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+	</ItemGroup>
+
+</Project>
