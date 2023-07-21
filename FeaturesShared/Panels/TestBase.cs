@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using Wisej.Hybrid.Shared.Browser;
 using Wisej.Web;
@@ -21,6 +22,9 @@ namespace Wisej.Hybrid.Features
 
 		private void TestBase_Load(object sender, EventArgs e)
 		{
+			if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+				return;
+
 			if (Device.Valid)
 			{
 				ApplyOrientationSizing();

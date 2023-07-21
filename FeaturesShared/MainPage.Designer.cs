@@ -49,7 +49,7 @@
 			this.panelContainer.Dock = Wisej.Web.DockStyle.Fill;
 			this.panelContainer.Location = new System.Drawing.Point(0, 45);
 			this.panelContainer.Name = "panelContainer";
-			this.panelContainer.Size = new System.Drawing.Size(1766, 734);
+			this.panelContainer.Size = new System.Drawing.Size(2142, 786);
 			this.panelContainer.TabIndex = 4;
 			this.panelContainer.TabStop = true;
 			// 
@@ -60,7 +60,7 @@
 			this.panelHeader.Dock = Wisej.Web.DockStyle.Top;
 			this.panelHeader.Location = new System.Drawing.Point(0, 0);
 			this.panelHeader.Name = "panelHeader";
-			this.panelHeader.Size = new System.Drawing.Size(1766, 45);
+			this.panelHeader.Size = new System.Drawing.Size(2142, 45);
 			this.panelHeader.TabIndex = 0;
 			this.panelHeader.TabStop = true;
 			// 
@@ -70,7 +70,7 @@
 			this.buttonTheme.CssStyle = "box-shadow: none !important;";
 			this.buttonTheme.Dock = Wisej.Web.DockStyle.Right;
 			this.buttonTheme.ImageSource = "resource.wx/theme.svg";
-			this.buttonTheme.Location = new System.Drawing.Point(1719, 0);
+			this.buttonTheme.Location = new System.Drawing.Point(2095, 0);
 			this.buttonTheme.Name = "buttonTheme";
 			this.buttonTheme.Size = new System.Drawing.Size(47, 45);
 			this.buttonTheme.TabIndex = 7;
@@ -90,14 +90,14 @@
 			this.buttonBack.Text = "Return to Apps";
 			this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
 			// 
-			// MainView
+			// MainPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
 			this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
 			this.Controls.Add(this.panelContainer);
 			this.Controls.Add(this.panelHeader);
-			this.Name = "MainView";
-			this.Size = new System.Drawing.Size(1766, 779);
+			this.Name = "MainPage";
+			this.Size = new System.Drawing.Size(2142, 831);
 			this.Text = "Page1";
 			this.Load += new System.EventHandler(this.Page1_Load);
 			this.panelHeader.ResumeLayout(false);

@@ -38,8 +38,8 @@
 			this.panel1 = new Wisej.Web.Panel();
 			this.textBoxForeColor = new Wisej.Web.TextBox();
 			this.label1 = new Wisej.Web.Label();
-			this.checkBoxVisible = new Wisej.Web.CheckBox();
 			this.textBoxBackColor = new Wisej.Web.TextBox();
+			this.checkBoxVisible = new Wisej.Web.CheckBox();
 			this.flowLayoutPanelItems.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -80,7 +80,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton1, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton1, true);
-			this.barButton1.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/home-button.svg";
+			this.barButton1.IconSource = "resource.wx/FeaturesShared/Images/Icons/Home.png";
 			this.barButton1.Label = "Home";
 			this.barButton1.Location = new System.Drawing.Point(3, 3);
 			this.barButton1.Name = "barButton1";
@@ -94,7 +94,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton2, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton2, true);
-			this.barButton2.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/create-new-pencil-button.svg";
+			this.barButton2.IconSource = "resource.wx/FeaturesShared/Images/Icons/Edit.png";
 			this.barButton2.Label = "Options";
 			this.barButton2.Location = new System.Drawing.Point(3, 59);
 			this.barButton2.Name = "barButton2";
@@ -108,7 +108,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton3, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton3, true);
-			this.barButton3.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/settings-cogwheel-button.svg";
+			this.barButton3.IconSource = "resource.wx/FeaturesShared/Images/Icons/Settings.png";
 			this.barButton3.Label = "Settings";
 			this.barButton3.Location = new System.Drawing.Point(3, 115);
 			this.barButton3.Name = "barButton3";
@@ -122,7 +122,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton4, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton4, true);
-			this.barButton4.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/three-dots-more-indicator.svg";
+			this.barButton4.IconSource = "resource.wx/FeaturesShared/Images/Icons/More.png";
 			this.barButton4.Label = "More";
 			this.barButton4.Location = new System.Drawing.Point(3, 171);
 			this.barButton4.Name = "barButton4";
@@ -161,6 +161,17 @@
 			this.label1.Text = "Colors";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// textBoxBackColor
+			// 
+			this.textBoxBackColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
+			this.textBoxBackColor.AutoSize = false;
+			this.textBoxBackColor.InputType.Type = Wisej.Web.TextBoxType.Color;
+			this.textBoxBackColor.Location = new System.Drawing.Point(576, 9);
+			this.textBoxBackColor.Name = "textBoxBackColor";
+			this.textBoxBackColor.Size = new System.Drawing.Size(34, 34);
+			this.textBoxBackColor.TabIndex = 3;
+			this.textBoxBackColor.TextChanged += new System.EventHandler(this.backColor_TextChanged);
+			// 
 			// checkBoxVisible
 			// 
 			this.checkBoxVisible.Appearance = Wisej.Web.Appearance.Switch;
@@ -174,17 +185,6 @@
 			this.checkBoxVisible.TabIndex = 21;
 			this.checkBoxVisible.Text = "Toolbar Visible";
 			this.checkBoxVisible.CheckedChanged += new System.EventHandler(this.checkBoxVisible_CheckedChanged);
-			// 
-			// textBoxBackColor
-			// 
-			this.textBoxBackColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
-			this.textBoxBackColor.AutoSize = false;
-			this.textBoxBackColor.InputType.Type = Wisej.Web.TextBoxType.Color;
-			this.textBoxBackColor.Location = new System.Drawing.Point(576, 9);
-			this.textBoxBackColor.Name = "textBoxBackColor";
-			this.textBoxBackColor.Size = new System.Drawing.Size(34, 34);
-			this.textBoxBackColor.TabIndex = 3;
-			this.textBoxBackColor.TextChanged += new System.EventHandler(this.backColor_TextChanged);
 			// 
 			// Toolbar
 			// 

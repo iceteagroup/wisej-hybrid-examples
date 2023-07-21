@@ -64,15 +64,19 @@
 		<None Remove="Images\face-id.png" />
 		<None Remove="Images\home-icon.png" />
 		<None Remove="Images\Icons\Alerts.svg" />
+		<None Remove="Images\Icons\Edit.png" />
 		<None Remove="Images\Icons\Hardware.svg" />
+		<None Remove="Images\Icons\Home.png" />
 		<None Remove="Images\Icons\Information.svg" />
 		<None Remove="Images\Icons\Input.svg" />
 		<None Remove="Images\Icons\Media.svg" />
+		<None Remove="Images\Icons\More.png" />
 		<None Remove="Images\Icons\Navigation.svg" />
 		<None Remove="Images\Icons\Permissions.svg" />
 		<None Remove="Images\Icons\Pickers.svg" />
 		<None Remove="Images\Icons\Popups.svg" />
 		<None Remove="Images\Icons\Security.svg" />
+		<None Remove="Images\Icons\Settings.png" />
 		<None Remove="Images\Icons\Storage.svg" />
 		<None Remove="Images\Icons\theme.svg" />
 		<None Remove="Images\Icons\UI.svg" />
@@ -98,7 +102,9 @@
 		<EmbeddedResource Include="Images\face-id.png" />
 		<EmbeddedResource Include="Images\home-icon.png" />
 		<EmbeddedResource Include="Images\Icons\Alerts.svg" />
+		<EmbeddedResource Include="Images\Icons\Edit.png" />
 		<EmbeddedResource Include="Images\Icons\Hardware.svg" />
+		<EmbeddedResource Include="Images\Icons\Home.png" />
 		<EmbeddedResource Include="Images\Icons\Information.svg" />
 		<EmbeddedResource Include="Images\Icons\Input.svg" />
 		<EmbeddedResource Include="Images\Icons\Media.svg" />
@@ -107,6 +113,7 @@
 		<EmbeddedResource Include="Images\Icons\Pickers.svg" />
 		<EmbeddedResource Include="Images\Icons\Popups.svg" />
 		<EmbeddedResource Include="Images\Icons\Security.svg" />
+		<EmbeddedResource Include="Images\Icons\Settings.png" />
 		<EmbeddedResource Include="Images\Icons\Storage.svg" />
 		<EmbeddedResource Include="Images\Icons\theme.svg" />
 		<EmbeddedResource Include="Images\Icons\UI.svg" />
@@ -127,6 +134,10 @@
 		<EmbeddedResource Include="Images\wisej.png" />
 		<EmbeddedResource Include="Themes\BootstrapDark-4.theme" />
 		<EmbeddedResource Include="Themes\Hybrid.mixin.theme" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Images\Icons\More.png" />
 	</ItemGroup>
 
 	<ItemGroup>

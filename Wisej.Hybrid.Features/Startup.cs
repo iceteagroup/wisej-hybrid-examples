@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Wisej.Core;
 
-namespace Wisej.Hybrid.Features
+namespace FeaturesOnline
 {
     /// <summary>
     /// The Startup class configures services and the app's request pipeline.
