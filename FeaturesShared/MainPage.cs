@@ -19,7 +19,6 @@
 
 using System;
 using System.Drawing;
-using System.Net;
 using Wisej.Hybrid.Features.Panels;
 using Wisej.Hybrid.Shared.AppActions;
 using Wisej.Hybrid.Shared.Sensor;
@@ -33,6 +32,8 @@ namespace Wisej.Hybrid.Features
 	{
 		private TestBase currentView;
 
+		private TestBase integrations = new Integrations();
+
 		public MainPage()
 		{
 			InitializeComponent();
@@ -44,10 +45,12 @@ namespace Wisej.Hybrid.Features
 				this.panelContainer.Padding = new Padding(16, 16, 16, 16);
 
 			// default view.
-			SwitchView(typeof(Integrations));
+			SwitchView(this.integrations);
 
 			if (Device.Valid)
 				InitializeNative();
+
+			LoadTheme(Application.Browser.IsDarkMode);
 		}
 
 		private void InitializeNative()
@@ -100,9 +103,9 @@ namespace Wisej.Hybrid.Features
 				new Toast("Shake").Show();
 		}
 
-		private void SwitchView(Type type)
+		private void SwitchView(TestBase instance)
 		{
-			if (type.Equals(this.currentView?.GetType()))
+			if (instance.Equals(this.currentView))
 				return;
 
 			if (this.currentView != null)
@@ -113,7 +116,7 @@ namespace Wisej.Hybrid.Features
 			
 			try
 			{
-				this.currentView = (TestBase)Activator.CreateInstance(type);
+				this.currentView = instance;
 
 				this.currentView.Dock = DockStyle.Fill;
 				this.currentView.ViewRequested += View_ViewRequested;
@@ -125,7 +128,7 @@ namespace Wisej.Hybrid.Features
 				AlertBox.Show(ex.Message);
 			}
 
-			if (type.Equals(typeof(Integrations)))
+			if (instance is Integrations)
 				this.buttonBack.Hide();
 			else
 				this.buttonBack.Show();
@@ -146,15 +149,20 @@ namespace Wisej.Hybrid.Features
 
 		private void buttonBack_Click(object sender, EventArgs e)
 		{
-			SwitchView(typeof(Integrations));
+			SwitchView(this.integrations);
 		}
 
 		private void buttonTheme_Click(object sender, EventArgs e)
 		{
 			var name = Application.Theme.Name;
+			LoadTheme(name == "Bootstrap-4");
+		}
+
+		private void LoadTheme(bool isDark)
+		{
 			var mixins = new string[] { $"Hybrid" };
 
-			if (name == "Bootstrap-4")
+			if (isDark)
 				Application.LoadTheme("BootstrapDark-4", mixins);
 			else
 				Application.LoadTheme("Bootstrap-4", mixins);

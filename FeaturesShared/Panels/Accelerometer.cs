@@ -31,5 +31,10 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 		}
+
+		public override bool IsSupported()
+		{
+			return Device.Sensors.IsSupported(SensorType.Accelerometer);
+		}
 	}
 }

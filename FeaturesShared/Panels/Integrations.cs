@@ -36,7 +36,7 @@ namespace Wisej.Hybrid.Features.Panels
 			var asm = GetType().Assembly;
 			var apps = asm.GetTypes()
 				.Where(t => t != typeof(TestBase) && t != typeof(Integrations) && typeof(TestBase).IsAssignableFrom(t))
-				.Select(t => new AppItemView(t) { Width = this._itemWidth })
+				.Select(t => new AppItemView((TestBase)Activator.CreateInstance(t)) { Width = this._itemWidth })
 				.ToArray();
 			
 			foreach (var app in apps)

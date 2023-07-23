@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using Wisej.Hybrid.Shared.Communication;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -28,19 +29,18 @@ namespace Wisej.Hybrid.Features.Panels
 			var to = this.tagTextBoxTo.Text.Split(this.tagTextBoxTo.SeparatorChar);
 			var cc = this.tagTextBoxCC.Text.Split(this.tagTextBoxCC.SeparatorChar);
 
-			var files = new List<FileStream>();
-			files.Add(new FileStream(Application.MapPath("Images/wisej.png"), FileMode.Open));
-
-			Device.Email.Compose(new Shared.Communication.EmailMessage
+			Device.Email.Compose(new EmailMessage
 			{
 				To = new List<string>(to),
 				Cc = new List<string>(cc),
 				Body = this.textBoxBody.Text,
 				Subject = this.textBoxSubject.Text,
-			}, files.ToArray());
+			});
+		}
 
-			foreach (var file in files)
-				file.Dispose();
+		public override bool IsSupported()
+		{
+			return Device.Email.IsComposeSupported;
 		}
 	}
 }

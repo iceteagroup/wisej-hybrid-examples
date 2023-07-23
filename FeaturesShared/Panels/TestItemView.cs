@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Wisej.Hybrid.Shared.Sensor;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -13,7 +14,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		#region Properties
 
-		private Type viewType;
+		private TestBase Instance;
 
 		private Random random = new Random((int)DateTime.Now.Ticks);
 
@@ -30,17 +31,17 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		public AppItemView(Type type)
+		public AppItemView(TestBase instance)
 		{
 			InitializeComponent();
 
-			if (type == null)
-				return;
+			if (instance == null || !instance.IsSupported())
+				this.Enabled = false;
 
-			this.viewType = type;
+			this.Instance = instance;
 
-			var category = GetCategory(type);
-			var title = String.Join(" ", Regex.Split(this.viewType.Name, @"(?<!^)(?=[A-Z])"));
+			var category = GetCategory(instance.GetType());
+			var title = String.Join(" ", Regex.Split(this.Instance.GetType().Name, @"(?<!^)(?=[A-Z])"));
 
 			this.Title = title;
 
@@ -74,7 +75,7 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			this.labelTitle.Text = this.Title;
 			this.pictureBoxIcon.ImageSource = this.ImageSource;
-			this.labelDescription.Text = GetCategory(this.viewType);
+			this.labelDescription.Text = GetCategory(this.Instance.GetType());
 
 			if (Device.Valid)
 			{
@@ -105,7 +106,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void AppItemView_Click(object sender, EventArgs e)
 		{
-			this.OnViewRequested(new WidgetEventArgs("ViewRequested", this.viewType));
+			this.OnViewRequested(new WidgetEventArgs("ViewRequested", this.Instance));
 		}
 
 		private void SetNativeColors()

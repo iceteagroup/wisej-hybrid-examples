@@ -26,9 +26,7 @@ namespace Wisej.Hybrid.Features
 				return;
 
 			if (Device.Valid)
-			{
 				ApplyOrientationSizing();
-			}
 
 			this.labelTitle.Text = String.Join(" ", Regex.Split(this.GetType().Name, @"(?<!^)(?=[A-Z])"));
 		}
@@ -68,6 +66,11 @@ namespace Wisej.Hybrid.Features
 			var typeName = this.GetType().Name;
 
 			Device.Browser.Open("https://wisej.com", BrowserLaunchMode.SystemPreferred);
+		}
+
+		public virtual bool IsSupported()
+		{
+			return true;
 		}
 	}
 }

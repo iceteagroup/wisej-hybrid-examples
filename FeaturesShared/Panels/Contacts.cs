@@ -24,5 +24,10 @@ namespace Wisej.Hybrid.Features.Panels
 			var result = Device.Contacts.GetAll();
 			AlertBox.Show(result.ToJSON());
 		}
+
+		public override bool IsSupported()
+		{
+			return Device.Info.System.Platform != "WinUI";
+		}
 	}
 }

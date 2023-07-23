@@ -48,5 +48,10 @@ namespace Wisej.Hybrid.Features.Panels
 			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
 		}
+
+		public override bool IsSupported()
+		{
+			return Device.Sensors.IsSupported(SensorType.Magnetometer);
+		}
 	}
 }
