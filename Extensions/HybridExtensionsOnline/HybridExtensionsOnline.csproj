@@ -27,7 +27,7 @@
     <Reference Include="System.Windows.Forms"><Aliases>swf</Aliases></Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Compile Remove="Startup.cs" />
-    <Content Include="Startup.cs"/>
+    <Content Include="Startup.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +60,10 @@
   <ItemGroup>
     <PackageReference Include="Wisej-3" Version="3.1.*" />
     <PackageReference Include="System.Data.SqlClient" Version="4.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExtensionsShared\ExtensionsShared.csproj" />
   </ItemGroup>
 
 

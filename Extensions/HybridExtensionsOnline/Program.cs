@@ -1,3 +1,4 @@
+using ExtensionsShared;
 using System;
 using Wisej.Web;
 
@@ -10,7 +11,7 @@ namespace HybridExtensionsOnline
 		/// </summary>
 		static void Main()
 		{
-			Application.MainPage = new Page1();
+			Application.MainPage = new MainPage();
 		}
 
 		//

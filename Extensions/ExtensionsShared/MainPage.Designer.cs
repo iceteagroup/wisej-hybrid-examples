@@ -1,6 +1,6 @@
-﻿namespace HybridExtensionsOffline
+﻿namespace ExtensionsShared
 {
-	partial class Page1
+	partial class MainPage
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -34,7 +34,6 @@
 			// 
 			this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
 			this.Name = "Page1";
-			this.Text = "Page1";
 			this.ResumeLayout(false);
 
 		}

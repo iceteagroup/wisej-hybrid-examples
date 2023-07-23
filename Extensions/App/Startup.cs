@@ -21,7 +21,7 @@ namespace App
 				.UseWisejHybrid((config) =>
 				{
 					// Uncomment to provide an offline fallback timeout.
-					// config.OfflineTimeout = 5000;
+					config.OfflineTimeout = 5000;
 
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";

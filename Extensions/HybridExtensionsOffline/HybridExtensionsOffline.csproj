@@ -43,4 +43,8 @@
     <PackageReference Include="Wisej-3-Hybrid" Version="3.5.*-*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ExtensionsShared\ExtensionsShared.csproj" />
+  </ItemGroup>
+
 </Project>
