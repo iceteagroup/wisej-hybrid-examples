@@ -5,7 +5,6 @@ using Wisej.Web;
 namespace Wisej.Hybrid.Features.Panels
 {
 	[Category("UI")]
-	[Unsupported("WinUI")]
 	public partial class Contacts : TestBase
 	{
 		public Contacts()

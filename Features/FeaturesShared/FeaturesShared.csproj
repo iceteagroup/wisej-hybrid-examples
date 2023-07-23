@@ -24,6 +24,8 @@
 		<Compile Remove="Panels\BackButton.Designer.cs" />
 		<Compile Remove="Panels\CommunityPopups.cs" />
 		<Compile Remove="Panels\CommunityPopups.Designer.cs" />
+		<Compile Remove="Panels\DeviceScreen.cs" />
+		<Compile Remove="Panels\DeviceScreen.Designer.cs" />
 		<Compile Remove="Panels\DocumentScanner.cs" />
 		<Compile Remove="Panels\DocumentScanner.Designer.cs" />
 		<Compile Remove="Panels\HapticFeedback.cs" />
@@ -38,6 +40,8 @@
 		<Compile Remove="Panels\NFC.Designer.cs" />
 		<Compile Remove="Panels\Notifications.cs" />
 		<Compile Remove="Panels\Notifications.Designer.cs" />
+		<Compile Remove="Panels\Screen.cs" />
+		<Compile Remove="Panels\Screen.Designer.cs" />
 		<Compile Remove="Panels\Snackbar.cs" />
 		<Compile Remove="Panels\Snackbar.Designer.cs" />
 		<Compile Remove="Panels\Toast.cs" />
@@ -48,6 +52,7 @@
 		<EmbeddedResource Remove="Panels\Authentication.resx" />
 		<EmbeddedResource Remove="Panels\BackButton.resx" />
 		<EmbeddedResource Remove="Panels\CommunityPopups.resx" />
+		<EmbeddedResource Remove="Panels\DeviceScreen.resx" />
 		<EmbeddedResource Remove="Panels\DocumentScanner.resx" />
 		<EmbeddedResource Remove="Panels\HapticFeedback.resx" />
 		<EmbeddedResource Remove="Panels\JSBarcodeScanner.resx" />
@@ -55,6 +60,7 @@
 		<EmbeddedResource Remove="Panels\MauiBarcodeScanner.resx" />
 		<EmbeddedResource Remove="Panels\NFC.resx" />
 		<EmbeddedResource Remove="Panels\Notifications.resx" />
+		<EmbeddedResource Remove="Panels\Screen.resx" />
 		<EmbeddedResource Remove="Panels\Snackbar.resx" />
 		<EmbeddedResource Remove="Panels\Toast.resx" />
 	</ItemGroup>
@@ -223,9 +229,6 @@
 			<SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="Panels\Preferences.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Screen.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
 		<Compile Update="Panels\SecureStorage.cs">

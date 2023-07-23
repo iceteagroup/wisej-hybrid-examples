@@ -76,14 +76,6 @@ namespace Wisej.Hybrid.Features.Panels
 			this.labelTitle.Text = this.Title;
 			this.pictureBoxIcon.ImageSource = this.ImageSource;
 			this.labelDescription.Text = GetCategory(this.Instance.GetType());
-
-			if (Device.Valid)
-			{
-				var type = this.GetType();
-				var platform = Device.Info.System.Platform;
-
-				//this.Enabled = UnsupportedAttribute.IsSupported(this.viewType, platform);
-			}
 		}
 
 		private string GetRandomColor()
