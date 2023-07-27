@@ -5,6 +5,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
+	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'=='net'">
@@ -14,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'!='net'">
-		<PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc"></PackageReference>
+	  <PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc"></PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,11 +101,12 @@
 		<None Remove="Images\wisej-logo.png" />
 		<None Remove="Images\wisej.png" />
 		<None Remove="Themes\BootstrapDark-4.theme" />
+		<None Remove="Themes\Fonts\OpenSans-Regular.ttf" />
 		<None Remove="Themes\Hybrid.mixin.theme" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Data\wisej.pdf" />
+		<HybridAsset Include="Data\wisej.pdf" />
 		<EmbeddedResource Include="Images\face-id.png" />
 		<EmbeddedResource Include="Images\home-icon.png" />
 		<EmbeddedResource Include="Images\Icons\Alerts.svg" />
@@ -123,7 +125,7 @@
 		<EmbeddedResource Include="Images\Icons\Storage.svg" />
 		<EmbeddedResource Include="Images\Icons\theme.svg" />
 		<EmbeddedResource Include="Images\Icons\UI.svg" />
-		<EmbeddedResource Include="Images\logo-wisej-white.png" />
+		<HybridAsset Include="Images\logo-wisej-white.png" />
 		<EmbeddedResource Include="Images\more-icon.png" />
 		<EmbeddedResource Include="Images\options-icon.png" />
 		<EmbeddedResource Include="Images\passcode.png" />
@@ -137,9 +139,10 @@
 		<EmbeddedResource Include="Images\unknown.png" />
 		<EmbeddedResource Include="Images\wisej-128x128.png" />
 		<EmbeddedResource Include="Images\wisej-logo.png" />
-		<EmbeddedResource Include="Images\wisej.png" />
-		<EmbeddedResource Include="Themes\BootstrapDark-4.theme" />
-		<EmbeddedResource Include="Themes\Hybrid.mixin.theme" />
+		<HybridAsset Include="Images\wisej.png" />
+		<HybridAsset Include="Themes\BootstrapDark-4.theme" />
+		<HybridAsset Include="Themes\Fonts\OpenSans-Regular.ttf" />
+		<HybridAsset Include="Themes\Hybrid.mixin.theme" />
 	</ItemGroup>
 
 	<ItemGroup>

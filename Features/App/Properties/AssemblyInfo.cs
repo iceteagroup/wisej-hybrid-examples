@@ -1,9 +1,5 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
-using Wisej.Hybrid.Native.Core;
-
-// Allow Wisej.NET Hybrid to discover resources in this assembly.
-[assembly: HybridResources()]
 
 // Add the WisejResources attribute to 
 // merge js and css embedded resources with the wisej package.

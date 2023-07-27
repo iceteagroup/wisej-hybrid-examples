@@ -42,12 +42,6 @@
 	<ItemGroup>
 		<None Remove="Default.html" />
 		<None Remove="favicon.ico" />
-		<None Remove="Themes\BootstrapDark-4.theme" />
-		<None Remove="Themes\Fonts\OpenSans-Regular.ttf" />
-		<None Remove="Themes\Hybrid.mixin.theme" />
-		<None Remove="Themes\Themes\BootstrapDark-4.theme" />
-		<None Remove="Themes\Themes\Fonts\OpenSans-Regular.ttf" />
-		<None Remove="Themes\Themes\Hybrid.mixin.theme" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -57,15 +51,6 @@
 		<Content Include="favicon.ico">
 			<CopyToPublishDirectory>Always</CopyToPublishDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Themes\BootstrapDark-4.theme" />
-	  <EmbeddedResource Include="Themes\Fonts\OpenSans-Regular.ttf" />
-	  <EmbeddedResource Include="Themes\Hybrid.mixin.theme" />
-	  <EmbeddedResource Include="Themes\Themes\BootstrapDark-4.theme" />
-	  <EmbeddedResource Include="Themes\Themes\Fonts\OpenSans-Regular.ttf" />
-	  <EmbeddedResource Include="Themes\Themes\Hybrid.mixin.theme" />
 	</ItemGroup>
 
 	<ItemGroup>

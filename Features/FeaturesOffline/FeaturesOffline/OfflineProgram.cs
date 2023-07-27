@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Wisej.Hybrid.Features;
+﻿using Wisej.Hybrid.Features;
 using Wisej.Web;
 
 namespace FeaturesOffline
@@ -11,8 +10,6 @@ namespace FeaturesOffline
 		/// </summary>
 		static void Main()
 		{
-			var text = File.ReadAllText(Application.MapPath("checksum.txt"));
-
 			Application.MainPage = new MainPage();
 		}
 	}

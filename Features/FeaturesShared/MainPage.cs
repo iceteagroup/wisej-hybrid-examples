@@ -110,14 +110,14 @@ namespace Wisej.Hybrid.Features
 
 			if (this.currentView != null)
 			{
-				this.currentView.ViewRequested -= View_ViewRequested;
-				this.currentView.Dispose();
+				this.currentView.Hide();
 			}
-			
+
 			try
 			{
 				this.currentView = instance;
 
+				this.currentView.Show();
 				this.currentView.Dock = DockStyle.Fill;
 				this.currentView.ViewRequested += View_ViewRequested;
 

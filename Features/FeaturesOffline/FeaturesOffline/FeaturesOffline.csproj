@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net48;net7.0-android;net7.0-ios;net7.0-maccatalyst;net7.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net48;net7.0-android;net7.0-ios;net7.0-windows10.0.19041.0</TargetFrameworks>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
@@ -19,34 +19,28 @@
 	<None Remove="favicon.ico" />
 	<None Remove="Offline.html" />
 	<None Remove="Offline.json" />
-	<None Remove="Themes\BootstrapDark-4.theme" />
-	<None Remove="Themes\Fonts\OpenSans-Regular.ttf" />
-	<None Remove="Themes\Hybrid.mixin.theme" />
   </ItemGroup>
 
   <ItemGroup>
 	<EmbeddedResource Include="favicon.ico">
 	</EmbeddedResource>
-	<EmbeddedResource Include="Offline.html" />
-	<EmbeddedResource Include="Offline.json" />
-	<EmbeddedResource Include="Themes\BootstrapDark-4.theme" />
-	<EmbeddedResource Include="Themes\Fonts\OpenSans-Regular.ttf" />
-	<EmbeddedResource Include="Themes\Hybrid.mixin.theme" />
+	<HybridAsset Include="Offline.html" />
+	<HybridAsset Include="Offline.json" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'!='net48'">
-    <PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc" />
+	<PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc" />
   </ItemGroup>
 
   <ItemGroup>  
     <PackageReference Include="EmbedIO" Version="3.5.2" />
     <PackageReference Include="Wisej-3" Version="3.5.*-*" />
     <PackageReference Include="System.Data.SqlClient" Version="4.*" />
-    <PackageReference Include="Wisej-3-Hybrid" Version="3.5.*-*" />
+	<PackageReference Include="Wisej-3-Hybrid" Version="3.5.*-*" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FeaturesShared\FeaturesShared.csproj" />
+	<ProjectReference Include="..\..\FeaturesShared\FeaturesShared.csproj" />
   </ItemGroup>
 
 </Project>
