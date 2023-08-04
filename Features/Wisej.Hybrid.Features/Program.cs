@@ -1,7 +1,8 @@
 using System;
+using Wisej.Hybrid.Features;
 using Wisej.Web;
 
-namespace Wisej.Hybrid.Features
+namespace FeaturesOnline
 {
 	internal static class Program
 	{

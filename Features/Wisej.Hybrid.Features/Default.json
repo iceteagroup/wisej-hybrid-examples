@@ -41,5 +41,5 @@
 	"showLoader": false,
 	"url": "Default.html",
 	"validateClient": false,
-	"startup": "Wisej.Hybrid.Features.Program.Main, Wisej.Hybrid.Features"
+	"startup": "FeaturesOnline.Program.Main, FeaturesOnline"
 }

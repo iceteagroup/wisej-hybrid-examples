@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Wisej.Web;
@@ -25,18 +26,15 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void buttonFiles_Click(object sender, EventArgs e)
 		{
-			var files = new FileStream[2];
+			var files = new Dictionary<string, Stream>();
 
 			var path1 = Application.MapPath("Images/wisej.png");
-			files[0] = new FileStream(path1, FileMode.Open);
+			files.Add("wisej.png", Device.Resources.GetStream(path1));
 
 			var path2 = Application.MapPath("Images/logo-wisej-white.png");
-			files[1] = new FileStream(path2, FileMode.Open);
+			files.Add("Images/logo-wisej-white.png", Device.Resources.GetStream(path2));
 
 			Device.Sharing.ShareFiles("Share Files", files);
-
-			files[0].Dispose();
-			files[1].Dispose();
 		}
 	}
 }
