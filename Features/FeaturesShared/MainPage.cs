@@ -19,6 +19,7 @@
 
 using System;
 using System.Drawing;
+using System.IO;
 using Wisej.Hybrid.Features.Panels;
 using Wisej.Hybrid.Shared.AppActions;
 using Wisej.Hybrid.Shared.Sensor;
@@ -160,12 +161,10 @@ namespace Wisej.Hybrid.Features
 
 		private void LoadTheme(bool isDark)
 		{
-			var mixins = new string[] { $"Hybrid" };
-
 			if (isDark)
-				Application.LoadTheme("BootstrapDark-4", mixins);
+				Application.LoadTheme("BootstrapDark-4");
 			else
-				Application.LoadTheme("Bootstrap-4", mixins);
+				Application.LoadTheme("Bootstrap-4");
 
 			if (Device.Valid)
 				SetNativeColors();

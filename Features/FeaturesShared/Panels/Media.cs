@@ -14,16 +14,30 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void buttonSelectPicture_Click(object sender, EventArgs e)
 		{
-			//var picture = Device.Media.PickPhoto();
+			var picture = Device.Media.PickPhoto();
 
-			//this.pictureBox1.Image = picture;
+			this.pictureBox1.Image = picture;
 		}
 
 		private void buttonTakePicture_Click(object sender, EventArgs e)
 		{
-			//var picture = Device.Media.TakePhoto();
+			var picture = Device.Media.CapturePhoto();
 
-			//this.pictureBox1.Image = picture;
+			this.pictureBox1.Image = picture;
+		}
+
+		private void buttonSelectVideo_Click(object sender, EventArgs e)
+		{
+			var video = Device.Media.PickVideo();
+
+			// todo.
+		}
+
+		private void buttonTakeVideo_Click(object sender, EventArgs e)
+		{
+			var video = Device.Media.CaptureVideo();
+
+			// todo.
 		}
 	}
 }

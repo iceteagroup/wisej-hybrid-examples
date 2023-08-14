@@ -1,4 +1,6 @@
-﻿using Wisej.Hybrid.Features;
+﻿using System.IO;
+using System.Linq;
+using Wisej.Hybrid.Features;
 using Wisej.Web;
 
 namespace FeaturesOffline
@@ -10,6 +12,8 @@ namespace FeaturesOffline
 		/// </summary>
 		static void Main()
 		{
+			var f = Directory.GetFiles(Application.MapPath("Themes"), "*.*", SearchOption.AllDirectories);
+
 			Application.MainPage = new MainPage();
 		}
 	}

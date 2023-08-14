@@ -100,7 +100,6 @@
 		<None Remove="Images\wisej-128x128.png" />
 		<None Remove="Images\wisej-logo.png" />
 		<None Remove="Images\wisej.png" />
-		<None Remove="Themes\BootstrapDark-4.theme" />
 		<None Remove="Themes\Fonts\OpenSans-Regular.ttf" />
 		<None Remove="Themes\Hybrid.mixin.theme" />
 	</ItemGroup>
@@ -140,7 +139,6 @@
 		<EmbeddedResource Include="Images\wisej-128x128.png" />
 		<EmbeddedResource Include="Images\wisej-logo.png" />
 		<HybridAsset Include="Images\wisej.png" />
-		<HybridAsset Include="Themes\BootstrapDark-4.theme" />
 		<HybridAsset Include="Themes\Fonts\OpenSans-Regular.ttf" />
 		<HybridAsset Include="Themes\Hybrid.mixin.theme" />
 	</ItemGroup>

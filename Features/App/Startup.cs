@@ -15,8 +15,8 @@ namespace App
 				 // Uncomment and replace with Offline startup Type to use embedded web server.
 				 .UseWisejOffline<OfflineStartup>()
 
-				// Uncomment when registering AppBuilderExtenders as part of a separate class library.
-				// .UseWisejExtenders()
+				 // Uncomment when registering AppBuilderExtenders as part of a separate class library.
+				 //.UseWisejExtenders()
 
 				.UseWisejHybrid((config) =>
 				{

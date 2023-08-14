@@ -51,20 +51,24 @@ namespace Wisej.Hybrid.Features
 
 		public void MinimizeTitle()
 		{
-			this.labelTitle.Height = 60;
-			this.labelTitle.Font = new System.Drawing.Font("@windowTitleLandscape", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			if (this.labelTitle.Height != 60)
+			{
+				this.labelTitle.Height = 60;
+				this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			}
 		}
 
 		public void MaximizeTitle()
 		{
-			this.labelTitle.Height = 128;
-			this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			if (this.labelTitle.Height != 128)
+			{
+				this.labelTitle.Height = 128;
+				this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			}
 		}
 
 		private void buttonSource_Click(object sender, EventArgs e)
 		{
-			var typeName = this.GetType().Name;
-
 			Device.Browser.Open("https://wisej.com", BrowserLaunchMode.SystemPreferred);
 		}
 
