@@ -14,10 +14,15 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void Accelerometer_Load(object sender, EventArgs e)
+		private void Accelerometer_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Accelerometer);
 			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
+		}
+
+		private void Accelerometer_Disappear(object sender, EventArgs e)
+		{
+			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 		}
 
 		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
@@ -25,11 +30,6 @@ namespace Wisej.Hybrid.Features.Panels
 			this.labelX.Text = $"X: {e.Data.Acceleration.X}";
 			this.labelY.Text = $"Y: {e.Data.Acceleration.Y}";
 			this.labelZ.Text = $"Z: {e.Data.Acceleration.Z}";
-		}
-
-		private void Accelerometer_Disposed(object sender, EventArgs e)
-		{
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 		}
 
 		public override bool IsSupported()

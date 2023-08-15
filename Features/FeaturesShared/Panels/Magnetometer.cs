@@ -13,17 +13,18 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void Magnetometer_Load(object sender, EventArgs e)
+		private void Magnetometer_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Magnetometer);
 			Device.Lifecycle.Resumed += Lifecycle_Resumed;
 			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding += Lifecycle_Backgrounding;
 		}
 
-		private void Lifecycle_Backgrounding(object sender, EventArgs e)
+		private void Magnetometer_Disappear(object sender, EventArgs e)
 		{
 			Device.Sensors.Stop(SensorType.Magnetometer);
+			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
+			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 		}
 
 		private void Lifecycle_Resumed(object sender, EventArgs e)
@@ -39,14 +40,6 @@ namespace Wisej.Hybrid.Features.Panels
 				this.labelY.Text = $"Y: {e.Data.MagneticField.Y}";
 				this.labelZ.Text = $"Z: {e.Data.MagneticField.Z}";
 			}
-		}
-
-		private void Magnetometer_Disposed(object sender, EventArgs e)
-		{
-			Device.Sensors.Stop(SensorType.Magnetometer);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
 		}
 
 		public override bool IsSupported()

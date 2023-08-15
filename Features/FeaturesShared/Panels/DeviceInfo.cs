@@ -26,7 +26,7 @@ namespace Wisej.Hybrid.Features.Panels
 			this.propertyGridInfo.Refresh(true);
 		}
 
-		private void DeviceInfo_Disposed(object sender, EventArgs e)
+		public override void Deactivate()
 		{
 			Device.Battery.BatteryInfoChanged -= Device_InfoChanged;
 			Device.Networking.ConnectivityChanged -= Device_InfoChanged;

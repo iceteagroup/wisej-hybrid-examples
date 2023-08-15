@@ -46,7 +46,7 @@
 			this.textBoxBackColor.LabelText = "Background Color";
 			this.textBoxBackColor.Location = new System.Drawing.Point(16, 198);
 			this.textBoxBackColor.Name = "textBoxBackColor";
-			this.textBoxBackColor.Size = new System.Drawing.Size(618, 50);
+			this.textBoxBackColor.Size = new System.Drawing.Size(618, 55);
 			this.textBoxBackColor.TabIndex = 19;
 			this.textBoxBackColor.Text = "#FFFFFF";
 			this.textBoxBackColor.TextChanged += new System.EventHandler(this.textBoxBackColor_TextChanged);
@@ -56,9 +56,9 @@
 			this.textBoxTextColor.Dock = Wisej.Web.DockStyle.Top;
 			this.textBoxTextColor.InputType.Type = Wisej.Web.TextBoxType.Color;
 			this.textBoxTextColor.LabelText = "Text Color";
-			this.textBoxTextColor.Location = new System.Drawing.Point(16, 268);
+			this.textBoxTextColor.Location = new System.Drawing.Point(16, 273);
 			this.textBoxTextColor.Name = "textBoxTextColor";
-			this.textBoxTextColor.Size = new System.Drawing.Size(618, 50);
+			this.textBoxTextColor.Size = new System.Drawing.Size(618, 55);
 			this.textBoxTextColor.TabIndex = 20;
 			this.textBoxTextColor.Text = "#FFFFFF";
 			this.textBoxTextColor.TextChanged += new System.EventHandler(this.textBoxTextColor_TextChanged);
@@ -66,14 +66,14 @@
 			// spacer1
 			// 
 			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 248);
+			this.spacer1.Location = new System.Drawing.Point(16, 253);
 			this.spacer1.Name = "spacer1";
 			this.spacer1.Size = new System.Drawing.Size(618, 20);
 			// 
 			// spacer2
 			// 
 			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 318);
+			this.spacer2.Location = new System.Drawing.Point(16, 328);
 			this.spacer2.Name = "spacer2";
 			this.spacer2.Size = new System.Drawing.Size(618, 20);
 			// 
@@ -81,16 +81,16 @@
 			// 
 			this.textBoxTitle.Dock = Wisej.Web.DockStyle.Top;
 			this.textBoxTitle.LabelText = "Title";
-			this.textBoxTitle.Location = new System.Drawing.Point(16, 338);
+			this.textBoxTitle.Location = new System.Drawing.Point(16, 348);
 			this.textBoxTitle.Name = "textBoxTitle";
-			this.textBoxTitle.Size = new System.Drawing.Size(618, 50);
+			this.textBoxTitle.Size = new System.Drawing.Size(618, 55);
 			this.textBoxTitle.TabIndex = 24;
 			this.textBoxTitle.Text = "Wisej.NET";
 			// 
 			// buttonSetTitle
 			// 
 			this.buttonSetTitle.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonSetTitle.Location = new System.Drawing.Point(16, 408);
+			this.buttonSetTitle.Location = new System.Drawing.Point(16, 423);
 			this.buttonSetTitle.Name = "buttonSetTitle";
 			this.buttonSetTitle.Size = new System.Drawing.Size(618, 37);
 			this.buttonSetTitle.TabIndex = 25;
@@ -100,7 +100,7 @@
 			// spacer3
 			// 
 			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 388);
+			this.spacer3.Location = new System.Drawing.Point(16, 403);
 			this.spacer3.Name = "spacer3";
 			this.spacer3.Size = new System.Drawing.Size(618, 20);
 			// 
@@ -125,7 +125,7 @@
 			this.checkBoxVisible.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.checkBoxVisible.CheckedChanged += new System.EventHandler(this.checkBoxVisible_CheckedChanged);
 			// 
-			// Title
+			// TitleBar
 			// 
 			this.animation1.GetAnimation(this).Duration = 350;
 			this.animation1.GetAnimation(this).Event = "appear";
@@ -144,9 +144,9 @@
 			this.Controls.Add(this.textBoxBackColor);
 			this.Controls.Add(this.spacer4);
 			this.Controls.Add(this.checkBoxVisible);
-			this.Name = "Title";
-			this.Load += new System.EventHandler(this.Title_Load);
-			this.Disposed += new System.EventHandler(this.Title_Disposed);
+			this.Name = "TitleBar";
+			this.Appear += new System.EventHandler(this.TitleBar_Appear);
+			this.Disappear += new System.EventHandler(this.TitleBar_Disappear);
 			this.Controls.SetChildIndex(this.checkBoxVisible, 0);
 			this.Controls.SetChildIndex(this.spacer4, 0);
 			this.Controls.SetChildIndex(this.textBoxBackColor, 0);

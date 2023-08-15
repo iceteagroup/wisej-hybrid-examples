@@ -25,6 +25,8 @@ namespace Wisej.Hybrid.Features
 			if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
 				return;
 
+			Activate();
+
 			if (Device.Valid)
 				ApplyOrientationSizing();
 
@@ -75,6 +77,24 @@ namespace Wisej.Hybrid.Features
 		public virtual bool IsSupported()
 		{
 			return true;
+		}
+
+		public virtual void Activate()
+		{
+
+		}
+
+		public virtual void Deactivate()
+		{
+
+		}
+
+		private void TestBase_VisibleChanged(object sender, EventArgs e)
+		{
+			if (this.Visible)
+				Activate();
+			else
+				Deactivate();
 		}
 	}
 }

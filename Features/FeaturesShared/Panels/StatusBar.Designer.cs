@@ -41,7 +41,7 @@
 			this.checkBoxStatusbar.Appearance = Wisej.Web.Appearance.Switch;
 			this.checkBoxStatusbar.AutoSize = false;
 			this.checkBoxStatusbar.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.checkBoxStatusbar.Checked = true;
+			this.checkBoxStatusbar.CheckState = Wisej.Web.CheckState.Checked;
 			this.checkBoxStatusbar.Location = new System.Drawing.Point(26, 116);
 			this.checkBoxStatusbar.MinimumSize = new System.Drawing.Size(180, 0);
 			this.checkBoxStatusbar.Name = "checkBoxStatusbar";
@@ -102,7 +102,11 @@
 			this.Controls.Add(this.textBoxBackColor);
 			this.Controls.Add(this.checkBoxStatusbar);
 			this.Name = "StatusBar";
-			this.Disposed += new System.EventHandler(this.StatusBar_Disposed);
+			this.Disappear += new System.EventHandler(this.StatusBar_Disappear);
+			this.Controls.SetChildIndex(this.checkBoxStatusbar, 0);
+			this.Controls.SetChildIndex(this.textBoxBackColor, 0);
+			this.Controls.SetChildIndex(this.label1, 0);
+			this.Controls.SetChildIndex(this.comboBoxTextColor, 0);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

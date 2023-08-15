@@ -85,6 +85,7 @@
 			this.ScrollBars = Wisej.Web.ScrollBars.Hidden;
 			this.Size = new System.Drawing.Size(650, 478);
 			this.Load += new System.EventHandler(this.TestBase_Load);
+			this.VisibleChanged += new System.EventHandler(this.TestBase_VisibleChanged);
 			this.ResumeLayout(false);
 
 		}

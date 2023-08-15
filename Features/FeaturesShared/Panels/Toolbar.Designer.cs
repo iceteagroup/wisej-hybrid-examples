@@ -203,8 +203,8 @@
 			this.Controls.Add(this.checkBoxVisible);
 			this.Name = "Toolbar";
 			this.Size = new System.Drawing.Size(650, 644);
-			this.Load += new System.EventHandler(this.Toolbar_Load);
-			this.Disposed += new System.EventHandler(this.Toolbar_Disposed);
+			this.Appear += new System.EventHandler(this.Toolbar_Appear);
+			this.Disappear += new System.EventHandler(this.Toolbar_Disappear);
 			this.Controls.SetChildIndex(this.checkBoxVisible, 0);
 			this.Controls.SetChildIndex(this.panel1, 0);
 			this.Controls.SetChildIndex(this.flowLayoutPanelItems, 0);

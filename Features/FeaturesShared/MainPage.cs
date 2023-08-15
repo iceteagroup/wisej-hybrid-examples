@@ -56,8 +56,8 @@ namespace Wisej.Hybrid.Features
 
 		private void InitializeNative()
 		{
-			Device.Sensors.Start(SensorType.Shake);
-			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
+			//Device.Sensors.Start(SensorType.Shake);
+			//Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
 
 			Device.AppActions.ItemActivated += AppActions_ItemActivated;
 

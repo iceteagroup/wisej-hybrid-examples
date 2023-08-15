@@ -15,7 +15,7 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void TabBar_Load(object sender, EventArgs e)
+		private void TabBar_Appear(object sender, EventArgs e)
 		{
 			Device.TabBar.TabSelected += this.TabBar_TabSelected;
 
@@ -25,6 +25,14 @@ namespace Wisej.Hybrid.Features.Panels
 			UpdateTabs();
 
 			Application.ThemeChanged += Application_ThemeChanged;
+		}
+
+		private void TabBar_Disappear(object sender, EventArgs e)
+		{
+			Application.ThemeChanged -= Application_ThemeChanged;
+			Device.TabBar.TabSelected -= this.TabBar_TabSelected;
+
+			Device.TabBar.Visible = false;
 		}
 
 		private void Application_ThemeChanged(object sender, EventArgs e)
@@ -38,10 +46,10 @@ namespace Wisej.Hybrid.Features.Panels
 			var backColor = name == "Bootstrap-4" ? "#F6F8FA" : "#383940";
 
 			// schedule change as last task.
-			Application.StartTask(() =>
-			{
+			//Application.StartTask(() =>
+			//{
 				Device.BottomBar.BackColor = ColorTranslator.FromHtml(backColor);
-			});
+			//});
 	
 			this.textBoxBackColor.Text = backColor;
 			this.textBoxUnselectedColor.Text = "#B0B0B0";
@@ -81,7 +89,7 @@ namespace Wisej.Hybrid.Features.Panels
 			Device.TabBar.Items = items;
 		}
 
-		private void backColor_TextChanged(object sender, EventArgs e)
+		private void textBoxBackColor_TextChanged(object sender, EventArgs e)
 		{
 			var color = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
 			var visible = this.checkBoxVisible.Checked;
@@ -93,23 +101,14 @@ namespace Wisej.Hybrid.Features.Panels
 			Device.TabBar.BackColor = color;
 		}
 
-		private void color_TextChanged(object sender, EventArgs e)
+		private void textBoxUnselectedColor_TextChanged(object sender, EventArgs e)
 		{
-			Device.TabBar.UnselectedColor = ColorTranslator.FromHtml(this.textBoxSelectedColor.Text);
+			Device.TabBar.UnselectedColor = ColorTranslator.FromHtml(this.textBoxUnselectedColor.Text);
 		}
 
-		private void selectedColor_TextChanged(object sender, EventArgs e)
+		private void textBoxSelectedColor_TextChanged(object sender, EventArgs e)
 		{
-			Device.TabBar.SelectedColor = ColorTranslator.FromHtml(this.textBoxUnselectedColor.Text);
-		}
-
-		private void TabBar_Disposed(object sender, EventArgs e)
-		{
-			Application.ThemeChanged -= Application_ThemeChanged;
-
-			Device.TabBar.Visible = false;
-			Device.BottomBar.BackColor = Color.White;
-			Device.TabBar.TabSelected -= TabBar_TabSelected;
+			Device.TabBar.SelectedColor = ColorTranslator.FromHtml(this.textBoxSelectedColor.Text);
 		}
 	}
 }

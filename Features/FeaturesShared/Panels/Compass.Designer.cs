@@ -32,11 +32,11 @@
 			this.labelHeading = new Wisej.Web.Label();
 			this.SuspendLayout();
 			// 
-			// labelAccuracy
+			// label1
 			// 
 			this.label1.Anchor = Wisej.Web.AnchorStyles.None;
 			this.label1.Location = new System.Drawing.Point(171, 252);
-			this.label1.Name = "labelAccuracy";
+			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(308, 59);
 			this.label1.TabIndex = 22;
 			this.label1.Text = " The heading (measured in degrees) relative to magnetic north.";
@@ -65,8 +65,8 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelHeading);
 			this.Name = "Compass";
-			this.Load += new System.EventHandler(this.Compass_Load);
-			this.Disposed += new System.EventHandler(this.Compass_Disposed);
+			this.Appear += new System.EventHandler(this.Compass_Appear);
+			this.Disappear += new System.EventHandler(this.Compass_Disappear);
 			this.Controls.SetChildIndex(this.labelHeading, 0);
 			this.Controls.SetChildIndex(this.label1, 0);
 			this.ResumeLayout(false);

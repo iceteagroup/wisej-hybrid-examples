@@ -64,11 +64,11 @@
 			this.labelZ.Text = "Z";
 			this.labelZ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// labelAccuracy
+			// label1
 			// 
 			this.label1.Anchor = Wisej.Web.AnchorStyles.None;
 			this.label1.Location = new System.Drawing.Point(171, 336);
-			this.label1.Name = "labelAccuracy";
+			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(308, 77);
 			this.label1.TabIndex = 20;
 			this.label1.Text = "The angular velocity vector in radians per second.";
@@ -89,8 +89,8 @@
 			this.Controls.Add(this.labelY);
 			this.Controls.Add(this.labelX);
 			this.Name = "Gyroscope";
-			this.Load += new System.EventHandler(this.Gyroscope_Load);
-			this.Disposed += new System.EventHandler(this.Gyroscope_Disposed);
+			this.Appear += new System.EventHandler(this.Gyroscope_Appear);
+			this.Disappear += new System.EventHandler(this.Gyroscope_Disappear);
 			this.Controls.SetChildIndex(this.labelX, 0);
 			this.Controls.SetChildIndex(this.labelY, 0);
 			this.Controls.SetChildIndex(this.labelZ, 0);

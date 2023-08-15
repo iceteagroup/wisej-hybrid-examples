@@ -12,17 +12,18 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void Compass_Load(object sender, EventArgs e)
+		private void Compass_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Compass);
 			Device.Lifecycle.Resumed += Lifecycle_Resumed;
 			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding += Lifecycle_Backgrounding;
 		}
 
-		private void Lifecycle_Backgrounding(object sender, EventArgs e)
+		private void Compass_Disappear(object sender, EventArgs e)
 		{
 			Device.Sensors.Stop(SensorType.Compass);
+			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
+			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 		}
 
 		private void Lifecycle_Resumed(object sender, EventArgs e)
@@ -36,14 +37,6 @@ namespace Wisej.Hybrid.Features.Panels
 			{
 				this.labelHeading.Text = e.Data.HeadingMagneticNorth.ToString();
 			}
-		}
-
-		private void Compass_Disposed(object sender, EventArgs e)
-		{
-			Device.Sensors.Stop(SensorType.Compass);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
 		}
 
 		public override bool IsSupported()

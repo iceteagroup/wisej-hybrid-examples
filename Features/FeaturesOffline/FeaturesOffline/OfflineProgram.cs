@@ -12,7 +12,7 @@ namespace FeaturesOffline
 		/// </summary>
 		static void Main()
 		{
-			var f = Directory.GetFiles(Application.MapPath("Themes"), "*.*", SearchOption.AllDirectories);
+			var f = Directory.GetFiles(Application.MapPath(""));
 
 			Application.MainPage = new MainPage();
 		}

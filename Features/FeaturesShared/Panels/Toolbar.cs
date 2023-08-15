@@ -14,7 +14,7 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void Toolbar_Load(object sender, EventArgs e)
+		private void Toolbar_Appear(object sender, EventArgs e)
 		{
 			Device.Toolbar.ItemClicked += Toolbar_ItemClicked;
 
@@ -25,6 +25,12 @@ namespace Wisej.Hybrid.Features.Panels
 			this.textBoxForeColor.Text = "#FFFFFF";
 
 			UpdateItems();
+		}
+
+		private void Toolbar_Disappear(object sender, EventArgs e)
+		{
+			Device.Toolbar.Visible = false;
+			Device.Toolbar.ItemClicked -= Toolbar_ItemClicked;
 		}
 
 		private void Toolbar_ItemClicked(object sender, Shared.Toolbar.ToolbarItemClickedEventArgs e)
@@ -58,12 +64,6 @@ namespace Wisej.Hybrid.Features.Panels
 		private void checkBoxVisible_CheckedChanged(object sender, EventArgs e)
 		{
 			Device.Toolbar.Visible = this.checkBoxVisible.Checked;
-		}
-
-		private void Toolbar_Disposed(object sender, EventArgs e)
-		{
-			Device.Toolbar.Visible = false;
-			Device.Toolbar.ItemClicked -= Toolbar_ItemClicked;
 		}
 	}
 }

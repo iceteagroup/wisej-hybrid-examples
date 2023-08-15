@@ -41,8 +41,8 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Name = "MenuBar";
-			this.Load += new System.EventHandler(this.MenuBar_Load);
-			this.Disposed += new System.EventHandler(this.MenuBar_Disposed);
+			this.Appear += new System.EventHandler(this.MenuBar_Appear);
+			this.Disappear += new System.EventHandler(this.MenuBar_Disappear);
 			this.ResumeLayout(false);
 
 		}

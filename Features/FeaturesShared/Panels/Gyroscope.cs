@@ -12,12 +12,19 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void Gyroscope_Load(object sender, EventArgs e)
+		private void Gyroscope_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Gyroscope);
 			Device.Lifecycle.Resumed += Lifecycle_Resumed;
 			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding += Lifecycle_Backgrounding;
+		}
+
+		private void Gyroscope_Disappear(object sender, EventArgs e)
+		{
+			Device.Sensors.Stop(SensorType.Gyroscope);
+			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
+			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
+			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
 		}
 
 		private void Lifecycle_Resumed(object sender, EventArgs e)
@@ -38,14 +45,6 @@ namespace Wisej.Hybrid.Features.Panels
 				this.labelY.Text = $"Y: {e.Data.AngularVelocity.Y}";
 				this.labelZ.Text = $"Z: {e.Data.AngularVelocity.Z}";
 			}
-		}
-
-		private void Gyroscope_Disposed(object sender, EventArgs e)
-		{
-			Device.Sensors.Stop(SensorType.Gyroscope);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
 		}
 
 		public override bool IsSupported()

@@ -14,7 +14,7 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void MenuBar_Load(object sender, EventArgs e)
+		private void MenuBar_Appear(object sender, EventArgs e)
 		{
 			Device.MenuBar.ItemClicked += MenuBar_ItemClicked;
 
@@ -34,7 +34,7 @@ namespace Wisej.Hybrid.Features.Panels
 				new MenuItem
 				{
 					Text = "Locations",
-					Items = new MenuItem[] 
+					Items = new MenuItem[]
 					{
 						new MenuItem
 						{
@@ -47,9 +47,9 @@ namespace Wisej.Hybrid.Features.Panels
 							},
 							Items = new MenuItem[]
 							{
-								new MenuItem 
+								new MenuItem
 								{
-									Text = "Canada", Items = new MenuItem[] 
+									Text = "Canada", Items = new MenuItem[]
 									{
 										new MenuItem { Text = "Vancouver" }
 									}
@@ -64,7 +64,7 @@ namespace Wisej.Hybrid.Features.Panels
 				new MenuItem
 				{
 					Text = "View",
-					Items = new MenuItem[] 
+					Items = new MenuItem[]
 					{
 						new MenuItem { Text = "Refresh" },
 						new MenuItem { Text = "Change Theme" }
@@ -73,14 +73,15 @@ namespace Wisej.Hybrid.Features.Panels
 			};
 		}
 
+		private void MenuBar_Disappear(object sender, EventArgs e)
+		{
+			Device.MenuBar.ItemClicked -= MenuBar_ItemClicked;
+			Device.MenuBar.Items = null;
+		}
+
 		private void MenuBar_ItemClicked(object sender, Shared.Communication.MenuItemClickedEventArgs e)
 		{
 			AlertBox.Show($"Clicked {e.MenuItem}");
-		}
-
-		private void MenuBar_Disposed(object sender, EventArgs e)
-		{
-			Device.MenuBar.Items = null;
 		}
 	}
 }

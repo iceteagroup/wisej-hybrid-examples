@@ -114,6 +114,8 @@
 			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.buttonRead);
 			this.Name = "Clipboard";
+			this.Appear += new System.EventHandler(this.Clipboard_Appear);
+			this.Disappear += new System.EventHandler(this.Clipboard_Disappear);
 			this.Controls.SetChildIndex(this.buttonRead, 0);
 			this.Controls.SetChildIndex(this.spacer1, 0);
 			this.Controls.SetChildIndex(this.labelClipboard, 0);

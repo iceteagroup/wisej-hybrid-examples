@@ -13,22 +13,23 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void Barometer_Load(object sender, EventArgs e)
+		private void Barometer_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Barometer);
 			Device.Lifecycle.Resumed += Lifecycle_Resumed;
 			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding += Lifecycle_Backgrounding;	
+		}
+
+		private void Barometer_Disappear(object sender, EventArgs e)
+		{
+			Device.Sensors.Stop(SensorType.Barometer);
+			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
+			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
 		}
 
 		private void Lifecycle_Resumed(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Barometer);
-		}
-
-		private void Lifecycle_Backgrounding(object sender, EventArgs e)
-		{
-			Device.Sensors.Stop(SensorType.Barometer);
 		}
 
 		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
@@ -37,14 +38,6 @@ namespace Wisej.Hybrid.Features.Panels
 			{
 				this.labelPressure.Text = e.Data.PressureInHectopascals.ToString();
 			}
-		}
-
-		private void Barometer_Disposed(object sender, EventArgs e)
-		{
-			Device.Sensors.Stop(SensorType.Barometer);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
 		}
 
 		public override bool IsSupported()

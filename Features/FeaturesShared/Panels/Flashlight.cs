@@ -22,7 +22,7 @@ namespace Wisej.Hybrid.Features.Panels
 			Device.Flashlight.TurnOff();
 		}
 
-		private void Flashlight_Disposed(object sender, EventArgs e)
+		public override void Deactivate()
 		{
 			Device.Flashlight.TurnOff();
 		}

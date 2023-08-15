@@ -65,7 +65,6 @@
 			this.Controls.Add(this.buttonOff);
 			this.Controls.Add(this.buttonOn);
 			this.Name = "Flashlight";
-			this.Disposed += new System.EventHandler(this.Flashlight_Disposed);
 			this.ResumeLayout(false);
 
 		}

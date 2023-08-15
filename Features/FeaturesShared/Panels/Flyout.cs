@@ -12,14 +12,20 @@ namespace Wisej.Hybrid.Features.Panels
 		public Flyout()
 		{
 			InitializeComponent();
-
-			Device.Flyout.ItemSelected += Flyout_ItemSelected;
 		}
 
-		private void Flyout_Load(object sender, EventArgs e)
+		private void Flyout_Appear(object sender, EventArgs e)
 		{
+			Device.Flyout.ItemSelected += Flyout_ItemSelected;
+
 			this.checkBoxVisible.Checked = Device.Flyout.Behavior == FlyoutBehavior.Flyout;
 			this.textBoxBackgroundColor.Text = ColorTranslator.ToHtml(Device.Flyout.BackgroundColor);
+		}
+
+		private void Flyout_Disappear(object sender, EventArgs e)
+		{
+			Device.Flyout.Behavior = FlyoutBehavior.Disabled;
+			Device.Flyout.ItemSelected -= Flyout_ItemSelected;
 		}
 
 		private void Flyout_ItemSelected(object sender, FlyoutItemSelectedEventArgs e)
@@ -61,11 +67,6 @@ namespace Wisej.Hybrid.Features.Panels
 					ImageSource = $"{Ext.MaterialDesign.Icons.PhoneSettings}?color=white"
 				}
 			};
-		}
-
-		private void Flyout_Disposed(object sender, EventArgs e)
-		{
-			Device.Flyout.ItemSelected -= Flyout_ItemSelected;
 		}
 	}
 }

@@ -61,7 +61,6 @@
 			this.Controls.Add(this.propertyGridInfo);
 			this.Name = "DeviceInfo";
 			this.Load += new System.EventHandler(this.DeviceInfo_Load);
-			this.Disposed += new System.EventHandler(this.DeviceInfo_Disposed);
 			this.Controls.SetChildIndex(this.propertyGridInfo, 0);
 			this.ResumeLayout(false);
 

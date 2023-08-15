@@ -69,7 +69,7 @@
 			this.textBoxSelectedColor.Name = "textBoxSelectedColor";
 			this.textBoxSelectedColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxSelectedColor.TabIndex = 3;
-			this.textBoxSelectedColor.TextChanged += new System.EventHandler(this.selectedColor_TextChanged);
+			this.textBoxSelectedColor.TextChanged += new System.EventHandler(this.textBoxSelectedColor_TextChanged);
 			// 
 			// label1
 			// 
@@ -86,7 +86,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton1, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton1, true);
-			this.barButton1.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/home-button.svg";
+			this.barButton1.IconSource = "resource.wx/FeaturesShared/Images/Icons/Home.png";
 			this.barButton1.Label = "Home";
 			this.barButton1.Location = new System.Drawing.Point(3, 3);
 			this.barButton1.Name = "barButton1";
@@ -113,7 +113,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton2, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton2, true);
-			this.barButton2.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/create-new-pencil-button.svg";
+			this.barButton2.IconSource = "resource.wx/FeaturesShared/Images/Icons/Edit.png";
 			this.barButton2.Label = "Options";
 			this.barButton2.Location = new System.Drawing.Point(3, 59);
 			this.barButton2.Name = "barButton2";
@@ -127,7 +127,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton3, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton3, true);
-			this.barButton3.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/settings-cogwheel-button.svg";
+			this.barButton3.IconSource = "resource.wx/FeaturesShared/Images/Icons/Settings.png";
 			this.barButton3.Label = "Settings";
 			this.barButton3.Location = new System.Drawing.Point(3, 115);
 			this.barButton3.Name = "barButton3";
@@ -141,7 +141,7 @@
             | Wisej.Web.AnchorStyles.Right)));
 			this.flowLayoutPanelItems.SetFillWeight(this.barButton4, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.barButton4, true);
-			this.barButton4.IconSource = "resource.wx/Wisej.Ext.MaterialDesign/three-dots-more-indicator.svg";
+			this.barButton4.IconSource = "resource.wx/FeaturesShared/Images/Icons/More.png";
 			this.barButton4.Label = "More";
 			this.barButton4.Location = new System.Drawing.Point(3, 171);
 			this.barButton4.Name = "barButton4";
@@ -168,7 +168,7 @@
 			this.textBoxUnselectedColor.Name = "textBoxUnselectedColor";
 			this.textBoxUnselectedColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxUnselectedColor.TabIndex = 8;
-			this.textBoxUnselectedColor.TextChanged += new System.EventHandler(this.color_TextChanged);
+			this.textBoxUnselectedColor.TextChanged += new System.EventHandler(this.textBoxUnselectedColor_TextChanged);
 			// 
 			// textBoxBackColor
 			// 
@@ -179,7 +179,7 @@
 			this.textBoxBackColor.Name = "textBoxBackColor";
 			this.textBoxBackColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxBackColor.TabIndex = 9;
-			this.textBoxBackColor.TextChanged += new System.EventHandler(this.backColor_TextChanged);
+			this.textBoxBackColor.TextChanged += new System.EventHandler(this.textBoxBackColor_TextChanged);
 			// 
 			// spacer1
 			// 
@@ -217,8 +217,8 @@
 			this.Controls.Add(this.checkBoxVisible);
 			this.Name = "TabBar";
 			this.Size = new System.Drawing.Size(650, 532);
-			this.Load += new System.EventHandler(this.TabBar_Load);
-			this.Disposed += new System.EventHandler(this.TabBar_Disposed);
+			this.Appear += new System.EventHandler(this.TabBar_Appear);
+			this.Disappear += new System.EventHandler(this.TabBar_Disappear);
 			this.Controls.SetChildIndex(this.checkBoxVisible, 0);
 			this.Controls.SetChildIndex(this.panel1, 0);
 			this.Controls.SetChildIndex(this.flowLayoutPanelItems, 0);
