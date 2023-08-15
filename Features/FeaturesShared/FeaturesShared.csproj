@@ -33,16 +33,12 @@
 		<Compile Remove="Panels\HapticFeedback.Designer.cs" />
 		<Compile Remove="Panels\JsBarcodeScanner.cs" />
 		<Compile Remove="Panels\JSBarcodeScanner.Designer.cs" />
-		<Compile Remove="Panels\Location.cs" />
-		<Compile Remove="Panels\Location.Designer.cs" />
 		<Compile Remove="Panels\MauiBarcodeScanner.cs" />
 		<Compile Remove="Panels\MauiBarcodeScanner.Designer.cs" />
 		<Compile Remove="Panels\NFC.cs" />
 		<Compile Remove="Panels\NFC.Designer.cs" />
 		<Compile Remove="Panels\Notifications.cs" />
 		<Compile Remove="Panels\Notifications.Designer.cs" />
-		<Compile Remove="Panels\Screen.cs" />
-		<Compile Remove="Panels\Screen.Designer.cs" />
 		<Compile Remove="Panels\Snackbar.cs" />
 		<Compile Remove="Panels\Snackbar.Designer.cs" />
 		<Compile Remove="Panels\Toast.cs" />
@@ -57,11 +53,9 @@
 		<EmbeddedResource Remove="Panels\DocumentScanner.resx" />
 		<EmbeddedResource Remove="Panels\HapticFeedback.resx" />
 		<EmbeddedResource Remove="Panels\JSBarcodeScanner.resx" />
-		<EmbeddedResource Remove="Panels\Location.resx" />
 		<EmbeddedResource Remove="Panels\MauiBarcodeScanner.resx" />
 		<EmbeddedResource Remove="Panels\NFC.resx" />
 		<EmbeddedResource Remove="Panels\Notifications.resx" />
-		<EmbeddedResource Remove="Panels\Screen.resx" />
 		<EmbeddedResource Remove="Panels\Snackbar.resx" />
 		<EmbeddedResource Remove="Panels\Toast.resx" />
 	</ItemGroup>

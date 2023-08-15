@@ -69,14 +69,6 @@ namespace Wisej.Hybrid.Features
 				new Toast($"Welcome back to Wisej.NET Hybrid {versioning.CurrentVersion}").Show();
 
 			SetNativeColors();
-
-			// app shortcuts.
-			Device.AppActions.Set(new AppAction[]
-			{
-				new AppAction { Id = "Action1", Title = "Action 1" },
-				new AppAction { Id = "Action2", Title = "Action 2" },
-				new AppAction { Id = "Action3", Title = "Action 3" }
-			});
 		}
 
 		private void SetNativeColors()

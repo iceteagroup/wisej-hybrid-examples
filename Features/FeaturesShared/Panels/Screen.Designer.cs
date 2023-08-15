@@ -30,12 +30,9 @@
 		{
 			this.buttonScreenshot = new Wisej.Web.Button();
 			this.buttonRecording = new Wisej.Web.Button();
-			this.spacer1 = new Wisej.Web.Spacer();
-			this.pictureBox1 = new Wisej.Web.PictureBox();
 			this.spacer2 = new Wisej.Web.Spacer();
 			this.buttonStopRecording = new Wisej.Web.Button();
 			this.spacer3 = new Wisej.Web.Spacer();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// buttonScreenshot
@@ -51,39 +48,24 @@
 			// buttonRecording
 			// 
 			this.buttonRecording.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonRecording.Location = new System.Drawing.Point(16, 451);
+			this.buttonRecording.Location = new System.Drawing.Point(16, 185);
 			this.buttonRecording.Name = "buttonRecording";
 			this.buttonRecording.Size = new System.Drawing.Size(601, 37);
 			this.buttonRecording.TabIndex = 20;
 			this.buttonRecording.Text = "Record Screen";
 			this.buttonRecording.Click += new System.EventHandler(this.buttonRecord_Click);
 			// 
-			// spacer1
-			// 
-			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 165);
-			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(601, 20);
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Dock = Wisej.Web.DockStyle.Top;
-			this.pictureBox1.Location = new System.Drawing.Point(16, 185);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(601, 246);
-			this.pictureBox1.SizeMode = Wisej.Web.PictureBoxSizeMode.Zoom;
-			// 
 			// spacer2
 			// 
 			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 431);
+			this.spacer2.Location = new System.Drawing.Point(16, 165);
 			this.spacer2.Name = "spacer2";
 			this.spacer2.Size = new System.Drawing.Size(601, 20);
 			// 
 			// buttonStopRecording
 			// 
 			this.buttonStopRecording.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonStopRecording.Location = new System.Drawing.Point(16, 508);
+			this.buttonStopRecording.Location = new System.Drawing.Point(16, 242);
 			this.buttonStopRecording.Name = "buttonStopRecording";
 			this.buttonStopRecording.Size = new System.Drawing.Size(601, 37);
 			this.buttonStopRecording.TabIndex = 30;
@@ -93,7 +75,7 @@
 			// spacer3
 			// 
 			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 488);
+			this.spacer3.Location = new System.Drawing.Point(16, 222);
 			this.spacer3.Name = "spacer3";
 			this.spacer3.Size = new System.Drawing.Size(601, 20);
 			// 
@@ -112,20 +94,15 @@
 			this.Controls.Add(this.spacer3);
 			this.Controls.Add(this.buttonRecording);
 			this.Controls.Add(this.spacer2);
-			this.Controls.Add(this.pictureBox1);
-			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.buttonScreenshot);
 			this.Name = "Screen";
 			this.Size = new System.Drawing.Size(633, 618);
 			this.Load += new System.EventHandler(this.Screen_Load);
 			this.Controls.SetChildIndex(this.buttonScreenshot, 0);
-			this.Controls.SetChildIndex(this.spacer1, 0);
-			this.Controls.SetChildIndex(this.pictureBox1, 0);
 			this.Controls.SetChildIndex(this.spacer2, 0);
 			this.Controls.SetChildIndex(this.buttonRecording, 0);
 			this.Controls.SetChildIndex(this.spacer3, 0);
 			this.Controls.SetChildIndex(this.buttonStopRecording, 0);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -134,8 +111,6 @@
 
 		private Web.Button buttonScreenshot;
 		private Web.Button buttonRecording;
-		private Web.Spacer spacer1;
-		private Web.PictureBox pictureBox1;
 		private Web.Spacer spacer2;
 		private Web.Button buttonStopRecording;
 		private Web.Spacer spacer3;

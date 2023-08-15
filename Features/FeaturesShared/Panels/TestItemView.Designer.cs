@@ -111,7 +111,9 @@
 			// AppItemView
 			// 
 			this.Controls.Add(this.flowLayoutPanel1);
+			this.CssClass = "testItemView";
 			this.CssStyle = "border-radius: 8px;\r\nbox-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;";
+			this.Cursor = Wisej.Web.Cursors.Hand;
 			this.Margin = new Wisej.Web.Padding(10);
 			this.Name = "AppItemView";
 			this.Padding = new Wisej.Web.Padding(10);

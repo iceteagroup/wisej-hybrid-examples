@@ -12,27 +12,17 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private async void buttonGetLocation_Click(object sender, EventArgs e)
+		private void buttonGetLocation_Click(object sender, EventArgs e)
 		{
-			if (this.checkBoxUseNativeLocationServices.Checked)
+			try
 			{
-				try
-				{
-					var position = Device.Geolocation.GetLocation();
+				var position = Device.Geolocation.GetLocation();
 					
-					this.propertyGrid1.SelectedObject = position;
-				}
-				catch (DeviceException ex)
-				{
-					AlertBox.Show(ex.Message);
-				}
-			}
-			else
-			{
-				// use browser geolocation integration.
-				var position = await this.geolocation1.GetCurrentPositionAsync();
-
 				this.propertyGrid1.SelectedObject = position;
+			}
+			catch (DeviceException ex)
+			{
+				AlertBox.Show(ex.Message);
 			}
 		}
 	}

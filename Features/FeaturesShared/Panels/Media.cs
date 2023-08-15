@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeaturesShared.Windows;
+using System;
 using System.ComponentModel;
 using Wisej.Web;
 
@@ -16,28 +17,28 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			var picture = Device.Media.PickPhoto();
 
-			this.pictureBox1.Image = picture;
+			new ImageWindow(picture).Show();
 		}
 
 		private void buttonTakePicture_Click(object sender, EventArgs e)
 		{
 			var picture = Device.Media.CapturePhoto();
 
-			this.pictureBox1.Image = picture;
+			new ImageWindow(picture).Show();
 		}
 
 		private void buttonSelectVideo_Click(object sender, EventArgs e)
 		{
 			var video = Device.Media.PickVideo();
 
-			// todo.
+			new VideoWindow(video.ToArray()).Show();
 		}
 
 		private void buttonTakeVideo_Click(object sender, EventArgs e)
 		{
 			var video = Device.Media.CaptureVideo();
 
-			// todo.
+			new VideoWindow(video.ToArray()).Show();
 		}
 	}
 }
