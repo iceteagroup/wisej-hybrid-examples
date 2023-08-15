@@ -23,6 +23,23 @@ namespace App
 					// Uncomment to provide an offline fallback timeout.
 					// config.OfflineTimeout = 5000;
 
+					// Uncomment to provide an action that can transform the device response
+					// before sending it to the server.
+					//config.FormatResponse += (response) =>
+					//{
+					//	switch (response.Handler) 
+					//	{
+					//		case "media":
+					//			var base64 = response.Data;
+
+					//			// apply custom compression.
+					//			var compressed = CompressData(base64);
+
+					//			response.Data = compressed;
+					//			break;
+					//	}
+					//};
+
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";
 				});
