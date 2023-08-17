@@ -41,7 +41,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Sensors.IsSupported(SensorType.Compass);
+			return Device.Valid && Device.Sensors.IsSupported(SensorType.Compass);
 		}
 	}
 }

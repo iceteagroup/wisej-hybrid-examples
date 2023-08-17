@@ -20,8 +20,10 @@
 using System;
 using System.Drawing;
 using System.IO;
+using Wisej.Ext.MaterialDesign;
 using Wisej.Hybrid.Features.Panels;
 using Wisej.Hybrid.Shared.AppActions;
+using Wisej.Hybrid.Shared.Communication;
 using Wisej.Hybrid.Shared.Sensor;
 using Wisej.Hybrid.Shared.StatusBar;
 using Wisej.Web;
@@ -52,13 +54,14 @@ namespace Wisej.Hybrid.Features
 				InitializeNative();
 
 			LoadTheme(Application.Browser.IsDarkMode);
+
+			var offline = Application.Uri.Host == "localhost";
+			this.buttonNetwork.Text = offline ? "Offline" : "Online";
+			this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
 		}
 
 		private void InitializeNative()
 		{
-			//Device.Sensors.Start(SensorType.Shake);
-			//Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
-
 			Device.AppActions.ItemActivated += AppActions_ItemActivated;
 
 			// show version info.
@@ -153,6 +156,8 @@ namespace Wisej.Hybrid.Features
 
 		private void LoadTheme(bool isDark)
 		{
+			AlertBox.Show($"loading isdark: {isDark}");
+
 			if (isDark)
 				Application.LoadTheme("BootstrapDark-4");
 			else
@@ -160,6 +165,32 @@ namespace Wisej.Hybrid.Features
 
 			if (Device.Valid)
 				SetNativeColors();
+		}
+
+		private void buttonNetwork_Click(object sender, EventArgs e)
+		{
+			if (Device.Valid)
+			{
+				var offline = Application.Uri.Host == "localhost";
+
+				if (offline)
+				{
+					if (Device.Info.Networking.NetworkAccess == NetworkAccess.Internet)
+					{
+						var result = MessageBox.Show("Reconnect to server?", "Reconnect", MessageBoxButtons.YesNo);
+						if (result == DialogResult.Yes)
+							Application.Navigate("https://demo.wisej.com/Hybrid");
+					}
+				}
+				else
+				{
+					var result = MessageBox.Show("Go offline?", "Disconnect", MessageBoxButtons.YesNo);
+					if ( result == DialogResult.Yes)
+					{
+						Application.Navigate("http://localhost:5000");
+					}
+				}
+			}
 		}
 	}
 }

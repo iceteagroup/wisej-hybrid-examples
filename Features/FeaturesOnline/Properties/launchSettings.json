@@ -8,7 +8,7 @@
         }
     },
     "profiles": {
-        "Wisej.Hybrid.Features": {
+        "FeaturesOnline": {
             "commandName": "Project",
             "launchBrowser": true,
             "applicationUrl": "http://localhost:5000"

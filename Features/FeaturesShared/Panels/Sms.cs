@@ -35,7 +35,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Sms.IsComposeSupported;
+			return Device.Valid && Device.Sms.IsComposeSupported;
 		}
 	}
 }

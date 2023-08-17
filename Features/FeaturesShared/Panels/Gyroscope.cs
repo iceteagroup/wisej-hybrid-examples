@@ -49,7 +49,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Sensors.IsSupported(SensorType.Gyroscope);
+			return Device.Valid && Device.Sensors.IsSupported(SensorType.Gyroscope);
 		}
 	}
 }

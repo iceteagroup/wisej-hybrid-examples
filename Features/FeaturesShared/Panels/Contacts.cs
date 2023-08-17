@@ -26,7 +26,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Info.System.Platform != "WinUI";
+			return Device.Valid && Device.Info.System.Platform != "WinUI";
 		}
 	}
 }

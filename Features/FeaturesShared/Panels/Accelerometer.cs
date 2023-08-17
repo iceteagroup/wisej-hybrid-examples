@@ -34,7 +34,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Sensors.IsSupported(SensorType.Accelerometer);
+			return Device.Valid && Device.Sensors.IsSupported(SensorType.Accelerometer);
 		}
 	}
 }

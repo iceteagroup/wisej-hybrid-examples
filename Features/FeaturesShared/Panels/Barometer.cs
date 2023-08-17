@@ -42,7 +42,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Sensors.IsSupported(SensorType.Barometer);
+			return Device.Valid && Device.Sensors.IsSupported(SensorType.Barometer);
 		}
 	}
 }

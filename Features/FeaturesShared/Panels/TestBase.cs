@@ -76,7 +76,7 @@ namespace Wisej.Hybrid.Features
 
 		public virtual bool IsSupported()
 		{
-			return true;
+			return Device.Valid;
 		}
 
 		public virtual void Activate()
