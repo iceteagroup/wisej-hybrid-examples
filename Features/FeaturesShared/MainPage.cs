@@ -56,7 +56,6 @@ namespace Wisej.Hybrid.Features
 			LoadTheme(Application.Browser.IsDarkMode);
 
 			var offline = Application.Uri.Host == "localhost";
-			this.buttonNetwork.Text = offline ? "Offline" : "Online";
 			this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
 		}
 
@@ -156,8 +155,6 @@ namespace Wisej.Hybrid.Features
 
 		private void LoadTheme(bool isDark)
 		{
-			AlertBox.Show($"loading isdark: {isDark}");
-
 			if (isDark)
 				Application.LoadTheme("BootstrapDark-4");
 			else
@@ -180,6 +177,10 @@ namespace Wisej.Hybrid.Features
 						var result = MessageBox.Show("Reconnect to server?", "Reconnect", MessageBoxButtons.YesNo);
 						if (result == DialogResult.Yes)
 							Application.Navigate("https://demo.wisej.com/Hybrid");
+					}
+					else
+					{
+						MessageBox.Show("Network Connection Unavailable", "Network");
 					}
 				}
 				else

@@ -50,7 +50,7 @@
 			this.panelContainer.Dock = Wisej.Web.DockStyle.Fill;
 			this.panelContainer.Location = new System.Drawing.Point(0, 45);
 			this.panelContainer.Name = "panelContainer";
-			this.panelContainer.Size = new System.Drawing.Size(1747, 637);
+			this.panelContainer.Size = new System.Drawing.Size(1772, 637);
 			this.panelContainer.TabIndex = 4;
 			this.panelContainer.TabStop = true;
 			// 
@@ -62,22 +62,21 @@
 			this.panelHeader.Dock = Wisej.Web.DockStyle.Top;
 			this.panelHeader.Location = new System.Drawing.Point(0, 0);
 			this.panelHeader.Name = "panelHeader";
-			this.panelHeader.Size = new System.Drawing.Size(1747, 45);
+			this.panelHeader.Size = new System.Drawing.Size(1772, 45);
 			this.panelHeader.TabIndex = 0;
 			this.panelHeader.TabStop = true;
 			// 
 			// buttonNetwork
 			// 
-			this.buttonNetwork.Anchor = Wisej.Web.AnchorStyles.None;
 			this.buttonNetwork.BackColor = System.Drawing.Color.Transparent;
-			this.buttonNetwork.BorderStyle = Wisej.Web.BorderStyle.None;
+			this.buttonNetwork.BorderStyle = Wisej.Web.BorderStyle.Dotted;
+			this.buttonNetwork.Dock = Wisej.Web.DockStyle.Right;
 			this.buttonNetwork.Focusable = false;
 			this.buttonNetwork.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/cloud-off.svg";
-			this.buttonNetwork.Location = new System.Drawing.Point(823, 0);
+			this.buttonNetwork.Location = new System.Drawing.Point(1680, 0);
 			this.buttonNetwork.Name = "buttonNetwork";
-			this.buttonNetwork.Size = new System.Drawing.Size(100, 45);
+			this.buttonNetwork.Size = new System.Drawing.Size(45, 45);
 			this.buttonNetwork.TabIndex = 8;
-			this.buttonNetwork.Text = "Offline";
 			this.buttonNetwork.Click += new System.EventHandler(this.buttonNetwork_Click);
 			// 
 			// buttonTheme
@@ -86,7 +85,7 @@
 			this.buttonTheme.CssStyle = "box-shadow: none !important;";
 			this.buttonTheme.Dock = Wisej.Web.DockStyle.Right;
 			this.buttonTheme.ImageSource = "resource.wx/theme.svg";
-			this.buttonTheme.Location = new System.Drawing.Point(1700, 0);
+			this.buttonTheme.Location = new System.Drawing.Point(1725, 0);
 			this.buttonTheme.Name = "buttonTheme";
 			this.buttonTheme.Size = new System.Drawing.Size(47, 45);
 			this.buttonTheme.TabIndex = 7;
@@ -113,7 +112,7 @@
 			this.Controls.Add(this.panelContainer);
 			this.Controls.Add(this.panelHeader);
 			this.Name = "MainPage";
-			this.Size = new System.Drawing.Size(1747, 682);
+			this.Size = new System.Drawing.Size(1772, 682);
 			this.Text = "Page1";
 			this.Load += new System.EventHandler(this.Page1_Load);
 			this.panelHeader.ResumeLayout(false);
