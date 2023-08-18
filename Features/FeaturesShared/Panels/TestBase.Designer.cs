@@ -77,6 +77,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.AutoScroll = true;
+			this.AutoScrollMargin = new System.Drawing.Size(0, 20);
 			this.Controls.Add(this.buttonSource);
 			this.Controls.Add(this.labelTitle);
 			this.MinimumSize = new System.Drawing.Size(350, 0);

@@ -20,6 +20,7 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using Wisej.Ext.MaterialDesign;
 using Wisej.Hybrid.Features.Panels;
 using Wisej.Hybrid.Shared.AppActions;
@@ -59,6 +60,12 @@ namespace Wisej.Hybrid.Features
 			this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
 		}
 
+		private void MainPage_Appear(object sender, EventArgs e)
+		{
+			if (Device.Valid)
+				SetNativeColors();
+		}
+
 		private void InitializeNative()
 		{
 			Device.AppActions.ItemActivated += AppActions_ItemActivated;
@@ -69,8 +76,6 @@ namespace Wisej.Hybrid.Features
 				new Toast($"Welcome to Wisej.NET Hybrid {versioning.CurrentVersion}").Show();
 			else
 				new Toast($"Welcome back to Wisej.NET Hybrid {versioning.CurrentVersion}").Show();
-
-			SetNativeColors();
 		}
 
 		private void SetNativeColors()
@@ -90,12 +95,6 @@ namespace Wisej.Hybrid.Features
 		private void AppActions_ItemActivated(object sender, AppAction e)
 		{
 			AlertBox.Show($"Selected Shortcut: {e.Title}");
-		}
-
-		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
-		{
-			if (e.Sensor == SensorType.Shake)
-				new Toast("Shake").Show();
 		}
 
 		private void SwitchView(TestBase instance)

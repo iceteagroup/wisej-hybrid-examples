@@ -45,7 +45,7 @@ namespace Wisej.Hybrid.Features.Panels
 		internal TabBarItem ToTabBarItem()
 		{
 			return new TabBarItem() 
-			{ 
+			{
 				Title = this.Label,
 				ImageSource = this.pictureBox1.ImageSource,
 			};

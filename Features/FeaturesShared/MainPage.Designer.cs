@@ -115,6 +115,7 @@
 			this.Size = new System.Drawing.Size(1772, 682);
 			this.Text = "Page1";
 			this.Load += new System.EventHandler(this.Page1_Load);
+			this.Appear += new System.EventHandler(this.MainPage_Appear);
 			this.panelHeader.ResumeLayout(false);
 			this.ResumeLayout(false);
 

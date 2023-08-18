@@ -17,12 +17,14 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void TabBar_Appear(object sender, EventArgs e)
 		{
-			Device.TabBar.TabSelected += this.TabBar_TabSelected;
+			Device.TabBar.TabSelected -= this.TabBar_TabSelected;
 
-			this.checkBoxVisible.Checked = Device.TabBar.Visible;
+			Device.TabBar.Visible = this.checkBoxVisible.Checked;
 
 			SetThemeColors();
 			UpdateTabs();
+
+			Device.TabBar.TabSelected += this.TabBar_TabSelected;
 
 			Application.ThemeChanged += Application_ThemeChanged;
 		}
@@ -44,12 +46,6 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			var name = Application.Theme.Name;
 			var backColor = name == "Bootstrap-4" ? "#F6F8FA" : "#383940";
-
-			// schedule change as last task.
-			//Application.StartTask(() =>
-			//{
-				Device.BottomBar.BackColor = ColorTranslator.FromHtml(backColor);
-			//});
 	
 			this.textBoxBackColor.Text = backColor;
 			this.textBoxUnselectedColor.Text = "#B0B0B0";
@@ -67,7 +63,7 @@ namespace Wisej.Hybrid.Features.Panels
 			if (visible)
 				Device.BottomBar.BackColor = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
 			else
-				Device.BottomBar.BackColor = Color.White;
+				Device.BottomBar.BackColor = this.BackColor;
 
 			Device.TabBar.Visible = this.checkBoxVisible.Checked;
 		}
@@ -85,6 +81,7 @@ namespace Wisej.Hybrid.Features.Panels
 						.Select(c => ((BarButton)c).ToTabBarItem()).ToArray();
 
 			items[0].Selected = true;
+			items[0].Badge = 5;
 
 			Device.TabBar.Items = items;
 		}
@@ -94,7 +91,7 @@ namespace Wisej.Hybrid.Features.Panels
 			var color = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
 			var visible = this.checkBoxVisible.Checked;
 			if (visible)
-				Device.BottomBar.BackColor = color;
+				Application.StartTask(() => Device.BottomBar.BackColor = color);
 			else
 				Device.BottomBar.BackColor = ColorTranslator.FromHtml(Application.Theme.Colors.window);
 
