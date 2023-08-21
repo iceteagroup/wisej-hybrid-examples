@@ -80,7 +80,8 @@ namespace Wisej.Hybrid.Features
 
 		private void SetNativeColors()
 		{
-			var window = ColorTranslator.FromHtml(Application.Theme.Colors.window);
+			var theme = Application.Theme.Colors.window;
+			var window = ColorTranslator.FromHtml(theme);
 
 			Device.StatusBar.BackColor = window;
 			Device.BottomBar.BackColor = window;

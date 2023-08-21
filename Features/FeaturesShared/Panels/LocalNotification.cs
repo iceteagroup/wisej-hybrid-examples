@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
+using Wisej.Web;
 
 namespace FeaturesShared.Panels
 {
@@ -11,6 +12,11 @@ namespace FeaturesShared.Panels
 		public LocalNotification()
 		{
 			InitializeComponent();
+
+			Device.LocalNotification.Received += (s, e) =>
+			{
+				AlertBox.Show(JSON.Stringify(e));
+			};
 		}
 
 		private void buttonNow_Click(object sender, EventArgs e)
