@@ -17,7 +17,7 @@
 			"sources": [
 				{
 					"family": "Open Sans",
-					"source": [ "/Themes/Fonts/OpenSans.ttf" ]
+					"source": [ "./Themes/Fonts/OpenSans.ttf" ]
 				}
 			]
 		},
