@@ -121,6 +121,7 @@
 			this.Controls.Add(this.flexLayoutPanel1);
 			this.Name = "LocalNotification";
 			this.Size = new System.Drawing.Size(650, 495);
+			this.Load += new System.EventHandler(this.LocalNotification_Load);
 			this.Controls.SetChildIndex(this.flexLayoutPanel1, 0);
 			this.flexLayoutPanel1.ResumeLayout(false);
 			this.flexLayoutPanel1.PerformLayout();

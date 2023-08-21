@@ -12,11 +12,6 @@ namespace FeaturesShared.Panels
 		public LocalNotification()
 		{
 			InitializeComponent();
-
-			Device.LocalNotification.Received += (s, e) =>
-			{
-				AlertBox.Show(JSON.Stringify(e));
-			};
 		}
 
 		private void buttonNow_Click(object sender, EventArgs e)
@@ -41,6 +36,14 @@ namespace FeaturesShared.Panels
 		private void buttonTomorrow_Click(object sender, EventArgs e)
 		{
 			Schedule(DateTime.Now.AddDays(1));
+		}
+
+		private void LocalNotification_Load(object sender, EventArgs e)
+		{
+			Device.LocalNotification.Received += (s, e) =>
+			{
+				AlertBox.Show(JSON.Stringify(e));
+			};
 		}
 	}
 }

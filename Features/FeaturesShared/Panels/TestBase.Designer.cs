@@ -43,7 +43,7 @@
 			this.labelTitle.ForeColor = System.Drawing.Color.FromName("@toolbarText");
 			this.labelTitle.Location = new System.Drawing.Point(16, 0);
 			this.labelTitle.Name = "labelTitle";
-			this.labelTitle.Size = new System.Drawing.Size(618, 128);
+			this.labelTitle.Size = new System.Drawing.Size(616, 128);
 			this.labelTitle.TabIndex = 18;
 			this.labelTitle.Text = "TestBase";
 			this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -58,7 +58,7 @@
 			this.buttonSource.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.buttonSource.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/developer-mode-for-smartphones-and-tablets.s" +
     "vg";
-			this.buttonSource.Location = new System.Drawing.Point(580, 413);
+			this.buttonSource.Location = new System.Drawing.Point(578, 411);
 			this.buttonSource.Name = "buttonSource";
 			this.buttonSource.Size = new System.Drawing.Size(50, 50);
 			this.buttonSource.TabIndex = 19;
@@ -76,8 +76,6 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.AutoScroll = true;
-			this.AutoScrollMargin = new System.Drawing.Size(0, 20);
 			this.Controls.Add(this.buttonSource);
 			this.Controls.Add(this.labelTitle);
 			this.MinimumSize = new System.Drawing.Size(350, 0);
