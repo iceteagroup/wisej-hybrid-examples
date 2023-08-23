@@ -41,7 +41,6 @@
 {
 	"showLoader": false,
 	"url": "Offline.html",
-	"pollingInterval": 1500,
-	"enableWebSocket": false,
+	"enableWebSocket": true,
 	"startup": "FeaturesOffline.Program.Main, FeaturesOffline"
 }

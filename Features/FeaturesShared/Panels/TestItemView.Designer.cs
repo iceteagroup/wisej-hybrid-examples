@@ -120,6 +120,7 @@
 			this.Size = new System.Drawing.Size(160, 168);
 			this.Load += new System.EventHandler(this.AppItem_Load);
 			this.Click += new System.EventHandler(this.AppItemView_Click);
+			this.Appear += new System.EventHandler(this.AppItemView_Appear);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
 			this.flowLayoutPanel1.ResumeLayout(false);
 			this.flowLayoutPanel1.PerformLayout();

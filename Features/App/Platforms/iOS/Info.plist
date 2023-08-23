@@ -49,6 +49,10 @@
 	<string>This app needs access to contacts to pick a contact and get info.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to your location to show you local information.</string>
+  <key>NSCalendarsUsageDescription</key>
+  <string>This app uses the calendar to schedule events.</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>This app needs access to your location to show you local information.</string>
 	<key>NSAppTransportSecurity</key>
      <dict>
           <key>NSAllowsArbitraryLoads</key><true/>

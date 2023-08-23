@@ -166,9 +166,7 @@
 		<Compile Update="Panels\Barometer.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Panels\Clipboard.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
+		<Compile Update="Panels\Clipboard.cs" />
 		<Compile Update="Panels\Compass.cs">
 			<SubType>UserControl</SubType>
 		</Compile>

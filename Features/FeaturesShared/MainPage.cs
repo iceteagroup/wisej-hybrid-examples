@@ -19,13 +19,10 @@
 
 using System;
 using System.Drawing;
-using System.IO;
-using System.Threading;
 using Wisej.Ext.MaterialDesign;
 using Wisej.Hybrid.Features.Panels;
 using Wisej.Hybrid.Shared.AppActions;
 using Wisej.Hybrid.Shared.Communication;
-using Wisej.Hybrid.Shared.Sensor;
 using Wisej.Hybrid.Shared.StatusBar;
 using Wisej.Web;
 using Toast = Wisej.Web.Toast;
@@ -43,7 +40,7 @@ namespace Wisej.Hybrid.Features
 			InitializeComponent();
 		}
 
-		private void Page1_Load(object sender, EventArgs e)
+		private void MainPage_Load(object sender, EventArgs e)
 		{
 			if (Application.Browser.Device == "Desktop")
 				this.panelContainer.Padding = new Padding(16, 16, 16, 16);

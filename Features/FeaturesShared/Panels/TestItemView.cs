@@ -35,8 +35,8 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			InitializeComponent();
 
-			if (instance == null || !instance.IsSupported())
-				this.Enabled = false;
+			if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+				return;
 
 			this.Instance = instance;
 
@@ -114,5 +114,15 @@ namespace Wisej.Hybrid.Features.Panels
 				this.CssStyle = "border-radius: 8px;\r\nbox-shadow: rgba(0,0,0,0.31) 5px 5px 10px 0px;";
 			}
 		}
-}
+
+		private void AppItemView_Appear(object sender, EventArgs e)
+		{
+			if (this._supported == null)
+			{
+				this._supported = this.Instance != null && this.Instance.IsSupported();
+				this.Enabled = (bool)this._supported;
+			}
+		}
+		private bool? _supported = null;
+	}
 }

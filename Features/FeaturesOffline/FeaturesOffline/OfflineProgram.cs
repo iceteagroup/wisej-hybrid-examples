@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using Wisej.Hybrid.Features;
+﻿using Wisej.Hybrid.Features;
 using Wisej.Web;
 
 namespace FeaturesOffline

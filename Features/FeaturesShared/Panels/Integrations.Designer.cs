@@ -45,18 +45,18 @@
 			this.flowLayoutPanelApps.TabStop = true;
 			this.flowLayoutPanelApps.Scroll += new Wisej.Web.ScrollEventHandler(this.flowLayoutPanelApps_Scroll);
 			// 
-			// Tests
+			// Integrations
 			// 
-			this.animation1.GetAnimation(this).Duration = 350;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideLeftIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.animation2.GetAnimation(this).Duration = 350;
+			this.animation2.GetAnimation(this).Duration = 300;
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideLeftOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.flowLayoutPanelApps);
-			this.Name = "Tests";
+			this.Name = "Integrations";
 			this.Load += new System.EventHandler(this.Integrations_Load);
 			this.Controls.SetChildIndex(this.flowLayoutPanelApps, 0);
 			this.ResumeLayout(false);
