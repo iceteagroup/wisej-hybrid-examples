@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App.csproj", "{E0985431-5691-4048-ADE5-4865C71CBABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridApp", "App\HybridApp.csproj", "{E0985431-5691-4048-ADE5-4865C71CBABD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeaturesOffline", "FeaturesOffline\FeaturesOffline\FeaturesOffline.csproj", "{A0A29867-6BC5-489A-8283-5025E4DC26A7}"
 EndProject

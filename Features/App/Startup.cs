@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Wisej.Hybrid.Native.Core;
 
-namespace App
+namespace HybridApp
 {
 	public static class Startup
 	{
@@ -22,6 +22,8 @@ namespace App
 				{
 					// Uncomment to provide an offline fallback timeout.
 					// config.OfflineTimeout = 5000;
+
+					config.LogUrl = "wisejlogger.azurewebsites.net/log";
 
 					// Uncomment to provide an action that can transform the device response
 					// before sending it to the server.

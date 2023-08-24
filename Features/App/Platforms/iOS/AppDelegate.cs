@@ -1,7 +1,7 @@
 ﻿using Foundation;
 using Wisej.Hybrid.Native;
 
-namespace App
+namespace HybridApp
 {
 	[Register("AppDelegate")]
 	public class AppDelegate : HybridUIApplicationDelegate

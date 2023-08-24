@@ -1,14 +1,22 @@
 ﻿using Wisej.Hybrid.Native.Controls;
+using Wisej.Hybrid.Native.Core;
 
-namespace App
+namespace HybridApp
 {
 	public partial class App : Application
 	{
 		public App()
 		{
-			InitializeComponent();
+			try
+			{
+				InitializeComponent();
 
-			MainPage = new HybridShell();
+				MainPage = new HybridShell();
+			}
+			catch (Exception ex) 
+			{ 
+				Wisej.Hybrid.Native.Core.App.Log(ex);
+			}
 		}
 	}
 }

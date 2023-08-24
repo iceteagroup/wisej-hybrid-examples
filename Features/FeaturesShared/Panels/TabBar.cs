@@ -59,11 +59,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void checkBoxVisible_CheckedChanged(object sender, EventArgs e)
 		{
-			var visible = this.checkBoxVisible.Checked;
-			if (visible)
-				Device.BottomBar.BackColor = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
-			else
-				Device.BottomBar.BackColor = this.BackColor;
+			UpdateColors();
 
 			Device.TabBar.Visible = this.checkBoxVisible.Checked;
 		}
@@ -88,24 +84,37 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void textBoxBackColor_TextChanged(object sender, EventArgs e)
 		{
-			var color = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
-			var visible = this.checkBoxVisible.Checked;
-			if (visible)
-				Application.StartTask(() => Device.BottomBar.BackColor = color);
-			else
-				Device.BottomBar.BackColor = ColorTranslator.FromHtml(Application.Theme.Colors.window);
-
-			Device.TabBar.BackColor = color;
+			UpdateColors();
 		}
 
 		private void textBoxUnselectedColor_TextChanged(object sender, EventArgs e)
 		{
-			Device.TabBar.UnselectedColor = ColorTranslator.FromHtml(this.textBoxUnselectedColor.Text);
+			UpdateColors();
 		}
 
 		private void textBoxSelectedColor_TextChanged(object sender, EventArgs e)
 		{
+			UpdateColors();
+		}
+
+		private void UpdateColors()
+		{
+			// apply background color.
+			var color = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
+
+			Device.TabBar.BackColor = color;
+
+			// apply unselected color.
+			Device.TabBar.UnselectedColor = ColorTranslator.FromHtml(this.textBoxUnselectedColor.Text);
+
+			// apply selected color.
 			Device.TabBar.SelectedColor = ColorTranslator.FromHtml(this.textBoxSelectedColor.Text);
+
+			var visible = this.checkBoxVisible.Checked;
+			if (visible)
+				Device.BottomBar.BackColor = color;
+			else
+				Device.BottomBar.BackColor = ColorTranslator.FromHtml(Application.Theme.Colors.window);
 		}
 	}
 }
