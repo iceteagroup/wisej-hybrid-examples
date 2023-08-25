@@ -55,6 +55,9 @@ namespace Wisej.Hybrid.Features
 
 			var offline = Application.Uri.Host == "localhost";
 			this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
+			var text = offline ? "App running offline" : "App running online (demo.wisej.com)";
+
+			new Toast(text).Show();
 		}
 
 		private void MainPage_Appear(object sender, EventArgs e)
@@ -66,13 +69,6 @@ namespace Wisej.Hybrid.Features
 		private void InitializeNative()
 		{
 			Device.AppActions.ItemActivated += AppActions_ItemActivated;
-
-			// show version info.
-			var versioning = Device.Info.Versioning;
-			if (versioning.IsFirstLaunchEver)
-				new Toast($"Welcome to Wisej.NET Hybrid {versioning.CurrentVersion}").Show();
-			else
-				new Toast($"Welcome back to Wisej.NET Hybrid {versioning.CurrentVersion}").Show();
 		}
 
 		private void SetNativeColors()

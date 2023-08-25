@@ -1,5 +1,5 @@
 using EmbedIO;
-using System.IO;
+using System;
 using System.Threading;
 using Wisej.EmbedIO;
 
@@ -12,7 +12,7 @@ namespace FeaturesOffline
 			var url = "http://localhost:5000";
 			var server = new WebServer(url);
 			server.WithWisej();
-			server.WithStaticFolder("/", Path.GetDirectoryName(typeof(OfflineStartup).Assembly.Location), true);
+			server.WithStaticFolder("/", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), true);
 
 			new Thread(() => server.RunAsync(token).Wait()).Start();
 

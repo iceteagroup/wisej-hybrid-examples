@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-ios</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -19,7 +19,7 @@
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>5</ApplicationVersion>
+		<ApplicationVersion>7</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -28,10 +28,25 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
+  <PropertyGroup>
+	<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
+  </PropertyGroup>
+
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
 	  <CodesignKey>iPhone Distribution</CodesignKey>
 	  <CodesignProvision></CodesignProvision>
 	  <ProvisioningType>manual</ProvisioningType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <MtouchUseLlvm>False</MtouchUseLlvm>
+	  <UseInterpreter>true</UseInterpreter>
+	  <MtouchLink>None</MtouchLink>
+	  <MtouchDebug>True</MtouchDebug>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <MtouchDebug>True</MtouchDebug>
 	</PropertyGroup>
 
 	<ItemGroup>
