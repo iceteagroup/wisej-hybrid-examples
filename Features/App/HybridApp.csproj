@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-ios;net7.0-android;net7.0-windows10.0.19041.0</TargetFrameworks>
-		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net7.0-ios;net7.0-android</TargetFrameworks>
+	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+	  <OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -32,21 +33,25 @@
 	<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
   </PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	  <CodesignKey>iPhone Distribution</CodesignKey>
-	  <CodesignProvision></CodesignProvision>
-	  <ProvisioningType>manual</ProvisioningType>
-	</PropertyGroup>
-
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <MtouchUseLlvm>False</MtouchUseLlvm>
 	  <UseInterpreter>true</UseInterpreter>
 	  <MtouchLink>None</MtouchLink>
 	  <MtouchDebug>True</MtouchDebug>
+	  <CodesignKey>iPhone Distribution</CodesignKey>
+	  <CodesignProvision></CodesignProvision>
+	  <ProvisioningType>manual</ProvisioningType>
+	  <MtouchProfiling>True</MtouchProfiling>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <MtouchDebug>True</MtouchDebug>
+	  <MtouchProfiling>True</MtouchProfiling>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+	  <CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+	  <CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -54,7 +59,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="White" />
 
 		<!-- Splash Screen -->
-	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" />
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" BaseSize="128,128" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />

@@ -12,7 +12,6 @@ namespace FeaturesOffline
 			var url = "http://localhost:5000";
 			var server = new WebServer(url);
 			server.WithWisej();
-			server.WithStaticFolder("/", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), true);
 
 			new Thread(() => server.RunAsync(token).Wait()).Start();
 

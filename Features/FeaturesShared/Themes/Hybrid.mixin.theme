@@ -24,21 +24,45 @@
 		"defaultBold": {
 			"size": 14,
 			"family": [ "Open Sans" ],
+			"sources": [
+				{
+					"family": "Open Sans",
+					"source": [ "./Themes/Fonts/OpenSans.ttf" ]
+				}
+			],
 			"bold": true
 		},
 		"menu": {
 			"size": 16,
 			"family": [ "Open Sans" ],
+			"sources": [
+				{
+					"family": "Open Sans",
+					"source": [ "./Themes/Fonts/OpenSans.ttf" ]
+				}
+			],
 			"bold": true
 		},
 		"windowTitle": {
 			"size": 40,
 			"family": [ "Open Sans" ],
+			"sources": [
+				{
+					"family": "Open Sans",
+					"source": [ "./Themes/Fonts/OpenSans.ttf" ]
+				}
+			],
 			"bold": true
 		},
 		"windowTitleLandscape": {
 			"size": 25,
 			"family": [ "Open Sans" ],
+			"sources": [
+				{
+					"family": "Open Sans",
+					"source": [ "./Themes/Fonts/OpenSans.ttf" ]
+				}
+			],
 			"bold": true
 		}
 	},
@@ -58,21 +82,6 @@
 					}
 				}
 			}
-		},
-		//"shadowPanel": {
-		//	"states": {
-		//		"default": {
-		//			"styles": {
-		//				//"width": [ 1, 1, 1, 1 ],
-		//				"color": "control",
-		//				"shadowColor": "rgba(0,0,0,0.3)",
-		//				"shadowBlurRadius": 4,
-		//				"shadowSpreadRadius": 0,
-		//				"shadowLength": [ -2, 2, 2, 2 ],
-		//				"radius": [ "$borderRadius", "$borderRadius", "$borderRadius", "$borderRadius" ]
-		//			}
-		//		}
-		//	}
 		}
 	}
 }

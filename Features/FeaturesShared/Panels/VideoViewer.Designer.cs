@@ -37,13 +37,13 @@
 			this.video1.Location = new System.Drawing.Point(16, 128);
 			this.video1.Name = "video1";
 			this.video1.Size = new System.Drawing.Size(618, 334);
-			this.video1.SourceURL = "https://filesamples.com/samples/video/mp4/sample_960x400_ocean_with_audio.mp4";
+			this.video1.SourceURL = "https://demo.wisej.com/Hybrid/Data/sample.mp4";
 			this.video1.TabIndex = 20;
 			this.video1.Volume = 0.5D;
 			// 
 			// VideoViewer
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;

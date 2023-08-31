@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Storage));
 			this.textBoxContents = new Wisej.Web.TextBox();
 			this.buttonSave = new Wisej.Web.Button();
 			this.flexLayoutPanel1 = new Wisej.Web.FlexLayoutPanel();
@@ -47,7 +46,6 @@
 			this.textBoxContents.Name = "textBoxContents";
 			this.textBoxContents.Size = new System.Drawing.Size(612, 228);
 			this.textBoxContents.TabIndex = 20;
-			this.textBoxContents.Text = resources.GetString("textBoxContents.Text");
 			// 
 			// buttonSave
 			// 
