@@ -53,6 +53,12 @@
   <string>This app uses the calendar to schedule events.</string>
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
   <string>This app needs access to your location to show you local information.</string>
+  <key>NSAppleMusicUsageDescription</key>
+  <string>This app may access the media library to upload user provided files.</string>
+  <key>NSSiriUsageDescription</key>
+  <string>This app may use Siri to show relevant information.</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>This app may use bluetooth to provide relevant information.</string>
 	<key>NSAppTransportSecurity</key>
      <dict>
           <key>NSAllowsArbitraryLoads</key><true/>
