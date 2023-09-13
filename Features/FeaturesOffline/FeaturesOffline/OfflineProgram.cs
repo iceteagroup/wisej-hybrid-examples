@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
 using Wisej.Web;
 
@@ -12,6 +13,8 @@ namespace FeaturesOffline
 		/// </summary>
 		static void Main()
 		{
+			Device.Initialize();
+
 			Application.SessionTimeout += Application_SessionTimeout;
 			Application.ApplicationExit += Application_ApplicationExit;
 
