@@ -13,8 +13,6 @@ namespace FeaturesOffline
 		/// </summary>
 		static void Main()
 		{
-			Device.Initialize();
-
 			Application.SessionTimeout += Application_SessionTimeout;
 			Application.ApplicationExit += Application_ApplicationExit;
 
