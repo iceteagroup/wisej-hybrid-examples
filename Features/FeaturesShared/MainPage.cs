@@ -19,6 +19,7 @@
 
 using System;
 using System.Drawing;
+using System.Linq;
 using Wisej.Ext.MaterialDesign;
 using Wisej.Hybrid.Features.Panels;
 using Wisej.Hybrid.Shared.AppActions;
@@ -58,6 +59,9 @@ namespace Wisej.Hybrid.Features
 			var text = offline ? "App running offline" : "App running online (demo.wisej.com)";
 
 			new Toast(text).Show();
+
+			// todo: workaround.
+			Application.LoadAssembly(typeof(Icons).Assembly.FullName);
 		}
 
 		private void MainPage_Appear(object sender, EventArgs e)

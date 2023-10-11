@@ -72,7 +72,7 @@
 			this.buttonNetwork.BorderStyle = Wisej.Web.BorderStyle.Dotted;
 			this.buttonNetwork.Dock = Wisej.Web.DockStyle.Right;
 			this.buttonNetwork.Focusable = false;
-			this.buttonNetwork.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/cloud-off.svg";
+			this.buttonNetwork.ImageSource = Wisej.Ext.MaterialDesign.Icons.CloudOff;
 			this.buttonNetwork.Location = new System.Drawing.Point(1655, 0);
 			this.buttonNetwork.Name = "buttonNetwork";
 			this.buttonNetwork.Size = new System.Drawing.Size(45, 45);
@@ -97,7 +97,7 @@
 			this.buttonBack.BorderStyle = Wisej.Web.BorderStyle.None;
 			this.buttonBack.Dock = Wisej.Web.DockStyle.Left;
 			this.buttonBack.Focusable = false;
-			this.buttonBack.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/go-back-left-arrow.svg";
+			this.buttonBack.ImageSource = Wisej.Ext.MaterialDesign.Icons.GoBackLeftArrow;
 			this.buttonBack.Location = new System.Drawing.Point(0, 0);
 			this.buttonBack.Name = "buttonBack";
 			this.buttonBack.Size = new System.Drawing.Size(151, 45);

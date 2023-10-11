@@ -86,8 +86,7 @@
 			this.flowLayoutPanel1.SetFlowBreak(this.buttonMenu, true);
 			this.buttonMenu.Focusable = false;
 			this.buttonMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonMenu.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/show-more-button-with-three-dots.svg?color=#" +
-    "979797";
+			this.buttonMenu.ImageSource = Wisej.Ext.MaterialDesign.Icons.ShowMoreButtonWithThreeDots + "?color=#979797";
 			this.buttonMenu.InitScript = "this.setShowArrow(false);";
 			this.buttonMenu.Location = new System.Drawing.Point(49, 3);
 			this.buttonMenu.Name = "buttonMenu";

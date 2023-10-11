@@ -56,8 +56,7 @@
     "0, 0.4) 0px 2px 8px 0px;";
 			this.buttonSource.Font = new System.Drawing.Font("@defaultBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			this.buttonSource.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonSource.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/developer-mode-for-smartphones-and-tablets.s" +
-    "vg";
+			this.buttonSource.ImageSource = Wisej.Ext.MaterialDesign.Icons.DeveloperModeForSmartphonesAndTablets;
 			this.buttonSource.Location = new System.Drawing.Point(578, 411);
 			this.buttonSource.Name = "buttonSource";
 			this.buttonSource.Size = new System.Drawing.Size(50, 50);
