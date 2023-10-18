@@ -9,8 +9,11 @@ namespace Wisej.Hybrid.Features.Panels
 		public UploadMedia()
 		{
 			InitializeComponent();
+		}
 
-			new Wisej.Web.Upload();
+		private void upload1_Uploaded(object sender, UploadedEventArgs e)
+		{
+			AlertBox.Show($"Upload: {e.Files[0].ContentLength} bytes");
 		}
 	}
 }

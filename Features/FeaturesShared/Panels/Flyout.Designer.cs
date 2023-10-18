@@ -31,7 +31,7 @@
 			this.checkBoxVisible = new Wisej.Web.CheckBox();
 			this.flowLayoutPanel1 = new Wisej.Web.FlowLayoutPanel();
 			this.textBoxBackgroundColor = new Wisej.Web.TextBox();
-			this.button1 = new Wisej.Web.Button();
+			this.label1 = new Wisej.Web.Label();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -41,6 +41,7 @@
 			this.checkBoxVisible.Appearance = Wisej.Web.Appearance.Switch;
 			this.checkBoxVisible.AutoSize = false;
 			this.checkBoxVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.checkBoxVisible.CheckState = Wisej.Web.CheckState.Checked;
 			this.flowLayoutPanel1.SetFillWeight(this.checkBoxVisible, 1);
 			this.flowLayoutPanel1.SetFlowBreak(this.checkBoxVisible, true);
 			this.checkBoxVisible.Location = new System.Drawing.Point(312, 3);
@@ -55,7 +56,7 @@
 			// 
 			this.flowLayoutPanel1.Controls.Add(this.textBoxBackgroundColor);
 			this.flowLayoutPanel1.Controls.Add(this.checkBoxVisible);
-			this.flowLayoutPanel1.Controls.Add(this.button1);
+			this.flowLayoutPanel1.Controls.Add(this.label1);
 			this.flowLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 128);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -73,20 +74,18 @@
 			this.textBoxBackgroundColor.TabIndex = 22;
 			this.textBoxBackgroundColor.TextChanged += new System.EventHandler(this.textBoxBackgroundColor_TextChanged);
 			// 
-			// button1
+			// label1
 			// 
-			this.flowLayoutPanel1.SetFillWeight(this.button1, 1);
-			this.flowLayoutPanel1.SetFlowBreak(this.button1, true);
-			this.button1.Location = new System.Drawing.Point(3, 64);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(612, 37);
-			this.button1.TabIndex = 21;
-			this.button1.Text = "Set Items";
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 64);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(246, 20);
+			this.label1.TabIndex = 23;
+			this.label1.Text = "Drag from the left edge of the screen";
 			// 
 			// Flyout
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -109,7 +108,7 @@
 
         private Web.CheckBox checkBoxVisible;
         private Web.FlowLayoutPanel flowLayoutPanel1;
-        private Web.Button button1;
         private Web.TextBox textBoxBackgroundColor;
-    }
+		private Web.Label label1;
+	}
 }

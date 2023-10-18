@@ -27,9 +27,16 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
 		{
-			this.labelX.Text = $"X: {e.Data.Acceleration.X}";
-			this.labelY.Text = $"Y: {e.Data.Acceleration.Y}";
-			this.labelZ.Text = $"Z: {e.Data.Acceleration.Z}";
+			if (e.Data == null)
+			{
+				AlertBox.Show("Shake");
+			}
+			else
+			{
+				this.labelX.Text = $"X: {e.Data.Acceleration.X}";
+				this.labelY.Text = $"Y: {e.Data.Acceleration.Y}";
+				this.labelZ.Text = $"Z: {e.Data.Acceleration.Z}";
+			}
 		}
 
 		public override bool IsSupported()

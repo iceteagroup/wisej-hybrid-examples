@@ -18,8 +18,28 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			Device.Flyout.ItemSelected += Flyout_ItemSelected;
 
-			this.checkBoxVisible.Checked = Device.Flyout.Behavior == FlyoutBehavior.Flyout;
-			this.textBoxBackgroundColor.Text = ColorTranslator.ToHtml(Device.Flyout.BackgroundColor);
+			Device.Flyout.Behavior = FlyoutBehavior.Flyout;
+			this.textBoxBackgroundColor.Text = Application.Theme.Colors.toolbar;
+
+			Device.Flyout.Items = new[]
+			{
+				new FlyoutItem {
+					Title = "Home",
+					ImageSource = "resource.wx/FeaturesShared/Images/Icons/Home.png"
+				},
+				new FlyoutItem {
+					Title = "Edit",
+					ImageSource = "resource.wx/FeaturesShared/Images/Icons/Edit.png"
+				},
+				new FlyoutItem {
+					Title = "Settings",
+					ImageSource = "resource.wx/FeaturesShared/Images/Icons/Settings.png"
+				},
+				new FlyoutItem {
+					Title = "More",
+					ImageSource = "resource.wx/FeaturesShared/Images/Icons/More.png"
+				}
+			};
 		}
 
 		private void Flyout_Disappear(object sender, EventArgs e)
@@ -42,31 +62,6 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			var color = this.textBoxBackgroundColor.Text;
 			Device.Flyout.BackgroundColor = ColorTranslator.FromHtml(color);
-		}
-
-		private void button1_Click(object sender, EventArgs e)
-		{
-			
-
-			Device.Flyout.Items = new[]
-			{
-				new FlyoutItem { 
-					Title = "Home",
-					ImageSource = $"{Ext.MaterialDesign.Icons.HomeButton}?color=white"
-				},
-				new FlyoutItem {
-					Title = "Profile",
-					ImageSource = $"{Ext.MaterialDesign.Icons.UserAccountBox}?color=white"
-				},
-				new FlyoutItem { 
-					Title = "Messages",
-					ImageSource = $"{Ext.MaterialDesign.Icons.GmailLogo}?color=white"
-				},
-				new FlyoutItem { 
-					Title = "Settings",
-					ImageSource = $"{Ext.MaterialDesign.Icons.PhoneSettings}?color=white"
-				}
-			};
 		}
 	}
 }

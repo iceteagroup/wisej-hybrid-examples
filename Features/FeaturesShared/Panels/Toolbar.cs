@@ -16,21 +16,36 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Toolbar_Appear(object sender, EventArgs e)
 		{
+			Device.Toolbar.ItemClicked -= Toolbar_ItemClicked;
+
+			Device.Toolbar.Visible = this.checkBoxVisible.Checked;
+
+			SetThemeColors();
+			UpdateItems();
+
 			Device.Toolbar.ItemClicked += Toolbar_ItemClicked;
 
-			this.checkBoxVisible.Checked = Device.Toolbar.Visible;
+			Application.ThemeChanged += Application_ThemeChanged;
+		}
 
-			this.textBoxBackColor.Text = "#183C94";
-			this.textBoxBackColor.Text = "#EDEDED";
-			this.textBoxForeColor.Text = "#FFFFFF";
-
-			UpdateItems();
+		private void Application_ThemeChanged(object sender, EventArgs e)
+		{
+			SetThemeColors();
 		}
 
 		private void Toolbar_Disappear(object sender, EventArgs e)
 		{
 			Device.Toolbar.Visible = false;
 			Device.Toolbar.ItemClicked -= Toolbar_ItemClicked;
+		}
+
+		private void SetThemeColors()
+		{
+			var name = Application.Theme.Name;
+			var backColor = name == "Bootstrap-4" ? "#F6F8FA" : "#383940";
+
+			this.textBoxBackColor.Text = backColor;
+			this.textBoxForeColor.Text = Application.Theme.Colors.primary;
 		}
 
 		private void Toolbar_ItemClicked(object sender, Shared.Toolbar.ToolbarItemClickedEventArgs e)

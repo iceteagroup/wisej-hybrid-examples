@@ -76,8 +76,12 @@ namespace Wisej.Hybrid.Features.Panels
 					.Where(c => c is BarButton && ((BarButton)c).Show)
 						.Select(c => ((BarButton)c).ToTabBarItem()).ToArray();
 
-			items[0].Selected = true;
-			items[0].Badge = 5;
+			var item = items.FirstOrDefault();
+			if (item != null)
+			{
+				item.Selected = true;
+				item.Badge = 5;
+			}
 
 			Device.TabBar.Items = items;
 		}

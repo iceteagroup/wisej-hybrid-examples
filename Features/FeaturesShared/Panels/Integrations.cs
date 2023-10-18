@@ -36,6 +36,7 @@ namespace Wisej.Hybrid.Features.Panels
 			var asm = GetType().Assembly;
 			var apps = asm.GetTypes()
 				.Where(t => t != typeof(TestBase) && t != typeof(Integrations) && typeof(TestBase).IsAssignableFrom(t))
+				.OrderBy(t => t.Name)
 				.Select(t => {
 					var view = new AppItemView((TestBase)Activator.CreateInstance(t)) { Width = this._itemWidth };
 					view.ViewRequested += Integrations_ViewRequested;

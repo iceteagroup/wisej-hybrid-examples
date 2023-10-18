@@ -211,14 +211,14 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.AutoScroll = true;
-			this.AutoScrollMinSize = new System.Drawing.Size(0, 20);
+			this.AutoScrollMargin = new System.Drawing.Size(0, 20);
 			this.Controls.Add(this.buttonUpdate);
 			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.flowLayoutPanelItems);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.checkBoxVisible);
 			this.Name = "TabBar";
-			this.Size = new System.Drawing.Size(650, 532);
+			this.Size = new System.Drawing.Size(633, 532);
 			this.Appear += new System.EventHandler(this.TabBar_Appear);
 			this.Disappear += new System.EventHandler(this.TabBar_Disappear);
 			this.Controls.SetChildIndex(this.checkBoxVisible, 0);

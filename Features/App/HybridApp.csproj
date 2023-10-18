@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-ios</TargetFrameworks>
+		<TargetFrameworks>net7.0-ios;net7.0-android</TargetFrameworks>
 	  <!--<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>-->
 	  <OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
@@ -34,9 +34,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-    <ProvisioningType>manual</ProvisioningType>
-    <CodesignKey>Apple Distribution: ICE TEA GROUP LLC (C5KB4U3BM9)</CodesignKey>
-    <CodesignProvision></CodesignProvision>
+    <ProvisioningType>automatic</ProvisioningType>
+    <CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+    <CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
 	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
   </PropertyGroup>
 
@@ -63,34 +63,12 @@
     <AndroidUseAapt2>True</AndroidUseAapt2>
   </PropertyGroup>
 
-	<!--<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-	  <MtouchUseLlvm>False</MtouchUseLlvm>
-	  <UseInterpreter>true</UseInterpreter>
-	  <MtouchLink>None</MtouchLink>
-	  <MtouchDebug>True</MtouchDebug>
-	  <CodesignKey>iPhone Distribution</CodesignKey>
-	  <CodesignProvision></CodesignProvision>
-	  <ProvisioningType>manual</ProvisioningType>
-	  <MtouchProfiling>True</MtouchProfiling>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <MtouchDebug>True</MtouchDebug>
-	  <MtouchProfiling>True</MtouchProfiling>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	  <CodesignKey>iPhone Distribution</CodesignKey>
-	  <CodesignProvision></CodesignProvision>
-	  <ProvisioningType>manual</ProvisioningType>
-	</PropertyGroup>-->
-
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="White" />
 
 		<!-- Splash Screen -->
-	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" BaseSize="128,128" />
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="White" BaseSize="256,256" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />

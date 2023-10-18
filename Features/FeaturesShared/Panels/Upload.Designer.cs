@@ -39,10 +39,11 @@
 			this.upload1.Size = new System.Drawing.Size(276, 68);
 			this.upload1.TabIndex = 20;
 			this.upload1.Text = "Select Media";
+			this.upload1.Uploaded += new Wisej.Web.UploadedEventHandler(this.upload1_Uploaded);
 			// 
 			// UploadMedia
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;

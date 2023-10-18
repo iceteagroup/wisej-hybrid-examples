@@ -14,7 +14,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void buttonPlayAudio_Click(object sender, EventArgs e)
 		{
-			Application.Play("Data\\service-bell_daniel_simion.mp3");
+			Application.Play("Data/bell.mp3");
 		}
 	}
 }
