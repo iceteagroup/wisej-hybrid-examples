@@ -17,6 +17,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+using FeaturesShared.Windows;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -43,6 +44,10 @@ namespace Wisej.Hybrid.Features
 
 		private void MainPage_Load(object sender, EventArgs e)
 		{
+			var loader = new LoadingWindow();
+
+			loader.Show();
+
 			if (Application.Browser.Device == "Desktop")
 				this.panelContainer.Padding = new Padding(16, 16, 16, 16);
 
@@ -62,6 +67,8 @@ namespace Wisej.Hybrid.Features
 
 			// todo: workaround.
 			Application.LoadAssembly(typeof(Icons).Assembly.FullName);
+
+			loader.Dispose();
 		}
 
 		private void MainPage_Appear(object sender, EventArgs e)

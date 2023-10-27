@@ -14,11 +14,6 @@ namespace FeaturesShared.Panels
 			InitializeComponent();
 		}
 
-		private void buttonNow_Click(object sender, EventArgs e)
-		{
-			Schedule(DateTime.Now.AddSeconds(2));
-		}
-
 		private void Schedule(DateTime scheduleDate)
 		{
 			var title = this.textBoxTitle.Text;

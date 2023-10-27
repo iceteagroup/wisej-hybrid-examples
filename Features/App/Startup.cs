@@ -1,5 +1,8 @@
 ﻿using FeaturesOffline;
 using Microsoft.Extensions.Logging;
+using Wisej.Hybrid.Authentication.Native.Middleware;
+using Wisej.Hybrid.DocumentScanner.Native.Middleware;
+using Wisej.Hybrid.MLKit.Native.Middleware;
 using Wisej.Hybrid.Native.Core;
 
 namespace HybridApp
@@ -15,8 +18,8 @@ namespace HybridApp
 				 // Uncomment and replace with Offline startup Type to use embedded web server.
 				 .UseWisejOffline<OfflineStartup>()
 
-				 // Uncomment when registering AppBuilderExtenders as part of a separate class library.
-				 //.UseWisejExtenders()
+				// Uncomment when registering AppBuilderExtenders as part of a separate class library.
+				//.UseWisejExtenders()
 
 				.UseWisejHybrid((config) =>
 				{
@@ -25,29 +28,16 @@ namespace HybridApp
 
 					config.LogUrl = "https://wisejlogger.azurewebsites.net/log";
 
-					// Uncomment to provide an action that can transform the device response
-					// before sending it to the server.
-					//config.FormatResponse += (response) =>
-					//{
-					//	switch (response.Handler) 
-					//	{
-					//		case "media":
-					//			var base64 = response.Data;
-
-					//			// apply custom compression.
-					//			var compressed = CompressData(base64);
-
-					//			response.Data = compressed;
-					//			break;
-					//	}
-					//};
-
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";
-				});
+				})
+
+				.UseWisejMLKit()
+				.UseWisejAuthentication()
+				.UseWisejDocumentScanner();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+			builder.Logging.AddDebug();
 #endif
 
 			return builder.Build();

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using FeaturesShared.Windows;
+using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using Wisej.Hybrid.DocumentScanner;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -24,19 +27,10 @@ namespace Wisej.Hybrid.Features.Panels
 				var scanner = Device.Use<DeviceDocumentScanner>();
 
 				var imageScaleFactor = (float)this.trackBarQuality.Value / 10;
-				var images = scanner.Scan(imageScaleFactor);
-
-				this.data.DataSource = images.Select((image) =>
-				{
-					// measure the size of the image.
-					using (var ms = new MemoryStream())
-					{
-						image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-						size += ms.Length;
-					}
-
-					return new { image };
-				});
+				foreach (var imageBytes in scanner.Scan(imageScaleFactor)) 
+				{ 
+					new ImageWindow(Image.FromStream(new MemoryStream(imageBytes))).Show();
+				}
 
 				AlertBox.Show($"Size of uploaded images: {size} bytes");
 			}
@@ -46,10 +40,9 @@ namespace Wisej.Hybrid.Features.Panels
 			}
 		}
 
-		private void DocumentScanner_Load(object sender, EventArgs e)
+		public override bool IsSupported()
 		{
-			this.dataRepeaterDocument.DataSource = this.data;
-			this.pictureBoxPage.DataBindings.Add(new Binding("Image", this.data, "image"));
+			return Device.Info.System.Platform == "iOS";
 		}
 	}
 }

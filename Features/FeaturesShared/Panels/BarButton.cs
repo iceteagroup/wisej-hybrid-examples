@@ -1,8 +1,4 @@
-﻿#if !NET48
-extern alias sdc;
-#endif
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using Wisej.Hybrid.Shared.TabBar;
 using Wisej.Hybrid.Shared.Toolbar;

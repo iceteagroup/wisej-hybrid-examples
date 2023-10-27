@@ -41,6 +41,5 @@
 {
 	"showLoader": false,
 	"url": "Offline.html",
-	"enableWebSocket": true,
 	"startup": "FeaturesOffline.Program.Main, FeaturesOffline"
 }

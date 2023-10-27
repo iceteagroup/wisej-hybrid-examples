@@ -45,6 +45,8 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
 			this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
 			this.Controls.Add(this.video1);
+			this.KeepCentered = true;
+			this.KeepOnScreen = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "VideoWindow";

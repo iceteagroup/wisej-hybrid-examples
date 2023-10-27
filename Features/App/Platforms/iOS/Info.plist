@@ -59,6 +59,8 @@
   <string>This app may use Siri to show relevant information.</string>
   <key>NSBluetoothAlwaysUsageDescription</key>
   <string>This app may use bluetooth to provide relevant information.</string>
+  <key>NSFaceIDUsageDescription</key>
+  <string>This app may use face id to authenticate the user.</string>
 	<key>NSAppTransportSecurity</key>
      <dict>
           <key>NSAllowsArbitraryLoads</key><true/>

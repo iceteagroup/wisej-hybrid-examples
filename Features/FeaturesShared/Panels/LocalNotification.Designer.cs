@@ -32,7 +32,6 @@
 			this.textBoxTitle = new Wisej.Web.TextBox();
 			this.textBoxDescription = new Wisej.Web.TextBox();
 			this.numericUpDownBadge = new Wisej.Web.NumericUpDown();
-			this.buttonNow = new Wisej.Web.Button();
 			this.button5s = new Wisej.Web.Button();
 			this.buttonTomorrow = new Wisej.Web.Button();
 			this.flexLayoutPanel1.SuspendLayout();
@@ -44,7 +43,6 @@
 			this.flexLayoutPanel1.Controls.Add(this.textBoxTitle);
 			this.flexLayoutPanel1.Controls.Add(this.textBoxDescription);
 			this.flexLayoutPanel1.Controls.Add(this.numericUpDownBadge);
-			this.flexLayoutPanel1.Controls.Add(this.buttonNow);
 			this.flexLayoutPanel1.Controls.Add(this.button5s);
 			this.flexLayoutPanel1.Controls.Add(this.buttonTomorrow);
 			this.flexLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
@@ -81,18 +79,9 @@
 			this.numericUpDownBadge.TabIndex = 6;
 			this.numericUpDownBadge.Value = new decimal(1);
 			// 
-			// buttonNow
-			// 
-			this.buttonNow.Location = new System.Drawing.Point(3, 216);
-			this.buttonNow.Name = "buttonNow";
-			this.buttonNow.Size = new System.Drawing.Size(612, 37);
-			this.buttonNow.TabIndex = 3;
-			this.buttonNow.Text = "Schedule Now";
-			this.buttonNow.Click += new System.EventHandler(this.buttonNow_Click);
-			// 
 			// button5s
 			// 
-			this.button5s.Location = new System.Drawing.Point(3, 269);
+			this.button5s.Location = new System.Drawing.Point(3, 216);
 			this.button5s.Name = "button5s";
 			this.button5s.Size = new System.Drawing.Size(612, 37);
 			this.button5s.TabIndex = 4;
@@ -101,7 +90,7 @@
 			// 
 			// buttonTomorrow
 			// 
-			this.buttonTomorrow.Location = new System.Drawing.Point(3, 322);
+			this.buttonTomorrow.Location = new System.Drawing.Point(3, 269);
 			this.buttonTomorrow.Name = "buttonTomorrow";
 			this.buttonTomorrow.Size = new System.Drawing.Size(612, 37);
 			this.buttonTomorrow.TabIndex = 5;
@@ -110,7 +99,7 @@
 			// 
 			// LocalNotification
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -135,7 +124,6 @@
 		private Wisej.Web.FlexLayoutPanel flexLayoutPanel1;
 		private Wisej.Web.TextBox textBoxTitle;
 		private Wisej.Web.TextBox textBoxDescription;
-		private Wisej.Web.Button buttonNow;
 		private Wisej.Web.Button button5s;
 		private Wisej.Web.Button buttonTomorrow;
 		private Wisej.Web.NumericUpDown numericUpDownBadge;
