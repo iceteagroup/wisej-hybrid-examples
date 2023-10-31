@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
 	  <!--<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>-->
 	  <OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
@@ -9,7 +9,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
-	      <NoWarn>0028</NoWarn>
+		  <NoWarn>0028</NoWarn>
 
 		<!-- Display name -->
 		<ApplicationTitle>Hybrid</ApplicationTitle>
@@ -34,33 +34,33 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-    <ProvisioningType>manual</ProvisioningType>
-    <CodesignKey>iPhone Distribution</CodesignKey>
-    <CodesignProvision></CodesignProvision>
+	<ProvisioningType>automatic</ProvisioningType>
+	<CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+	<CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
 	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-    <MtouchLink>None</MtouchLink>
-    <MtouchUseLlvm>True</MtouchUseLlvm>
+	<MtouchLink>None</MtouchLink>
+	<MtouchUseLlvm>True</MtouchUseLlvm>
 	<UseInterpreter>true</UseInterpreter>
 	<MtouchDebug>True</MtouchDebug>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	<MtouchUseLlvm>True</MtouchUseLlvm>
-    <MtouchDebug>True</MtouchDebug>
+	<MtouchDebug>True</MtouchDebug>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-    <PublishTrimmed>False</PublishTrimmed>
-    <RunAOTCompilation>False</RunAOTCompilation>
-    <DebugSymbols>True</DebugSymbols>
-    <AndroidUseAapt2>False</AndroidUseAapt2>
+	<PublishTrimmed>False</PublishTrimmed>
+	<RunAOTCompilation>False</RunAOTCompilation>
+	<DebugSymbols>True</DebugSymbols>
+	<AndroidUseAapt2>False</AndroidUseAapt2>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
-    <AndroidUseAapt2>True</AndroidUseAapt2>
+	<AndroidUseAapt2>True</AndroidUseAapt2>
   </PropertyGroup>
 
 	<ItemGroup>

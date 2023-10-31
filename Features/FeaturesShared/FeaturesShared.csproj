@@ -155,6 +155,7 @@
 		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-MLKit" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-MaterialDesign" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-Signature" Version="3.5.0-beta.19" />
 	</ItemGroup>
 
 	<ItemGroup>
