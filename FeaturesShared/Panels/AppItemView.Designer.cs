@@ -86,14 +86,15 @@
 			this.flowLayoutPanel1.SetFlowBreak(this.buttonMenu, true);
 			this.buttonMenu.Focusable = false;
 			this.buttonMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonMenu.ImageSource = Wisej.Ext.MaterialDesign.Icons.ShowMoreButtonWithThreeDots + "?color=#979797";
+			this.buttonMenu.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/show-more-button-with-three-dots.svg?color=#" +
+    "979797";
 			this.buttonMenu.InitScript = "this.setShowArrow(false);";
 			this.buttonMenu.Location = new System.Drawing.Point(49, 3);
 			this.buttonMenu.Name = "buttonMenu";
 			this.buttonMenu.Size = new System.Drawing.Size(88, 40);
 			this.buttonMenu.TabIndex = 2;
 			// 
-			// flowLayoutPanel1
+			// flowLayoutPanelData
 			// 
 			this.flowLayoutPanel1.Anonymous = true;
 			this.flowLayoutPanel1.Controls.Add(this.pictureBoxIcon);

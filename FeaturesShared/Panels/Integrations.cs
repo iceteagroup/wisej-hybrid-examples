@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Wisej.Web;
 
@@ -34,17 +35,22 @@ namespace Wisej.Hybrid.Features.Panels
 		private void LoadApps()
 		{
 			var asm = GetType().Assembly;
+			var excludedTypes = new List<Type> { typeof(TestBase), typeof(Integrations) };
+
 			var apps = asm.GetTypes()
-				.Where(t => t != typeof(TestBase) && t != typeof(Integrations) && typeof(TestBase).IsAssignableFrom(t))
+				.Where(t => !excludedTypes.Contains(t) && typeof(TestBase).IsAssignableFrom(t))
 				.OrderBy(t => t.Name)
-				.Select(t => {
-					var view = new AppItemView((TestBase)Activator.CreateInstance(t)) { Width = this._itemWidth };
-					view.ViewRequested += Integrations_ViewRequested;
-					return view;
-					})
+				.Select(CreateAppItemView)
 				.ToArray();
 
 			this.flowLayoutPanelApps.Controls.AddRange(apps);
+		}
+
+		private AppItemView CreateAppItemView(Type t)
+		{
+			var view = new AppItemView((TestBase)Activator.CreateInstance(t)) { Width = this._itemWidth };
+			view.ViewRequested += Integrations_ViewRequested;
+			return view;
 		}
 
 		private void Integrations_ViewRequested(object sender, WidgetEventArgs e)

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using Wisej.Hybrid;
 using Wisej.Web;
 
 namespace FeaturesShared.Panels
@@ -22,7 +25,11 @@ namespace FeaturesShared.Panels
 		{
 			var image = await this.signature1.GetImageAsync();
 
-			Application.Download(image, "Signature.png");
+			// workaround until Application.Download(image) is fixed.
+			var path = Path.Combine(Device.Info.FileSystem.CacheDirectory, "signature.png");
+			image.Save(path, ImageFormat.Png);
+
+			Application.DownloadAndOpen("_blank", path);
 		}
 
 		private void textBoxColor_TextChanged(object sender, EventArgs e)

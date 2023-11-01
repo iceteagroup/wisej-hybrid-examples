@@ -66,7 +66,7 @@ namespace Wisej.Hybrid.Features
 			new Toast(text).Show();
 
 			// todo: workaround.
-			Application.LoadAssembly(typeof(Icons).Assembly.FullName);
+			//Application.LoadAssembly(typeof(Icons).Assembly.FullName);
 
 			loader.Dispose();
 		}
@@ -108,9 +108,7 @@ namespace Wisej.Hybrid.Features
 				return;
 
 			if (this.currentView != null)
-			{
 				this.currentView.Hide();
-			}
 
 			try
 			{
@@ -173,7 +171,6 @@ namespace Wisej.Hybrid.Features
 			if (Device.Valid)
 			{
 				var offline = Application.Uri.Host == "localhost";
-
 				if (offline)
 				{
 					if (Device.Info.Networking.NetworkAccess == NetworkAccess.Internet)

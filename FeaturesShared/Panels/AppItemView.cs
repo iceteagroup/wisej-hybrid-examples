@@ -1,10 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using Wisej.Hybrid.Shared.Sensor;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels

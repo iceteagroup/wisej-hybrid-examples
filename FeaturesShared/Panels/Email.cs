@@ -40,7 +40,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Email.IsComposeSupported;
+			return Device.Valid && Device.Info.Email.IsComposeSupported;
 		}
 	}
 }

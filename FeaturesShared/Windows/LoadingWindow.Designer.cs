@@ -37,7 +37,7 @@
 			// 
 			this.pictureBox1.Anchor = Wisej.Web.AnchorStyles.None;
 			this.pictureBox1.ImageSource = "resource.wx/loader.svg";
-			this.pictureBox1.Location = new System.Drawing.Point(114, 107);
+			this.pictureBox1.Location = new System.Drawing.Point(114, 137);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(75, 75);
 			// 
@@ -45,7 +45,7 @@
 			// 
 			this.label1.Anchor = Wisej.Web.AnchorStyles.None;
 			this.label1.Font = new System.Drawing.Font("@defaultBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-			this.label1.Location = new System.Drawing.Point(59, 204);
+			this.label1.Location = new System.Drawing.Point(59, 218);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(185, 37);
 			this.label1.TabIndex = 1;

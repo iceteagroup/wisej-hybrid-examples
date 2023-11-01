@@ -45,6 +45,7 @@
 	<MtouchUseLlvm>True</MtouchUseLlvm>
 	<UseInterpreter>true</UseInterpreter>
 	<MtouchDebug>True</MtouchDebug>
+	<Optimize>False</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
@@ -57,6 +58,7 @@
 	<RunAOTCompilation>False</RunAOTCompilation>
 	<DebugSymbols>True</DebugSymbols>
 	<AndroidUseAapt2>False</AndroidUseAapt2>
+	<Optimize>False</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">

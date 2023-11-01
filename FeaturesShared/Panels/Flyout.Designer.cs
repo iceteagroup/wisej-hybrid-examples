@@ -52,7 +52,7 @@
 			this.checkBoxVisible.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.checkBoxVisible.CheckedChanged += new System.EventHandler(this.checkBoxVisible_CheckedChanged);
 			// 
-			// flowLayoutPanel1
+			// flowLayoutPanelData
 			// 
 			this.flowLayoutPanel1.Controls.Add(this.textBoxBackgroundColor);
 			this.flowLayoutPanel1.Controls.Add(this.checkBoxVisible);

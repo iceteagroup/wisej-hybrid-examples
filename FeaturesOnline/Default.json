@@ -38,7 +38,6 @@
 // settings:                   Map of custom application settings. i.e. {jquery: "http://cdn...", rootPath: "c:\\users\\...", ...}.
 //                             Custom settings are available using Application.Configuration.Settings.
 {
-	"showLoader": false,
 	"url": "Default.html",
 	"validateClient": false,
 	"startup": "FeaturesOnline.Program.Main, FeaturesOnline"

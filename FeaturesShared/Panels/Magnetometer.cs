@@ -44,7 +44,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Sensors.IsSupported(SensorType.Magnetometer);
+			return Device.Valid && Device.Info.Sensors.IsMagnetometerSupported;
 		}
 	}
 }
