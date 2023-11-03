@@ -20,7 +20,7 @@
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>22</ApplicationVersion>
+		<ApplicationVersion>24</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -34,9 +34,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	<ProvisioningType>automatic</ProvisioningType>
-	<CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
-	<CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
+	<ProvisioningType>manual</ProvisioningType>
+	<CodesignKey>iPhone Distribution</CodesignKey>
+	<CodesignProvision>HybridDistributionProvision</CodesignProvision>
 	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
   </PropertyGroup>
 
@@ -56,13 +56,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	<PublishTrimmed>False</PublishTrimmed>
 	<RunAOTCompilation>False</RunAOTCompilation>
-	<DebugSymbols>True</DebugSymbols>
+	<DebugSymbols>False</DebugSymbols>
 	<AndroidUseAapt2>False</AndroidUseAapt2>
 	<Optimize>False</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	<AndroidUseAapt2>True</AndroidUseAapt2>
+	<DebugSymbols>False</DebugSymbols>
   </PropertyGroup>
 
 	<ItemGroup>

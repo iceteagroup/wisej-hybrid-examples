@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Web;
+using System.IO;
 
 namespace Wisej.Hybrid.Features.Panels
 {
 	[Category("UI")]
 	public partial class Storage : TestBase
 	{
+		private string _filePath;
+
 		public Storage()
 		{
 			InitializeComponent();
@@ -14,18 +16,24 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
-			Device.FileSystem.WriteAppDataText("sample.txt", this.textBoxContents.Text);
+			Device.FileSystem.WriteText(_filePath, this.textBoxContents.Text);
+		}
+
+		public override void Activate()
+		{
+			 this._filePath = Path.Combine(Device.Info.FileSystem.AppDataDirectory, "sample.txt");
 		}
 
 		private void Storage_Appear(object sender, EventArgs e)
 		{
-			this.textBoxContents.Text = Device.FileSystem.ReadAppDataText("sample.txt");
+			if (File.Exists(_filePath)) 
+				this.textBoxContents.Text = Device.FileSystem.ReadText(_filePath);
 		}
 
 		private void buttonClear_Click(object sender, EventArgs e)
 		{
 			this.textBoxContents.Text = "";
-			Device.FileSystem.WriteAppDataText("sample.txt", "");
+			Device.FileSystem.DeleteFile(_filePath);
 		}
 	}
 }

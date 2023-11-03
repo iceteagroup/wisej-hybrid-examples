@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -19,9 +18,8 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Preferences_Load(object sender, EventArgs e)
 		{
-			var savedValue = Device.Preferences.Get<string>("hybridtest");
-			if (savedValue != null) 
-				this.textBox1.Text = savedValue;
+			if (Device.Preferences.ContainsKey("hybridtest"))
+				this.textBox1.Text = Device.Preferences.Get("hybridtest", "");
 		}
 	}
 }

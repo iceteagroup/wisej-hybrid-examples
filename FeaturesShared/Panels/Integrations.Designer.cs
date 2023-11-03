@@ -57,7 +57,7 @@
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.flowLayoutPanelApps);
 			this.Name = "Integrations";
-			this.Load += new System.EventHandler(this.Integrations_Load);
+			this.Appear += new System.EventHandler(this.Integrations_Appear);
 			this.Controls.SetChildIndex(this.flowLayoutPanelApps, 0);
 			this.ResumeLayout(false);
 

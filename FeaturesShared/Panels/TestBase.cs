@@ -56,7 +56,7 @@ namespace Wisej.Hybrid.Features
 			if (this.labelTitle.Height != 60)
 			{
 				this.labelTitle.Height = 60;
-				this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+				this.labelTitle.Font = new System.Drawing.Font("@windowTitleLandscape", 24, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			}
 		}
 
@@ -65,13 +65,14 @@ namespace Wisej.Hybrid.Features
 			if (this.labelTitle.Height != 128)
 			{
 				this.labelTitle.Height = 128;
-				this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+				this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			}
 		}
 
 		private void buttonSource_Click(object sender, EventArgs e)
 		{
-			Device.Browser.Open("https://wisej.com", BrowserLaunchMode.SystemPreferred);
+			this.MinimizeTitle();
+			//Device.Browser.Open("https://wisej.com", BrowserLaunchMode.SystemPreferred);
 		}
 
 		public virtual bool IsSupported()

@@ -20,14 +20,11 @@
 using FeaturesShared.Windows;
 using System;
 using System.Drawing;
-using System.Linq;
 using Wisej.Ext.MaterialDesign;
 using Wisej.Hybrid.Features.Panels;
-using Wisej.Hybrid.Shared.AppActions;
 using Wisej.Hybrid.Shared.Communication;
 using Wisej.Hybrid.Shared.StatusBar;
 using Wisej.Web;
-using Toast = Wisej.Web.Toast;
 
 namespace Wisej.Hybrid.Features
 {
@@ -35,51 +32,40 @@ namespace Wisej.Hybrid.Features
 	{
 		private TestBase currentView;
 
-		private TestBase integrations = new Integrations();
+		private Integrations _integrations = new Integrations();
 
 		public MainPage()
 		{
 			InitializeComponent();
 		}
 
-		private void MainPage_Load(object sender, EventArgs e)
+		private async void MainPage_Load(object sender, EventArgs e)
 		{
 			var loader = new LoadingWindow();
-
 			loader.Show();
 
+			// set padding for device.
 			if (Application.Browser.Device == "Desktop")
 				this.panelContainer.Padding = new Padding(16, 16, 16, 16);
-
-			// default view.
-			SwitchView(this.integrations);
-
-			if (Device.Valid)
-				InitializeNative();
 
 			LoadTheme(Application.Browser.IsDarkMode);
 
 			var offline = Application.Uri.Host == "localhost";
+			this.buttonNetwork.Text = offline ? "Offline" : "Online";
 			this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
-			var text = offline ? "App running offline" : "App running online (demo.wisej.com)";
 
-			new Toast(text).Show();
+			// default view.
+			SwitchView(this._integrations);
+			await this._integrations.Initialize();
 
-			// todo: workaround.
-			//Application.LoadAssembly(typeof(Icons).Assembly.FullName);
-
-			loader.Dispose();
+			loader.Hide();
+			Application.Update(this);
 		}
 
 		private void MainPage_Appear(object sender, EventArgs e)
 		{
 			if (Device.Valid)
 				SetNativeColors();
-		}
-
-		private void InitializeNative()
-		{
-			Device.AppActions.ItemActivated += AppActions_ItemActivated;
 		}
 
 		private void SetNativeColors()
@@ -95,11 +81,6 @@ namespace Wisej.Hybrid.Features
 				Device.StatusBar.TextColor = StatusBarTextColor.Black;
 			else
 				Device.StatusBar.TextColor = StatusBarTextColor.White;
-		}
-
-		private void AppActions_ItemActivated(object sender, AppAction e)
-		{
-			AlertBox.Show($"Selected Shortcut: {e.Title}");
 		}
 
 		private void SwitchView(TestBase instance)
@@ -139,14 +120,9 @@ namespace Wisej.Hybrid.Features
 			SwitchView(e.Data);
 		}
 
-		private void MainView_Disappear(object sender, EventArgs e)
-		{
-			Device.AppActions.ItemActivated -= AppActions_ItemActivated;
-		}
-
 		private void buttonBack_Click(object sender, EventArgs e)
 		{
-			SwitchView(this.integrations);
+			SwitchView(this._integrations);
 		}
 
 		private void buttonTheme_Click(object sender, EventArgs e)
@@ -175,8 +151,8 @@ namespace Wisej.Hybrid.Features
 				{
 					if (Device.Info.Networking.NetworkAccess == NetworkAccess.Internet)
 					{
-						var result = MessageBox.Show("Reconnect to server?", "Reconnect", MessageBoxButtons.YesNo);
-						if (result == DialogResult.Yes)
+						var result = Device.Popups.DisplayActionSheet("Reconnect to server?", "No", "Yes", Shared.FlowDirection.LeftToRight, new string[] { });
+						if (result == "Yes")
 							Application.Navigate("https://demo.wisej.com/Hybrid");
 					}
 					else
@@ -186,8 +162,8 @@ namespace Wisej.Hybrid.Features
 				}
 				else
 				{
-					var result = MessageBox.Show("Go offline?", "Disconnect", MessageBoxButtons.YesNo);
-					if ( result == DialogResult.Yes)
+					var result = Device.Popups.DisplayActionSheet("Go offline?", "No", "Yes", Shared.FlowDirection.LeftToRight, new string[] { });
+					if ( result == "Yes")
 					{
 						Application.Navigate("http://localhost:5000");
 					}

@@ -50,7 +50,7 @@
 			this.panelContainer.Dock = Wisej.Web.DockStyle.Fill;
 			this.panelContainer.Location = new System.Drawing.Point(0, 45);
 			this.panelContainer.Name = "panelContainer";
-			this.panelContainer.Size = new System.Drawing.Size(1747, 637);
+			this.panelContainer.Size = new System.Drawing.Size(1868, 739);
 			this.panelContainer.TabIndex = 4;
 			this.panelContainer.TabStop = true;
 			// 
@@ -62,7 +62,7 @@
 			this.panelHeader.Dock = Wisej.Web.DockStyle.Top;
 			this.panelHeader.Location = new System.Drawing.Point(0, 0);
 			this.panelHeader.Name = "panelHeader";
-			this.panelHeader.Size = new System.Drawing.Size(1747, 45);
+			this.panelHeader.Size = new System.Drawing.Size(1868, 45);
 			this.panelHeader.TabIndex = 0;
 			this.panelHeader.TabStop = true;
 			// 
@@ -72,11 +72,14 @@
 			this.buttonNetwork.BorderStyle = Wisej.Web.BorderStyle.Dotted;
 			this.buttonNetwork.Dock = Wisej.Web.DockStyle.Right;
 			this.buttonNetwork.Focusable = false;
-			this.buttonNetwork.ImageSource = Wisej.Ext.MaterialDesign.Icons.CloudOff;
-			this.buttonNetwork.Location = new System.Drawing.Point(1655, 0);
+			this.buttonNetwork.Font = new System.Drawing.Font("@default", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+			this.buttonNetwork.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/cloud-off.svg";
+			this.buttonNetwork.Location = new System.Drawing.Point(1715, 0);
 			this.buttonNetwork.Name = "buttonNetwork";
-			this.buttonNetwork.Size = new System.Drawing.Size(45, 45);
+			this.buttonNetwork.Size = new System.Drawing.Size(106, 45);
 			this.buttonNetwork.TabIndex = 8;
+			this.buttonNetwork.Text = "Offline";
+			this.buttonNetwork.TextImageRelation = Wisej.Web.TextImageRelation.TextBeforeImage;
 			this.buttonNetwork.Click += new System.EventHandler(this.buttonNetwork_Click);
 			// 
 			// buttonTheme
@@ -85,7 +88,7 @@
 			this.buttonTheme.CssStyle = "box-shadow: none !important;";
 			this.buttonTheme.Dock = Wisej.Web.DockStyle.Right;
 			this.buttonTheme.ImageSource = "resource.wx/theme.svg";
-			this.buttonTheme.Location = new System.Drawing.Point(1700, 0);
+			this.buttonTheme.Location = new System.Drawing.Point(1821, 0);
 			this.buttonTheme.Name = "buttonTheme";
 			this.buttonTheme.Size = new System.Drawing.Size(47, 45);
 			this.buttonTheme.TabIndex = 7;
@@ -97,7 +100,7 @@
 			this.buttonBack.BorderStyle = Wisej.Web.BorderStyle.None;
 			this.buttonBack.Dock = Wisej.Web.DockStyle.Left;
 			this.buttonBack.Focusable = false;
-			this.buttonBack.ImageSource = Wisej.Ext.MaterialDesign.Icons.GoBackLeftArrow;
+			this.buttonBack.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/go-back-left-arrow.svg";
 			this.buttonBack.Location = new System.Drawing.Point(0, 0);
 			this.buttonBack.Name = "buttonBack";
 			this.buttonBack.Size = new System.Drawing.Size(151, 45);
@@ -112,7 +115,7 @@
 			this.Controls.Add(this.panelContainer);
 			this.Controls.Add(this.panelHeader);
 			this.Name = "MainPage";
-			this.Size = new System.Drawing.Size(1747, 682);
+			this.Size = new System.Drawing.Size(1868, 784);
 			this.Text = "Page1";
 			this.Load += new System.EventHandler(this.MainPage_Load);
 			this.Appear += new System.EventHandler(this.MainPage_Appear);

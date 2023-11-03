@@ -39,11 +39,11 @@
 			// 
 			this.labelTitle.CssStyle = "transition: font-size 0.25s;";
 			this.labelTitle.Dock = Wisej.Web.DockStyle.Top;
-			this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			this.labelTitle.Font = new System.Drawing.Font("windowTitle", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			this.labelTitle.ForeColor = System.Drawing.Color.FromName("@toolbarText");
 			this.labelTitle.Location = new System.Drawing.Point(16, 0);
 			this.labelTitle.Name = "labelTitle";
-			this.labelTitle.Size = new System.Drawing.Size(616, 128);
+			this.labelTitle.Size = new System.Drawing.Size(618, 128);
 			this.labelTitle.TabIndex = 18;
 			this.labelTitle.Text = "TestBase";
 			this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -56,7 +56,8 @@
     "0, 0.4) 0px 2px 8px 0px;";
 			this.buttonSource.Font = new System.Drawing.Font("@defaultBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			this.buttonSource.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonSource.ImageSource = Wisej.Ext.MaterialDesign.Icons.DeveloperModeForSmartphonesAndTablets;
+			this.buttonSource.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/developer-mode-for-smartphones-and-tablets.s" +
+    "vg";
 			this.buttonSource.Location = new System.Drawing.Point(578, 411);
 			this.buttonSource.Name = "buttonSource";
 			this.buttonSource.Size = new System.Drawing.Size(50, 50);
@@ -67,7 +68,7 @@
 			// 
 			// TestBase
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;

@@ -11,14 +11,14 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		private void DeviceInfo_Load(object sender, EventArgs e)
+		public override void Activate()
 		{
 			this.propertyGridInfo.SelectedObject = Device.Info;
+			this.propertyGridInfo.Refresh(true);
 
-			Device.Battery.BatteryInfoChanged += Device_InfoChanged;
-			Device.Networking.ConnectivityChanged += Device_InfoChanged;
-			Device.Display.MainDisplayInfoChanged += Device_InfoChanged;
-			Device.Battery.EnergySaverStatusChanged += Device_InfoChanged;
+			Device.Info.Battery.BatteryInfoChanged += Device_InfoChanged;
+			Device.Info.Networking.ConnectivityChanged += Device_InfoChanged;
+			Device.Info.Display.MainDisplayInfoChanged += Device_InfoChanged;
 		}
 
 		private void Device_InfoChanged(object sender, EventArgs e)
@@ -28,10 +28,9 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override void Deactivate()
 		{
-			Device.Battery.BatteryInfoChanged -= Device_InfoChanged;
-			Device.Networking.ConnectivityChanged -= Device_InfoChanged;
-			Device.Display.MainDisplayInfoChanged -= Device_InfoChanged;
-			Device.Battery.EnergySaverStatusChanged -= Device_InfoChanged;
+			Device.Info.Battery.BatteryInfoChanged -= Device_InfoChanged;
+			Device.Info.Networking.ConnectivityChanged -= Device_InfoChanged;
+			Device.Info.Display.MainDisplayInfoChanged -= Device_InfoChanged;
 		}
 	}
 }

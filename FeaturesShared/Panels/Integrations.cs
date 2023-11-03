@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -14,9 +15,9 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private int _itemWidth;
 
-		private void Integrations_Load(object sender, EventArgs e)
+		internal Task Initialize()
 		{
-			// ScreenSize is different on Android vs. iOS.
+			// calculate item width.
 			if (Application.Browser.Device == "Mobile")
 			{
 				var screenSize = Application.Browser.ScreenSize;
@@ -29,21 +30,22 @@ namespace Wisej.Hybrid.Features.Panels
 				this._itemWidth = (this.Width - 48) / 3 - 20;
 			}
 
-			LoadApps();
-		}
+			return Application.StartTask(() =>
+			{
+				var asm = GetType().Assembly;
+				var excludedTypes = new List<Type> { typeof(TestBase), typeof(Integrations) };
 
-		private void LoadApps()
-		{
-			var asm = GetType().Assembly;
-			var excludedTypes = new List<Type> { typeof(TestBase), typeof(Integrations) };
+				var apps = asm.GetTypes()
+					.Where(t => !excludedTypes.Contains(t) && typeof(TestBase).IsAssignableFrom(t))
+					.OrderBy(t => t.Name)
+					.Select(CreateAppItemView)
+					.ToArray();
 
-			var apps = asm.GetTypes()
-				.Where(t => !excludedTypes.Contains(t) && typeof(TestBase).IsAssignableFrom(t))
-				.OrderBy(t => t.Name)
-				.Select(CreateAppItemView)
-				.ToArray();
+				// add apps to panel.
+				this.flowLayoutPanelApps.Controls.AddRange(apps);
 
-			this.flowLayoutPanelApps.Controls.AddRange(apps);
+				Application.Update(this);
+			});
 		}
 
 		private AppItemView CreateAppItemView(Type t)
@@ -60,10 +62,23 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void flowLayoutPanelApps_Scroll(object sender, ScrollEventArgs e)
 		{
+			this._scrollValue = e.NewValue;
+
+			var scrollDown = e.NewValue - e.OldValue > 0;
+
 			if (e.NewValue == 0)
 				this.MaximizeTitle();
-			else
+			else if (scrollDown)
 				this.MinimizeTitle();
+		}
+		private int _scrollValue = 0;
+
+		private void Integrations_Appear(object sender, EventArgs e)
+		{
+			// workaround. something is causiing the panel to not restore it's scroll position when appearing.
+			this.flowLayoutPanelApps.VerticalScroll.Value = 0;
+			Application.Update(this);
+			this.flowLayoutPanelApps.VerticalScroll.Value = this._scrollValue;
 		}
 	}
 }

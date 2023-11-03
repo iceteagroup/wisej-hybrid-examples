@@ -60,7 +60,6 @@
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.propertyGridInfo);
 			this.Name = "DeviceInfo";
-			this.Load += new System.EventHandler(this.DeviceInfo_Load);
 			this.Controls.SetChildIndex(this.propertyGridInfo, 0);
 			this.ResumeLayout(false);
 
