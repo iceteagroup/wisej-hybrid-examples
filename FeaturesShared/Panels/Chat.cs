@@ -74,6 +74,7 @@ namespace FeaturesShared.Panels
 		private void Chat_Disappear(object sender, EventArgs e)
 		{
 			NewMessage -= Chat_NewMessage;
+			this.chatBox1.DataSource.Clear();
 		}
 	}
 }

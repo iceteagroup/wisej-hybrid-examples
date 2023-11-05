@@ -58,7 +58,7 @@ namespace Wisej.Hybrid.Features
 			SwitchView(this._integrations);
 			await this._integrations.Initialize();
 
-			loader.Hide();
+			loader.Dispose();
 			Application.Update(this);
 		}
 

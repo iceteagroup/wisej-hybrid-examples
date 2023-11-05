@@ -21,8 +21,6 @@
 	<ItemGroup>
 		<Compile Remove="Panels\BackButton.cs" />
 		<Compile Remove="Panels\BackButton.Designer.cs" />
-		<Compile Remove="Panels\Chat.cs" />
-		<Compile Remove="Panels\Chat.Designer.cs" />
 		<Compile Remove="Panels\CommunityPopups.cs" />
 		<Compile Remove="Panels\CommunityPopups.Designer.cs" />
 		<Compile Remove="Panels\DeviceScreen.cs" />
@@ -45,7 +43,6 @@
 
 	<ItemGroup>
 		<EmbeddedResource Remove="Panels\BackButton.resx" />
-		<EmbeddedResource Remove="Panels\Chat.resx" />
 		<EmbeddedResource Remove="Panels\CommunityPopups.resx" />
 		<EmbeddedResource Remove="Panels\DeviceScreen.resx" />
 		<EmbeddedResource Remove="Panels\HapticFeedback.resx" />
