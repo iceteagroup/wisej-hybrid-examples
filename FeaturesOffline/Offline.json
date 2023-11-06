@@ -40,5 +40,6 @@
 //                             Custom settings are available using Application.Configuration.Settings.
 {
 	"url": "Offline.html",
+	"sessionTimeout": 0,
 	"startup": "FeaturesOffline.Program.Main, FeaturesOffline"
 }

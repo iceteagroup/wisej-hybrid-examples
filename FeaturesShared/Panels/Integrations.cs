@@ -27,7 +27,7 @@ namespace Wisej.Hybrid.Features.Panels
 			}
 			else
 			{
-				this._itemWidth = (this.Width - 48) / 3 - 20;
+				this._itemWidth = 225;
 			}
 
 			return Application.StartTask(() =>
