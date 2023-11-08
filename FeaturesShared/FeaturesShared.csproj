@@ -157,113 +157,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="MainPage.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Update="Panels\Accelerometer.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\AppInfo.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Audio.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\BarButton.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Barometer.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
+		<Compile Update="MainPage.cs" />
+		<Compile Update="Panels\Accelerometer.cs" />
+		<Compile Update="Panels\AppInfo.cs" />
+		<Compile Update="Panels\Audio.cs" />
+		<Compile Update="Panels\BarButton.cs" />
+		<Compile Update="Panels\Barometer.cs" />
 		<Compile Update="Panels\Clipboard.cs" />
-		<Compile Update="Panels\Compass.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Contacts.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\DeviceInfo.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Email.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Flashlight.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Flyout.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Gyroscope.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
+		<Compile Update="Panels\Compass.cs" />
+		<Compile Update="Panels\Contacts.cs" />
+		<Compile Update="Panels\DeviceInfo.cs" />
+		<Compile Update="Panels\Email.cs" />
+		<Compile Update="Panels\Flashlight.cs" />
+		<Compile Update="Panels\Flyout.cs" />
+		<Compile Update="Panels\Gyroscope.cs" />
 		<Compile Update="Panels\iFrame.cs" />
-		<Compile Update="Panels\Integrations.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Launcher.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Links.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Magnetometer.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Media.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\MenuBar.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Navigation.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\NewTab.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Permissions.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Popups.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Preferences.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\SecureStorage.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Sharing.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Sms.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Speech.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Storage.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\TabBar.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\TestBase.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\AppItemView.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\TitleBar.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Toolbar.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Panels\Upload.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
+		<Compile Update="Panels\Integrations.cs" />
+		<Compile Update="Panels\Launcher.cs" />
+		<Compile Update="Panels\Links.cs" />
+		<Compile Update="Panels\AppItemView.cs" />
 	</ItemGroup>
 
 </Project>

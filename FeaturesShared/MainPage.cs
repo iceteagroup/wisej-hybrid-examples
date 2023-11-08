@@ -41,6 +41,7 @@ namespace Wisej.Hybrid.Features
 
 		private async void MainPage_Load(object sender, EventArgs e)
 		{
+			var x = new Popups();
 			var loader = new LoadingWindow();
 			loader.Show();
 

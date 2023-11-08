@@ -35,7 +35,12 @@ namespace FeaturesShared.Panels
 
 		private void LocalNotification_Load(object sender, EventArgs e)
 		{
-			Device.LocalNotification.Received += (s, e) =>
+			Device.LocalNotification.Presented += (s, e) =>
+			{
+				AlertBox.Show(JSON.Stringify(e));
+			};
+
+			Device.LocalNotification.Responded += (s, e) =>
 			{
 				AlertBox.Show(JSON.Stringify(e));
 			};

@@ -81,7 +81,7 @@
 			this.textBoxOption1.Anchor = ((Wisej.Web.AnchorStyles)(((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Left) 
             | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxOption1.AutoSize = false;
-			this.textBoxOption1.Location = new System.Drawing.Point(6, 34);
+			this.textBoxOption1.Location = new System.Drawing.Point(6, 36);
 			this.textBoxOption1.Name = "textBoxOption1";
 			this.textBoxOption1.Size = new System.Drawing.Size(606, 30);
 			this.textBoxOption1.TabIndex = 1;
@@ -93,7 +93,7 @@
 			this.textBoxOption2.Anchor = ((Wisej.Web.AnchorStyles)(((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Left) 
             | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxOption2.AutoSize = false;
-			this.textBoxOption2.Location = new System.Drawing.Point(6, 78);
+			this.textBoxOption2.Location = new System.Drawing.Point(6, 80);
 			this.textBoxOption2.Name = "textBoxOption2";
 			this.textBoxOption2.Size = new System.Drawing.Size(606, 30);
 			this.textBoxOption2.TabIndex = 4;
@@ -105,7 +105,7 @@
 			this.textBoxOption3.Anchor = ((Wisej.Web.AnchorStyles)(((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Left) 
             | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxOption3.AutoSize = false;
-			this.textBoxOption3.Location = new System.Drawing.Point(6, 122);
+			this.textBoxOption3.Location = new System.Drawing.Point(6, 124);
 			this.textBoxOption3.Name = "textBoxOption3";
 			this.textBoxOption3.Size = new System.Drawing.Size(606, 30);
 			this.textBoxOption3.TabIndex = 7;
@@ -168,7 +168,7 @@
 			// 
 			// Popups
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;

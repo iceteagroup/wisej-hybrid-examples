@@ -71,8 +71,8 @@ namespace Wisej.Hybrid.Features
 
 		private void buttonSource_Click(object sender, EventArgs e)
 		{
-			this.MinimizeTitle();
-			//Device.Browser.Open("https://wisej.com", BrowserLaunchMode.SystemPreferred);
+			var name = this.GetType().Name;
+			Device.Browser.Open($"https://github.com/iceteagroup/wisej-hybrid-examples/tree/main/FeaturesShared/Panels/{name}.cs", BrowserLaunchMode.SystemPreferred);
 		}
 
 		public virtual bool IsSupported()

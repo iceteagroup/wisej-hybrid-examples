@@ -78,7 +78,6 @@
 			// 
 			// buttonSave
 			// 
-			this.buttonSave.Enabled = false;
 			this.buttonSave.ImageSource = "icon-save";
 			this.buttonSave.Location = new System.Drawing.Point(53, 3);
 			this.buttonSave.Name = "buttonSave";
