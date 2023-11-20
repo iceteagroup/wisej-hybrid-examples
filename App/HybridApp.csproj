@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
 	  <OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -33,9 +33,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	<ProvisioningType>manual</ProvisioningType>
-	<CodesignKey>iPhone Distribution</CodesignKey>
-	<CodesignProvision></CodesignProvision>
+	<ProvisioningType>automatic</ProvisioningType>
+	<CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+	<CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
 	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
   </PropertyGroup>
 

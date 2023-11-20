@@ -38,6 +38,7 @@
 			this.chatBox1.Location = new System.Drawing.Point(16, 128);
 			this.chatBox1.Name = "chatBox1";
 			this.chatBox1.Padding = new Wisej.Web.Padding(8);
+			this.chatBox1.ScrollBars = Wisej.Web.ScrollBars.Hidden;
 			this.chatBox1.Size = new System.Drawing.Size(618, 350);
 			this.chatBox1.TabIndex = 20;
 			// 

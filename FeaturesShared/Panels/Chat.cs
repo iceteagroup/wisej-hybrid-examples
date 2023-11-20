@@ -23,7 +23,7 @@ namespace FeaturesShared.Panels
 			InitializeComponent();
 		}
 
-		private void Chat_Appear(object sender, EventArgs e)
+		private async void Chat_Appear(object sender, EventArgs e)
 		{
 			// listen for new messages.
 			NewMessage += Chat_NewMessage;
@@ -35,7 +35,15 @@ namespace FeaturesShared.Panels
 				var id = _rand.Next(10000);
 
 				// prompt name.
-				var name = Device.Popups.DisplayPrompt("Enter Chat", "Enter Username", initialValue: $"User{id}");
+				string name;
+				if (Device.Valid)
+				{
+					name = Device.Popups.DisplayPrompt("Enter Chat", "Enter Username", initialValue: $"User{id}");
+				}
+				else
+				{
+					name = await Application.PromptAsync("Enter a username", $"User{id}");
+				}
 
 				// add to chat.
 				if (!string.IsNullOrEmpty(name)) 
