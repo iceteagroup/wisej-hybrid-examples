@@ -19,7 +19,7 @@
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>28</ApplicationVersion>
+		<ApplicationVersion>29</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -33,9 +33,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	<ProvisioningType>automatic</ProvisioningType>
-	<CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
-	<CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
+	<ProvisioningType>manual</ProvisioningType>
+	<CodesignKey>iPhone Distribution</CodesignKey>
+	<CodesignProvision></CodesignProvision>
 	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
   </PropertyGroup>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using Wisej.Hybrid.Features;
 using Wisej.Web;
 
@@ -14,18 +15,6 @@ namespace FeaturesOffline
 		{
 			Application.SessionTimeout += Application_SessionTimeout;
 			Application.ApplicationExit += Application_ApplicationExit;
-
-			//string s1 = "";
-			//string s2 = "/////\n";
-			//string s3 = "/////\r\n";
-
-			//var pos1 = s1.IndexOf('.');
-			//var pos2 = s2.IndexOf('\n');
-
-			//var sw = s1.StartsWith(".");
-			//var sw2 = s1.StartsWith("[]");
-
-			//decimal d = 4.5m;
 
 			Application.MainPage = new MainPage();
 		}

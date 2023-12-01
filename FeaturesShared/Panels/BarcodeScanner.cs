@@ -24,5 +24,12 @@ namespace FeaturesShared.Panels
 		{
 			new BarcodeWindow().Show();
 		}
+
+		public override bool IsSupported()
+		{
+			return Device.Valid && 
+				(Device.Info.System.Platform == "iOS" ||
+				Device.Info.System.Platform == "Android");
+		}
 	}
 }
