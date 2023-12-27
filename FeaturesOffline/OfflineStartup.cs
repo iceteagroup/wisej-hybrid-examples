@@ -11,8 +11,7 @@ namespace FeaturesOffline
 			var url = "http://localhost:5000";
 			var server = new WebServer(url);
 			server.WithWisej();
-
-			new Thread(() => server.RunAsync(token).Wait()).Start();
+			server.Run(token);
 
 			return url;
 		}
