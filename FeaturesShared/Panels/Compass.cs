@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Hybrid.Shared.Sensor;
+using Wisej.Hybrid.Shared.Sensors;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -15,28 +15,18 @@ namespace Wisej.Hybrid.Features.Panels
 		private void Compass_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Compass);
-			Device.Lifecycle.Resumed += Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
+			Device.Sensors.CompassChanged += Compass_ReadingChanged;
 		}
 
 		private void Compass_Disappear(object sender, EventArgs e)
 		{
 			Device.Sensors.Stop(SensorType.Compass);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
+			Device.Sensors.CompassChanged -= Compass_ReadingChanged;
 		}
 
-		private void Lifecycle_Resumed(object sender, EventArgs e)
+		private void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
 		{
-			Device.Sensors.Start(SensorType.Compass);
-		}
-
-		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
-		{
-			if (e.Sensor == SensorType.Compass)
-			{
-				this.labelHeading.Text = e.Data.HeadingMagneticNorth.ToString();
-			}
+			this.labelHeading.Text = e.Reading.HeadingMagneticNorth.ToString();
 		}
 
 		public override bool IsSupported()

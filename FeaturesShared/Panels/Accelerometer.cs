@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Hybrid.Shared.Sensor;
-using Wisej.Web;
+using Wisej.Hybrid.Shared.Sensors;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -17,26 +16,19 @@ namespace Wisej.Hybrid.Features.Panels
 		private void Accelerometer_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Accelerometer);
-			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
+			Device.Sensors.AccelerometerChanged += Accelerometer_ReadingChanged;
 		}
 
 		private void Accelerometer_Disappear(object sender, EventArgs e)
 		{
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
+			Device.Sensors.AccelerometerChanged -= Accelerometer_ReadingChanged;
 		}
 
-		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
+		private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
 		{
-			if (e.Data == null)
-			{
-				AlertBox.Show("Shake");
-			}
-			else
-			{
-				this.labelX.Text = $"X: {e.Data.Acceleration.X}";
-				this.labelY.Text = $"Y: {e.Data.Acceleration.Y}";
-				this.labelZ.Text = $"Z: {e.Data.Acceleration.Z}";
-			}
+			this.labelX.Text = $"X: {e.Reading.Acceleration.X}";
+			this.labelY.Text = $"Y: {e.Reading.Acceleration.Y}";
+			this.labelZ.Text = $"Z: {e.Reading.Acceleration.Z}";
 		}
 
 		public override bool IsSupported()

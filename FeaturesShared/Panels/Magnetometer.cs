@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Hybrid.Shared.Sensor;
+using Wisej.Hybrid.Shared.Sensors;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels

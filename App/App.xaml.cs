@@ -7,16 +7,9 @@ namespace HybridApp
 	{
 		public App()
 		{
-			try
-			{
-				InitializeComponent();
+			InitializeComponent();
 
-				MainPage = new HybridShell();
-			}
-			catch (Exception ex) 
-			{ 
-				Wisej.Hybrid.Native.Core.App.Log(ex);
-			}
+			MainPage = new HybridShell();
 		}
 	}
 }

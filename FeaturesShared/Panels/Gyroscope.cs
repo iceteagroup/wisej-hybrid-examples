@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Hybrid.Shared.Sensor;
+using Wisej.Hybrid.Shared.Sensors;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -15,36 +15,20 @@ namespace Wisej.Hybrid.Features.Panels
 		private void Gyroscope_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Gyroscope);
-			Device.Lifecycle.Resumed += Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
+			Device.Sensors.GyroscopeChanged += Gyroscope_ReadingChanged;
 		}
 
 		private void Gyroscope_Disappear(object sender, EventArgs e)
 		{
 			Device.Sensors.Stop(SensorType.Gyroscope);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
-			Device.Lifecycle.Backgrounding -= Lifecycle_Backgrounding;
+			Device.Sensors.GyroscopeChanged -= Gyroscope_ReadingChanged;
 		}
 
-		private void Lifecycle_Resumed(object sender, EventArgs e)
+		private void Gyroscope_ReadingChanged(object sender, GyroscopeChangedEventArgs e)
 		{
-			Device.Sensors.Start(SensorType.Gyroscope);
-		}
-
-		private void Lifecycle_Backgrounding(object sender, EventArgs e)
-		{
-			Device.Sensors.Stop(SensorType.Gyroscope);
-		}
-
-		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
-		{
-			if (e.Sensor == SensorType.Gyroscope)
-			{
-				this.labelX.Text = $"X: {e.Data.AngularVelocity.X}";
-				this.labelY.Text = $"Y: {e.Data.AngularVelocity.Y}";
-				this.labelZ.Text = $"Z: {e.Data.AngularVelocity.Z}";
-			}
+			this.labelX.Text = $"X: {e.Reading.AngularVelocity.X}";
+			this.labelY.Text = $"Y: {e.Reading.AngularVelocity.Y}";
+			this.labelZ.Text = $"Z: {e.Reading.AngularVelocity.Z}";
 		}
 
 		public override bool IsSupported()

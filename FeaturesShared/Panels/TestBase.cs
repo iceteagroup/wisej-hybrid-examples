@@ -28,14 +28,12 @@ namespace Wisej.Hybrid.Features
 			Activate();
 
 			if (Device.Valid)
+			{
 				ApplyOrientationSizing();
+				Device.Sensors.OrientationSensorChanged += (s, e) => ApplyOrientationSizing();
+			}
 
 			this.labelTitle.Text = String.Join(" ", Regex.Split(this.GetType().Name, @"(?<!^)(?=[A-Z])"));
-		}
-
-		private void Device_OrientationChanged(object sender, DeviceEventArgs e)
-		{
-			ApplyOrientationSizing();
 		}
 
 		private void ApplyOrientationSizing()

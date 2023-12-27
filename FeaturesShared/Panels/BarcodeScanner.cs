@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
 using Wisej.Hybrid.MLKit;
-using Wisej.Web;
+using Wisej.Hybrid.MLKit.Shared;
 
 namespace FeaturesShared.Panels
 {

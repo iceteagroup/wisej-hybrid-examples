@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Hybrid.Shared.Sensor;
+using Wisej.Hybrid.Shared.Sensors;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -16,28 +16,18 @@ namespace Wisej.Hybrid.Features.Panels
 		private void Barometer_Appear(object sender, EventArgs e)
 		{
 			Device.Sensors.Start(SensorType.Barometer);
-			Device.Lifecycle.Resumed += Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged += Sensors_ReadingChanged;
+			Device.Sensors.BarometerChanged += Barometer_ReadingChanged;
 		}
 
 		private void Barometer_Disappear(object sender, EventArgs e)
 		{
 			Device.Sensors.Stop(SensorType.Barometer);
-			Device.Lifecycle.Resumed -= Lifecycle_Resumed;
-			Device.Sensors.ReadingChanged -= Sensors_ReadingChanged;
+			Device.Sensors.BarometerChanged -= Barometer_ReadingChanged;
 		}
 
-		private void Lifecycle_Resumed(object sender, EventArgs e)
+		private void Barometer_ReadingChanged(object sender, BarometerChangedEventArgs e)
 		{
-			Device.Sensors.Start(SensorType.Barometer);
-		}
-
-		private void Sensors_ReadingChanged(object sender, SensorChangedEventArgs e)
-		{
-			if (e.Sensor == SensorType.Barometer)
-			{
-				this.labelPressure.Text = e.Data.PressureInHectopascals.ToString();
-			}
+			this.labelPressure.Text = e.Reading.PressureInHectopascals.ToString();
 		}
 
 		public override bool IsSupported()
