@@ -1,9 +1,6 @@
 ﻿using FeaturesShared.Windows;
 using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using Wisej.Hybrid.DocumentScanner;
 using Wisej.Web;
 
@@ -27,9 +24,9 @@ namespace Wisej.Hybrid.Features.Panels
 				var scanner = Device.Use<DeviceDocumentScanner>();
 
 				var imageScaleFactor = (float)this.trackBarQuality.Value / 10;
-				foreach (var imageBytes in scanner.Scan(imageScaleFactor)) 
+				foreach (dynamic image in scanner.Scan(imageScaleFactor)) 
 				{
-					new ImageWindow(Image.FromStream(new MemoryStream(imageBytes))).Show();
+					new ImageWindow(image).Show();
 				}
 
 				AlertBox.Show($"Size of uploaded images: {size} bytes");

@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if !NET48 && !NET7_0_OR_GREATER
+extern alias sdc;
+#endif
+
 using System.Drawing;
 using Wisej.Web;
 
