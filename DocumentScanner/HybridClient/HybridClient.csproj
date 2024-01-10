@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>HybridClient</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+	    <NoWarn>0028</NoWarn>
+
+		<!-- Display name -->
+		<ApplicationTitle>HybridClient</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.HybridClient</ApplicationId>
+		<ApplicationIdGuid>c5233d8f-7042-408a-b68c-51afbf0e8a4b</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
+
+		<!-- Splash Screen -->
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#7000D2" BaseSize="456,456" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+	  <CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <None Remove="Resources\Fonts\OpenSans-Semibold.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <MauiFont Include="Resources\Fonts\OpenSans-Semibold.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EmbedIO" Version="3.5.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner-Native" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-Hybrid-Native" Version="3.5.*-*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\WisejHybridLocalApplication\WisejHybridLocalApplication.csproj" />
+	</ItemGroup>
+
+</Project>

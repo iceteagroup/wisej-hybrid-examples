@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridClient", "HybridClient\HybridClient.csproj", "{4639449A-9A22-4ED3-9916-257B8E91F565}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WisejHybridLocalApplication", "WisejHybridLocalApplication\WisejHybridLocalApplication.csproj", "{EF4579E6-E888-494B-A0B2-24E8A1DFF8DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4639449A-9A22-4ED3-9916-257B8E91F565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4639449A-9A22-4ED3-9916-257B8E91F565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4639449A-9A22-4ED3-9916-257B8E91F565}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4639449A-9A22-4ED3-9916-257B8E91F565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4639449A-9A22-4ED3-9916-257B8E91F565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4639449A-9A22-4ED3-9916-257B8E91F565}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EF4579E6-E888-494B-A0B2-24E8A1DFF8DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4579E6-E888-494B-A0B2-24E8A1DFF8DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4579E6-E888-494B-A0B2-24E8A1DFF8DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4579E6-E888-494B-A0B2-24E8A1DFF8DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D11D7134-3B8C-443E-9EAB-86C0BB6AB5FA}
+	EndGlobalSection
+EndGlobal
