@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net48;net8.0;net8.0-android;net8.0-ios;net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net48;net7.0;net7.0-android;net7.0-ios;net7.0-windows10.0.19041.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
@@ -14,9 +14,13 @@
 		<Reference Include="System.Data.DataSetExtensions" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'!='net48' AND '$(TargetFramework)'!='net8.0'">
-	  <PackageReference Include="System.Drawing.Common" Version="8.0.0" Aliases="sdc" />
+	<ItemGroup Condition="'$(TargetFramework)'!='net48' AND '$(TargetFramework)'!='net7.0'">
+	  <PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc" />
 	</ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net48' OR '$(TargetFramework)'=='net7.0'">
+	<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<Compile Remove="Panels\BackButton.cs" />
@@ -25,8 +29,6 @@
 		<Compile Remove="Panels\CommunityPopups.Designer.cs" />
 		<Compile Remove="Panels\DeviceScreen.cs" />
 		<Compile Remove="Panels\DeviceScreen.Designer.cs" />
-		<Compile Remove="Panels\HapticFeedback.cs" />
-		<Compile Remove="Panels\HapticFeedback.Designer.cs" />
 		<Compile Remove="Panels\JsBarcodeScanner.cs" />
 		<Compile Remove="Panels\JSBarcodeScanner.Designer.cs" />
 		<Compile Remove="Panels\MauiBarcodeScanner.cs" />
@@ -45,7 +47,6 @@
 		<EmbeddedResource Remove="Panels\BackButton.resx" />
 		<EmbeddedResource Remove="Panels\CommunityPopups.resx" />
 		<EmbeddedResource Remove="Panels\DeviceScreen.resx" />
-		<EmbeddedResource Remove="Panels\HapticFeedback.resx" />
 		<EmbeddedResource Remove="Panels\JSBarcodeScanner.resx" />
 		<EmbeddedResource Remove="Panels\MauiBarcodeScanner.resx" />
 		<EmbeddedResource Remove="Panels\NFC.resx" />
@@ -145,9 +146,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="Wisej-3" Version="3.5.*-*" />
-	  <PackageReference Include="Wisej-3-Camera" Version="3.5.*-*" />
-	  <PackageReference Include="Wisej-3-Chat" Version="3.5.*-*" />
-	  <PackageReference Include="Wisej-3-Hybrid" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-Camera" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-Chat" Version="3.5.*-*" />
+		<PackageReference Include="Wisej-3-Hybrid" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-Authentication" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-MLKit" Version="3.5.*-*" />

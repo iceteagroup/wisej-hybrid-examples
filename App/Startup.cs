@@ -24,7 +24,7 @@ namespace HybridApp
 				{
 					// Uncomment to provide an offline fallback timeout.
 					// config.OfflineTimeout = 5000;
-					config.LogUrl = "https://wisejlogger.azurewebsites.net/log";
+					config.LicenseKey = "";
 
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";

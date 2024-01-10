@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Web.Ext.MobileIntegration;
+using Wisej.Hybrid;
+using Wisej.Hybrid.Features;
+using Wisej.Hybrid.Shared.HapticFeedback;
 
 namespace Wisej.Mobile.Features.Panels
 {
@@ -12,10 +14,12 @@ namespace Wisej.Mobile.Features.Panels
 			InitializeComponent();
 		}
 
-		private void buttonServerSide_Click(object sender, EventArgs e)
+		private void buttonExecute_Click(object sender, EventArgs e)
 		{
-			var vibrationType = this.comboBoxHapticType.SelectedItem.ToString();
-			Device.Vibrate((DeviceVibrationType)Enum.Parse(typeof(DeviceVibrationType), vibrationType));
+			var selection = this.comboBoxHapticType.SelectedItem.ToString();
+
+			var type = (HapticFeedbackType)Enum.Parse(typeof(HapticFeedbackType), selection);
+			Device.HapticFeedback.Perform(type);
 		}
 	}
 }

@@ -44,7 +44,7 @@ namespace Wisej.Hybrid.Features
 			var portrait = Math.Min(width, height) == width;
 
 			if (!portrait)
-				MinimizeTitle();	
+				MinimizeTitle();
 			else
 				MaximizeTitle();
 		}
@@ -78,15 +78,9 @@ namespace Wisej.Hybrid.Features
 			return Device.Valid;
 		}
 
-		public virtual void Activate()
-		{
+		public virtual void Activate() { }
 
-		}
-
-		public virtual void Deactivate()
-		{
-
-		}
+		public virtual void Deactivate() { }
 
 		private void TestBase_VisibleChanged(object sender, EventArgs e)
 		{

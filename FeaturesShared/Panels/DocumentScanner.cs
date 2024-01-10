@@ -28,7 +28,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 				var imageScaleFactor = (float)this.trackBarQuality.Value / 10;
 				foreach (var imageBytes in scanner.Scan(imageScaleFactor)) 
-				{ 
+				{
 					new ImageWindow(Image.FromStream(new MemoryStream(imageBytes))).Show();
 				}
 
@@ -42,7 +42,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Info.System.Platform == "iOS";
+			return Device.Info.System.Platform == "iOS" || Device.Info.System.Platform == "Android";
 		}
 	}
 }

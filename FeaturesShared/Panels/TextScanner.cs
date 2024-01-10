@@ -4,6 +4,7 @@ using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
 using Wisej.Hybrid.MLKit;
 using Wisej.Hybrid.MLKit.Shared;
+using Wisej.Web;
 
 namespace FeaturesShared.Panels
 {

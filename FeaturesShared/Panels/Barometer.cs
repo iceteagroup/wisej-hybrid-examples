@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using Wisej.Hybrid.Shared.Sensors;
-using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -23,6 +22,11 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			Device.Sensors.Stop(SensorType.Barometer);
 			Device.Sensors.BarometerChanged -= Barometer_ReadingChanged;
+		}
+
+		private void Lifecycle_Resumed(object sender, EventArgs e)
+		{
+			Device.Sensors.Start(SensorType.Barometer);
 		}
 
 		private void Barometer_ReadingChanged(object sender, BarometerChangedEventArgs e)

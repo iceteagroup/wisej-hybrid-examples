@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
-		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+	  <OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
 		<NoWarn>0028</NoWarn>
-		<Optimize>False</Optimize>
+		<Optimize>false</Optimize>
 
 		<!-- Display name -->
 		<ApplicationTitle>Hybrid</ApplicationTitle>
@@ -29,45 +29,45 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
-	</PropertyGroup>
+  <PropertyGroup>
+	<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-		<ProvisioningType>automatic</ProvisioningType>
-		<CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
-		<CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
-		<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+	<ProvisioningType>automatic</ProvisioningType>
+	<CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+	<CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
+	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-		<MtouchLink>None</MtouchLink>
-		<MtouchUseLlvm>False</MtouchUseLlvm>
-		<UseInterpreter>true</UseInterpreter>
-		<MtouchDebug>True</MtouchDebug>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	<MtouchLink>None</MtouchLink>
+	<MtouchUseLlvm>True</MtouchUseLlvm>
+	<UseInterpreter>true</UseInterpreter>
+	<MtouchDebug>True</MtouchDebug>
+	<Optimize>False</Optimize>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-		<MtouchUseLlvm>False</MtouchUseLlvm>
-		<MtouchDebug>True</MtouchDebug>
-		<MtouchLink>None</MtouchLink>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	<MtouchUseLlvm>True</MtouchUseLlvm>
+	<MtouchDebug>True</MtouchDebug>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-		<PublishTrimmed>False</PublishTrimmed>
-		<RunAOTCompilation>False</RunAOTCompilation>
-		<DebugSymbols>False</DebugSymbols>
-		<AndroidUseAapt2>False</AndroidUseAapt2>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	<PublishTrimmed>False</PublishTrimmed>
+	<RunAOTCompilation>False</RunAOTCompilation>
+	<DebugSymbols>False</DebugSymbols>
+	<AndroidUseAapt2>False</AndroidUseAapt2>
+	<Optimize>False</Optimize>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-		<AndroidUseAapt2>True</AndroidUseAapt2>
-		<DebugSymbols>True</DebugSymbols>
-		<PublishTrimmed>False</PublishTrimmed>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+	<AndroidUseAapt2>True</AndroidUseAapt2>
+	<DebugSymbols>False</DebugSymbols>
+  </PropertyGroup>
 
 	<ItemGroup>
-	  <!-- App Icon -->
+		<!-- App Icon -->
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
 
 	  <!-- Splash Screen -->
@@ -78,21 +78,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="EmbedIO" Version="3.5.2" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Wisej-3-Hybrid-Authentication-Native" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner-Native" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-Native" Version="3.5.*-*" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'!='net8.0-windows10.0.19041.0'">
-		<PackageReference Include="Wisej-3-Hybrid-MLKit-Native" Version="3.5.*-*" />
-	</ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'!='net7.0-windows10.0.19041.0'">
+	<PackageReference Include="Wisej-3-Hybrid-MLKit-Native" Version="3.5.*-*" />
+  </ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\FeaturesOffline\FeaturesOffline.csproj" />
+	  <ProjectReference Include="..\FeaturesOffline\FeaturesOffline.csproj" />
 	</ItemGroup>
 
 </Project>
