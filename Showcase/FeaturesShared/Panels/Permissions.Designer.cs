@@ -40,7 +40,7 @@
 			// buttonCamera
 			// 
 			this.buttonCamera.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonCamera.Location = new System.Drawing.Point(16, 128);
+			this.buttonCamera.Location = new System.Drawing.Point(16, 68);
 			this.buttonCamera.Name = "buttonCamera";
 			this.buttonCamera.Size = new System.Drawing.Size(618, 40);
 			this.buttonCamera.TabIndex = 0;
@@ -50,7 +50,7 @@
 			// buttonPhoto
 			// 
 			this.buttonPhoto.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonPhoto.Location = new System.Drawing.Point(16, 188);
+			this.buttonPhoto.Location = new System.Drawing.Point(16, 128);
 			this.buttonPhoto.Name = "buttonPhoto";
 			this.buttonPhoto.Size = new System.Drawing.Size(618, 40);
 			this.buttonPhoto.TabIndex = 1;
@@ -60,7 +60,7 @@
 			// buttonLocation
 			// 
 			this.buttonLocation.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonLocation.Location = new System.Drawing.Point(16, 248);
+			this.buttonLocation.Location = new System.Drawing.Point(16, 188);
 			this.buttonLocation.Name = "buttonLocation";
 			this.buttonLocation.Size = new System.Drawing.Size(618, 40);
 			this.buttonLocation.TabIndex = 2;
@@ -70,7 +70,7 @@
 			// buttonMicrophone
 			// 
 			this.buttonMicrophone.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonMicrophone.Location = new System.Drawing.Point(16, 308);
+			this.buttonMicrophone.Location = new System.Drawing.Point(16, 248);
 			this.buttonMicrophone.Name = "buttonMicrophone";
 			this.buttonMicrophone.Size = new System.Drawing.Size(618, 40);
 			this.buttonMicrophone.TabIndex = 3;
@@ -80,21 +80,21 @@
 			// spacer1
 			// 
 			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 168);
+			this.spacer1.Location = new System.Drawing.Point(16, 108);
 			this.spacer1.Name = "spacer1";
 			this.spacer1.Size = new System.Drawing.Size(618, 20);
 			// 
 			// spacer2
 			// 
 			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 228);
+			this.spacer2.Location = new System.Drawing.Point(16, 168);
 			this.spacer2.Name = "spacer2";
 			this.spacer2.Size = new System.Drawing.Size(618, 20);
 			// 
 			// spacer3
 			// 
 			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 288);
+			this.spacer3.Location = new System.Drawing.Point(16, 228);
 			this.spacer3.Name = "spacer3";
 			this.spacer3.Size = new System.Drawing.Size(618, 20);
 			// 
@@ -108,6 +108,8 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
+			this.AutoScroll = true;
+			this.AutoScrollMargin = new System.Drawing.Size(0, 20);
 			this.Controls.Add(this.buttonMicrophone);
 			this.Controls.Add(this.spacer3);
 			this.Controls.Add(this.buttonLocation);

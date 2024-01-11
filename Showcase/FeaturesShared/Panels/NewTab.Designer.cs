@@ -36,9 +36,9 @@
 			// buttonNewTab
 			// 
 			this.buttonNewTab.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonNewTab.Location = new System.Drawing.Point(16, 128);
+			this.buttonNewTab.Location = new System.Drawing.Point(16, 68);
 			this.buttonNewTab.Name = "buttonNewTab";
-			this.buttonNewTab.Size = new System.Drawing.Size(618, 45);
+			this.buttonNewTab.Size = new System.Drawing.Size(618, 37);
 			this.buttonNewTab.TabIndex = 19;
 			this.buttonNewTab.Text = "Open New Tab (www.wisej.com)";
 			this.buttonNewTab.Click += new System.EventHandler(this.buttonNewTab_Click);
@@ -46,9 +46,9 @@
 			// buttonNewTabMailTo
 			// 
 			this.buttonNewTabMailTo.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonNewTabMailTo.Location = new System.Drawing.Point(16, 193);
+			this.buttonNewTabMailTo.Location = new System.Drawing.Point(16, 121);
 			this.buttonNewTabMailTo.Name = "buttonNewTabMailTo";
-			this.buttonNewTabMailTo.Size = new System.Drawing.Size(618, 45);
+			this.buttonNewTabMailTo.Size = new System.Drawing.Size(618, 37);
 			this.buttonNewTabMailTo.TabIndex = 20;
 			this.buttonNewTabMailTo.Text = "Open New Tab (mailto:info@acme.com)";
 			this.buttonNewTabMailTo.Click += new System.EventHandler(this.buttonNewTabMailTo_Click);
@@ -56,9 +56,9 @@
 			// spacer1
 			// 
 			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 173);
+			this.spacer1.Location = new System.Drawing.Point(16, 105);
 			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 20);
+			this.spacer1.Size = new System.Drawing.Size(618, 16);
 			// 
 			// NewTab
 			// 

@@ -46,13 +46,13 @@
 			this.textBoxContents.Location = new System.Drawing.Point(3, 3);
 			this.textBoxContents.Multiline = true;
 			this.textBoxContents.Name = "textBoxContents";
-			this.textBoxContents.Size = new System.Drawing.Size(612, 80);
+			this.textBoxContents.Size = new System.Drawing.Size(612, 70);
 			this.textBoxContents.TabIndex = 20;
 			// 
 			// buttonSave
 			// 
 			this.flowLayoutPanel1.SetFillWeight(this.buttonSave, 1);
-			this.buttonSave.Location = new System.Drawing.Point(3, 102);
+			this.buttonSave.Location = new System.Drawing.Point(3, 92);
 			this.buttonSave.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.buttonSave.Name = "buttonSave";
 			this.buttonSave.Size = new System.Drawing.Size(303, 37);
@@ -63,7 +63,7 @@
 			// button1
 			// 
 			this.flowLayoutPanel1.SetFillWeight(this.button1, 1);
-			this.button1.Location = new System.Drawing.Point(312, 102);
+			this.button1.Location = new System.Drawing.Point(312, 92);
 			this.button1.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(303, 37);

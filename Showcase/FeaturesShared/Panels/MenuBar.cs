@@ -14,6 +14,11 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
+		public override bool IsSupported()
+		{
+			return Device.Info.System.Idiom == "Desktop";
+		}
+
 		private void MenuBar_Appear(object sender, EventArgs e)
 		{
 			Device.MenuBar.ItemClicked += MenuBar_ItemClicked;
@@ -23,19 +28,19 @@ namespace Wisej.Hybrid.Features.Panels
 				new MenuItem
 				{
 					Text = "File",
-					Items = new MenuItem[]
-					{
+					Items =
+					[
 						new MenuItem
 						{
 							Text = "Exit"
 						}
-					}
+					]
 				},
 				new MenuItem
 				{
 					Text = "Locations",
-					Items = new MenuItem[]
-					{
+					Items =
+					[
 						new MenuItem
 						{
 							Text = "Change Location",
@@ -59,16 +64,16 @@ namespace Wisej.Hybrid.Features.Panels
 								new MenuItem { Text = "Berlin, DE" }
 							}
 						}
-					}
+					]
 				},
 				new MenuItem
 				{
 					Text = "View",
-					Items = new MenuItem[]
-					{
+					Items =
+					[
 						new MenuItem { Text = "Refresh" },
 						new MenuItem { Text = "Change Theme" }
-					}
+					]
 				},
 			};
 		}
