@@ -36,7 +36,7 @@
 			// pictureBoxAuthenticate
 			// 
 			this.pictureBoxAuthenticate.Dock = Wisej.Web.DockStyle.Top;
-			this.pictureBoxAuthenticate.ImageSource = "Images\\face-id.png";
+			this.pictureBoxAuthenticate.ImageSource = "resource.wx/FeaturesShared/Images/face-id.png";
 			this.pictureBoxAuthenticate.Location = new System.Drawing.Point(16, 68);
 			this.pictureBoxAuthenticate.Name = "pictureBoxAuthenticate";
 			this.pictureBoxAuthenticate.Padding = new Wisej.Web.Padding(16);

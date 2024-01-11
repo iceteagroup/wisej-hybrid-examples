@@ -27,7 +27,7 @@ namespace HybridApp
 
 				.UseWisejHybrid((config) =>
 				{
-					config.LicenseKey = "b2b8f0567e24bc7ad556d97cfb5929f6";
+					config.LicenseKey = "";
 
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";

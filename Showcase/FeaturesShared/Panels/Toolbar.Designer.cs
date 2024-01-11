@@ -76,12 +76,11 @@
 			this.checkBoxVisible.Appearance = Wisej.Web.Appearance.Switch;
 			this.checkBoxVisible.AutoSize = false;
 			this.checkBoxVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.flowLayoutPanelItems.SetFillWeight(this.checkBoxVisible, 1);
 			this.checkBoxVisible.Location = new System.Drawing.Point(3, 3);
 			this.checkBoxVisible.MinimumSize = new System.Drawing.Size(180, 0);
 			this.checkBoxVisible.Name = "checkBoxVisible";
 			this.checkBoxVisible.Padding = new Wisej.Web.Padding(0, 0, 32, 0);
-			this.checkBoxVisible.Size = new System.Drawing.Size(303, 37);
+			this.checkBoxVisible.Size = new System.Drawing.Size(180, 37);
 			this.checkBoxVisible.TabIndex = 21;
 			this.checkBoxVisible.Text = "Toolbar Visible";
 			this.checkBoxVisible.CheckedChanged += new System.EventHandler(this.checkBoxVisible_CheckedChanged);
@@ -93,10 +92,10 @@
 			this.panel1.Controls.Add(this.textBoxBackColor);
 			this.flowLayoutPanelItems.SetFillWeight(this.panel1, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.panel1, true);
-			this.panel1.Location = new System.Drawing.Point(312, 3);
+			this.panel1.Location = new System.Drawing.Point(189, 3);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new Wisej.Web.Padding(16, 0, 0, 0);
-			this.panel1.Size = new System.Drawing.Size(303, 37);
+			this.panel1.Size = new System.Drawing.Size(426, 37);
 			this.panel1.TabIndex = 25;
 			// 
 			// textBoxForeColor
@@ -104,7 +103,7 @@
 			this.textBoxForeColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxForeColor.AutoSize = false;
 			this.textBoxForeColor.InputType.Type = Wisej.Web.TextBoxType.Color;
-			this.textBoxForeColor.Location = new System.Drawing.Point(221, 1);
+			this.textBoxForeColor.Location = new System.Drawing.Point(344, 1);
 			this.textBoxForeColor.Name = "textBoxForeColor";
 			this.textBoxForeColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxForeColor.TabIndex = 8;
@@ -125,7 +124,7 @@
 			this.textBoxBackColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxBackColor.AutoSize = false;
 			this.textBoxBackColor.InputType.Type = Wisej.Web.TextBoxType.Color;
-			this.textBoxBackColor.Location = new System.Drawing.Point(261, 1);
+			this.textBoxBackColor.Location = new System.Drawing.Point(384, 1);
 			this.textBoxBackColor.Name = "textBoxBackColor";
 			this.textBoxBackColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxBackColor.TabIndex = 3;

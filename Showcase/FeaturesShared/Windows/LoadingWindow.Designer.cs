@@ -36,7 +36,7 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.Anchor = Wisej.Web.AnchorStyles.None;
-			this.pictureBox1.ImageSource = "resource.wx/loader.svg";
+			this.pictureBox1.ImageSource = "ajax-loader";
 			this.pictureBox1.Location = new System.Drawing.Point(114, 137);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(75, 75);
