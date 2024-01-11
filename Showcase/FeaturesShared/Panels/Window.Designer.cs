@@ -33,12 +33,12 @@
 			// 
 			// button1
 			// 
-			this.button1.Anchor = Wisej.Web.AnchorStyles.None;
-			this.button1.Location = new System.Drawing.Point(232, 221);
+			this.button1.Dock = Wisej.Web.DockStyle.Top;
+			this.button1.Location = new System.Drawing.Point(16, 68);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(186, 37);
+			this.button1.Size = new System.Drawing.Size(618, 37);
 			this.button1.TabIndex = 20;
-			this.button1.Text = "Open Window";
+			this.button1.Text = "Open New Window";
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// Window
@@ -52,6 +52,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.button1);
+			this.Hint = "Open new device windows (not supported on all platforms).";
 			this.Name = "Window";
 			this.Controls.SetChildIndex(this.button1, 0);
 			this.ResumeLayout(false);

@@ -29,99 +29,93 @@
 		private void InitializeComponent()
 		{
 			this.textBoxSubject = new Wisej.Web.TextBox();
-			this.spacer1 = new Wisej.Web.Spacer();
 			this.tagTextBoxTo = new Wisej.Web.TagTextBox();
-			this.spacer2 = new Wisej.Web.Spacer();
 			this.tagTextBoxCC = new Wisej.Web.TagTextBox();
-			this.spacer3 = new Wisej.Web.Spacer();
 			this.textBoxBody = new Wisej.Web.TextBox();
-			this.spacer4 = new Wisej.Web.Spacer();
 			this.buttonCompose = new Wisej.Web.Button();
+			this.flowLayoutPanel1 = new Wisej.Web.FlowLayoutPanel();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBoxSubject
 			// 
-			this.textBoxSubject.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxSubject, 1);
 			this.textBoxSubject.LabelText = "Subject";
-			this.textBoxSubject.Location = new System.Drawing.Point(16, 268);
+			this.textBoxSubject.Location = new System.Drawing.Point(3, 82);
+			this.textBoxSubject.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.textBoxSubject.Name = "textBoxSubject";
-			this.textBoxSubject.Size = new System.Drawing.Size(618, 55);
+			this.textBoxSubject.Size = new System.Drawing.Size(300, 55);
 			this.textBoxSubject.TabIndex = 19;
 			this.textBoxSubject.Text = "Hello";
-			// 
-			// spacer1
-			// 
-			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 188);
-			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 10);
 			// 
 			// tagTextBoxTo
 			// 
 			this.tagTextBoxTo.AutoSize = false;
-			this.tagTextBoxTo.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.tagTextBoxTo, 1);
 			this.tagTextBoxTo.LabelText = "To";
-			this.tagTextBoxTo.Location = new System.Drawing.Point(16, 128);
+			this.tagTextBoxTo.Location = new System.Drawing.Point(3, 3);
 			this.tagTextBoxTo.Name = "tagTextBoxTo";
-			this.tagTextBoxTo.Size = new System.Drawing.Size(618, 60);
+			this.tagTextBoxTo.Size = new System.Drawing.Size(300, 60);
 			this.tagTextBoxTo.TabIndex = 21;
 			this.tagTextBoxTo.Text = "john@doe.com,jane@doe.com";
-			// 
-			// spacer2
-			// 
-			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 323);
-			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(618, 10);
 			// 
 			// tagTextBoxCC
 			// 
 			this.tagTextBoxCC.AutoSize = false;
-			this.tagTextBoxCC.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.tagTextBoxCC, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.tagTextBoxCC, true);
 			this.tagTextBoxCC.LabelText = "CC";
-			this.tagTextBoxCC.Location = new System.Drawing.Point(16, 198);
+			this.tagTextBoxCC.Location = new System.Drawing.Point(309, 3);
 			this.tagTextBoxCC.Name = "tagTextBoxCC";
-			this.tagTextBoxCC.Size = new System.Drawing.Size(618, 60);
+			this.tagTextBoxCC.Size = new System.Drawing.Size(300, 60);
 			this.tagTextBoxCC.TabIndex = 24;
 			this.tagTextBoxCC.Text = "info@doe.com";
 			// 
-			// spacer3
-			// 
-			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 258);
-			this.spacer3.Name = "spacer3";
-			this.spacer3.Size = new System.Drawing.Size(618, 10);
-			// 
 			// textBoxBody
 			// 
-			this.textBoxBody.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxBody, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.textBoxBody, true);
 			this.textBoxBody.LabelText = "Body";
-			this.textBoxBody.Location = new System.Drawing.Point(16, 333);
+			this.textBoxBody.Location = new System.Drawing.Point(309, 82);
+			this.textBoxBody.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.textBoxBody.Name = "textBoxBody";
-			this.textBoxBody.Size = new System.Drawing.Size(618, 55);
+			this.textBoxBody.Size = new System.Drawing.Size(300, 55);
 			this.textBoxBody.TabIndex = 27;
 			this.textBoxBody.Text = "Hello, World!";
 			// 
-			// spacer4
-			// 
-			this.spacer4.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer4.Location = new System.Drawing.Point(16, 388);
-			this.spacer4.Name = "spacer4";
-			this.spacer4.Size = new System.Drawing.Size(618, 10);
-			// 
 			// buttonCompose
 			// 
-			this.buttonCompose.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonCompose.Location = new System.Drawing.Point(16, 398);
+			this.flowLayoutPanel1.SetFillWeight(this.buttonCompose, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.buttonCompose, true);
+			this.buttonCompose.Location = new System.Drawing.Point(3, 156);
+			this.buttonCompose.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.buttonCompose.Name = "buttonCompose";
-			this.buttonCompose.Size = new System.Drawing.Size(618, 37);
+			this.buttonCompose.Size = new System.Drawing.Size(606, 37);
 			this.buttonCompose.TabIndex = 30;
 			this.buttonCompose.Text = "Compose";
 			this.buttonCompose.Click += new System.EventHandler(this.buttonCompose_Click);
 			// 
+			// flowLayoutPanel1
+			// 
+			this.flowLayoutPanel1.Anchor = ((Wisej.Web.AnchorStyles)((((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Bottom) 
+            | Wisej.Web.AnchorStyles.Left) 
+            | Wisej.Web.AnchorStyles.Right)));
+			this.flowLayoutPanel1.AutoScroll = true;
+			this.flowLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
+			this.flowLayoutPanel1.Controls.Add(this.tagTextBoxTo);
+			this.flowLayoutPanel1.Controls.Add(this.tagTextBoxCC);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxSubject);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxBody);
+			this.flowLayoutPanel1.Controls.Add(this.buttonCompose);
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 74);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.ScrollBars = Wisej.Web.ScrollBars.Hidden;
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(612, 331);
+			this.flowLayoutPanel1.TabIndex = 35;
+			// 
 			// Email
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -129,41 +123,24 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.buttonCompose);
-			this.Controls.Add(this.spacer4);
-			this.Controls.Add(this.textBoxBody);
-			this.Controls.Add(this.spacer2);
-			this.Controls.Add(this.textBoxSubject);
-			this.Controls.Add(this.spacer3);
-			this.Controls.Add(this.tagTextBoxCC);
-			this.Controls.Add(this.spacer1);
-			this.Controls.Add(this.tagTextBoxTo);
+			this.Controls.Add(this.flowLayoutPanel1);
+			this.Hint = "Compose emails within the application.";
 			this.Name = "Email";
 			this.Load += new System.EventHandler(this.Email_Load);
-			this.Controls.SetChildIndex(this.tagTextBoxTo, 0);
-			this.Controls.SetChildIndex(this.spacer1, 0);
-			this.Controls.SetChildIndex(this.tagTextBoxCC, 0);
-			this.Controls.SetChildIndex(this.spacer3, 0);
-			this.Controls.SetChildIndex(this.textBoxSubject, 0);
-			this.Controls.SetChildIndex(this.spacer2, 0);
-			this.Controls.SetChildIndex(this.textBoxBody, 0);
-			this.Controls.SetChildIndex(this.spacer4, 0);
-			this.Controls.SetChildIndex(this.buttonCompose, 0);
+			this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
+			this.flowLayoutPanel1.ResumeLayout(false);
+			this.flowLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
 
 		private Web.TextBox textBoxSubject;
-		private Web.Spacer spacer1;
 		private Web.TagTextBox tagTextBoxTo;
-		private Web.Spacer spacer2;
 		private Web.TagTextBox tagTextBoxCC;
-		private Web.Spacer spacer3;
 		private Web.TextBox textBoxBody;
-		private Web.Spacer spacer4;
 		private Web.Button buttonCompose;
+		private Web.FlowLayoutPanel flowLayoutPanel1;
 	}
 }

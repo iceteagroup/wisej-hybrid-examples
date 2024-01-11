@@ -60,11 +60,11 @@
 			this.flexLayoutPanel1.Controls.Add(this.buttonTakePicture);
 			this.flexLayoutPanel1.Controls.Add(this.buttonSelectVideo);
 			this.flexLayoutPanel1.Controls.Add(this.buttonTakeVideo);
-			this.flexLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
+			this.flexLayoutPanel1.Dock = Wisej.Web.DockStyle.Top;
 			this.flexLayoutPanel1.LayoutStyle = Wisej.Web.FlexLayoutStyle.Vertical;
-			this.flexLayoutPanel1.Location = new System.Drawing.Point(16, 128);
+			this.flexLayoutPanel1.Location = new System.Drawing.Point(16, 68);
 			this.flexLayoutPanel1.Name = "flexLayoutPanel1";
-			this.flexLayoutPanel1.Size = new System.Drawing.Size(618, 350);
+			this.flexLayoutPanel1.Size = new System.Drawing.Size(618, 223);
 			this.flexLayoutPanel1.TabIndex = 21;
 			// 
 			// buttonSelectVideo
@@ -87,7 +87,7 @@
 			// 
 			// Media
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -96,6 +96,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.flexLayoutPanel1);
+			this.Hint = "Interact with media on the device.";
 			this.Name = "Media";
 			this.Controls.SetChildIndex(this.flexLayoutPanel1, 0);
 			this.flexLayoutPanel1.ResumeLayout(false);

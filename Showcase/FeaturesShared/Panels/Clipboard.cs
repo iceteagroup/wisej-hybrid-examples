@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
 {

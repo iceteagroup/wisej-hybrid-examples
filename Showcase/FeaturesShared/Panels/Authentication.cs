@@ -13,6 +13,20 @@ namespace Wisej.Hybrid.Features
 			InitializeComponent();
 		}
 
+		private void Authentication_Load(object sender, EventArgs e)
+		{
+			var info = Device.Info.Use<DeviceAuthenticationInfo>();
+
+			switch (info.AuthenticationType)
+			{
+				case "":
+					break;
+
+				default:
+					break;
+			}
+		}
+
 		private void buttonAuthenticate_Click(object sender, EventArgs e)
 		{
 			var result = Device.Use<DeviceAuthentication>().Authenticate("Authenticate", "Reason...");

@@ -33,10 +33,12 @@
 			// 
 			// video1
 			// 
-			this.video1.Dock = Wisej.Web.DockStyle.Fill;
-			this.video1.Location = new System.Drawing.Point(16, 128);
+			this.video1.Anchor = ((Wisej.Web.AnchorStyles)((((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Bottom) 
+            | Wisej.Web.AnchorStyles.Left) 
+            | Wisej.Web.AnchorStyles.Right)));
+			this.video1.Location = new System.Drawing.Point(16, 74);
 			this.video1.Name = "video1";
-			this.video1.Size = new System.Drawing.Size(618, 334);
+			this.video1.Size = new System.Drawing.Size(618, 331);
 			this.video1.SourceURL = "https://demo.wisej.com/Hybrid/Data/sample.mp4";
 			this.video1.TabIndex = 20;
 			this.video1.Volume = 0.5D;
@@ -52,6 +54,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.video1);
+			this.Hint = "View device media.";
 			this.Name = "VideoViewer";
 			this.Padding = new Wisej.Web.Padding(16, 0, 16, 16);
 			this.Controls.SetChildIndex(this.video1, 0);

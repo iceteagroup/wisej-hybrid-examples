@@ -40,7 +40,7 @@
 			// buttonRead
 			// 
 			this.buttonRead.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonRead.Location = new System.Drawing.Point(16, 128);
+			this.buttonRead.Location = new System.Drawing.Point(16, 68);
 			this.buttonRead.Name = "buttonRead";
 			this.buttonRead.Size = new System.Drawing.Size(618, 37);
 			this.buttonRead.TabIndex = 19;
@@ -51,38 +51,40 @@
 			// 
 			this.labelClipboard.BorderStyle = Wisej.Web.BorderStyle.Solid;
 			this.labelClipboard.Dock = Wisej.Web.DockStyle.Top;
-			this.labelClipboard.Location = new System.Drawing.Point(16, 185);
+			this.labelClipboard.Location = new System.Drawing.Point(16, 121);
 			this.labelClipboard.Name = "labelClipboard";
-			this.labelClipboard.Size = new System.Drawing.Size(618, 145);
+			this.labelClipboard.Size = new System.Drawing.Size(618, 30);
 			this.labelClipboard.TabIndex = 20;
+			this.labelClipboard.Text = "Clipboard contents will appear here.";
 			this.labelClipboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// spacer1
 			// 
 			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 165);
+			this.spacer1.Location = new System.Drawing.Point(16, 105);
 			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 20);
+			this.spacer1.Size = new System.Drawing.Size(618, 16);
 			// 
 			// spacer2
 			// 
 			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 330);
+			this.spacer2.Location = new System.Drawing.Point(16, 151);
 			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(618, 20);
+			this.spacer2.Size = new System.Drawing.Size(618, 16);
 			// 
 			// textBoxClipboard
 			// 
 			this.textBoxClipboard.Dock = Wisej.Web.DockStyle.Top;
-			this.textBoxClipboard.Location = new System.Drawing.Point(16, 350);
+			this.textBoxClipboard.Location = new System.Drawing.Point(16, 167);
 			this.textBoxClipboard.Name = "textBoxClipboard";
 			this.textBoxClipboard.Size = new System.Drawing.Size(618, 30);
 			this.textBoxClipboard.TabIndex = 24;
+			this.textBoxClipboard.Watermark = "Write to clipboard...";
 			// 
 			// buttonSet
 			// 
 			this.buttonSet.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonSet.Location = new System.Drawing.Point(16, 386);
+			this.buttonSet.Location = new System.Drawing.Point(16, 213);
 			this.buttonSet.Name = "buttonSet";
 			this.buttonSet.Size = new System.Drawing.Size(618, 37);
 			this.buttonSet.TabIndex = 25;
@@ -92,13 +94,13 @@
 			// spacer3
 			// 
 			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 380);
+			this.spacer3.Location = new System.Drawing.Point(16, 197);
 			this.spacer3.Name = "spacer3";
-			this.spacer3.Size = new System.Drawing.Size(618, 6);
+			this.spacer3.Size = new System.Drawing.Size(618, 16);
 			// 
 			// Clipboard
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -113,6 +115,7 @@
 			this.Controls.Add(this.labelClipboard);
 			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.buttonRead);
+			this.Hint = "Read and write text to and from the clipboard.";
 			this.Name = "Clipboard";
 			this.Appear += new System.EventHandler(this.Clipboard_Appear);
 			this.Disappear += new System.EventHandler(this.Clipboard_Disappear);

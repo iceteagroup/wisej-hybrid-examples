@@ -1,6 +1,6 @@
 ﻿namespace Wisej.Hybrid.Features.Panels
 {
-	public partial class AppItemView
+	public partial class AppItem
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -41,12 +41,11 @@
 			// 
 			this.labelTitle.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Left | Wisej.Web.AnchorStyles.Right)));
 			this.labelTitle.Anonymous = true;
-			this.labelTitle.AutoSize = true;
 			this.flowLayoutPanel1.SetFillWeight(this.labelTitle, 1);
 			this.flowLayoutPanel1.SetFlowBreak(this.labelTitle, true);
 			this.labelTitle.Font = new System.Drawing.Font("@menu", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			this.labelTitle.ForeColor = System.Drawing.Color.FromName("@windowText");
-			this.labelTitle.Location = new System.Drawing.Point(3, 49);
+			this.labelTitle.Location = new System.Drawing.Point(3, 79);
 			this.labelTitle.Name = "labelTitle";
 			this.labelTitle.Size = new System.Drawing.Size(134, 44);
 			this.labelTitle.TabIndex = 0;
@@ -62,11 +61,11 @@
 			this.flowLayoutPanel1.SetFlowBreak(this.labelDescription, true);
 			this.labelDescription.Font = new System.Drawing.Font("@default", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
 			this.labelDescription.ForeColor = System.Drawing.Color.FromName("@toolbarText");
-			this.labelDescription.Location = new System.Drawing.Point(3, 99);
+			this.labelDescription.Location = new System.Drawing.Point(3, 49);
 			this.labelDescription.Name = "labelDescription";
-			this.labelDescription.Size = new System.Drawing.Size(134, 41);
+			this.labelDescription.Size = new System.Drawing.Size(134, 24);
 			this.labelDescription.TabIndex = 1;
-			this.labelDescription.Text = "test tes ttest t ajf;ldjaldkjff adjkf adlkjflakd jflak fdjakl df";
+			this.labelDescription.Text = "Type";
 			// 
 			// pictureBoxIcon
 			// 
@@ -94,13 +93,13 @@
 			this.buttonMenu.Size = new System.Drawing.Size(88, 40);
 			this.buttonMenu.TabIndex = 2;
 			// 
-			// flowLayoutPanelData
+			// flowLayoutPanel1
 			// 
 			this.flowLayoutPanel1.Anonymous = true;
 			this.flowLayoutPanel1.Controls.Add(this.pictureBoxIcon);
 			this.flowLayoutPanel1.Controls.Add(this.buttonMenu);
-			this.flowLayoutPanel1.Controls.Add(this.labelTitle);
 			this.flowLayoutPanel1.Controls.Add(this.labelDescription);
+			this.flowLayoutPanel1.Controls.Add(this.labelTitle);
 			this.flowLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
 			this.flowLayoutPanel1.FlowDirection = Wisej.Web.FlowDirection.RightToLeft;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 10);
@@ -108,14 +107,14 @@
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(140, 148);
 			this.flowLayoutPanel1.TabIndex = 4;
 			// 
-			// AppItemView
+			// AppItem
 			// 
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.CssClass = "testItemView";
 			this.CssStyle = "border-radius: 8px;\r\nbox-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;";
 			this.Cursor = Wisej.Web.Cursors.Hand;
 			this.Margin = new Wisej.Web.Padding(10);
-			this.Name = "AppItemView";
+			this.Name = "AppItem";
 			this.Padding = new Wisej.Web.Padding(10);
 			this.Size = new System.Drawing.Size(160, 168);
 			this.Load += new System.EventHandler(this.AppItem_Load);
@@ -123,7 +122,6 @@
 			this.Appear += new System.EventHandler(this.AppItemView_Appear);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
 			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

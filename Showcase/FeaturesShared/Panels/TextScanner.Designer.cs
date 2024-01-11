@@ -30,27 +30,35 @@
 		{
 			this.buttonEmbedded = new Wisej.Web.Button();
 			this.buttonNative = new Wisej.Web.Button();
+			this.spacer1 = new Wisej.Web.Spacer();
 			this.SuspendLayout();
 			// 
 			// buttonEmbedded
 			// 
-			this.buttonEmbedded.Anchor = Wisej.Web.AnchorStyles.Top;
-			this.buttonEmbedded.Location = new System.Drawing.Point(227, 257);
+			this.buttonEmbedded.Dock = Wisej.Web.DockStyle.Top;
+			this.buttonEmbedded.Location = new System.Drawing.Point(16, 121);
 			this.buttonEmbedded.Name = "buttonEmbedded";
-			this.buttonEmbedded.Size = new System.Drawing.Size(196, 37);
+			this.buttonEmbedded.Size = new System.Drawing.Size(618, 37);
 			this.buttonEmbedded.TabIndex = 23;
 			this.buttonEmbedded.Text = "Embedded Scanner";
 			this.buttonEmbedded.Click += new System.EventHandler(this.buttonEmbedded_Click);
 			// 
 			// buttonNative
 			// 
-			this.buttonNative.Anchor = Wisej.Web.AnchorStyles.Top;
-			this.buttonNative.Location = new System.Drawing.Point(227, 185);
+			this.buttonNative.Dock = Wisej.Web.DockStyle.Top;
+			this.buttonNative.Location = new System.Drawing.Point(16, 68);
 			this.buttonNative.Name = "buttonNative";
-			this.buttonNative.Size = new System.Drawing.Size(196, 37);
+			this.buttonNative.Size = new System.Drawing.Size(618, 37);
 			this.buttonNative.TabIndex = 22;
 			this.buttonNative.Text = "Native Scanner";
 			this.buttonNative.Click += new System.EventHandler(this.buttonNative_Click);
+			// 
+			// spacer1
+			// 
+			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
+			this.spacer1.Location = new System.Drawing.Point(16, 105);
+			this.spacer1.Name = "spacer1";
+			this.spacer1.Size = new System.Drawing.Size(618, 16);
 			// 
 			// TextScanner
 			// 
@@ -63,9 +71,12 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.buttonEmbedded);
+			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.buttonNative);
+			this.Hint = "Use VisionKit (iOS) and Google MLKit to perform real-time OCR.";
 			this.Name = "TextScanner";
 			this.Controls.SetChildIndex(this.buttonNative, 0);
+			this.Controls.SetChildIndex(this.spacer1, 0);
 			this.Controls.SetChildIndex(this.buttonEmbedded, 0);
 			this.ResumeLayout(false);
 
@@ -75,5 +86,6 @@
 
 		private Wisej.Web.Button buttonEmbedded;
 		private Wisej.Web.Button buttonNative;
+		private Wisej.Web.Spacer spacer1;
 	}
 }

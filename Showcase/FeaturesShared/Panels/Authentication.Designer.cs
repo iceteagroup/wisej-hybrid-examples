@@ -30,34 +30,28 @@
 		{
 			this.pictureBoxAuthenticate = new Wisej.Web.PictureBox();
 			this.buttonAuthenticate = new Wisej.Web.Button();
-			this.spacer1 = new Wisej.Web.Spacer();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxAuthenticate)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pictureBoxAuthenticate
 			// 
 			this.pictureBoxAuthenticate.Dock = Wisej.Web.DockStyle.Top;
-			this.pictureBoxAuthenticate.Location = new System.Drawing.Point(16, 128);
+			this.pictureBoxAuthenticate.ImageSource = "Images\\face-id.png";
+			this.pictureBoxAuthenticate.Location = new System.Drawing.Point(16, 68);
 			this.pictureBoxAuthenticate.Name = "pictureBoxAuthenticate";
+			this.pictureBoxAuthenticate.Padding = new Wisej.Web.Padding(16);
 			this.pictureBoxAuthenticate.Size = new System.Drawing.Size(618, 128);
 			this.pictureBoxAuthenticate.SizeMode = Wisej.Web.PictureBoxSizeMode.Zoom;
 			// 
 			// buttonAuthenticate
 			// 
 			this.buttonAuthenticate.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonAuthenticate.Location = new System.Drawing.Point(16, 276);
+			this.buttonAuthenticate.Location = new System.Drawing.Point(16, 196);
 			this.buttonAuthenticate.Name = "buttonAuthenticate";
-			this.buttonAuthenticate.Size = new System.Drawing.Size(618, 40);
+			this.buttonAuthenticate.Size = new System.Drawing.Size(618, 37);
 			this.buttonAuthenticate.TabIndex = 1;
 			this.buttonAuthenticate.Text = "Authenticate";
 			this.buttonAuthenticate.Click += new System.EventHandler(this.buttonAuthenticate_Click);
-			// 
-			// spacer1
-			// 
-			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 256);
-			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 20);
 			// 
 			// Authentication
 			// 
@@ -70,11 +64,11 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.buttonAuthenticate);
-			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.pictureBoxAuthenticate);
+			this.Hint = "Use biometric authentication to authorize the current user.";
 			this.Name = "Authentication";
+			this.Load += new System.EventHandler(this.Authentication_Load);
 			this.Controls.SetChildIndex(this.pictureBoxAuthenticate, 0);
-			this.Controls.SetChildIndex(this.spacer1, 0);
 			this.Controls.SetChildIndex(this.buttonAuthenticate, 0);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxAuthenticate)).EndInit();
 			this.ResumeLayout(false);
@@ -85,6 +79,5 @@
 
 		private Web.PictureBox pictureBoxAuthenticate;
 		private Web.Button buttonAuthenticate;
-		private Web.Spacer spacer1;
 	}
 }

@@ -30,31 +30,39 @@
 		{
 			this.buttonSettings = new Wisej.Web.Button();
 			this.buttonOpenPdf = new Wisej.Web.Button();
+			this.spacer1 = new Wisej.Web.Spacer();
 			this.SuspendLayout();
 			// 
 			// buttonSettings
 			// 
-			this.buttonSettings.Anchor = Wisej.Web.AnchorStyles.None;
-			this.buttonSettings.Location = new System.Drawing.Point(191, 190);
+			this.buttonSettings.Dock = Wisej.Web.DockStyle.Top;
+			this.buttonSettings.Location = new System.Drawing.Point(16, 68);
 			this.buttonSettings.Name = "buttonSettings";
-			this.buttonSettings.Size = new System.Drawing.Size(268, 37);
+			this.buttonSettings.Size = new System.Drawing.Size(618, 37);
 			this.buttonSettings.TabIndex = 20;
 			this.buttonSettings.Text = "Open Image";
 			this.buttonSettings.Click += new System.EventHandler(this.buttonOpenImage_Click);
 			// 
 			// buttonOpenPdf
 			// 
-			this.buttonOpenPdf.Anchor = Wisej.Web.AnchorStyles.None;
-			this.buttonOpenPdf.Location = new System.Drawing.Point(191, 252);
+			this.buttonOpenPdf.Dock = Wisej.Web.DockStyle.Top;
+			this.buttonOpenPdf.Location = new System.Drawing.Point(16, 121);
 			this.buttonOpenPdf.Name = "buttonOpenPdf";
-			this.buttonOpenPdf.Size = new System.Drawing.Size(268, 37);
+			this.buttonOpenPdf.Size = new System.Drawing.Size(618, 37);
 			this.buttonOpenPdf.TabIndex = 21;
 			this.buttonOpenPdf.Text = "Open PDF";
 			this.buttonOpenPdf.Click += new System.EventHandler(this.buttonOpenPdf_Click);
 			// 
+			// spacer1
+			// 
+			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
+			this.spacer1.Location = new System.Drawing.Point(16, 105);
+			this.spacer1.Name = "spacer1";
+			this.spacer1.Size = new System.Drawing.Size(618, 16);
+			// 
 			// Launcher
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -63,9 +71,12 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.buttonOpenPdf);
+			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.buttonSettings);
+			this.Hint = "Open other apps from within your app.";
 			this.Name = "Launcher";
 			this.Controls.SetChildIndex(this.buttonSettings, 0);
+			this.Controls.SetChildIndex(this.spacer1, 0);
 			this.Controls.SetChildIndex(this.buttonOpenPdf, 0);
 			this.ResumeLayout(false);
 
@@ -75,5 +86,6 @@
 
 		private Web.Button buttonSettings;
 		private Web.Button buttonOpenPdf;
+		private Web.Spacer spacer1;
 	}
 }

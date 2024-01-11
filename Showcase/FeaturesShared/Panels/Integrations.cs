@@ -48,9 +48,9 @@ namespace Wisej.Hybrid.Features.Panels
 			});
 		}
 
-		private AppItemView CreateAppItemView(Type t)
+		private AppItem CreateAppItemView(Type t)
 		{
-			var view = new AppItemView((TestBase)Activator.CreateInstance(t)) { Width = this._itemWidth };
+			var view = new AppItem((TestBase)Activator.CreateInstance(t)) { Width = this._itemWidth };
 			view.ViewRequested += Integrations_ViewRequested;
 			return view;
 		}

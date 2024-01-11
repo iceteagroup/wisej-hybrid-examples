@@ -30,104 +30,92 @@
 		{
 			this.textBoxBackColor = new Wisej.Web.TextBox();
 			this.textBoxTextColor = new Wisej.Web.TextBox();
-			this.spacer1 = new Wisej.Web.Spacer();
-			this.spacer2 = new Wisej.Web.Spacer();
 			this.textBoxTitle = new Wisej.Web.TextBox();
 			this.buttonSetTitle = new Wisej.Web.Button();
-			this.spacer3 = new Wisej.Web.Spacer();
-			this.spacer4 = new Wisej.Web.Spacer();
 			this.checkBoxVisible = new Wisej.Web.CheckBox();
+			this.flowLayoutPanel1 = new Wisej.Web.FlowLayoutPanel();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBoxBackColor
 			// 
-			this.textBoxBackColor.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxBackColor, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.textBoxBackColor, true);
 			this.textBoxBackColor.InputType.Type = Wisej.Web.TextBoxType.Color;
 			this.textBoxBackColor.LabelText = "Background Color";
-			this.textBoxBackColor.Location = new System.Drawing.Point(16, 198);
+			this.textBoxBackColor.Location = new System.Drawing.Point(312, 59);
 			this.textBoxBackColor.Name = "textBoxBackColor";
-			this.textBoxBackColor.Size = new System.Drawing.Size(618, 55);
+			this.textBoxBackColor.Size = new System.Drawing.Size(303, 55);
 			this.textBoxBackColor.TabIndex = 19;
 			this.textBoxBackColor.Text = "#FFFFFF";
 			this.textBoxBackColor.TextChanged += new System.EventHandler(this.textBoxBackColor_TextChanged);
 			// 
 			// textBoxTextColor
 			// 
-			this.textBoxTextColor.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxTextColor, 1);
 			this.textBoxTextColor.InputType.Type = Wisej.Web.TextBoxType.Color;
 			this.textBoxTextColor.LabelText = "Text Color";
-			this.textBoxTextColor.Location = new System.Drawing.Point(16, 273);
+			this.textBoxTextColor.Location = new System.Drawing.Point(3, 59);
 			this.textBoxTextColor.Name = "textBoxTextColor";
-			this.textBoxTextColor.Size = new System.Drawing.Size(618, 55);
+			this.textBoxTextColor.Size = new System.Drawing.Size(303, 55);
 			this.textBoxTextColor.TabIndex = 20;
 			this.textBoxTextColor.Text = "#FFFFFF";
 			this.textBoxTextColor.TextChanged += new System.EventHandler(this.textBoxTextColor_TextChanged);
 			// 
-			// spacer1
-			// 
-			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 253);
-			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 20);
-			// 
-			// spacer2
-			// 
-			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 328);
-			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(618, 20);
-			// 
 			// textBoxTitle
 			// 
-			this.textBoxTitle.Dock = Wisej.Web.DockStyle.Top;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxTitle, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.textBoxTitle, true);
 			this.textBoxTitle.LabelText = "Title";
-			this.textBoxTitle.Location = new System.Drawing.Point(16, 348);
+			this.textBoxTitle.Location = new System.Drawing.Point(3, 120);
 			this.textBoxTitle.Name = "textBoxTitle";
-			this.textBoxTitle.Size = new System.Drawing.Size(618, 55);
+			this.textBoxTitle.Size = new System.Drawing.Size(612, 55);
 			this.textBoxTitle.TabIndex = 24;
 			this.textBoxTitle.Text = "Wisej.NET";
 			// 
 			// buttonSetTitle
 			// 
-			this.buttonSetTitle.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonSetTitle.Location = new System.Drawing.Point(16, 423);
+			this.flowLayoutPanel1.SetFillWeight(this.buttonSetTitle, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.buttonSetTitle, true);
+			this.buttonSetTitle.Location = new System.Drawing.Point(3, 194);
+			this.buttonSetTitle.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.buttonSetTitle.Name = "buttonSetTitle";
-			this.buttonSetTitle.Size = new System.Drawing.Size(618, 37);
+			this.buttonSetTitle.Size = new System.Drawing.Size(612, 37);
 			this.buttonSetTitle.TabIndex = 25;
 			this.buttonSetTitle.Text = "Set Title";
 			this.buttonSetTitle.Click += new System.EventHandler(this.buttonSetTitle_Click);
-			// 
-			// spacer3
-			// 
-			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 403);
-			this.spacer3.Name = "spacer3";
-			this.spacer3.Size = new System.Drawing.Size(618, 20);
-			// 
-			// spacer4
-			// 
-			this.spacer4.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer4.Location = new System.Drawing.Point(16, 178);
-			this.spacer4.Name = "spacer4";
-			this.spacer4.Size = new System.Drawing.Size(618, 20);
 			// 
 			// checkBoxVisible
 			// 
 			this.checkBoxVisible.Appearance = Wisej.Web.Appearance.Switch;
 			this.checkBoxVisible.AutoSize = false;
 			this.checkBoxVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.checkBoxVisible.Dock = Wisej.Web.DockStyle.Top;
-			this.checkBoxVisible.Location = new System.Drawing.Point(16, 128);
+			this.flowLayoutPanel1.SetFillWeight(this.checkBoxVisible, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.checkBoxVisible, true);
+			this.checkBoxVisible.Location = new System.Drawing.Point(3, 3);
 			this.checkBoxVisible.Name = "checkBoxVisible";
-			this.checkBoxVisible.Size = new System.Drawing.Size(618, 50);
+			this.checkBoxVisible.Size = new System.Drawing.Size(612, 50);
 			this.checkBoxVisible.TabIndex = 31;
 			this.checkBoxVisible.Text = "Visible";
 			this.checkBoxVisible.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.checkBoxVisible.CheckedChanged += new System.EventHandler(this.checkBoxVisible_CheckedChanged);
 			// 
+			// flowLayoutPanel1
+			// 
+			this.flowLayoutPanel1.Controls.Add(this.checkBoxVisible);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxTextColor);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxBackColor);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxTitle);
+			this.flowLayoutPanel1.Controls.Add(this.buttonSetTitle);
+			this.flowLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 68);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(618, 410);
+			this.flowLayoutPanel1.TabIndex = 32;
+			// 
 			// TitleBar
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -135,29 +123,14 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.buttonSetTitle);
-			this.Controls.Add(this.spacer3);
-			this.Controls.Add(this.textBoxTitle);
-			this.Controls.Add(this.spacer2);
-			this.Controls.Add(this.textBoxTextColor);
-			this.Controls.Add(this.spacer1);
-			this.Controls.Add(this.textBoxBackColor);
-			this.Controls.Add(this.spacer4);
-			this.Controls.Add(this.checkBoxVisible);
+			this.Controls.Add(this.flowLayoutPanel1);
 			this.Name = "TitleBar";
 			this.Appear += new System.EventHandler(this.TitleBar_Appear);
 			this.Disappear += new System.EventHandler(this.TitleBar_Disappear);
-			this.Controls.SetChildIndex(this.checkBoxVisible, 0);
-			this.Controls.SetChildIndex(this.spacer4, 0);
-			this.Controls.SetChildIndex(this.textBoxBackColor, 0);
-			this.Controls.SetChildIndex(this.spacer1, 0);
-			this.Controls.SetChildIndex(this.textBoxTextColor, 0);
-			this.Controls.SetChildIndex(this.spacer2, 0);
-			this.Controls.SetChildIndex(this.textBoxTitle, 0);
-			this.Controls.SetChildIndex(this.spacer3, 0);
-			this.Controls.SetChildIndex(this.buttonSetTitle, 0);
+			this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
+			this.flowLayoutPanel1.ResumeLayout(false);
+			this.flowLayoutPanel1.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -165,12 +138,9 @@
 
 		private Web.TextBox textBoxBackColor;
 		private Web.TextBox textBoxTextColor;
-		private Web.Spacer spacer1;
-		private Web.Spacer spacer2;
 		private Web.TextBox textBoxTitle;
 		private Web.Button buttonSetTitle;
-		private Web.Spacer spacer3;
-        private Web.Spacer spacer4;
         private Web.CheckBox checkBoxVisible;
-    }
+		private Web.FlowLayoutPanel flowLayoutPanel1;
+	}
 }

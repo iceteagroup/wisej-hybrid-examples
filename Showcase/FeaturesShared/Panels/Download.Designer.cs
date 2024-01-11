@@ -36,13 +36,15 @@
 			// 
 			// flexLayoutPanel1
 			// 
+			this.flexLayoutPanel1.Anchor = ((Wisej.Web.AnchorStyles)((((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Bottom) 
+            | Wisej.Web.AnchorStyles.Left) 
+            | Wisej.Web.AnchorStyles.Right)));
 			this.flexLayoutPanel1.Controls.Add(this.buttonImage);
 			this.flexLayoutPanel1.Controls.Add(this.buttonPDF);
-			this.flexLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
 			this.flexLayoutPanel1.LayoutStyle = Wisej.Web.FlexLayoutStyle.Vertical;
 			this.flexLayoutPanel1.Location = new System.Drawing.Point(16, 128);
 			this.flexLayoutPanel1.Name = "flexLayoutPanel1";
-			this.flexLayoutPanel1.Size = new System.Drawing.Size(618, 350);
+			this.flexLayoutPanel1.Size = new System.Drawing.Size(618, 222);
 			this.flexLayoutPanel1.TabIndex = 20;
 			// 
 			// buttonImage
@@ -65,7 +67,7 @@
 			// 
 			// Download
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -74,6 +76,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.flexLayoutPanel1);
+			this.Hint = "Download and share documents.";
 			this.Name = "Download";
 			this.Controls.SetChildIndex(this.flexLayoutPanel1, 0);
 			this.flexLayoutPanel1.ResumeLayout(false);

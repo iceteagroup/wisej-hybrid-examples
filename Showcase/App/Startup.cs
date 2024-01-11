@@ -16,15 +16,18 @@ namespace HybridApp
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.ConfigureFonts(fonts =>
+				{
+					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				})
 
 				// Uncomment and replace with Offline startup Type to use embedded web server.
 				.UseWisejOffline<OfflineStartup>()
 
 				.UseWisejHybrid((config) =>
 				{
-					// Uncomment to provide an offline fallback timeout.
-					// config.OfflineTimeout = 5000;
-					config.LicenseKey = "";
+					config.LicenseKey = "b2b8f0567e24bc7ad556d97cfb5929f6";
 
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";

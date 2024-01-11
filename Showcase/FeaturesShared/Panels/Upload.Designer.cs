@@ -33,10 +33,10 @@
 			// 
 			// upload1
 			// 
-			this.upload1.Anchor = Wisej.Web.AnchorStyles.None;
-			this.upload1.Location = new System.Drawing.Point(187, 205);
+			this.upload1.Dock = Wisej.Web.DockStyle.Top;
+			this.upload1.Location = new System.Drawing.Point(16, 68);
 			this.upload1.Name = "upload1";
-			this.upload1.Size = new System.Drawing.Size(276, 68);
+			this.upload1.Size = new System.Drawing.Size(618, 37);
 			this.upload1.TabIndex = 20;
 			this.upload1.Text = "Select Media";
 			this.upload1.Uploaded += new Wisej.Web.UploadedEventHandler(this.upload1_Uploaded);
@@ -52,6 +52,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.upload1);
+			this.Hint = "Upload device files to the server.";
 			this.Name = "UploadMedia";
 			this.Controls.SetChildIndex(this.upload1, 0);
 			this.ResumeLayout(false);

@@ -20,7 +20,6 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			try
 			{
-				var size = 0L;
 				var scanner = Device.Use<DeviceDocumentScanner>();
 
 				var imageScaleFactor = (float)this.trackBarQuality.Value / 10;
@@ -28,8 +27,6 @@ namespace Wisej.Hybrid.Features.Panels
 				{
 					new ImageWindow(image).Show();
 				}
-
-				AlertBox.Show($"Size of uploaded images: {size} bytes");
 			}
 			catch (DeviceException ex)
 			{

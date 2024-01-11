@@ -41,50 +41,54 @@
 			// 
 			// flexLayoutPanel1
 			// 
+			this.flexLayoutPanel1.Anchor = ((Wisej.Web.AnchorStyles)((((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Bottom) 
+            | Wisej.Web.AnchorStyles.Left) 
+            | Wisej.Web.AnchorStyles.Right)));
+			this.flexLayoutPanel1.AutoScroll = true;
+			this.flexLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
 			this.flexLayoutPanel1.Controls.Add(this.textBoxShorcut1);
 			this.flexLayoutPanel1.Controls.Add(this.textBoxShortcut2);
 			this.flexLayoutPanel1.Controls.Add(this.textBoxShortcut3);
 			this.flexLayoutPanel1.Controls.Add(this.buttonSetShortcuts);
-			this.flexLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
 			this.flexLayoutPanel1.LayoutStyle = Wisej.Web.FlexLayoutStyle.Vertical;
-			this.flexLayoutPanel1.Location = new System.Drawing.Point(16, 128);
+			this.flexLayoutPanel1.Location = new System.Drawing.Point(19, 86);
 			this.flexLayoutPanel1.Name = "flexLayoutPanel1";
-			this.flexLayoutPanel1.Padding = new Wisej.Web.Padding(16);
-			this.flexLayoutPanel1.Size = new System.Drawing.Size(618, 350);
+			this.flexLayoutPanel1.ScrollBars = Wisej.Web.ScrollBars.Hidden;
+			this.flexLayoutPanel1.Size = new System.Drawing.Size(612, 319);
 			this.flexLayoutPanel1.TabIndex = 20;
 			// 
 			// textBoxShorcut1
 			// 
 			this.textBoxShorcut1.LabelText = "Shortcut 1";
-			this.textBoxShorcut1.Location = new System.Drawing.Point(19, 19);
+			this.textBoxShorcut1.Location = new System.Drawing.Point(3, 3);
 			this.textBoxShorcut1.Name = "textBoxShorcut1";
-			this.textBoxShorcut1.Size = new System.Drawing.Size(580, 55);
+			this.textBoxShorcut1.Size = new System.Drawing.Size(606, 55);
 			this.textBoxShorcut1.TabIndex = 0;
 			this.textBoxShorcut1.Text = "AppAction1";
 			// 
 			// textBoxShortcut2
 			// 
 			this.textBoxShortcut2.LabelText = "Shortcut 2";
-			this.textBoxShortcut2.Location = new System.Drawing.Point(19, 90);
+			this.textBoxShortcut2.Location = new System.Drawing.Point(3, 74);
 			this.textBoxShortcut2.Name = "textBoxShortcut2";
-			this.textBoxShortcut2.Size = new System.Drawing.Size(580, 55);
+			this.textBoxShortcut2.Size = new System.Drawing.Size(606, 55);
 			this.textBoxShortcut2.TabIndex = 1;
 			this.textBoxShortcut2.Text = "AppAction2";
 			// 
 			// textBoxShortcut3
 			// 
 			this.textBoxShortcut3.LabelText = "Shortcut 3";
-			this.textBoxShortcut3.Location = new System.Drawing.Point(19, 161);
+			this.textBoxShortcut3.Location = new System.Drawing.Point(3, 145);
 			this.textBoxShortcut3.Name = "textBoxShortcut3";
-			this.textBoxShortcut3.Size = new System.Drawing.Size(580, 55);
+			this.textBoxShortcut3.Size = new System.Drawing.Size(606, 55);
 			this.textBoxShortcut3.TabIndex = 2;
 			this.textBoxShortcut3.Text = "AppAction3";
 			// 
 			// buttonSetShortcuts
 			// 
-			this.buttonSetShortcuts.Location = new System.Drawing.Point(19, 232);
+			this.buttonSetShortcuts.Location = new System.Drawing.Point(3, 216);
 			this.buttonSetShortcuts.Name = "buttonSetShortcuts";
-			this.buttonSetShortcuts.Size = new System.Drawing.Size(580, 37);
+			this.buttonSetShortcuts.Size = new System.Drawing.Size(606, 37);
 			this.buttonSetShortcuts.TabIndex = 3;
 			this.buttonSetShortcuts.Text = "Set Shortcuts";
 			this.buttonSetShortcuts.Click += new System.EventHandler(this.buttonSetShortcuts_Click);
@@ -95,7 +99,7 @@
 			// 
 			// AppActions
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -104,6 +108,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.flexLayoutPanel1);
+			this.Hint = "App Actions are used to provide quick access to areas of the application.";
 			this.Name = "AppActions";
 			this.Controls.SetChildIndex(this.flexLayoutPanel1, 0);
 			this.flexLayoutPanel1.ResumeLayout(false);

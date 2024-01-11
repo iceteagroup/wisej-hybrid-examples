@@ -22,6 +22,8 @@ namespace Wisej.Hybrid.Features.Panels
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
 			Device.SecureStorage.Set("hybridtest", this.textBox1.Text);
+
+			Device.Popups.DisplayAlert("Success", "The value has been saved to the device. Restart the app to see the value.", "OK");
 		}
 	}
 }

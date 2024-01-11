@@ -33,6 +33,7 @@
 			this.animation2 = new Wisej.Web.Animation(this.components);
 			this.labelTitle = new Wisej.Web.Label();
 			this.buttonSource = new Wisej.Web.Button();
+			this.hint = new FeaturesShared.Controls.Hint();
 			this.SuspendLayout();
 			// 
 			// labelTitle
@@ -43,7 +44,7 @@
 			this.labelTitle.ForeColor = System.Drawing.Color.FromName("@toolbarText");
 			this.labelTitle.Location = new System.Drawing.Point(16, 0);
 			this.labelTitle.Name = "labelTitle";
-			this.labelTitle.Size = new System.Drawing.Size(618, 128);
+			this.labelTitle.Size = new System.Drawing.Size(618, 68);
 			this.labelTitle.TabIndex = 18;
 			this.labelTitle.Text = "TestBase";
 			this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -58,13 +59,22 @@
 			this.buttonSource.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.buttonSource.ImageSource = "resource.wx/Wisej.Ext.MaterialDesign/developer-mode-for-smartphones-and-tablets.s" +
     "vg";
-			this.buttonSource.Location = new System.Drawing.Point(578, 411);
+			this.buttonSource.Location = new System.Drawing.Point(581, 355);
 			this.buttonSource.Name = "buttonSource";
 			this.buttonSource.Size = new System.Drawing.Size(50, 50);
 			this.buttonSource.TabIndex = 19;
 			this.buttonSource.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.buttonSource.TextImageRelation = Wisej.Web.TextImageRelation.TextBeforeImage;
 			this.buttonSource.Click += new System.EventHandler(this.buttonSource_Click);
+			// 
+			// hint
+			// 
+			this.hint.Anchor = ((Wisej.Web.AnchorStyles)(((Wisej.Web.AnchorStyles.Bottom | Wisej.Web.AnchorStyles.Left) 
+            | Wisej.Web.AnchorStyles.Right)));
+			this.hint.Location = new System.Drawing.Point(19, 411);
+			this.hint.Name = "hint";
+			this.hint.Size = new System.Drawing.Size(612, 50);
+			this.hint.TabIndex = 20;
 			// 
 			// TestBase
 			// 
@@ -76,6 +86,7 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
+			this.Controls.Add(this.hint);
 			this.Controls.Add(this.buttonSource);
 			this.Controls.Add(this.labelTitle);
 			this.MinimumSize = new System.Drawing.Size(350, 0);
@@ -95,5 +106,6 @@
 		public Web.Animation animation2;
 		private Web.Label labelTitle;
 		private Web.Button buttonSource;
+		private FeaturesShared.Controls.Hint hint;
 	}
 }

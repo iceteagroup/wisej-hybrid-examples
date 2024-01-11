@@ -1,12 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using Wisej.Hybrid.Shared.Sensors;
-using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
 {
 	[Category("Hardware")]
-	
 	public partial class Accelerometer : TestBase
 	{
 		public Accelerometer()

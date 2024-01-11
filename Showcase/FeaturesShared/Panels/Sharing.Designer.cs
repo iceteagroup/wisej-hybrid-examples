@@ -30,94 +30,83 @@
 		{
 			this.textBoxText = new Wisej.Web.TextBox();
 			this.buttonText = new Wisej.Web.Button();
-			this.spacer1 = new Wisej.Web.Spacer();
-			this.spacer2 = new Wisej.Web.Spacer();
 			this.buttonUri = new Wisej.Web.Button();
-			this.spacer3 = new Wisej.Web.Spacer();
 			this.textBoxUri = new Wisej.Web.TextBox();
-			this.spacer4 = new Wisej.Web.Spacer();
 			this.buttonFiles = new Wisej.Web.Button();
+			this.flowLayoutPanel1 = new Wisej.Web.FlowLayoutPanel();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBoxText
 			// 
-			this.textBoxText.Dock = Wisej.Web.DockStyle.Top;
-			this.textBoxText.Location = new System.Drawing.Point(16, 128);
+			this.textBoxText.AutoSize = false;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxText, 1);
+			this.textBoxText.Location = new System.Drawing.Point(3, 3);
 			this.textBoxText.Name = "textBoxText";
-			this.textBoxText.Size = new System.Drawing.Size(618, 30);
+			this.textBoxText.Size = new System.Drawing.Size(506, 37);
 			this.textBoxText.TabIndex = 19;
 			this.textBoxText.Text = "Hello, World!";
 			// 
 			// buttonText
 			// 
-			this.buttonText.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonText.Location = new System.Drawing.Point(16, 168);
+			this.flowLayoutPanel1.SetFlowBreak(this.buttonText, true);
+			this.buttonText.Location = new System.Drawing.Point(515, 3);
 			this.buttonText.Name = "buttonText";
-			this.buttonText.Size = new System.Drawing.Size(618, 37);
+			this.buttonText.Size = new System.Drawing.Size(100, 37);
 			this.buttonText.TabIndex = 20;
 			this.buttonText.Text = "Share Text";
 			this.buttonText.Click += new System.EventHandler(this.buttonText_Click);
 			// 
-			// spacer1
-			// 
-			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 158);
-			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 10);
-			// 
-			// spacer2
-			// 
-			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 205);
-			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(618, 40);
-			// 
 			// buttonUri
 			// 
-			this.buttonUri.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonUri.Location = new System.Drawing.Point(16, 285);
+			this.flowLayoutPanel1.SetFlowBreak(this.buttonUri, true);
+			this.buttonUri.Location = new System.Drawing.Point(515, 59);
+			this.buttonUri.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.buttonUri.Name = "buttonUri";
-			this.buttonUri.Size = new System.Drawing.Size(618, 37);
+			this.buttonUri.Size = new System.Drawing.Size(100, 37);
 			this.buttonUri.TabIndex = 26;
 			this.buttonUri.Text = "Share Uri";
 			this.buttonUri.Click += new System.EventHandler(this.buttonUri_Click);
 			// 
-			// spacer3
-			// 
-			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 275);
-			this.spacer3.Name = "spacer3";
-			this.spacer3.Size = new System.Drawing.Size(618, 10);
-			// 
 			// textBoxUri
 			// 
-			this.textBoxUri.Dock = Wisej.Web.DockStyle.Top;
-			this.textBoxUri.Location = new System.Drawing.Point(16, 245);
+			this.textBoxUri.AutoSize = false;
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxUri, 1);
+			this.textBoxUri.Location = new System.Drawing.Point(3, 59);
+			this.textBoxUri.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.textBoxUri.Name = "textBoxUri";
-			this.textBoxUri.Size = new System.Drawing.Size(618, 30);
+			this.textBoxUri.Size = new System.Drawing.Size(506, 37);
 			this.textBoxUri.TabIndex = 25;
 			this.textBoxUri.Text = "https://wisej.com";
 			// 
-			// spacer4
-			// 
-			this.spacer4.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer4.Location = new System.Drawing.Point(16, 322);
-			this.spacer4.Name = "spacer4";
-			this.spacer4.Size = new System.Drawing.Size(618, 40);
-			// 
 			// buttonFiles
 			// 
-			this.buttonFiles.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonFiles.Location = new System.Drawing.Point(16, 362);
+			this.flowLayoutPanel1.SetFillWeight(this.buttonFiles, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.buttonFiles, true);
+			this.buttonFiles.Location = new System.Drawing.Point(3, 115);
+			this.buttonFiles.Margin = new Wisej.Web.Padding(3, 16, 3, 3);
 			this.buttonFiles.Name = "buttonFiles";
-			this.buttonFiles.Size = new System.Drawing.Size(618, 37);
+			this.buttonFiles.Size = new System.Drawing.Size(612, 37);
 			this.buttonFiles.TabIndex = 30;
 			this.buttonFiles.Text = "Share Files";
 			this.buttonFiles.Click += new System.EventHandler(this.buttonFiles_Click);
 			// 
+			// flowLayoutPanel1
+			// 
+			this.flowLayoutPanel1.Controls.Add(this.textBoxText);
+			this.flowLayoutPanel1.Controls.Add(this.buttonText);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxUri);
+			this.flowLayoutPanel1.Controls.Add(this.buttonUri);
+			this.flowLayoutPanel1.Controls.Add(this.buttonFiles);
+			this.flowLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 68);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(618, 410);
+			this.flowLayoutPanel1.TabIndex = 35;
+			// 
 			// Sharing
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -125,27 +114,12 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.buttonFiles);
-			this.Controls.Add(this.spacer4);
-			this.Controls.Add(this.buttonUri);
-			this.Controls.Add(this.spacer3);
-			this.Controls.Add(this.textBoxUri);
-			this.Controls.Add(this.spacer2);
-			this.Controls.Add(this.buttonText);
-			this.Controls.Add(this.spacer1);
-			this.Controls.Add(this.textBoxText);
+			this.Controls.Add(this.flowLayoutPanel1);
+			this.Hint = "Share data to other users and apps.";
 			this.Name = "Sharing";
-			this.Controls.SetChildIndex(this.textBoxText, 0);
-			this.Controls.SetChildIndex(this.spacer1, 0);
-			this.Controls.SetChildIndex(this.buttonText, 0);
-			this.Controls.SetChildIndex(this.spacer2, 0);
-			this.Controls.SetChildIndex(this.textBoxUri, 0);
-			this.Controls.SetChildIndex(this.spacer3, 0);
-			this.Controls.SetChildIndex(this.buttonUri, 0);
-			this.Controls.SetChildIndex(this.spacer4, 0);
-			this.Controls.SetChildIndex(this.buttonFiles, 0);
+			this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
+			this.flowLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -153,12 +127,9 @@
 
 		private Web.TextBox textBoxText;
 		private Web.Button buttonText;
-		private Web.Spacer spacer1;
-		private Web.Spacer spacer2;
 		private Web.Button buttonUri;
-		private Web.Spacer spacer3;
 		private Web.TextBox textBoxUri;
-		private Web.Spacer spacer4;
 		private Web.Button buttonFiles;
+		private Web.FlowLayoutPanel flowLayoutPanel1;
 	}
 }

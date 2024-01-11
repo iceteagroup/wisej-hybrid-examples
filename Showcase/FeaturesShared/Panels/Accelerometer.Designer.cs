@@ -31,52 +31,41 @@
 			this.labelZ = new Wisej.Web.Label();
 			this.labelY = new Wisej.Web.Label();
 			this.labelX = new Wisej.Web.Label();
-			this.label1 = new Wisej.Web.Label();
 			this.SuspendLayout();
 			// 
 			// labelZ
 			// 
-			this.labelZ.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Left | Wisej.Web.AnchorStyles.Right)));
-			this.labelZ.Location = new System.Drawing.Point(21, 279);
+			this.labelZ.Dock = Wisej.Web.DockStyle.Top;
+			this.labelZ.Location = new System.Drawing.Point(16, 158);
 			this.labelZ.Name = "labelZ";
-			this.labelZ.Size = new System.Drawing.Size(608, 15);
+			this.labelZ.Size = new System.Drawing.Size(618, 45);
 			this.labelZ.TabIndex = 5;
 			this.labelZ.Text = "Z";
 			this.labelZ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelY
 			// 
-			this.labelY.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Left | Wisej.Web.AnchorStyles.Right)));
-			this.labelY.Location = new System.Drawing.Point(21, 232);
+			this.labelY.Dock = Wisej.Web.DockStyle.Top;
+			this.labelY.Location = new System.Drawing.Point(16, 113);
 			this.labelY.Name = "labelY";
-			this.labelY.Size = new System.Drawing.Size(608, 15);
+			this.labelY.Size = new System.Drawing.Size(618, 45);
 			this.labelY.TabIndex = 4;
 			this.labelY.Text = "Y";
 			this.labelY.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// labelX
 			// 
-			this.labelX.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Left | Wisej.Web.AnchorStyles.Right)));
-			this.labelX.Location = new System.Drawing.Point(21, 185);
+			this.labelX.Dock = Wisej.Web.DockStyle.Top;
+			this.labelX.Location = new System.Drawing.Point(16, 68);
 			this.labelX.Name = "labelX";
-			this.labelX.Size = new System.Drawing.Size(608, 15);
+			this.labelX.Size = new System.Drawing.Size(618, 45);
 			this.labelX.TabIndex = 3;
 			this.labelX.Text = "X";
 			this.labelX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label1
-			// 
-			this.label1.Anchor = Wisej.Web.AnchorStyles.None;
-			this.label1.Location = new System.Drawing.Point(171, 336);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(308, 66);
-			this.label1.TabIndex = 21;
-			this.label1.Text = "The acceleration vector in G\'s (gravitational force).";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
 			// Accelerometer
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -84,17 +73,16 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelZ);
 			this.Controls.Add(this.labelY);
 			this.Controls.Add(this.labelX);
+			this.Hint = "The accelerometer measures the acceleration vector in G\'s (gravitational force).";
 			this.Name = "Accelerometer";
 			this.Appear += new System.EventHandler(this.Accelerometer_Appear);
 			this.Disappear += new System.EventHandler(this.Accelerometer_Disappear);
 			this.Controls.SetChildIndex(this.labelX, 0);
 			this.Controls.SetChildIndex(this.labelY, 0);
 			this.Controls.SetChildIndex(this.labelZ, 0);
-			this.Controls.SetChildIndex(this.label1, 0);
 			this.ResumeLayout(false);
 
 		}
@@ -104,6 +92,5 @@
 		private Web.Label labelZ;
 		private Web.Label labelY;
 		private Web.Label labelX;
-		private Web.Label label1;
 	}
 }

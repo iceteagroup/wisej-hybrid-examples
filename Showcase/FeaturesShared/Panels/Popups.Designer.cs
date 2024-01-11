@@ -36,19 +36,17 @@
 			this.textBoxOption3 = new Wisej.Web.TextBox();
 			this.comboBoxPopupType = new Wisej.Web.ComboBox();
 			this.textBoxMessage = new Wisej.Web.TextBox();
-			this.spacer1 = new Wisej.Web.Spacer();
-			this.spacer2 = new Wisej.Web.Spacer();
-			this.spacer3 = new Wisej.Web.Spacer();
-			this.spacer4 = new Wisej.Web.Spacer();
+			this.flowLayoutPanel1 = new Wisej.Web.FlowLayoutPanel();
 			this.groupBox1.SuspendLayout();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonShow
 			// 
-			this.buttonShow.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonShow.Location = new System.Drawing.Point(16, 492);
+			this.flowLayoutPanel1.SetFillWeight(this.buttonShow, 1);
+			this.buttonShow.Location = new System.Drawing.Point(312, 216);
 			this.buttonShow.Name = "buttonShow";
-			this.buttonShow.Size = new System.Drawing.Size(618, 40);
+			this.buttonShow.Size = new System.Drawing.Size(303, 37);
 			this.buttonShow.TabIndex = 2;
 			this.buttonShow.Text = "Show";
 			this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
@@ -56,10 +54,10 @@
 			// textBoxTitle
 			// 
 			this.textBoxTitle.AutoSize = false;
-			this.textBoxTitle.Dock = Wisej.Web.DockStyle.Top;
-			this.textBoxTitle.Location = new System.Drawing.Point(16, 128);
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxTitle, 1);
+			this.textBoxTitle.Location = new System.Drawing.Point(3, 3);
 			this.textBoxTitle.Name = "textBoxTitle";
-			this.textBoxTitle.Size = new System.Drawing.Size(618, 40);
+			this.textBoxTitle.Size = new System.Drawing.Size(303, 37);
 			this.textBoxTitle.TabIndex = 0;
 			this.textBoxTitle.Text = "Title";
 			this.textBoxTitle.Watermark = "Message";
@@ -69,10 +67,11 @@
 			this.groupBox1.Controls.Add(this.textBoxOption1);
 			this.groupBox1.Controls.Add(this.textBoxOption2);
 			this.groupBox1.Controls.Add(this.textBoxOption3);
-			this.groupBox1.Dock = Wisej.Web.DockStyle.Top;
-			this.groupBox1.Location = new System.Drawing.Point(16, 248);
+			this.flowLayoutPanel1.SetFillWeight(this.groupBox1, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.groupBox1, true);
+			this.groupBox1.Location = new System.Drawing.Point(3, 46);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(618, 164);
+			this.groupBox1.Size = new System.Drawing.Size(612, 164);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.Text = "Options";
 			// 
@@ -83,7 +82,7 @@
 			this.textBoxOption1.AutoSize = false;
 			this.textBoxOption1.Location = new System.Drawing.Point(6, 36);
 			this.textBoxOption1.Name = "textBoxOption1";
-			this.textBoxOption1.Size = new System.Drawing.Size(606, 30);
+			this.textBoxOption1.Size = new System.Drawing.Size(600, 30);
 			this.textBoxOption1.TabIndex = 1;
 			this.textBoxOption1.Text = "John";
 			this.textBoxOption1.Watermark = "Text";
@@ -95,7 +94,7 @@
 			this.textBoxOption2.AutoSize = false;
 			this.textBoxOption2.Location = new System.Drawing.Point(6, 80);
 			this.textBoxOption2.Name = "textBoxOption2";
-			this.textBoxOption2.Size = new System.Drawing.Size(606, 30);
+			this.textBoxOption2.Size = new System.Drawing.Size(600, 30);
 			this.textBoxOption2.TabIndex = 4;
 			this.textBoxOption2.Text = "Jane";
 			this.textBoxOption2.Watermark = "Text";
@@ -107,7 +106,7 @@
 			this.textBoxOption3.AutoSize = false;
 			this.textBoxOption3.Location = new System.Drawing.Point(6, 124);
 			this.textBoxOption3.Name = "textBoxOption3";
-			this.textBoxOption3.Size = new System.Drawing.Size(606, 30);
+			this.textBoxOption3.Size = new System.Drawing.Size(600, 30);
 			this.textBoxOption3.TabIndex = 7;
 			this.textBoxOption3.Text = "Jenny";
 			this.textBoxOption3.Watermark = "Text";
@@ -115,56 +114,45 @@
 			// comboBoxPopupType
 			// 
 			this.comboBoxPopupType.AutoSize = false;
-			this.comboBoxPopupType.Dock = Wisej.Web.DockStyle.Top;
 			this.comboBoxPopupType.DropDownStyle = Wisej.Web.ComboBoxStyle.DropDownList;
+			this.flowLayoutPanel1.SetFillWeight(this.comboBoxPopupType, 1);
 			this.comboBoxPopupType.Items.AddRange(new object[] {
             "Alert",
             "Prompt",
             "ActionSheet"});
-			this.comboBoxPopupType.Location = new System.Drawing.Point(16, 432);
+			this.comboBoxPopupType.Location = new System.Drawing.Point(3, 216);
 			this.comboBoxPopupType.Name = "comboBoxPopupType";
-			this.comboBoxPopupType.Size = new System.Drawing.Size(618, 40);
+			this.comboBoxPopupType.Size = new System.Drawing.Size(303, 37);
 			this.comboBoxPopupType.TabIndex = 3;
 			this.comboBoxPopupType.Text = "ActionSheet";
 			// 
 			// textBoxMessage
 			// 
 			this.textBoxMessage.AutoSize = false;
-			this.textBoxMessage.Dock = Wisej.Web.DockStyle.Top;
-			this.textBoxMessage.Location = new System.Drawing.Point(16, 188);
+			this.flowLayoutPanel1.SetFillWeight(this.textBoxMessage, 1);
+			this.flowLayoutPanel1.SetFlowBreak(this.textBoxMessage, true);
+			this.textBoxMessage.Location = new System.Drawing.Point(312, 3);
 			this.textBoxMessage.Name = "textBoxMessage";
-			this.textBoxMessage.Size = new System.Drawing.Size(618, 40);
+			this.textBoxMessage.Size = new System.Drawing.Size(303, 37);
 			this.textBoxMessage.TabIndex = 4;
 			this.textBoxMessage.Text = "Message";
 			this.textBoxMessage.Watermark = "Message";
 			// 
-			// spacer1
+			// flowLayoutPanel1
 			// 
-			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 472);
-			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 20);
-			// 
-			// spacer2
-			// 
-			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 228);
-			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(618, 20);
-			// 
-			// spacer3
-			// 
-			this.spacer3.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer3.Location = new System.Drawing.Point(16, 412);
-			this.spacer3.Name = "spacer3";
-			this.spacer3.Size = new System.Drawing.Size(618, 20);
-			// 
-			// spacer4
-			// 
-			this.spacer4.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer4.Location = new System.Drawing.Point(16, 168);
-			this.spacer4.Name = "spacer4";
-			this.spacer4.Size = new System.Drawing.Size(618, 20);
+			this.flowLayoutPanel1.AutoScroll = true;
+			this.flowLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(0, 20);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxTitle);
+			this.flowLayoutPanel1.Controls.Add(this.textBoxMessage);
+			this.flowLayoutPanel1.Controls.Add(this.groupBox1);
+			this.flowLayoutPanel1.Controls.Add(this.comboBoxPopupType);
+			this.flowLayoutPanel1.Controls.Add(this.buttonShow);
+			this.flowLayoutPanel1.Dock = Wisej.Web.DockStyle.Fill;
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 68);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.ScrollBars = Wisej.Web.ScrollBars.Hidden;
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(618, 410);
+			this.flowLayoutPanel1.TabIndex = 25;
 			// 
 			// Popups
 			// 
@@ -176,27 +164,12 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.buttonShow);
-			this.Controls.Add(this.spacer1);
-			this.Controls.Add(this.comboBoxPopupType);
-			this.Controls.Add(this.spacer3);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.spacer2);
-			this.Controls.Add(this.textBoxMessage);
-			this.Controls.Add(this.spacer4);
-			this.Controls.Add(this.textBoxTitle);
+			this.Controls.Add(this.flowLayoutPanel1);
+			this.Hint = "Show native device popups.";
 			this.Name = "Popups";
-			this.Size = new System.Drawing.Size(650, 593);
-			this.Controls.SetChildIndex(this.textBoxTitle, 0);
-			this.Controls.SetChildIndex(this.spacer4, 0);
-			this.Controls.SetChildIndex(this.textBoxMessage, 0);
-			this.Controls.SetChildIndex(this.spacer2, 0);
-			this.Controls.SetChildIndex(this.groupBox1, 0);
-			this.Controls.SetChildIndex(this.spacer3, 0);
-			this.Controls.SetChildIndex(this.comboBoxPopupType, 0);
-			this.Controls.SetChildIndex(this.spacer1, 0);
-			this.Controls.SetChildIndex(this.buttonShow, 0);
+			this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
 			this.groupBox1.ResumeLayout(false);
+			this.flowLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -211,9 +184,6 @@
 		private Web.TextBox textBoxOption1;
 		private Web.ComboBox comboBoxPopupType;
 		private Web.TextBox textBoxMessage;
-		private Web.Spacer spacer1;
-		private Web.Spacer spacer2;
-		private Web.Spacer spacer3;
-		private Web.Spacer spacer4;
+		private Web.FlowLayoutPanel flowLayoutPanel1;
 	}
 }

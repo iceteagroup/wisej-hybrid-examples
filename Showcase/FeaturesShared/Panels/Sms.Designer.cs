@@ -40,7 +40,7 @@
 			this.tagTextBoxRecipients.AutoSize = false;
 			this.tagTextBoxRecipients.Dock = Wisej.Web.DockStyle.Top;
 			this.tagTextBoxRecipients.LabelText = "Recipients";
-			this.tagTextBoxRecipients.Location = new System.Drawing.Point(16, 128);
+			this.tagTextBoxRecipients.Location = new System.Drawing.Point(16, 68);
 			this.tagTextBoxRecipients.MaxTagWidth = 150;
 			this.tagTextBoxRecipients.Name = "tagTextBoxRecipients";
 			this.tagTextBoxRecipients.Size = new System.Drawing.Size(618, 60);
@@ -50,15 +50,15 @@
 			// spacer1
 			// 
 			this.spacer1.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer1.Location = new System.Drawing.Point(16, 188);
+			this.spacer1.Location = new System.Drawing.Point(16, 128);
 			this.spacer1.Name = "spacer1";
-			this.spacer1.Size = new System.Drawing.Size(618, 20);
+			this.spacer1.Size = new System.Drawing.Size(618, 16);
 			// 
 			// textBoxBody
 			// 
 			this.textBoxBody.Dock = Wisej.Web.DockStyle.Top;
 			this.textBoxBody.LabelText = "Body";
-			this.textBoxBody.Location = new System.Drawing.Point(16, 208);
+			this.textBoxBody.Location = new System.Drawing.Point(16, 144);
 			this.textBoxBody.Name = "textBoxBody";
 			this.textBoxBody.Size = new System.Drawing.Size(618, 55);
 			this.textBoxBody.TabIndex = 21;
@@ -66,14 +66,14 @@
 			// spacer2
 			// 
 			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 263);
+			this.spacer2.Location = new System.Drawing.Point(16, 199);
 			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(618, 20);
+			this.spacer2.Size = new System.Drawing.Size(618, 16);
 			// 
 			// buttonCompose
 			// 
 			this.buttonCompose.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonCompose.Location = new System.Drawing.Point(16, 283);
+			this.buttonCompose.Location = new System.Drawing.Point(16, 215);
 			this.buttonCompose.Name = "buttonCompose";
 			this.buttonCompose.Size = new System.Drawing.Size(618, 37);
 			this.buttonCompose.TabIndex = 24;
@@ -82,7 +82,7 @@
 			// 
 			// Sms
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -95,6 +95,7 @@
 			this.Controls.Add(this.textBoxBody);
 			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.tagTextBoxRecipients);
+			this.Hint = "Compose SMS messages.";
 			this.Name = "Sms";
 			this.Load += new System.EventHandler(this.Sms_Load);
 			this.Controls.SetChildIndex(this.tagTextBoxRecipients, 0);

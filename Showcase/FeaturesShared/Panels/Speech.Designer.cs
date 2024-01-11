@@ -62,7 +62,7 @@
 			// 
 			// Speech
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -74,6 +74,7 @@
 			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.textBoxText);
 			this.Dock = Wisej.Web.DockStyle.Top;
+			this.Hint = "Use the device\'s built-in text-to-speech capabilities.";
 			this.Name = "Speech";
 			this.Controls.SetChildIndex(this.textBoxText, 0);
 			this.Controls.SetChildIndex(this.spacer1, 0);

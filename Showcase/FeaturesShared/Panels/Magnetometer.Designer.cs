@@ -31,7 +31,6 @@
 			this.labelZ = new Wisej.Web.Label();
 			this.labelY = new Wisej.Web.Label();
 			this.labelX = new Wisej.Web.Label();
-			this.label1 = new Wisej.Web.Label();
 			this.SuspendLayout();
 			// 
 			// labelZ
@@ -64,19 +63,9 @@
 			this.labelX.Text = "X";
 			this.labelX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label1
-			// 
-			this.label1.Anchor = Wisej.Web.AnchorStyles.None;
-			this.label1.Location = new System.Drawing.Point(171, 336);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(308, 31);
-			this.label1.TabIndex = 19;
-			this.label1.Text = "The magnetic field vector in microteslas (µ).";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
 			// Magnetometer
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -84,17 +73,16 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelZ);
 			this.Controls.Add(this.labelY);
 			this.Controls.Add(this.labelX);
+			this.Hint = "The magnetometer measures the magnetic field vector in microteslas (µ).";
 			this.Name = "Magnetometer";
 			this.Appear += new System.EventHandler(this.Magnetometer_Appear);
 			this.Disappear += new System.EventHandler(this.Magnetometer_Disappear);
 			this.Controls.SetChildIndex(this.labelX, 0);
 			this.Controls.SetChildIndex(this.labelY, 0);
 			this.Controls.SetChildIndex(this.labelZ, 0);
-			this.Controls.SetChildIndex(this.label1, 0);
 			this.ResumeLayout(false);
 
 		}
@@ -104,6 +92,5 @@
 		private Web.Label labelZ;
 		private Web.Label labelY;
 		private Web.Label labelX;
-		private Web.Label label1;
 	}
 }

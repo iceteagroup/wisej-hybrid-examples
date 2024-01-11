@@ -38,9 +38,9 @@
 			// buttonScan
 			// 
 			this.buttonScan.Dock = Wisej.Web.DockStyle.Top;
-			this.buttonScan.Location = new System.Drawing.Point(16, 202);
+			this.buttonScan.Location = new System.Drawing.Point(16, 138);
 			this.buttonScan.Name = "buttonScan";
-			this.buttonScan.Size = new System.Drawing.Size(620, 40);
+			this.buttonScan.Size = new System.Drawing.Size(618, 40);
 			this.buttonScan.TabIndex = 1;
 			this.buttonScan.Text = "Scan Documents";
 			this.buttonScan.Click += new System.EventHandler(this.buttonScan_Click);
@@ -49,9 +49,9 @@
 			// 
 			this.trackBarQuality.Dock = Wisej.Web.DockStyle.Top;
 			this.trackBarQuality.LargeChange = 2;
-			this.trackBarQuality.Location = new System.Drawing.Point(16, 148);
+			this.trackBarQuality.Location = new System.Drawing.Point(16, 88);
 			this.trackBarQuality.Name = "trackBarQuality";
-			this.trackBarQuality.Size = new System.Drawing.Size(620, 34);
+			this.trackBarQuality.Size = new System.Drawing.Size(618, 34);
 			this.trackBarQuality.TabIndex = 20;
 			this.trackBarQuality.Text = "1";
 			this.trackBarQuality.TickStyle = Wisej.Web.TickStyle.None;
@@ -60,17 +60,17 @@
 			// spacer2
 			// 
 			this.spacer2.Dock = Wisej.Web.DockStyle.Top;
-			this.spacer2.Location = new System.Drawing.Point(16, 182);
+			this.spacer2.Location = new System.Drawing.Point(16, 122);
 			this.spacer2.Name = "spacer2";
-			this.spacer2.Size = new System.Drawing.Size(620, 20);
+			this.spacer2.Size = new System.Drawing.Size(618, 16);
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Dock = Wisej.Web.DockStyle.Top;
-			this.label1.Location = new System.Drawing.Point(16, 128);
+			this.label1.Location = new System.Drawing.Point(16, 68);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(620, 20);
+			this.label1.Size = new System.Drawing.Size(618, 20);
 			this.label1.TabIndex = 22;
 			this.label1.Text = "Image Scale Factor";
 			// 
@@ -88,8 +88,8 @@
 			this.Controls.Add(this.spacer2);
 			this.Controls.Add(this.trackBarQuality);
 			this.Controls.Add(this.label1);
+			this.Hint = "Scan documents using VisionKit (iOS) and OpenCV (Android)";
 			this.Name = "DocumentScanner";
-			this.Size = new System.Drawing.Size(652, 550);
 			this.Controls.SetChildIndex(this.label1, 0);
 			this.Controls.SetChildIndex(this.trackBarQuality, 0);
 			this.Controls.SetChildIndex(this.spacer2, 0);

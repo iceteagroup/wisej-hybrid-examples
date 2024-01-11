@@ -28,33 +28,22 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.label1 = new Wisej.Web.Label();
 			this.labelHeading = new Wisej.Web.Label();
 			this.SuspendLayout();
 			// 
-			// label1
-			// 
-			this.label1.Anchor = Wisej.Web.AnchorStyles.None;
-			this.label1.Location = new System.Drawing.Point(171, 252);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(308, 59);
-			this.label1.TabIndex = 22;
-			this.label1.Text = " The heading (measured in degrees) relative to magnetic north.";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
 			// labelHeading
 			// 
-			this.labelHeading.Anchor = Wisej.Web.AnchorStyles.None;
-			this.labelHeading.Location = new System.Drawing.Point(171, 195);
+			this.labelHeading.Dock = Wisej.Web.DockStyle.Top;
+			this.labelHeading.Location = new System.Drawing.Point(16, 68);
 			this.labelHeading.Name = "labelHeading";
-			this.labelHeading.Size = new System.Drawing.Size(308, 15);
+			this.labelHeading.Size = new System.Drawing.Size(618, 30);
 			this.labelHeading.TabIndex = 21;
 			this.labelHeading.Text = "heading";
 			this.labelHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// Compass
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -62,20 +51,18 @@
 			this.animation2.GetAnimation(this).Event = "disappear";
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
-			this.Controls.Add(this.label1);
 			this.Controls.Add(this.labelHeading);
+			this.Hint = "The compass measures the heading (measured in degrees) relative to magnetic north" +
+    ".";
 			this.Name = "Compass";
 			this.Appear += new System.EventHandler(this.Compass_Appear);
 			this.Disappear += new System.EventHandler(this.Compass_Disappear);
 			this.Controls.SetChildIndex(this.labelHeading, 0);
-			this.Controls.SetChildIndex(this.label1, 0);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private Web.Label label1;
 		private Web.Label labelHeading;
 	}
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using Wisej.Hybrid.Shared.TabBar;
 using Wisej.Web;
 
@@ -104,7 +105,7 @@ namespace Wisej.Hybrid.Features.Panels
 		private void UpdateColors()
 		{
 			// apply background color.
-			var color = ColorTranslator.FromHtml(this.textBoxBackColor.Text);
+			var color = Color.FromArgb(0, ColorTranslator.FromHtml(this.textBoxBackColor.Text));
 
 			Device.TabBar.BackColor = color;
 

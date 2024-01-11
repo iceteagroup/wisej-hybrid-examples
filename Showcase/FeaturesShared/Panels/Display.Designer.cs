@@ -31,13 +31,13 @@
 			this.checkBoxKeepOn = new Wisej.Web.CheckBox();
 			this.SuspendLayout();
 			// 
-			// checkBox1
+			// checkBoxKeepOn
 			// 
 			this.checkBoxKeepOn.Appearance = Wisej.Web.Appearance.Switch;
 			this.checkBoxKeepOn.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.checkBoxKeepOn.Dock = Wisej.Web.DockStyle.Top;
 			this.checkBoxKeepOn.Location = new System.Drawing.Point(16, 128);
-			this.checkBoxKeepOn.Name = "checkBox1";
+			this.checkBoxKeepOn.Name = "checkBoxKeepOn";
 			this.checkBoxKeepOn.Size = new System.Drawing.Size(618, 53);
 			this.checkBoxKeepOn.TabIndex = 20;
 			this.checkBoxKeepOn.Text = "Keep Screen On";
@@ -46,7 +46,7 @@
 			// 
 			// Display
 			// 
-   this.animation1.GetAnimation(this).Duration = 300;
+			this.animation1.GetAnimation(this).Duration = 300;
 			this.animation1.GetAnimation(this).Event = "appear";
 			this.animation1.GetAnimation(this).Name = "slideRightIn";
 			this.animation1.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
@@ -55,6 +55,7 @@
 			this.animation2.GetAnimation(this).Name = "slideRightOut";
 			this.animation2.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.Ease;
 			this.Controls.Add(this.checkBoxKeepOn);
+			this.Hint = "Prevent the screen from timing out.";
 			this.Name = "Display";
 			this.Controls.SetChildIndex(this.checkBoxKeepOn, 0);
 			this.ResumeLayout(false);

@@ -2,11 +2,12 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using Wisej.Base;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
 {
-	public partial class AppItemView : UserControl
+	public partial class AppItem : UserControl
 	{
 
 		#region Properties
@@ -23,12 +24,12 @@ namespace Wisej.Hybrid.Features.Panels
 
 		#region Constructors
 
-		public AppItemView()
+		public AppItem()
 		{
 			InitializeComponent();
 		}
 
-		public AppItemView(TestBase instance)
+		public AppItem(TestBase instance)
 		{
 			InitializeComponent();
 
@@ -71,6 +72,8 @@ namespace Wisej.Hybrid.Features.Panels
 		private void AppItem_Load(object sender, EventArgs e)
 		{
 			this.labelTitle.Text = this.Title;
+			//this.labelTitle.Size = TextUtils.MeasureText(this.Title, this.labelTitle.Font, this.labelTitle.Size);
+
 			this.pictureBoxIcon.ImageSource = this.ImageSource;
 			this.labelDescription.Text = GetCategory(this.Instance.GetType());
 		}
