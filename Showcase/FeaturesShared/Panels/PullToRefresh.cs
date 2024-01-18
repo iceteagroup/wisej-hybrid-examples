@@ -17,7 +17,7 @@ namespace FeaturesShared.Panels
 			InitializeComponent();
 
 			pullToRefresh.SetPullToRefresh(this.flowLayoutPanelData, true);
-			pullToRefresh.ImageSource = "resource.wx/loader.svg";
+			pullToRefresh.ImageSource = "resource.wx/pull-to-refresh.svg";
 			pullToRefresh.Refresh += Ptr_Refresh;
 		}
 

@@ -16,7 +16,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Info.System.Idiom == "Desktop";
+			return Device.Info.System.Idiom == Modules.System.DeviceIdiom.Desktop;
 		}
 
 		private void MenuBar_Appear(object sender, EventArgs e)

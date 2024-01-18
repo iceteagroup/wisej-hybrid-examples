@@ -81,11 +81,11 @@
 		<None Remove="Images\Icons\Storage.svg" />
 		<None Remove="Images\Icons\theme.svg" />
 		<None Remove="Images\Icons\UI.svg" />
-		<None Remove="Images\loader.svg" />
 		<None Remove="Images\logo-wisej-white.png" />
 		<None Remove="Images\more-icon.png" />
 		<None Remove="Images\options-icon.png" />
 		<None Remove="Images\passcode.png" />
+		<None Remove="Images\pull-to-refresh.svg" />
 		<None Remove="Images\setting-icon.png" />
 		<None Remove="Images\splash.png" />
 		<None Remove="Images\splash.svg" />
@@ -124,7 +124,7 @@
 		<EmbeddedResource Include="Images\Icons\Storage.svg" />
 		<EmbeddedResource Include="Images\Icons\theme.svg" />
 		<EmbeddedResource Include="Images\Icons\UI.svg" />
-		<EmbeddedResource Include="Images\loader.svg" />
+		<EmbeddedResource Include="Images\pull-to-refresh.svg" />
 		<EmbeddedResource Include="Images\wisej-blue.png" />
 		<EmbeddedResource Include="Images\wisej-red.png" />
 		<HybridAsset Include="Images\logo-wisej-white.png" />
