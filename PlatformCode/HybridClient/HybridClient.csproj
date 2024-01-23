@@ -37,11 +37,16 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
 		<PublishTrimmed>False</PublishTrimmed>
 		<RunAOTCompilation>False</RunAOTCompilation>
+		<AndroidEnableMultiDex>True</AndroidEnableMultiDex>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
 	  <CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
 	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
 	</PropertyGroup>
 
 	<ItemGroup>

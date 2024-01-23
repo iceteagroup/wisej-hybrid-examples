@@ -25,7 +25,9 @@ namespace WisejHybridLocalApplication
 		private void buttonNativeDialog_Click(object sender, System.EventArgs e)
 		{
 #if ANDROID || IOS
-			Dialog.ShowDialog("Welcome", "Hello!", () => AlertBox.Show("Dialog closed."));
+			Dialog.ShowDialog("Welcome", "Hello!", (r) => {
+				Application.Update(this, () => AlertBox.Show($"Dialog closed: {r}"));
+			});
 #endif
 		}
 	}
