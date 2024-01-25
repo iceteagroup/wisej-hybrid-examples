@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Wisej.Hybrid.Modules.System;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -26,7 +27,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Info.System.Platform != "WinUI";
+			return Device.Valid && Device.Info.System.Platform != DevicePlatform.WinUI;
 		}
 	}
 }

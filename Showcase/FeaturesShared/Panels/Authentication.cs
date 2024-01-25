@@ -19,10 +19,16 @@ namespace Wisej.Hybrid.Features
 
 			switch (info.AuthenticationType)
 			{
-				case "":
+				case AuthenticationType.TouchId:
+					this.pictureBoxAuthenticate.ImageSource = "resource.wx/FeaturesShared/Images/touch-id.png";
 					break;
 
-				default:
+				case AuthenticationType.Passcode:
+					this.pictureBoxAuthenticate.ImageSource = "resource.wx/FeaturesShared/Images/passcode.png";
+					break;
+
+				case AuthenticationType.Unknown:
+					this.pictureBoxAuthenticate.ImageSource = "resource.wx/FeaturesShared/Images/unknown.png";
 					break;
 			}
 		}

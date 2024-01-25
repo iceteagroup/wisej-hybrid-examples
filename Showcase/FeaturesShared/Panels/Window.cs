@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Wisej.Hybrid;
+using Wisej.Hybrid.Modules.System;
 
 namespace FeaturesShared.Panels
 {
@@ -14,7 +15,14 @@ namespace FeaturesShared.Panels
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Device.Windows.TryOpen("https://demo.wisej.com/Hybrid");
+			Device.Windows.TryOpen(this.textBoxUrl.Text);
+		}
+
+		public override bool IsSupported()
+		{
+			return Device.Valid && 
+			// iPhone doesn't support multiple windows.
+			(Device.Info.System.Platform != DevicePlatform.iOS || Device.Info.System.Idiom == DeviceIdiom.Tablet);
 		}
 	}
 }

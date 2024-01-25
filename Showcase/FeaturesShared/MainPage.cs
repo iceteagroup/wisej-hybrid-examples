@@ -86,7 +86,7 @@ namespace Wisej.Hybrid.Features
 
 		private void SwitchView(TestBase instance)
 		{
-			if (instance.Equals(this.currentView))
+			if (instance == null || instance.Equals(this.currentView))
 				return;
 
 			if (this.currentView != null)

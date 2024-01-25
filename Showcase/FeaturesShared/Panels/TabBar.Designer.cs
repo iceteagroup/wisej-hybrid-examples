@@ -52,7 +52,7 @@
 			this.checkBoxVisible.Location = new System.Drawing.Point(3, 3);
 			this.checkBoxVisible.Name = "checkBoxVisible";
 			this.checkBoxVisible.Padding = new Wisej.Web.Padding(0, 0, 16, 0);
-			this.checkBoxVisible.Size = new System.Drawing.Size(180, 37);
+			this.checkBoxVisible.Size = new System.Drawing.Size(121, 37);
 			this.checkBoxVisible.TabIndex = 1;
 			this.checkBoxVisible.Text = "Visible";
 			this.checkBoxVisible.CheckedChanged += new System.EventHandler(this.checkBoxVisible_CheckedChanged);
@@ -62,7 +62,7 @@
 			this.textBoxSelectedColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxSelectedColor.AutoSize = false;
 			this.textBoxSelectedColor.InputType.Type = Wisej.Web.TextBoxType.Color;
-			this.textBoxSelectedColor.Location = new System.Drawing.Point(384, 1);
+			this.textBoxSelectedColor.Location = new System.Drawing.Point(443, 1);
 			this.textBoxSelectedColor.Name = "textBoxSelectedColor";
 			this.textBoxSelectedColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxSelectedColor.TabIndex = 3;
@@ -116,10 +116,10 @@
 			this.panel1.Controls.Add(this.textBoxSelectedColor);
 			this.flowLayoutPanelItems.SetFillWeight(this.panel1, 1);
 			this.flowLayoutPanelItems.SetFlowBreak(this.panel1, true);
-			this.panel1.Location = new System.Drawing.Point(189, 3);
+			this.panel1.Location = new System.Drawing.Point(130, 3);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new Wisej.Web.Padding(16, 0, 0, 0);
-			this.panel1.Size = new System.Drawing.Size(426, 37);
+			this.panel1.Size = new System.Drawing.Size(485, 37);
 			this.panel1.TabIndex = 20;
 			// 
 			// textBoxBackColor
@@ -127,7 +127,7 @@
 			this.textBoxBackColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxBackColor.AutoSize = false;
 			this.textBoxBackColor.InputType.Type = Wisej.Web.TextBoxType.Color;
-			this.textBoxBackColor.Location = new System.Drawing.Point(304, 1);
+			this.textBoxBackColor.Location = new System.Drawing.Point(363, 1);
 			this.textBoxBackColor.Name = "textBoxBackColor";
 			this.textBoxBackColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxBackColor.TabIndex = 9;
@@ -138,7 +138,7 @@
 			this.textBoxUnselectedColor.Anchor = ((Wisej.Web.AnchorStyles)((Wisej.Web.AnchorStyles.Top | Wisej.Web.AnchorStyles.Right)));
 			this.textBoxUnselectedColor.AutoSize = false;
 			this.textBoxUnselectedColor.InputType.Type = Wisej.Web.TextBoxType.Color;
-			this.textBoxUnselectedColor.Location = new System.Drawing.Point(344, 1);
+			this.textBoxUnselectedColor.Location = new System.Drawing.Point(403, 1);
 			this.textBoxUnselectedColor.Name = "textBoxUnselectedColor";
 			this.textBoxUnselectedColor.Size = new System.Drawing.Size(34, 34);
 			this.textBoxUnselectedColor.TabIndex = 8;

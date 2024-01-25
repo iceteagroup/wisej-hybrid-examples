@@ -13,7 +13,7 @@ namespace Wisej.Hybrid.Features.Panels
 		}
 
 		private void Accelerometer_Appear(object sender, EventArgs e)
-		{
+		{ 
 			Device.Sensors.Start(SensorType.Accelerometer);
 			Device.Sensors.AccelerometerChanged += Accelerometer_ReadingChanged;
 		}

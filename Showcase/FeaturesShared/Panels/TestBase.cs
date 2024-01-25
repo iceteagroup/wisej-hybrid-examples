@@ -6,6 +6,7 @@ using Wisej.Web;
 
 namespace Wisej.Hybrid.Features
 {
+	[Category("Base")]
 	public partial class TestBase : UserControl
 	{
 		public event WidgetEventHandler ViewRequested;
@@ -83,7 +84,7 @@ namespace Wisej.Hybrid.Features
 		private void buttonSource_Click(object sender, EventArgs e)
 		{
 			var name = this.GetType().Name;
-			Device.Browser.Open($"https://github.com/iceteagroup/wisej-hybrid-examples/tree/main/FeaturesShared/Panels/{name}.cs", BrowserLaunchMode.SystemPreferred);
+			Device.Browser.Open($"https://github.com/iceteagroup/wisej-hybrid-examples/tree/main/Showcase/FeaturesShared/Panels/{name}.cs", BrowserLaunchMode.SystemPreferred);
 		}
 
 		public virtual bool IsSupported()

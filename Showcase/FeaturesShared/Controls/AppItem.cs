@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Text.RegularExpressions;
-using Wisej.Base;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -12,9 +11,9 @@ namespace Wisej.Hybrid.Features.Panels
 
 		#region Properties
 
-		private TestBase Instance;
+		private TestBase _instance;
 
-		private Random random = new Random((int)DateTime.Now.Ticks);
+		private Random _rand = new Random((int)DateTime.Now.Ticks);
 
 		public string Title;
 
@@ -36,10 +35,10 @@ namespace Wisej.Hybrid.Features.Panels
 			if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
 				return;
 
-			this.Instance = instance;
+			this._instance = instance;
 
 			var category = GetCategory(instance.GetType());
-			var title = String.Join(" ", Regex.Split(this.Instance.GetType().Name, @"(?<!^)(?=[A-Z])"));
+			var title = String.Join(" ", Regex.Split(this._instance.GetType().Name, @"(?<!^)(?=[A-Z])"));
 
 			this.Title = title;
 
@@ -72,15 +71,13 @@ namespace Wisej.Hybrid.Features.Panels
 		private void AppItem_Load(object sender, EventArgs e)
 		{
 			this.labelTitle.Text = this.Title;
-			//this.labelTitle.Size = TextUtils.MeasureText(this.Title, this.labelTitle.Font, this.labelTitle.Size);
-
 			this.pictureBoxIcon.ImageSource = this.ImageSource;
-			this.labelDescription.Text = GetCategory(this.Instance.GetType());
+			this.labelDescription.Text = GetCategory(this._instance.GetType());
 		}
 
 		private string GetRandomColor()
 		{
-			var color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+			var color = Color.FromArgb(_rand.Next(256), _rand.Next(256), _rand.Next(256));
 			return ColorTranslator.ToHtml(color);
 		}
 
@@ -98,7 +95,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void AppItemView_Click(object sender, EventArgs e)
 		{
-			this.OnViewRequested(new WidgetEventArgs("ViewRequested", this.Instance));
+			this.OnViewRequested(new WidgetEventArgs("ViewRequested", this._instance));
 		}
 
 		private void SetNativeColors()
@@ -119,7 +116,7 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			if (this._supported == null)
 			{
-				this._supported = this.Instance != null && this.Instance.IsSupported();
+				this._supported = this._instance != null && this._instance.IsSupported();
 				this.Enabled = (bool)this._supported;
 			}
 		}

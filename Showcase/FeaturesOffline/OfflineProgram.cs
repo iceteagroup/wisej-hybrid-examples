@@ -12,7 +12,6 @@ namespace FeaturesOffline
 		/// </summary>
 		static void Main()
 		{
-			Application.SessionTimeout += Application_SessionTimeout;
 			Application.ApplicationExit += Application_ApplicationExit;
 
 			Application.MainPage = new MainPage();
@@ -21,11 +20,6 @@ namespace FeaturesOffline
 		private static void Application_ApplicationExit(object sender, EventArgs e)
 		{
 			Application.MainPage = new MainPage();
-		}
-
-		private static void Application_SessionTimeout(object sender, HandledEventArgs e)
-		{
-			e.Handled = true;
 		}
 	}
 }
