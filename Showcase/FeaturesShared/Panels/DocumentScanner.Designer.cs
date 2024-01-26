@@ -1,4 +1,6 @@
-﻿namespace Wisej.Hybrid.Features.Panels
+﻿#if !WINDOWS
+
+namespace Wisej.Hybrid.Features.Panels
 {
 	partial class DocumentScanner
 	{
@@ -107,3 +109,5 @@
         private Web.Label label1;
     }
 }
+
+#endif

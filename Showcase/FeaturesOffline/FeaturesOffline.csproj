@@ -28,11 +28,11 @@
 	<HybridAsset Include="Offline.json" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'!='net48' AND '$(TargetFramework)'!='net7.0'">
-	<PackageReference Include="System.Drawing.Common" Version="7.0.0" Aliases="sdc"></PackageReference>
+  <ItemGroup Condition="'$(TargetFramework)'!='net48'">
+	<PackageReference Include="System.Drawing.Common" Version="7.0.0" ExcludeAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net48' OR '$(TargetFramework)'=='net7.0'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net48'">
 	<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 

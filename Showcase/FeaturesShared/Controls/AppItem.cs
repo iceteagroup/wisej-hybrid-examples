@@ -11,9 +11,9 @@ namespace Wisej.Hybrid.Features.Panels
 
 		#region Properties
 
-		private TestBase _instance;
+		private readonly TestBase _instance;
 
-		private Random _rand = new Random((int)DateTime.Now.Ticks);
+		private readonly Random _rand = new((int)DateTime.Now.Ticks);
 
 		public string Title;
 

@@ -1,4 +1,6 @@
-﻿using FeaturesShared.Windows;
+﻿#if !WINDOWS
+
+using FeaturesShared.Windows;
 using System;
 using System.ComponentModel;
 using Wisej.Hybrid.DocumentScanner;
@@ -24,7 +26,7 @@ namespace Wisej.Hybrid.Features.Panels
 				var scanner = Device.Use<DeviceDocumentScanner>();
 
 				var imageScaleFactor = (float)this.trackBarQuality.Value / 10;
-				foreach (dynamic image in scanner.Scan(imageScaleFactor)) 
+				foreach (var image in scanner.Scan(imageScaleFactor)) 
 				{
 					new ImageWindow(image).Show();
 				}
@@ -42,3 +44,5 @@ namespace Wisej.Hybrid.Features.Panels
 		}
 	}
 }
+
+#endif
