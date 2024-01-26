@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34518.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridClient", "HybridClient\HybridClient.csproj", "{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridLocal", "HybridLocal\HybridLocal.csproj", "{D9061C91-F0D1-48A7-AE69-583C573E54C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94FA58FA-CF74-46CC-AB45-AEAED9D9FC3E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D9061C91-F0D1-48A7-AE69-583C573E54C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9061C91-F0D1-48A7-AE69-583C573E54C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9061C91-F0D1-48A7-AE69-583C573E54C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9061C91-F0D1-48A7-AE69-583C573E54C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {808ECD90-E363-4B58-A097-F5717DCD7F78}
+	EndGlobalSection
+EndGlobal
