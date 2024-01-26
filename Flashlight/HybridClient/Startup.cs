@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using HybridLocal;
+using Microsoft.Extensions.Logging;
 using Wisej.Hybrid.Native.Core;
 
 namespace HybridClient
@@ -11,8 +12,8 @@ namespace HybridClient
 			builder
 				.UseMauiApp<App>()
 
-				// Uncomment and replace with Offline startup Type to use embedded web server.
-				// .UseWisejOffline<OfflineStartup>()
+				 // Uncomment and replace with Offline startup Type to use embedded web server.
+				 .UseWisejOffline<OfflineStartup>()
 
 				.UseWisejHybrid((config) =>
 				{
