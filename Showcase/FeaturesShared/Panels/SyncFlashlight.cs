@@ -18,6 +18,7 @@ namespace FeaturesShared.Panels
 
 		private void SyncFlashlight_Appear(object sender, EventArgs e)
 		{
+			ToggleFlash -= SyncFlashlight_ToggleFlash;
 			ToggleFlash += SyncFlashlight_ToggleFlash;
 		}
 
