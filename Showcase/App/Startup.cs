@@ -1,7 +1,7 @@
 ﻿using FeaturesOffline;
 using Microsoft.Extensions.Logging;
 using Wisej.Hybrid.Authentication.Native.Middleware;
-using Wisej.Hybrid.DocumentScanner.Native.Middleware;
+using Wisej.Hybrid.DocumentScanner.Native;
 #if !WINDOWS
 using Wisej.Hybrid.MLKit.Native.Middleware;
 #endif

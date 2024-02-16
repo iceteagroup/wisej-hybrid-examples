@@ -33,13 +33,6 @@
 	<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	<ProvisioningType>manual</ProvisioningType>
-	<CodesignKey>iPhone Distribution</CodesignKey>
-	<CodesignProvision></CodesignProvision>
-	<MtouchExtraArgs>$(MtouchExtraArgs) --weak-framework=NewsstandKit</MtouchExtraArgs>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	<MtouchLink>None</MtouchLink>
 	<MtouchUseLlvm>False</MtouchUseLlvm>
@@ -64,6 +57,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	<AndroidUseAapt2>True</AndroidUseAapt2>
 	<DebugSymbols>False</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+    <CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
+    <CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
   </PropertyGroup>
 
 	<ItemGroup>

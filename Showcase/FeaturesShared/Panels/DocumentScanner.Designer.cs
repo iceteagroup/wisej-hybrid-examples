@@ -74,7 +74,7 @@ namespace Wisej.Hybrid.Features.Panels
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(618, 20);
 			this.label1.TabIndex = 22;
-			this.label1.Text = "Image Scale Factor";
+			this.label1.Text = "Image Quality";
 			// 
 			// DocumentScanner
 			// 

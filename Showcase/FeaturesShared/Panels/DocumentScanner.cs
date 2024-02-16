@@ -25,8 +25,8 @@ namespace Wisej.Hybrid.Features.Panels
 			{
 				var scanner = Device.Use<DeviceDocumentScanner>();
 
-				var imageScaleFactor = (float)this.trackBarQuality.Value / 10;
-				foreach (var image in scanner.Scan(imageScaleFactor)) 
+				var imageQuality = (float)this.trackBarQuality.Value / 10;
+				foreach (var image in scanner.Scan(1280, 720, imageQuality)) 
 				{
 					new ImageWindow(image).Show();
 				}
