@@ -29,14 +29,14 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void buttonSelectVideo_Click(object sender, EventArgs e)
 		{
-			var video = Device.Media.PickVideo(1280, 720);
+			var video = Device.Media.PickVideo();
 
 			//new VideoWindow(video.ToArray()).Show();
 		}
 
 		private void buttonTakeVideo_Click(object sender, EventArgs e)
 		{
-			var video = Device.Media.CaptureVideo(1280, 720);
+			var video = Device.Media.CaptureVideo();
 
 			//new VideoWindow(video.ToArray()).Show();
 		}
