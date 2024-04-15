@@ -40,7 +40,7 @@
 			// 
 			this.labelTitle.CssStyle = "transition: font-size 0.25s;";
 			this.labelTitle.Dock = Wisej.Web.DockStyle.Top;
-			this.labelTitle.Font = new System.Drawing.Font("windowTitle", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+			this.labelTitle.Font = new System.Drawing.Font("itemTitle", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			this.labelTitle.ForeColor = System.Drawing.Color.FromName("@toolbarText");
 			this.labelTitle.Location = new System.Drawing.Point(16, 0);
 			this.labelTitle.Name = "labelTitle";

@@ -14,10 +14,6 @@
 		<Reference Include="System.Data.DataSetExtensions" />
 	</ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net48' AND '$(TargetFramework)'!='net8.0'">
-	<PackageReference Include="System.Drawing.Common" Version="7.0.0" ExcludeAssets="All" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<Compile Remove="Panels\BackButton.cs" />
 		<Compile Remove="Panels\BackButton.Designer.cs" />
@@ -77,6 +73,7 @@
 		<None Remove="Images\Icons\Storage.svg" />
 		<None Remove="Images\Icons\theme.svg" />
 		<None Remove="Images\Icons\UI.svg" />
+		<None Remove="Images\loader.svg" />
 		<None Remove="Images\logo-wisej-white.png" />
 		<None Remove="Images\more-icon.png" />
 		<None Remove="Images\options-icon.png" />

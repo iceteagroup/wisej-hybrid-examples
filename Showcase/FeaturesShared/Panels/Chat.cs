@@ -53,12 +53,12 @@ namespace FeaturesShared.Panels
 
 					NewMessage?.Invoke(this, new Message($"{name} has entered the chat.", user: _bot));
 
-					this.chatBox1.SendMessage += ChatBox1_SendMessage;
+					this.chatBox1.SendingMessage += ChatBox1_SendingMessage;
 				}
 			}
 		}
 
-		private void ChatBox1_SendMessage(SendMessageEventArgs e)
+		private void ChatBox1_SendingMessage(object sender, SendingMessageEventArgs e)
 		{
 			e.Cancel = true;
 

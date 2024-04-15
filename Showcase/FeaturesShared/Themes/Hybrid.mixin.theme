@@ -44,7 +44,7 @@
 			"bold": true
 		},
 		"windowTitle": {
-			"size": 40,
+			"size": 24,
 			"family": [ "Open Sans" ],
 			"sources": [
 				{
@@ -54,8 +54,19 @@
 			],
 			"bold": true
 		},
-		"windowTitleLandscape": {
-			"size": 25,
+		"itemTitle": {
+			"size": 36,
+			"family": [ "Open Sans" ],
+			"sources": [
+				{
+					"family": "Open Sans",
+					"source": [ "./Themes/Fonts/OpenSans.ttf" ]
+				}
+			],
+			"bold": true
+		},
+		"itemTitleLandscape": {
+			"size": 24,
 			"family": [ "Open Sans" ],
 			"sources": [
 				{

@@ -40,27 +40,8 @@ namespace Wisej.Hybrid.Features
 
 			Activate();
 
-			if (Device.Valid)
-			{
-				ApplyOrientationSizing();
-				Device.Sensors.OrientationSensorChanged += (s, e) => ApplyOrientationSizing();
-			}
-
 			this.labelTitle.Text = String.Join(" ", Regex.Split(this.GetType().Name, "(?<!^)(?=[A-Z])"));
 			this.hint.Visible = !String.IsNullOrEmpty(this.Hint);
-		}
-
-		private void ApplyOrientationSizing()
-		{
-			var width = Application.Browser.Size.Width;
-			var height = Application.Browser.Size.Height;
-
-			var portrait = Math.Min(width, height) == width;
-
-			//if (!portrait)
-			//	MinimizeTitle();
-			//else
-			//	MaximizeTitle();
 		}
 
 		public void MinimizeTitle()
@@ -68,7 +49,7 @@ namespace Wisej.Hybrid.Features
 			if (this.labelTitle.Height != 40)
 			{
 				this.labelTitle.Height = 40;
-				this.labelTitle.Font = new System.Drawing.Font("@windowTitleLandscape", 24, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+				this.labelTitle.Font = new System.Drawing.Font("@itemTitleLandscape", 24, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			}
 		}
 
@@ -77,7 +58,7 @@ namespace Wisej.Hybrid.Features
 			if (this.labelTitle.Height != 68)
 			{
 				this.labelTitle.Height = 68;
-				this.labelTitle.Font = new System.Drawing.Font("@windowTitle", 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+				this.labelTitle.Font = new System.Drawing.Font("@itemTitle", 36, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
 			}
 		}
 

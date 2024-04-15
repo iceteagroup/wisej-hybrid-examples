@@ -39,8 +39,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Info.System.Platform == DevicePlatform.iOS || 
-				Device.Info.System.Platform == DevicePlatform.Android;
+			return Device.Info.System.IsMobile;
 		}
 	}
 }
