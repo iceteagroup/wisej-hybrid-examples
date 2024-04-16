@@ -35,12 +35,13 @@
 			// 
 			this.chatBox1.BorderStyle = Wisej.Web.BorderStyle.None;
 			this.chatBox1.Dock = Wisej.Web.DockStyle.Fill;
-			this.chatBox1.Location = new System.Drawing.Point(16, 128);
+			this.chatBox1.Location = new System.Drawing.Point(16, 68);
 			this.chatBox1.Name = "chatBox1";
 			this.chatBox1.Padding = new Wisej.Web.Padding(8);
 			this.chatBox1.ScrollBars = Wisej.Web.ScrollBars.Hidden;
-			this.chatBox1.Size = new System.Drawing.Size(618, 350);
+			this.chatBox1.Size = new System.Drawing.Size(618, 410);
 			this.chatBox1.TabIndex = 20;
+			this.chatBox1.SentMessage += new Wisej.Web.Ext.ChatControl.MessageEventHandler(this.chatBox1_SentMessage);
 			// 
 			// Chat
 			// 

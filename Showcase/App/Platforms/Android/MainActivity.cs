@@ -4,9 +4,9 @@ using Wisej.Hybrid.Native;
 
 namespace HybridApp
 {
-	[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
-	[IntentFilter(new[] { Platform.Intent.ActionAppAction },
-			  Categories = new[] { global::Android.Content.Intent.CategoryDefault })]
+	[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTask, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
+	[IntentFilter([Platform.Intent.ActionAppAction],
+			  Categories = [global::Android.Content.Intent.CategoryDefault])]
 	public class MainActivity : HybridAppCompatActivity
 	{
 		protected override void OnResume()

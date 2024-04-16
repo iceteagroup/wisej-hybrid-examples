@@ -19,8 +19,8 @@
 		<ApplicationIdGuid>949865ae-c5be-4b08-b7b9-9d524800ddd4</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>33</ApplicationVersion>
+		<ApplicationDisplayVersion>1.2</ApplicationDisplayVersion>
+		<ApplicationVersion>34</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -60,8 +60,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-    <CodesignKey>Apple Development: Levie Rufenacht (BD9BF6H5D7)</CodesignKey>
-    <CodesignProvision>VS: com.iceteagroup.hybrid Development</CodesignProvision>
+    <CodesignKey>Apple Distribution: ICE TEA GROUP LLC (C5KB4U3BM9)</CodesignKey>
+    <CodesignProvision></CodesignProvision>
+    <ProvisioningType>manual</ProvisioningType>
   </PropertyGroup>
 
 	<ItemGroup>

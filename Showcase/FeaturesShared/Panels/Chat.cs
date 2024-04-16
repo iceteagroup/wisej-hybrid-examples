@@ -46,7 +46,7 @@ namespace FeaturesShared.Panels
 				}
 
 				// add to chat.
-				if (!string.IsNullOrEmpty(name)) 
+				if (!String.IsNullOrEmpty(name)) 
 				{
 					this._me = new User(id.ToString(), name, "resource.wx/wisej-blue.png");
 					this.chatBox1.User = this._me;
@@ -60,16 +60,17 @@ namespace FeaturesShared.Panels
 
 		private void ChatBox1_SendingMessage(object sender, SendingMessageEventArgs e)
 		{
-			e.Cancel = true;
+			//e.Cancel = true;
 
-			NewMessage?.Invoke(this, e.Message);
+			//NewMessage?.Invoke(this, e.Message);
 		}
 
 		private void Chat_NewMessage(object? sender, Message e)
 		{
 			Application.Update(this, () =>
 			{
-				this.chatBox1.DataSource.Add(e);
+				if (e.User != this.chatBox1.User)
+					this.chatBox1.DataSource.Add(e);
 			});
 		}
 
@@ -83,6 +84,12 @@ namespace FeaturesShared.Panels
 		{
 			NewMessage -= Chat_NewMessage;
 			this.chatBox1.DataSource.Clear();
+		}
+
+		private void chatBox1_SentMessage(object sender, MessageEventArgs e)
+		{
+			if (e.Message.User == this.chatBox1.User)
+				NewMessage?.Invoke(this, e.Message);
 		}
 	}
 }

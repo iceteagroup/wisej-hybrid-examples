@@ -30,7 +30,7 @@ namespace HybridApp
 					config.LicenseKey = "";
 
 					// Provide the startup URL for the Hybrid WebView.
-					config.StartupUrl = "http://localhost:5000";
+					config.StartupUrl = "http://localhost:5000/";
 				})
 
 				#if !WINDOWS
