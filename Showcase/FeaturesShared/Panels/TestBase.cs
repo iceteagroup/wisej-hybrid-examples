@@ -11,6 +11,8 @@ namespace Wisej.Hybrid.Features
 	{
 		public event WidgetEventHandler ViewRequested;
 
+		public bool Pinned { get; set; }
+
 		public string Hint
 		{
 			get

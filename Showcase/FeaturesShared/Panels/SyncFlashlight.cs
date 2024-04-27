@@ -14,6 +14,9 @@ namespace FeaturesShared.Panels
 		public SyncFlashlight()
 		{
 			InitializeComponent();
+
+			if (Application.Uri.Host != "localhost")
+				this.Pinned = true;
 		}
 
 		private void SyncFlashlight_Appear(object sender, EventArgs e)
@@ -33,29 +36,30 @@ namespace FeaturesShared.Panels
 			Application.Update(this, () =>
 			{
 				var on = payload.on;
-				var model = payload.model;
+				var name = payload.name;
 
-				AlertBox.Show($"Device: {model} toggled flashlight");
+				AlertBox.Show($"Device: {name} toggled flashlight");
 
 				if (on)
-				{
 					Device.Flashlight.TurnOn();
-				}
 				else
-				{
 					Device.Flashlight.TurnOff();
-				}
 			});
 		}
 
 		private void buttonOn_Click(object sender, EventArgs e)
 		{
-			ToggleFlash?.Invoke(this, new { model = Device.Info.System.Model, on = true });
+			OnToggleFlash(Device.Info.System.Model, true);
 		}
 
 		private void buttonOff_Click(object sender, EventArgs e)
 		{
-			ToggleFlash?.Invoke(this, new { model = Device.Info.System.Model, on = false });
+			OnToggleFlash(Device.Info.System.Model, false);
+		}
+
+		public static void OnToggleFlash(string name, bool on)
+		{
+			ToggleFlash?.Invoke(null, new { name, on });
 		}
 
 		public override bool IsSupported()

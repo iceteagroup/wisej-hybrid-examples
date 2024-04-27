@@ -73,6 +73,9 @@ namespace Wisej.Hybrid.Features.Panels
 			this.labelTitle.Text = this.Title;
 			this.pictureBoxIcon.ImageSource = this.ImageSource;
 			this.labelDescription.Text = GetCategory(this._instance.GetType());
+
+			if (this._instance.Pinned)
+				BringToFront();
 		}
 
 		private string GetRandomColor()
