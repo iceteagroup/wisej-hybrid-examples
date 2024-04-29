@@ -33,17 +33,27 @@ namespace FeaturesShared.Panels
 
 		private void SyncFlashlight_ToggleFlash(object sender, dynamic payload)
 		{
+			if (this.IsDisposed)
+				return;
+
 			Application.Update(this, () =>
 			{
-				var on = payload.on;
-				var name = payload.name;
+				try
+				{
+					var on = payload.on;
+					var name = payload.name;
 
-				AlertBox.Show($"Device: {name} toggled flashlight");
+					AlertBox.Show($"Device: {name} toggled flashlight");
 
-				if (on)
-					Device.Flashlight.TurnOn();
-				else
-					Device.Flashlight.TurnOff();
+					if (on)
+						Device.Flashlight.TurnOn();
+					else
+						Device.Flashlight.TurnOff();
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+				}
 			});
 		}
 
@@ -59,7 +69,14 @@ namespace FeaturesShared.Panels
 
 		public static void OnToggleFlash(string name, bool on)
 		{
-			ToggleFlash?.Invoke(null, new { name, on });
+			try
+			{
+				ToggleFlash?.Invoke(null, new { name, on });
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
 		}
 
 		public override bool IsSupported()
