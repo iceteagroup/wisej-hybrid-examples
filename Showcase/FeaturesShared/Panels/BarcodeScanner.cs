@@ -29,7 +29,7 @@ namespace FeaturesShared.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && 
+			return base.IsSupported() && 
 				(Device.Info.System.Platform == DevicePlatform.iOS ||
 				Device.Info.System.Platform == DevicePlatform.Android);
 		}

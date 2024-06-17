@@ -39,7 +39,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Info.System.IsMobile;
+			return base.IsSupported() && Device.Info.System.IsMobile;
 		}
 	}
 }

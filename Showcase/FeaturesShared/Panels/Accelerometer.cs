@@ -32,7 +32,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Info.Sensors.IsAccelerometerSupported;
+			return base.IsSupported() && Device.Info.Sensors.IsAccelerometerSupported;
 		}
 	}
 }
