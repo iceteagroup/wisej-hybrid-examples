@@ -110,6 +110,7 @@
 			this.Controls.Add(this.flexLayoutPanel1);
 			this.Hint = "App Actions are used to provide quick access to areas of the application.";
 			this.Name = "AppActions";
+			this.Load += new System.EventHandler(this.AppActions_Load);
 			this.Controls.SetChildIndex(this.flexLayoutPanel1, 0);
 			this.flexLayoutPanel1.ResumeLayout(false);
 			this.flexLayoutPanel1.PerformLayout();
