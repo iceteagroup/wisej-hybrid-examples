@@ -1,12 +1,11 @@
-﻿using HybridLocal.Services;
-using System.ComponentModel;
-using Wisej.Hybrid;
-using Wisej.Web;
+﻿using HybridLocal.Models;
 
 namespace HybridLocal.Views
 {
 	public partial class LoginView : ViewBase
 	{
+		private User User { get; set; }
+
 		public LoginView()
 		{
 			InitializeComponent();
@@ -14,26 +13,34 @@ namespace HybridLocal.Views
 
 		private void buttonLogin_Click(object sender, System.EventArgs e)
 		{
-			// save the email for the next login request.
-			Device.Preferences.Set("email", this.textBoxEmail.Text);
+			var email = this.textBoxEmail.Text;
+			var password = this.textBoxPassword.Text;
+			
+			// create the user?
+			if (this.User == null)
+				this.User = this.UserService.SetUser(email, password);
 
-			// TODO: perform some validation....
+			// validate the password.
+			this.UserService.ValidatePassword(password);
 
-			// add a user service for this specific session.
-			var service = new UserService 
-			{
-				Email = this.textBoxEmail.Text, 
-				Password = this.textBoxPassword.Text 
-			};
-
-			Application.Services.AddService<UserService>(service, Wisej.Services.ServiceLifetime.Session);
-
-			this.RequestView(typeof(HomeView));
+			this.OnPushView(typeof(HomeView));
 		}
 
 		private void LoginView_Load(object sender, System.EventArgs e)
 		{
-			this.textBoxEmail.Text = Device.Preferences.Get("email", "");
+			// get an existing saved user and populate fields.
+			var user = this.UserService.GetUser();
+			if (user != null)
+			{
+				this.textBoxEmail.Text = user.Email;
+				this.textBoxPassword.Text = user.Password;
+			}
+			else
+			{
+				this.buttonLogin.Text = "Signup";
+			}
+
+			this.User = user;
 		}
 	}
 }

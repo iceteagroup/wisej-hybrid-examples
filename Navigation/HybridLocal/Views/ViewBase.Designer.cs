@@ -28,7 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.labelTitle = new Wisej.Web.Label();
+			this.animationPushAppear = new Wisej.Web.Animation(this.components);
+			this.animationPushDisappear = new Wisej.Web.Animation(this.components);
+			this.animationPopAppear = new Wisej.Web.Animation(this.components);
+			this.animationPopDisappear = new Wisej.Web.Animation(this.components);
 			this.SuspendLayout();
 			// 
 			// labelTitle
@@ -43,8 +48,30 @@
 			this.labelTitle.TabIndex = 0;
 			this.labelTitle.Text = "View Title";
 			// 
+			// animationPushDisappear
+			// 
+			this.animationPushDisappear.End += new Wisej.Web.AnimationEventHandler(this.animationPushDisappear_End);
+			// 
+			// animationPopAppear
+			// 
+			this.animationPopAppear.End += new Wisej.Web.AnimationEventHandler(this.animationPopAppear_End);
+			// 
+			// animationPopDisappear
+			// 
+			this.animationPopDisappear.End += new Wisej.Web.AnimationEventHandler(this.animationPopDisappear_End);
+			// 
 			// ViewBase
 			// 
+			this.animationPushDisappear.GetAnimation(this).Duration = 1000;
+			this.animationPushDisappear.GetAnimation(this).Name = "slideLeftOut";
+			this.animationPopDisappear.GetAnimation(this).Duration = 500;
+			this.animationPopDisappear.GetAnimation(this).Name = "slideRightOut";
+			this.animationPushAppear.GetAnimation(this).Duration = 300;
+			this.animationPushAppear.GetAnimation(this).Name = "slideRightIn";
+			this.animationPushAppear.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.EaseOut;
+			this.animationPopAppear.GetAnimation(this).Duration = 250;
+			this.animationPopAppear.GetAnimation(this).Name = "slideLeftIn";
+			this.BackColor = System.Drawing.Color.White;
 			this.Controls.Add(this.labelTitle);
 			this.Name = "ViewBase";
 			this.Padding = new Wisej.Web.Padding(16);
@@ -57,5 +84,9 @@
 		#endregion
 
 		private Wisej.Web.Label labelTitle;
+		private Wisej.Web.Animation animationPushAppear;
+		private Wisej.Web.Animation animationPushDisappear;
+		private Wisej.Web.Animation animationPopAppear;
+		private Wisej.Web.Animation animationPopDisappear;
 	}
 }

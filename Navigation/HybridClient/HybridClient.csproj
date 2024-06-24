@@ -16,7 +16,6 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.HybridClient</ApplicationId>
-		<ApplicationIdGuid>a1cdaf76-a74f-43af-b39b-2109148a8ead</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
