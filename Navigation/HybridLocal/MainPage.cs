@@ -1,6 +1,7 @@
 ﻿using HybridLocal.Views;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Wisej.Web;
 
 namespace HybridLocal
@@ -23,7 +24,7 @@ namespace HybridLocal
 		// Pop the top view off the stack.
 		private void PopView()
 		{
-			if (Controls.Count < 1 || (_currentView != null && _currentView.Popping))
+			if (Controls.Count < 1)
 				return;
 
 			_currentView?.PopDisappear();
@@ -34,14 +35,11 @@ namespace HybridLocal
 		// Pop views off the stack until the specified view type is found.
 		private void PopToView(Type type)
 		{
-			if (_currentView != null && _currentView.Popping)
-				return;
-
-			// Continue popping until the specified view is found.
-			while (_currentView.GetType() != type && Controls.Count > 1)
+			// continue popping until the specified view is found.
+			while (_currentView.GetType() != type)
 			{
 				_currentView?.PopDisappear();
-				_currentView = Controls.OfType<ViewBase>().LastOrDefault();
+				_currentView = Controls.OfType<ViewBase>().LastOrDefault(c => !c.Busy);
 			}
 
 			_currentView?.PopAppear();
@@ -50,6 +48,9 @@ namespace HybridLocal
 		// Push a new view onto the stack.
 		private void PushView(Type type)
 		{
+			if (_currentView != null && _currentView.Busy)
+				return;
+
 			_currentView?.PushDisappear();
 
 			// Create a new instance of the requested view.

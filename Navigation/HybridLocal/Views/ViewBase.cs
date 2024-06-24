@@ -28,6 +28,8 @@ namespace HybridLocal.Views
 			set => labelTitle.Text = value;
 		}
 
+		public bool Busy { get; private set; }
+
 		#endregion
 
 		#region Events
@@ -52,32 +54,38 @@ namespace HybridLocal.Views
 
 		public void PushAppear()
 		{
+			this.Busy = true;
+
 			BringToFront();
 			animationPushAppear.Run(this);
 		}
 
 		public void PushDisappear()
 		{
+			this.Busy = true;
+
 			animationPushDisappear.Run(this);
 			this.CssStyle = "filter: brightness(95%);transition: filter 0.3s ease;";
 		}
 
 		public void PopAppear()
 		{
+			this.Busy = true;
+
 			Show();
-			SendToBack();
+
 			this.CssStyle = "";
 			animationPopAppear.Run(this);
 		}
 
 		public void PopDisappear()
 		{
-			Popping = true;
+			this.Busy = true;
+
+			this.SendToBack();
 			animationPopDisappear.Run(this);
 			this.CssStyle = "filter: brightness(95%);transition: filter 0.3s ease;";
 		}
-
-		internal bool Popping;
 
 		#endregion
 
@@ -86,6 +94,8 @@ namespace HybridLocal.Views
 		private void animationPushDisappear_End(object sender, AnimationEventArgs e)
 		{
 			Hide();
+
+			this.Busy = false;
 		}
 
 		private void animationPopDisappear_End(object sender, AnimationEventArgs e)
@@ -96,6 +106,8 @@ namespace HybridLocal.Views
 		private void animationAppear_End(object sender, AnimationEventArgs e)
 		{
 			BringToFront();
+
+			this.Busy = false;
 		}
 
 		#endregion

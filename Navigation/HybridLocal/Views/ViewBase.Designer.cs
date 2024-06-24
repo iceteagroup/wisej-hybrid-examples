@@ -66,7 +66,7 @@
 			// 
 			// ViewBase
 			// 
-			this.animationPushDisappear.GetAnimation(this).Duration = 1000;
+			this.animationPushDisappear.GetAnimation(this).Duration = 500;
 			this.animationPushDisappear.GetAnimation(this).Name = "slideLeftOut";
 			this.animationPopDisappear.GetAnimation(this).Duration = 500;
 			this.animationPopDisappear.GetAnimation(this).Name = "slideRightOut";

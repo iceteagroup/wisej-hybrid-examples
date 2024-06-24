@@ -41,6 +41,6 @@
 {
 	"url": "Offline.html",
 	"sessionTimeout": 0,
-	"options": { "mobile.mode": true }, 
+	"options": { "mobile.mode": true },
 	"startup": "HybridLocal.Program.Main, HybridLocal"
 }
