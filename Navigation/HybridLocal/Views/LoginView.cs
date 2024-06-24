@@ -23,7 +23,7 @@ namespace HybridLocal.Views
 			// validate the password.
 			this.UserService.ValidatePassword(password);
 
-			this.OnPushView(typeof(HomeView));
+			this.TryPushView(typeof(HomeView));
 		}
 
 		private void LoginView_Load(object sender, System.EventArgs e)

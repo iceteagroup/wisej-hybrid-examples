@@ -7,7 +7,6 @@ namespace HybridLocal
 {
 	public partial class MainPage : Page
 	{
-		// the current displayed view.
 		private ViewBase _currentView;
 
 		public MainPage()
@@ -17,49 +16,57 @@ namespace HybridLocal
 
 		private void MainPage_Load(object sender, EventArgs e)
 		{
+			// Show the initial view.
 			PushView(typeof(LoginView));
 		}
 
+		// Pop the top view off the stack.
 		private void PopView()
 		{
-			this._currentView?.PopDisappear();
+			if (Controls.Count < 1 || (_currentView != null && _currentView.Popping))
+				return;
 
-			this._currentView = (ViewBase)this.Controls.LastOrDefault();
-			this._currentView?.PopAppear();
+			_currentView?.PopDisappear();
+			_currentView = Controls.OfType<ViewBase>().LastOrDefault();
+			_currentView?.PopAppear();
 		}
 
+		// Pop views off the stack until the specified view type is found.
 		private void PopToView(Type type)
 		{
-			this._currentView?.PopDisappear();
+			if (_currentView != null && _currentView.Popping)
+				return;
 
-			var view = this.Controls.LastOrDefault(c => type == c.GetType());
-
-			if (view is ViewBase lastView)
+			// Continue popping until the specified view is found.
+			while (_currentView.GetType() != type && Controls.Count > 1)
 			{
-				this._currentView = lastView;
-				this._currentView.PopAppear();
+				_currentView?.PopDisappear();
+				_currentView = Controls.OfType<ViewBase>().LastOrDefault();
 			}
+
+			_currentView?.PopAppear();
 		}
 
+		// Push a new view onto the stack.
 		private void PushView(Type type)
 		{
-			this._currentView?.PushDisappear();
+			_currentView?.PushDisappear();
 
-			// create a new instance of the requested view (or implement re-use).
+			// Create a new instance of the requested view.
 			var view = (ViewBase)Activator.CreateInstance(type);
 
-			// allow this view to request other views.
+			// Subscribe to view events.
 			view.PushView += View_ViewRequested;
 			view.PopToView += View_PopToView;
 			view.PopView += View_PopView;
 
-			// configure the view.
+			// Configure the view.
 			view.Dock = DockStyle.Fill;
 			view.Parent = this;
 
 			view.PushAppear();
 
-			this._currentView = view;
+			_currentView = view;
 		}
 
 		private void View_PopToView(object sender, Type e)

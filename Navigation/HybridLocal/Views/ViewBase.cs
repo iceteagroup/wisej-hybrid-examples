@@ -5,15 +5,13 @@ using Wisej.Web;
 
 namespace HybridLocal.Views
 {
-	public partial class ViewBase : Wisej.Web.UserControl
+	public partial class ViewBase : UserControl
 	{
-
 		#region Constructor
 
 		public ViewBase()
 		{
 			InitializeComponent();
-
 			Application.Services.Inject(this);
 		}
 
@@ -21,19 +19,13 @@ namespace HybridLocal.Views
 
 		#region Properties
 
-		/// <summary>
-		/// DI user service.
-		/// </summary>
 		[Inject]
 		internal UserService UserService { get; set; }
 
-		/// <summary>
-		/// The title of the view.
-		/// </summary>
 		public string Title
 		{
-			get => this.labelTitle.Text;
-			set => this.labelTitle.Text = value;
+			get => labelTitle.Text;
+			set => labelTitle.Text = value;
 		}
 
 		#endregion
@@ -41,68 +33,72 @@ namespace HybridLocal.Views
 		#region Events
 
 		public event EventHandler<Type> PushView;
-
 		public event EventHandler<Type> PopToView;
-
 		public event EventHandler PopView;
 
 		#endregion
 
 		#region Methods
 
-		public void OnPushView(Type viewType)
-		{
-			this.PushView?.Invoke(this, viewType);
-		}
+		public void TryPushView(Type viewType) => PushView?.Invoke(this, viewType);
 
-		public void OnPopView()
-		{
-			this.PopView?.Invoke(this, EventArgs.Empty);
-		}
+		public void TryPopView() => PopView?.Invoke(this, EventArgs.Empty);
 
-		public void OnPopToView(Type viewType)
-		{
-			this.PopToView?.Invoke(this, viewType);
-		}
+		public void TryPopToView(Type viewType) => PopToView?.Invoke(this, viewType);
 
 		#endregion
 
+		#region View Transitions
+
 		public void PushAppear()
 		{
-			this.BringToFront();
-			this.animationPushAppear.Run(this);
+			BringToFront();
+			animationPushAppear.Run(this);
 		}
 
 		public void PushDisappear()
 		{
-			this.animationPushDisappear.Run(this);
+			animationPushDisappear.Run(this);
+			this.CssStyle = "filter: brightness(95%);transition: filter 0.3s ease;";
 		}
 
 		public void PopAppear()
 		{
-			this.Show();
-			this.SendToBack();
-			this.animationPopAppear.Run(this);
+			Show();
+			SendToBack();
+			this.CssStyle = "";
+			animationPopAppear.Run(this);
 		}
 
 		public void PopDisappear()
 		{
-			this.animationPopDisappear.Run(this);
+			Popping = true;
+			animationPopDisappear.Run(this);
+			this.CssStyle = "filter: brightness(95%);transition: filter 0.3s ease;";
 		}
 
-		private void animationPushDisappear_End(object sender, Wisej.Web.AnimationEventArgs e)
+		internal bool Popping;
+
+		#endregion
+
+		#region Animation Event Handlers
+
+		private void animationPushDisappear_End(object sender, AnimationEventArgs e)
 		{
-			this.Hide();
+			Hide();
 		}
 
-		private void animationPopDisappear_End(object sender, Wisej.Web.AnimationEventArgs e)
+		private void animationPopDisappear_End(object sender, AnimationEventArgs e)
 		{
-			this.Dispose();
+			Dispose();
 		}
 
-		private void animationPopAppear_End(object sender, Wisej.Web.AnimationEventArgs e)
+		private void animationAppear_End(object sender, AnimationEventArgs e)
 		{
-			this.BringToFront();
+			BringToFront();
 		}
+
+		#endregion
+
 	}
 }

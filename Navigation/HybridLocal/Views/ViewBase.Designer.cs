@@ -48,13 +48,17 @@
 			this.labelTitle.TabIndex = 0;
 			this.labelTitle.Text = "View Title";
 			// 
+			// animationPushAppear
+			// 
+			this.animationPushAppear.End += new Wisej.Web.AnimationEventHandler(this.animationAppear_End);
+			// 
 			// animationPushDisappear
 			// 
 			this.animationPushDisappear.End += new Wisej.Web.AnimationEventHandler(this.animationPushDisappear_End);
 			// 
 			// animationPopAppear
 			// 
-			this.animationPopAppear.End += new Wisej.Web.AnimationEventHandler(this.animationPopAppear_End);
+			this.animationPopAppear.End += new Wisej.Web.AnimationEventHandler(this.animationAppear_End);
 			// 
 			// animationPopDisappear
 			// 
@@ -66,9 +70,8 @@
 			this.animationPushDisappear.GetAnimation(this).Name = "slideLeftOut";
 			this.animationPopDisappear.GetAnimation(this).Duration = 500;
 			this.animationPopDisappear.GetAnimation(this).Name = "slideRightOut";
-			this.animationPushAppear.GetAnimation(this).Duration = 300;
+			this.animationPushAppear.GetAnimation(this).Duration = 250;
 			this.animationPushAppear.GetAnimation(this).Name = "slideRightIn";
-			this.animationPushAppear.GetAnimation(this).Timing = Wisej.Web.AnimationTiming.EaseOut;
 			this.animationPopAppear.GetAnimation(this).Duration = 250;
 			this.animationPopAppear.GetAnimation(this).Name = "slideLeftIn";
 			this.BackColor = System.Drawing.Color.White;

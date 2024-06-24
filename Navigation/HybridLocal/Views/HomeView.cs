@@ -18,7 +18,7 @@ namespace HybridLocal.Views
 
 		private void buttonLogin_Click(object sender, System.EventArgs e)
 		{
-			OnPopView();
+			TryPopToView(typeof(LoginView));
 		}
 	}
 }
