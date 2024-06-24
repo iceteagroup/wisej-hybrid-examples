@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using Wisej.Hybrid.DocumentScanner.Native;
 using Wisej.Hybrid.Native.Core;
 using WisejHybridLocalApplication;
-using Wisej.Hybrid.DocumentScanner.Native.Middleware;
 
 namespace HybridClient
 {

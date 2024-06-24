@@ -1,17 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net48;net8.0-android;net8.0-ios</TargetFrameworks>
+    <TargetFrameworks>net48;net8.0-windows10.0.19041.0</TargetFrameworks>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace("-", "_"))</RootNamespace>
     <NoWarn>CA1416</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' != 'net48'">
-	<PackageReference Include="System.Drawing.Common" Version="7.0.0" ExcludeAssets="All" />
-  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'=='net'">
     <Reference Include="System.Windows.Forms"><Aliases>swf</Aliases></Reference>
