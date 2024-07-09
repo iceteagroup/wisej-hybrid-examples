@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridLocal", "HybridLocal\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridRemote", "HybridRemote\HybridRemote.csproj", "{5F11E661-B422-4442-8BC2-42B7B01DFA1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridShared", "HybridShared\HybridShared.csproj", "{D87FBDE2-3FE7-4A08-8B7B-DEA7C0A7B356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HybridDynamic", "HybridShared\HybridDynamic.csproj", "{D87FBDE2-3FE7-4A08-8B7B-DEA7C0A7B356}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

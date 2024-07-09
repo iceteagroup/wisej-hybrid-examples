@@ -1,4 +1,4 @@
-﻿namespace HybridShared
+﻿namespace HybridDynamic
 {
 	partial class Page1
 	{
@@ -28,36 +28,34 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.buttonMakeAvailableOffline = new Wisej.Web.Button();
 			this.labelStartup = new Wisej.Web.Label();
+			this.progressCircle1 = new Wisej.Web.Ext.ProgressCircle.ProgressCircle();
 			this.SuspendLayout();
-			// 
-			// buttonMakeAvailableOffline
-			// 
-			this.buttonMakeAvailableOffline.Location = new System.Drawing.Point(48, 44);
-			this.buttonMakeAvailableOffline.Name = "buttonMakeAvailableOffline";
-			this.buttonMakeAvailableOffline.Size = new System.Drawing.Size(237, 68);
-			this.buttonMakeAvailableOffline.TabIndex = 0;
-			this.buttonMakeAvailableOffline.Text = "Make Application Available Offline";
-			this.buttonMakeAvailableOffline.Click += new System.EventHandler(this.buttonMakeAvailableOffline_Click);
 			// 
 			// labelStartup
 			// 
 			this.labelStartup.Font = new System.Drawing.Font("default", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-			this.labelStartup.Location = new System.Drawing.Point(48, 167);
+			this.labelStartup.Location = new System.Drawing.Point(55, 46);
 			this.labelStartup.Name = "labelStartup";
 			this.labelStartup.Size = new System.Drawing.Size(237, 53);
 			this.labelStartup.TabIndex = 1;
-			this.labelStartup.Text = "App is ONLINE";
+			this.labelStartup.Text = "App is OFFLINE";
+			// 
+			// progressCircle1
+			// 
+			this.progressCircle1.Location = new System.Drawing.Point(59, 129);
+			this.progressCircle1.Name = "progressCircle1";
+			this.progressCircle1.Size = new System.Drawing.Size(282, 260);
+			this.progressCircle1.Value = 50;
 			// 
 			// Page1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
 			this.AutoScaleMode = Wisej.Web.AutoScaleMode.Font;
+			this.Controls.Add(this.progressCircle1);
 			this.Controls.Add(this.labelStartup);
-			this.Controls.Add(this.buttonMakeAvailableOffline);
 			this.Name = "Page1";
-			this.Size = new System.Drawing.Size(2140, 916);
+			this.Size = new System.Drawing.Size(1785, 656);
 			this.Text = "Page1";
 			this.Load += new System.EventHandler(this.Page1_Load);
 			this.ResumeLayout(false);
@@ -65,9 +63,8 @@
 		}
 
 		#endregion
-
-		private Wisej.Web.Button buttonMakeAvailableOffline;
 		private Wisej.Web.Label labelStartup;
+		private Wisej.Web.Ext.ProgressCircle.ProgressCircle progressCircle1;
 	}
 }
 

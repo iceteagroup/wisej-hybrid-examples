@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.FileProviders;
+using System;
+using System.IO;
 using Wisej.Core;
 
 namespace HybridRemote
@@ -27,6 +31,29 @@ namespace HybridRemote
 			var app = builder.Build();
 			app.UseWisej();
 			app.UseFileServer();
+			app.MapGet("/fetch", async context =>
+			{
+				try
+				{
+					var action = context.Request.Query["action"];
+					var args = context.Request.Query["args"].ToString().Split(',');
+
+					switch (action)
+					{
+						case "update":
+							await context.Response.WriteAsync(DynamicApplicationService.Update(args[0], args[1]));
+							break;
+
+						case "file":
+							await context.Response.Body.WriteAsync(DynamicApplicationService.GetFile(args[0], args[1]));
+							break;
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+				}
+			});
 			app.Run();
 		}
 	}

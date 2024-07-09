@@ -1,6 +1,6 @@
 ﻿using Wisej.Web;
 
-namespace HybridShared
+namespace HybridRemote
 {
 	internal static class Program
 	{
@@ -9,7 +9,7 @@ namespace HybridShared
 		/// </summary>
 		static void Main()
 		{
-			Application.MainPage = new Page1();
+			Application.MainPage = new MainPage();
 		}
 	}
 }

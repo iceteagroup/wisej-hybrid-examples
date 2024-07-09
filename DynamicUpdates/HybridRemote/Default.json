@@ -40,6 +40,5 @@
 //                             Custom settings are available using Application.Configuration.Settings.
 {
 	"url": "Default.html",
-	"options": { "mobile.mode": true }, 
-	"startup": "HybridShared.Program.Main, HybridShared"
+	"startup": "HybridRemote.Program.Main, HybridRemote"
 }
