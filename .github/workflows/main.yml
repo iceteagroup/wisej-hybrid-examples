@@ -1,0 +1,32 @@
+name: .NET Publish Android on macOS
+
+on:
+  push:
+    branches: [ main ] # Change this to the branch you want to trigger the action on
+  pull_request:
+    branches: [ main ] # Change this to the branch you want to trigger the action on
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0' # Adjust to the specific version of .NET you are using
+
+    - name: Restore dependencies
+      run: dotnet restore Showcase/App
+
+    - name: Publish Android project
+      run: dotnet publish Showcase/App --configuration Release -f:net8.0-android --output ./publish/android # Adjust the framework and path as needed
+
+    - name: Upload published files
+      uses: actions/upload-artifact@v3
+      with:
+        name: published-android-files
+        path: ./publish/android
