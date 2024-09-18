@@ -35,7 +35,7 @@ jobs:
         path: ./publish/android
 
     - name: Publish iOS project
-      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios # Using .NET 8 iOS framework
+      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios -p:_DeviceName=:v2:runtime=iossimulator-arm64
 
     - name: Upload iOS published files
       uses: actions/upload-artifact@v3
