@@ -89,14 +89,14 @@
 	<ItemGroup>
 		<PackageReference Include="EmbedIO" Version="3.5.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-		<PackageReference Include="Wisej-3-Hybrid-Authentication-Native" Version="3.5.*-*" />
-		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner-Native" Version="3.5.*-*" />
-		<PackageReference Include="Wisej-3-Hybrid-Native" Version="3.5.*-*" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Wisej-3-Hybrid-Authentication-Native" Version="3.5.*" />
+		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner-Native" Version="3.5.*" />
+		<PackageReference Include="Wisej-3-Hybrid-Native" Version="3.5.*" />
 	</ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'!='net8.0-windows10.0.19041.0'">
-	<PackageReference Include="Wisej-3-Hybrid-MLKit-Native" Version="3.5.*-*" />
+	<PackageReference Include="Wisej-3-Hybrid-MLKit-Native" Version="3.5.*" />
   </ItemGroup>
 
 	<ItemGroup>
