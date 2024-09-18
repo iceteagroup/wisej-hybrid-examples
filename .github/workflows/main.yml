@@ -17,13 +17,16 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0' # Adjust to the specific version of .NET you are using
+        dotnet-version: '8.0.x' # Using .NET 8
+
+    - name: Install Maui workload
+      run: dotnet workload install maui
 
     - name: Restore dependencies
       run: dotnet restore Showcase/App
 
     - name: Publish Android project
-      run: dotnet publish Showcase/App --configuration Release -f:net8.0-android --output ./publish/android # Adjust the framework and path as needed
+      run: dotnet publish Showcase/App --configuration Release -f:net8.0-android --output ./publish/android # Using .NET 8 Android framework
 
     - name: Upload published files
       uses: actions/upload-artifact@v3
