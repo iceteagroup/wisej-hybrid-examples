@@ -28,17 +28,17 @@ jobs:
     - name: Publish Android project
       run: dotnet publish Showcase/App --configuration Release -f:net8.0-android --output ./publish/android # Using .NET 8 Android framework
 
-    - name: Upload Android published files
+    - name: Find and upload Android APK
       uses: actions/upload-artifact@v3
       with:
-        name: published-android-files
-        path: ./publish/android
+        name: android-apk
+        path: ./publish/android/**/*.apk
 
     - name: Publish iOS project
       run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios -p:_DeviceName=:v2:runtime=iossimulator-arm64
 
-    - name: Upload iOS published files
+    - name: Find and upload iOS IPA
       uses: actions/upload-artifact@v3
       with:
-        name: published-ios-files
-        path: ./publish/ios
+        name: ios-ipa
+        path: ./publish/ios/**/*.ipa
