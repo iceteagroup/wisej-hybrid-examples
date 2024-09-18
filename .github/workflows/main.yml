@@ -34,8 +34,8 @@ jobs:
         name: android-apk
         path: ./publish/android/**/*.apk
 
-    - name: Publish iOS project
-      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios -p:_DeviceName=:v2:runtime=iossimulator-arm64
+    - name: Publish iOS project without code signing
+      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios -p:_DeviceName=:v2:runtime=iossimulator-arm64 -p:Codesign=false
 
     - name: Find and upload iOS IPA
       uses: actions/upload-artifact@v3
