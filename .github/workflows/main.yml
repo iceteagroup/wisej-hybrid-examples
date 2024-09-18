@@ -19,11 +19,8 @@ jobs:
       with:
         dotnet-version: '8.0.x' # Using .NET 8
 
-    - name: Install Android workload
-      run: dotnet workload install android
-
-    - name: Install iOS workload
-      run: dotnet workload install ios
+    - name: Install Maui workload
+      run: dotnet workload install maui
 
     - name: Restore dependencies
       run: dotnet restore Showcase/App
