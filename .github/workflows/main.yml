@@ -1,4 +1,4 @@
-name: .NET Publish Android on macOS
+name: .NET Publish Android and iOS on macOS
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       with:
         dotnet-version: '8.0.x' # Using .NET 8
 
-    - name: Install Maui workload
+    - name: Install MAUI workload
       run: dotnet workload install maui
 
     - name: Restore dependencies
@@ -28,8 +28,17 @@ jobs:
     - name: Publish Android project
       run: dotnet publish Showcase/App --configuration Release -f:net8.0-android --output ./publish/android # Using .NET 8 Android framework
 
-    - name: Upload published files
+    - name: Upload Android published files
       uses: actions/upload-artifact@v3
       with:
         name: published-android-files
         path: ./publish/android
+
+    - name: Publish iOS project
+      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios # Using .NET 8 iOS framework
+
+    - name: Upload iOS published files
+      uses: actions/upload-artifact@v3
+      with:
+        name: published-ios-files
+        path: ./publish/ios
