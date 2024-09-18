@@ -25,6 +25,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore Showcase/App
 
+    - name: Publish iOS project for Simulator
+      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios -p:RuntimeIdentifier=ios-arm64 -p:Codesign=false
+
     - name: Publish Android project
       run: dotnet publish Showcase/App --configuration Release -f:net8.0-android --output ./publish/android # Using .NET 8 Android framework
 
@@ -33,9 +36,6 @@ jobs:
       with:
         name: android-apk
         path: ./publish/android/**/*.apk
-
-    - name: Publish iOS project for Simulator
-      run: dotnet publish Showcase/App --configuration Release -f:net8.0-ios --output ./publish/ios -p:RuntimeIdentifier=iossimulator-arm64 -p:Codesign=false
 
     - name: Find and upload iOS Simulator Build
       uses: actions/upload-artifact@v3
