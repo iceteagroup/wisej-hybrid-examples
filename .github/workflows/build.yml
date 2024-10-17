@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: self-hosted
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -28,48 +28,15 @@ jobs:
       with:
         dotnet-version: '8.0.x' # Using .NET 8
 
-    - name: Install the P12 Certificates
-      run: |
-        # Install Provisioning Profiles
-        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        cp Credentials/iOS/PoetDistributionProfile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles
-      
-        # create temporary keychain
-        security create-keychain -p "" $RUNNER_TEMP/app-signing.keychain-db
-        security set-keychain-settings -lut 21600 $RUNNER_TEMP/app-signing.keychain-db
-        security unlock-keychain -p "" $RUNNER_TEMP/app-signing.keychain-db
-
-        # import p12 distribution cert.
-        security import Credentials/iOS/ITG-DIST.p12 -P "ITG-DIST2024" -A -t cert -f pkcs12 -k $RUNNER_TEMP/app-signing.keychain-db
-        security set-key-partition-list -S apple-tool:,apple: -k "" $RUNNER_TEMP/app-signing.keychain-db
-        security list-keychain -d user -s $RUNNER_TEMP/app-signing.keychain-db
-
-        echo "Certificate successfully installed and imported."
-
-        echo "Checking if certificate is ready to use..."
-        if security find-identity -p codesigning -v | grep -q "Apple Distribution: ICE TEA GROUP LLC"; then
-          echo "Apple Distribution certificate is ready for use."
-        else
-          echo "Apple Distribution certificate not found or not ready for use." >&2
-          exit 1
-        fi
-
-    - name: Set Xcode 16.0 as default
-      run: sudo xcode-select -s /Applications/Xcode_16.app
-
     - name: Verify Xcode Version
       run: xcodebuild -version
       
     - name: Restore dependencies
-      run: dotnet workload restore PoetPB.Client/PoetPB.Client.csproj
-
-    - name: Copy keystore.jks to project directory
-      run: |
-        cp Credentials/Android/Keystore.jks PoetPB.Client/Keystore.jks
+      run: dotnet workload restore Showcase/App/HybridApp.csproj
 
     - name: Publish Android project
       run: |
-        dotnet publish PoetPB.Client \
+        dotnet publish Showcase/App \
           -c Release \
           -f net8.0-android \
           -p:AndroidKeyStore=true \
@@ -99,7 +66,7 @@ jobs:
 
     - name: Publish iOS project
       run: |
-        dotnet publish PoetPB.Client \
+        dotnet publish Showcase/App \
           -f:net8.0-ios \
           -c:Release \
           -p:CodesignKey="Apple Distribution: ICE TEA GROUP LLC (C5KB4U3BM9)" \
