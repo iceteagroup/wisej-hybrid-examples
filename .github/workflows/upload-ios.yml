@@ -1,0 +1,81 @@
+name: upload-ios
+
+on:
+  workflow_dispatch:
+    inputs:
+      keyId:
+        description: 'App Store Connect Key ID'
+        required: true
+      apiIssuer:
+        description: 'App Store Connect API Issuer'
+        required: true
+      ipaArtifactId:
+        description: 'IPA Artifact ID'
+        required: true
+      githubToken:
+        description: 'GitHub Access Token'
+        required: true
+      privateKey:
+        description: 'Private Key (.p8) File Content'
+        required: true
+
+jobs:
+  upload-ipa:
+    runs-on: macos-latest
+
+    steps:
+      # Step 1: Create the ~/.appstoreconnect/private_keys directory for the .p8 file
+      - name: Create Directory for Private Keys
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+
+      # Step 2: Save the .p8 file content to ~/.appstoreconnect/private_keys/AuthKey_<key_id>.p8
+      - name: Save .p8 File Content
+        run: |
+          echo "${{ github.event.inputs.privateKey }}" > ~/.appstoreconnect/private_keys/AuthKey_${{ github.event.inputs.keyId }}.p8
+
+      # Step 3: Retrieve IPA artifact using artifact ID from input
+      - name: Download IPA Artifact
+        run: |
+          ARTIFACT_ID=${{ github.event.inputs.ipaArtifactId }}
+          echo "Downloading artifact with ID: $ARTIFACT_ID"
+          curl -L \
+          -H "Authorization: token ${{ github.event.inputs.githubToken }}" \
+          -o artifact.zip \
+          https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$ARTIFACT_ID/zip
+          
+          # Check if artifact.zip is a valid ZIP file
+          if file artifact.zip | grep -q "Zip archive data"; then
+            echo "Downloaded artifact is a valid ZIP file"
+            unzip artifact.zip
+            mv *.ipa YourApp.ipa
+          else
+            echo "Downloaded artifact is not a valid ZIP file"
+            cat artifact.zip  # Display the content of the file for debugging
+            exit 1
+          fi
+
+      # Step 4: Install Xcode Tools (already present on macOS-latest, just ensuring it's active)
+      - name: Install Xcode Tools
+        run: |
+          sudo xcode-select --install || true
+          sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          xcodebuild -version
+
+      # Step 5: Upload IPA file using altool with the saved .p8 private key file
+      - name: Upload IPA File
+        run: |
+          xcrun altool --upload-app -f YourApp.ipa -t ios --apiKey "${{ github.event.inputs.keyId }}" --apiIssuer "${{ github.event.inputs.apiIssuer }}" --private-key-path ~/.appstoreconnect/private_keys/AuthKey_${{ github.event.inputs.keyId }}.p8
+
+      # Step 6: If upload succeeds, create and upload a success text file
+      - name: Create success file
+        if: success()
+        run: |
+          echo "upload success" > success.txt
+
+      - name: Upload success artifact
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload-success
+          path: success.txt
