@@ -147,7 +147,7 @@
 		<PackageReference Include="Wisej-3-Chat" Version="3.5.*" />
 		<PackageReference Include="Wisej-3-Hybrid" Version="3.5.*" />
 		<PackageReference Include="Wisej-3-Hybrid-Authentication" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner" Version="3.5.*" />
+		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner" Version="3.5.*-*" />
 		<PackageReference Include="Wisej-3-Hybrid-MLKit" Version="3.5.*" />
 		<PackageReference Include="Wisej-3-MaterialDesign" Version="3.5.*" />
 		<PackageReference Include="Wisej-3-PullToRefresh" Version="3.5.*" />
