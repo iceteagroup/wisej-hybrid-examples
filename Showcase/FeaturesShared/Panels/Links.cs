@@ -29,7 +29,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void buttonNative_Click(object sender, EventArgs e)
 		{
-			Device.Browser.Open("https://wisej.com", Shared.Browser.BrowserLaunchMode.SystemPreferred);
+			Device.Browser.Open("https://wisej.com", BrowserLaunchMode.SystemPreferred);
 		}
 	}
 }

@@ -15,7 +15,7 @@ namespace Wisej.Hybrid.Features
 
 		private void Authentication_Load(object sender, EventArgs e)
 		{
-			var info = Device.Info.Use<DeviceAuthenticationInfo>();
+			var info = Device.Use<DeviceAuthenticationInfo>();
 
 			switch (info.AuthenticationType)
 			{

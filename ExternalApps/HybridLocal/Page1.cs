@@ -1,5 +1,4 @@
 ﻿using Wisej.Hybrid;
-using Wisej.Hybrid.Modules.System;
 using Wisej.Web;
 
 namespace HybridLocal
@@ -22,7 +21,7 @@ namespace HybridLocal
 
 			var url = $"geo:{coordinates}";
 
-			if (Device.Info.System.IsApple)
+			if (Device.System.IsApple)
 				url = $"maps://?q={coordinates}";
 
 			Device.Launcher.Open(url);

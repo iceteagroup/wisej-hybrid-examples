@@ -37,7 +37,7 @@ namespace Wisej.Hybrid.Features.Panels
 							title, 
 							"Cancel", 
 							"Other", 
-							Shared.FlowDirection.LeftToRight, 
+							FlowDirection.LeftToRight, 
 							new string[]
 							{
 								this.textBoxOption1.Text,

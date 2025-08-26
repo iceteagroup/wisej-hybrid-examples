@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
-using Wisej.Hybrid.Shared.TabBar;
-using Wisej.Hybrid.Shared.Toolbar;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels

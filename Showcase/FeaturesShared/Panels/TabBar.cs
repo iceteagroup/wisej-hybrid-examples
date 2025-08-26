@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
-using Wisej.Hybrid.Shared.TabBar;
+
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels

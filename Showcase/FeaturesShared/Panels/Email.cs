@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using Wisej.Hybrid.Shared.Communication;
+
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -40,7 +40,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Info.Email.IsComposeSupported;
+			return Device.Valid && Device.Email.IsComposeSupported;
 		}
 	}
 }

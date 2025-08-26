@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 // Allow Wisej.NET Hybrid to discover resources from this assembly.
-[assembly: Wisej.Hybrid.Shared.Core.HybridResources()]
+[assembly: Wisej.Hybrid.HybridResources()]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information

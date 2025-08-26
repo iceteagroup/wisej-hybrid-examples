@@ -26,7 +26,7 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			var recipients = this.tagTextBoxRecipients.Text.Split(',');
 
-			Device.Sms.Compose(new Shared.Communication.SmsMessage
+			Device.Sms.Compose(new SmsMessage
 			{
 				Recipients = new List<string>(recipients),
 				Body = this.textBoxBody.Text
@@ -35,7 +35,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Info.Sms.IsComposeSupported;
+			return Device.Valid && Device.Sms.IsComposeSupported;
 		}
 	}
 }

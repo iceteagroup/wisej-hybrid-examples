@@ -33,9 +33,9 @@
 
   <ItemGroup>  
     <PackageReference Include="EmbedIO" Version="3.5.2" />
-    <PackageReference Include="Wisej-3" Version="3.5.*" />
+    <PackageReference Include="Wisej-4" Version="4.0.*-*" />
     <PackageReference Include="System.Data.SqlClient" Version="4.*" />
-    <PackageReference Include="Wisej-3-Hybrid" Version="3.5.*" />
+    <PackageReference Include="Wisej-4-Hybrid" Version="4.0.*-*" />
   </ItemGroup>
 
   <ItemGroup>

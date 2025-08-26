@@ -1,6 +1,6 @@
 ﻿using System;
 using Wisej.Hybrid;
-using Wisej.Hybrid.Shared.AppActions;
+
 using Wisej.Web;
 
 namespace HybridLocal
@@ -14,15 +14,15 @@ namespace HybridLocal
 
 		private void Page1_Load(object sender, System.EventArgs e)
 		{
-			Device.Info.AppActions.AppActionChanged += AppActions_AppActionChanged;
+			Device.AppActions.AppActionChanged += AppActions_AppActionChanged;
 
-			if (Device.Info.AppActions.Action != null)
-				AlertBox.Show($"Startup action: {Device.Info.AppActions.Action.Title}");
+			if (Device.AppActions.Action != null)
+				AlertBox.Show($"Startup action: {Device.AppActions.Action.Title}");
 		}
 
 		private void AppActions_AppActionChanged(object sender, System.EventArgs e)
 		{
-			AlertBox.Show(Device.Info.AppActions.Action.Title);
+			AlertBox.Show(Device.AppActions.Action.Title);
 		}
 
 		private void buttonSet_Click(object sender, System.EventArgs e)

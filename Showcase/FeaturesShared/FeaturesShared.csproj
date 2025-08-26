@@ -142,16 +142,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Wisej-3" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Camera" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Chat" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Hybrid" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Hybrid-Authentication" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Hybrid-DocumentScanner" Version="3.5.*-*" />
-		<PackageReference Include="Wisej-3-Hybrid-MLKit" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-MaterialDesign" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-PullToRefresh" Version="3.5.*" />
-		<PackageReference Include="Wisej-3-Signature" Version="3.5.*" />
+		<PackageReference Include="Wisej-4" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Camera" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Chat" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Hybrid" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Hybrid-Authentication" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Hybrid-DocumentScanner" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Hybrid-MLKit" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-MaterialDesign" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-PullToRefresh" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Signature" Version="4.0.*-*" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net48'">

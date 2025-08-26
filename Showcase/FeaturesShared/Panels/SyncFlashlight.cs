@@ -59,12 +59,12 @@ namespace FeaturesShared.Panels
 
 		private void buttonOn_Click(object sender, EventArgs e)
 		{
-			OnToggleFlash(Device.Info.System.Model, true);
+			OnToggleFlash(Device.System.Model, true);
 		}
 
 		private void buttonOff_Click(object sender, EventArgs e)
 		{
-			OnToggleFlash(Device.Info.System.Model, false);
+			OnToggleFlash(Device.System.Model, false);
 		}
 
 		public static void OnToggleFlash(string name, bool on)

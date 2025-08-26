@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Drawing;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
-using Wisej.Hybrid.Shared.StatusBar;
 using Wisej.Web;
 
 namespace Wisej.Mobile.Features.Panels

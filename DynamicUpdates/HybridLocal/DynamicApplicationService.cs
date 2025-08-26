@@ -157,8 +157,8 @@ namespace HybridLocal
 		private string GetPlatform()
 		{
 			var version = $"net{Environment.Version.Major}.0";
-			return Device.Info.System.IsApple ? $"{version}-ios" :
-				   Device.Info.System.IsAndroid ? $"{version}-android" :
+			return Device.System.IsApple ? $"{version}-ios" :
+				   Device.System.IsAndroid ? $"{version}-android" :
 				   $"{version}-windows10.0.19041.0";
 		}
 

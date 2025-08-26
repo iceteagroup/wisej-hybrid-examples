@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
-using Wisej.Hybrid.Shared.AppActions;
 using Wisej.Web;
 
 namespace FeaturesShared.Panels
@@ -17,7 +16,7 @@ namespace FeaturesShared.Panels
 
 		private void AppActions_AppActionChanged(object? sender, EventArgs e)
 		{
-			AlertBox.Show(JSON.Stringify(Device.Info.AppActions.Action));
+			AlertBox.Show(JSON.Stringify(Device.AppActions.Action));
 		}
 
 		private void buttonSetShortcuts_Click(object sender, EventArgs e)
@@ -35,7 +34,7 @@ namespace FeaturesShared.Panels
 
 		private void AppActions_Load(object sender, EventArgs e)
 		{
-			Device.Info.AppActions.AppActionChanged += AppActions_AppActionChanged;
+			Device.AppActions.AppActionChanged += AppActions_AppActionChanged;
 		}
 	}
 }

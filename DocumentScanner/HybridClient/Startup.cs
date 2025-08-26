@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
 using Wisej.Hybrid.DocumentScanner.Native;
-using Wisej.Hybrid.Native.Core;
+using Wisej.Hybrid.Native;
 using WisejHybridLocalApplication;
 
 namespace HybridClient
@@ -12,11 +12,6 @@ namespace HybridClient
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
-				.ConfigureFonts(fonts =>
-				{
-					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-				})
 
 				 // Uncomment and replace with Offline startup Type to use embedded web server.
 				 .UseWisejOffline<OfflineStartup>()
@@ -30,10 +25,6 @@ namespace HybridClient
 				})
 				
 				.UseWisejDocumentScanner();
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 			return builder.Build();
 		}

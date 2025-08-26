@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
-using Wisej.Hybrid.Shared.HapticFeedback;
 
 namespace Wisej.Mobile.Features.Panels
 {

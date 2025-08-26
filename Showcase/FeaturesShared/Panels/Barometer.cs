@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Wisej.Hybrid.Shared.Sensors;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -36,7 +35,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return Device.Valid && Device.Info.Sensors.IsBarometerSupported;
+			return Device.Valid && Device.Sensors.IsBarometerSupported;
 		}
 	}
 }

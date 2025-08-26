@@ -1,6 +1,5 @@
 ﻿using System;
 using Wisej.Hybrid;
-using Wisej.Hybrid.Shared.Communication;
 using Wisej.Services;
 using Wisej.Web;
 
@@ -32,7 +31,7 @@ namespace HybridLocal
 			this.labelVersion.Text = $"Current Version: {this.DynamicApplicationService.GetLocalVersion()}";
 
 			// check for updates if the device has an internet connection...
-			if (Device.Info.Networking.NetworkAccess == NetworkAccess.Internet)
+			if (Device.Networking.NetworkAccess == NetworkAccess.Internet)
 			{
 				var updated = await this.DynamicApplicationService.UpdateAsync();
 

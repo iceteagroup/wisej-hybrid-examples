@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using Wisej.Web;
-using MenuItem = Wisej.Hybrid.Shared.MenuBar.MenuItem;
 
 namespace Wisej.Hybrid.Features.Panels
 {
@@ -16,7 +15,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return base.IsSupported() && Device.Info.System.Idiom == Modules.System.DeviceIdiom.Desktop;
+			return base.IsSupported() && Device.System.Idiom == DeviceIdiom.Desktop;
 		}
 
 		private void MenuBar_Appear(object sender, EventArgs e)
@@ -44,7 +43,7 @@ namespace Wisej.Hybrid.Features.Panels
 						new MenuItem
 						{
 							Text = "Change Location",
-							FontImageSource = new Shared.Core.FontImageSource
+							FontImageSource = new FontImageSource
 							{
 								Glyph = "L",
 								Color = Color.Blue,
@@ -84,7 +83,7 @@ namespace Wisej.Hybrid.Features.Panels
 			Device.MenuBar.Items = null;
 		}
 
-		private void MenuBar_ItemClicked(object sender, Shared.Communication.MenuItemClickedEventArgs e)
+		private void MenuBar_ItemClicked(object sender, MenuItemClickedEventArgs e)
 		{
 			AlertBox.Show($"Clicked {e.MenuItem}");
 		}

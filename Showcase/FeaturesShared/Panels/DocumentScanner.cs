@@ -4,7 +4,7 @@ using FeaturesShared.Windows;
 using System;
 using System.ComponentModel;
 using Wisej.Hybrid.DocumentScanner;
-using Wisej.Hybrid.Modules.System;
+
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -39,7 +39,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override bool IsSupported()
 		{
-			return base.IsSupported() && Device.Info.System.IsMobile;
+			return base.IsSupported() && Device.System.IsMobile;
 		}
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using HybridOffline;
-using Microsoft.Extensions.Logging;
-using Wisej.Hybrid.Native.Core;
+using Wisej.Hybrid.Native;
 
 namespace HybridClient
 {
@@ -23,10 +22,6 @@ namespace HybridClient
 					// Provide the startup URL for the Hybrid WebView.
 					config.StartupUrl = "http://localhost:5000";
 				});
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 			return builder.Build();
 		}

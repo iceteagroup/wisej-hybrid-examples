@@ -22,8 +22,6 @@ using System;
 using System.Drawing;
 using Wisej.Ext.MaterialDesign;
 using Wisej.Hybrid.Features.Panels;
-using Wisej.Hybrid.Shared.Communication;
-using Wisej.Hybrid.Shared.StatusBar;
 using Wisej.Web;
 
 namespace Wisej.Hybrid.Features
@@ -150,9 +148,9 @@ namespace Wisej.Hybrid.Features
 				var offline = Application.Uri.Host == "localhost";
 				if (offline)
 				{
-					if (Device.Info.Networking.NetworkAccess == NetworkAccess.Internet)
+					if (Device.Networking.NetworkAccess == NetworkAccess.Internet)
 					{
-						var result = Device.Popups.DisplayActionSheet("Reconnect to server?", "No", "Yes", Shared.FlowDirection.LeftToRight, new string[] { });
+						var result = Device.Popups.DisplayActionSheet("Reconnect to server?", "No", "Yes", FlowDirection.LeftToRight, new string[] { });
 						if (result == "Yes")
 							Application.Navigate("https://demo.wisej.com/Hybrid");
 					}
@@ -163,7 +161,7 @@ namespace Wisej.Hybrid.Features
 				}
 				else
 				{
-					var result = Device.Popups.DisplayActionSheet("Go offline?", "No", "Yes", Shared.FlowDirection.LeftToRight, new string[] { });
+					var result = Device.Popups.DisplayActionSheet("Go offline?", "No", "Yes", FlowDirection.LeftToRight, new string[] { });
 					if ( result == "Yes")
 					{
 						Application.Navigate("http://localhost:5000");

@@ -1,11 +1,13 @@
 ﻿using FeaturesOffline;
-using Microsoft.Extensions.Logging;
-using Wisej.Hybrid.Authentication.Native.Middleware;
+
+using Wisej.Hybrid.Authentication.Native;
 using Wisej.Hybrid.DocumentScanner.Native;
 #if !WINDOWS
+using Wisej.Hybrid.MLKit.Native;
 using Wisej.Hybrid.MLKit.Native.Middleware;
+
 #endif
-using Wisej.Hybrid.Native.Core;
+using Wisej.Hybrid.Native;
 
 namespace HybridApp
 {
@@ -16,11 +18,6 @@ namespace HybridApp
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
-				.ConfigureFonts(fonts =>
-				{
-					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-				})
 
 				// Uncomment and replace with Offline startup Type to use embedded web server.
 				.UseWisejOffline<OfflineStartup>()
@@ -33,15 +30,11 @@ namespace HybridApp
 					config.StartupUrl = "http://localhost:5000/";
 				})
 
-				#if !WINDOWS
+#if !WINDOWS
 				.UseWisejMLKit()
-				#endif
+#endif
 				.UseWisejAuthentication()
 				.UseWisejDocumentScanner();
-
-#if DEBUG
-			builder.Logging.AddDebug();
-#endif
 
 			return builder.Build();
 		}

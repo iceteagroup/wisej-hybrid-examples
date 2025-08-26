@@ -4,7 +4,7 @@ using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
 using Wisej.Hybrid.MLKit;
 using Wisej.Hybrid.MLKit.Shared;
-using Wisej.Hybrid.Modules.System;
+
 using Wisej.Web;
 
 namespace FeaturesShared.Panels
@@ -30,8 +30,8 @@ namespace FeaturesShared.Panels
 		public override bool IsSupported()
 		{
 			return base.IsSupported() && 
-				(Device.Info.System.Platform == DevicePlatform.iOS ||
-				Device.Info.System.Platform == DevicePlatform.Android);
+				(Device.System.Platform == DevicePlatform.iOS ||
+				Device.System.Platform == DevicePlatform.Android);
 		}
 	}
 }

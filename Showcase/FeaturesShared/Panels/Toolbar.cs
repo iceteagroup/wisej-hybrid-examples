@@ -48,7 +48,7 @@ namespace Wisej.Hybrid.Features.Panels
 			this.textBoxForeColor.Text = Application.Theme.Colors.primary;
 		}
 
-		private void Toolbar_ItemClicked(object sender, Shared.Toolbar.ToolbarItemClickedEventArgs e)
+		private void Toolbar_ItemClicked(object sender, ToolbarItemClickedEventArgs e)
 		{
 			AlertBox.Show($"Selected {e.ToolbarItem.Text}");
 		}

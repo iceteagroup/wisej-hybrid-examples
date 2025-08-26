@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Wisej.Hybrid;
-using Wisej.Hybrid.Modules.System;
+
 
 namespace FeaturesShared.Panels
 {
@@ -22,7 +22,7 @@ namespace FeaturesShared.Panels
 		{
 			return Device.Valid && 
 			// iPhone doesn't support multiple windows.
-			(Device.Info.System.Platform != DevicePlatform.iOS || Device.Info.System.Idiom == DeviceIdiom.Tablet);
+			(Device.System.Platform != DevicePlatform.iOS || Device.System.Idiom == DeviceIdiom.Tablet);
 		}
 	}
 }

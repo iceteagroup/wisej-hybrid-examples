@@ -22,7 +22,7 @@ namespace HybridOffline
 
 		private static UserRepository CreateUserRepository(Type serviceType)
 		{
-			var path = Path.Combine(Device.Info.FileSystem.AppDataDirectory, "sampledatabase.sqlite");
+			var path = Path.Combine(Device.FileSystem.AppDataDirectory, "sampledatabase.sqlite");
 			return new UserRepository(new DataContext(path));
 		}
 	}

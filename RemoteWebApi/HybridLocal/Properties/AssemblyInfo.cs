@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Wisej.Hybrid.Shared.Core;
+using Wisej.Hybrid;
 
 // Allow Wisej.NET Hybrid to discover resources in this assembly.
 [assembly: HybridResources()]

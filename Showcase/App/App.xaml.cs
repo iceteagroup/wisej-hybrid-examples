@@ -1,5 +1,5 @@
 ﻿using Wisej.Hybrid.Native.Controls;
-using Wisej.Hybrid.Native.Core;
+using Wisej.Hybrid.Native;
 
 namespace HybridApp
 {
