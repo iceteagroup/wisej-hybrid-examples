@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+		<TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>HybridApp</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -33,7 +33,7 @@
 	<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
 	<MtouchLink>None</MtouchLink>
 	<MtouchUseLlvm>False</MtouchUseLlvm>
 	<UseInterpreter>true</UseInterpreter>
@@ -41,12 +41,12 @@
 	<Optimize>False</Optimize>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
 	<MtouchUseLlvm>False</MtouchUseLlvm>
 	<MtouchDebug>True</MtouchDebug>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
 	<PublishTrimmed>False</PublishTrimmed>
 	<RunAOTCompilation>False</RunAOTCompilation>
 	<DebugSymbols>False</DebugSymbols>
@@ -54,12 +54,12 @@
 	<Optimize>False</Optimize>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
 	<AndroidUseAapt2>True</AndroidUseAapt2>
 	<DebugSymbols>False</DebugSymbols>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
     <CodesignKey>Apple Distribution: ICE TEA GROUP LLC (C5KB4U3BM9)</CodesignKey>
     <CodesignProvision></CodesignProvision>
     <ProvisioningType>manual</ProvisioningType>
@@ -81,7 +81,7 @@
 		<PackageReference Include="Wisej-4-Hybrid-Native" Version="4.0.*-*" />
 	</ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'!='net8.0-windows10.0.19041.0'">
+  <ItemGroup Condition="'$(TargetFramework)'!='net9.0-windows10.0.19041.0'">
 	<PackageReference Include="Wisej-4-Hybrid-MLKit-Native" Version="4.0.*-*" />
   </ItemGroup>
 
