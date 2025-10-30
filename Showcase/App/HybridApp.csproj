@@ -29,7 +29,11 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
-  <PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
+		<MtouchInterpreter>-all,Humanizer</MtouchInterpreter>
+	</PropertyGroup>
+
+	<PropertyGroup>
 	<EnableAssemblyILStripping>false</EnableAssemblyILStripping>
   </PropertyGroup>
 
