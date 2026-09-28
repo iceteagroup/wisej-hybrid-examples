@@ -1,6 +1,9 @@
 # Hybrid 4.1 compatibility validation — 2026-09-28
 
-Candidate: **`4.1.4-local.20260928.10`**. The migration checks use committed
+The full migration matrix below uses **`4.1.4-local.20260928.10`**.
+The final follow-up candidate is **`4.1.4-local.20260928.11`**; its focused
+checks are reported separately below.
+The migration checks use committed
 4.0 examples at `14c74938787ff3bed6ef8d35b79ff7a89e34c95a`, with original C#
 source hashes verified unchanged. Project settings, package versions and test
 identities were adjusted. DynamicUpdates was removed from the 4.1 branch and
@@ -111,12 +114,59 @@ between two Clipboard detail frames. Correcting only the display order left a
 background correction. Windows displays real device values and passes
 DeviceInfo/AppInfo reopen checks; its final opaque build also builds, installs
 and displays the dark menu. Slow Windows snapshots do not establish absence of a
-one-frame flicker. Final Mesa frame validation is pending.
+one-frame flicker. On Mesa, final native-frame recordings of Clipboard first
+open, repeat open and dark-theme repeat contain no menu flash. DeviceInfo
+first open and reopen show actual native values; no fatal or unhandled process
+error was found in the final check.
 
-The follow-up also exposed two existing gaps outside these three UI corrections:
-the server display updater does not assign `Density`, so the grid reports zero;
-and the StatusBar sample has an empty visibility-switch handler with no matching
-visibility API. Neither is certified as working by this compatibility pass.
+The follow-up exposed a missing server-side display-density assignment. Hybrid
+now copies the native density before notifying consumers. Regression tests link
+the production source and verify repeated updates and event values under both
+`en-US` and `fr-FR`; the original implementation fails. The StatusBar demo
+also removes an inert visibility switch that had no matching native API, leaving
+its supported color controls.
+
+## Final follow-up candidate `.11`
+
+Source snapshots: Hybrid `57959d5`, Extensions `22ff22aa`, Examples `01ece6f`
+(including application fix commit `39cab3e`). Later report-only commits do not
+change the tested application source. `.11` adds the density assignment and
+local net48 metadata correction to `.10`; the current sample source also includes
+the Navigation, view rendering, DeviceInfo and StatusBar corrections above.
+The complete original-source migration matrix was not repeated on `.11`.
+
+- Matched public 4.1 assembly APIs: **40/40 passed**; assembly identities:
+  **40/40 preserved**. Authentication uses published 4.0.11. No assemblies were
+  omitted. Known package-level platform-TFM/fallback diagnostics remain separate
+  from this assembly-level result.
+- Fresh-cache net48 and net9 consumers: **zero warnings and zero errors**.
+- Actual-source density tests pass under `en-US` and `fr-FR` on Windows and Mac;
+  all five Navigation regression cases pass.
+- Current Showcase full Android and Windows builds pass; resolved Hybrid
+  dependencies are exclusively `.11`. Windows `.11` was built separately and
+  was not brought to the foreground; its prior UI coverage is described above.
+- Current Showcase iOS and Mac Catalyst plus Navigation iOS builds pass against
+  `.11`. The iOS Showcase displays DeviceInfo in light and dark themes with
+  density `3`; current Navigation renders Login after startup settles.
+- Mac Catalyst `.11` launches a native process/window and serves HTTP 200 over
+  the VPN-connected Mac. Its visible UI interactions remain unverified because
+  SSH screen capture/accessibility access is unavailable.
+- Android emulator `.11`: DeviceInfo displays populated groups and density
+  `2.625`; StatusBar shows its background/text color controls with the unsupported
+  visibility switch absent; Clipboard opens and reopens with the bridge idle.
+  No fatal or unhandled process error was found.
+- Mesa disconnected from ADB before the `.11` installation and remained absent
+  at the final check. **Final `.11` Mesa installation/density validation is pending
+  USB reconnection.** The earlier opaque-background `.10` Mesa native-frame and
+  populated DeviceInfo checks passed; they do not certify the later density fix
+  on that physical tablet.
+
+The final local archive is
+`.local-nuget/CombinedFeed-4.1.4-local.20260928.11.zip` (2,657,621 bytes), SHA-256
+`2b70b1173cb8a902ca06f14b3854bd121592102465147a6e1fd614b63caf054d`.
+All ten merged packages preserve their platform-slice binary assets byte for
+byte. The archive includes a relative NuGet.Config, source provenance and hashes;
+`Combined.NuGet.Config` now selects `.11`. No packages were published.
 
 ## Compatibility repairs included in `.10`
 
@@ -171,15 +221,17 @@ this did not demonstrate a new failure of a previously working consumer.
 Compile API targets are separate from runtime minimum OS support; Scanning
 declares Android 23 and Mac Catalyst 15 minimums.
 
-The local `.10` net48 package exposes a `System.Net.Http` dependency that causes
-two assembly-binding warnings. The production nuspec already omits it. A
-metadata-only diagnostic with identical binaries builds without warnings, and
-the local pack overlay now marks that dependency private for future builds.
-The consumed `.10` archive is unchanged; no `.11` was created.
+The local `.10` net48 package exposes a `System.Net.Http` dependency omitted
+by the production nuspec. The local pack overlay now marks it private, and the
+`.11` nuspec omits it. Final `.11` net48 and net9 consumers restore into a clean
+sibling package cache and build with zero warnings and zero errors. An initial
+audit placed the cache inside the consumer project, causing SDK default file
+globs to include package files and produce misleading binding warnings; that
+audit was replaced. The consumed `.10` archive is unchanged.
 
 ## Artifacts and repeatability
 
-The corrected portable archive is
+The preserved full-matrix `.10` archive is
 `.local-nuget/CombinedFeed-4.1.4-local.20260928.10.zip` (2,659,214 bytes), SHA-256
 `90af6a6fe0e9727f0b442cf5ceab92c6058b1e27f4f26b3d3b7c221cbb181d34`.
 It supersedes the invalid merged `.9` archive. Its manifest records source
@@ -189,7 +241,11 @@ restore from nuget.org. No candidate packages were published.
 
 Ignored local evidence includes:
 
-- `.local-nuget/combined-manifest-review10.json` and `Combined.NuGet.Config`.
+- `.local-nuget/combined-manifest-review10.json` and `combined-manifest-review11.json`;
+  `Combined.NuGet.Config` selects the final `.11` packages.
+- `.local-nuget/apple11-evidence/Apple-Final11-Report.md` and
+  `showcase-final11-android/results.json`: focused final application checks; `showcase-ui-windows/evidence/candidate11-build.json`
+  records the final Windows build and source/dependency audit.
 - `.local-nuget/results-server-compatibility40-v10.json`.
 - `.local-nuget/compat40-apple10/Apple-Compatibility-Report.md` and `apple-evidence`.
 - `.local-nuget/compat40-windows/results-final-windows.json` and

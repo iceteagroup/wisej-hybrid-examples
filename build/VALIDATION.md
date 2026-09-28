@@ -2,7 +2,8 @@
 
 ## Current compatibility result and artifact correction
 
-The current compatibility candidate is **`4.1.4-local.20260928.10`**; see
+The current local candidate is **`4.1.4-local.20260928.11`**; the full migration
+matrix from original source uses `.10`, with focused follow-up checks on `.11`. See
 [COMPATIBILITY.md](COMPATIBILITY.md) for the unchanged-source 4.0 migration
 matrix, final API checks, existing migration requirements and exact limitations.
 
