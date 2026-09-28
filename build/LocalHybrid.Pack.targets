@@ -19,6 +19,10 @@
     <ProjectReference Remove="@(_LocalHybridProject)" />
     <_LocalHybridProjectName Include="@(_LocalHybridProject->'%(Filename)')" />
   </ItemGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid' And '$(TargetFramework)' == 'net48'">
+    <!-- Match the release nuspec: net48 consumers use the framework HTTP assembly. -->
+    <PackageReference Update="System.Net.Http" PrivateAssets="all" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="@(_LocalHybridProjectName->Replace('Wisej.Hybrid', 'Wisej-4-Hybrid')->Replace('.', '-'))" Version="$(LocalHybridPackageVersion)" />
     <None Include="$(MSBuildProjectDirectory)/Wisej.Hybrid.targets" Pack="true" PackagePath="build/Wisej-4-Hybrid.targets" Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid'" />
