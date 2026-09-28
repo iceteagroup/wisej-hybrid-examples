@@ -20,7 +20,7 @@ args = parser.parse_args()
 version = args.version
 framework = 'net9.0-ios' if args.platform == 'iOS' else 'net9.0-maccatalyst'
 runtime = 'iossimulator-arm64' if args.platform == 'iOS' else 'maccatalyst-arm64'
-examples = args.examples or ['Authentication', 'DocumentScanner', 'DynamicUpdates', 'ExternalApps',
+examples = args.examples or ['Authentication', 'DocumentScanner', 'ExternalApps',
                            'Flashlight', 'LocalDatabase', 'Navigation', 'NetworkEvents', 'PlatformCode',
                            'RemoteWebApi', 'Shortcuts', 'Showcase']
 results = []

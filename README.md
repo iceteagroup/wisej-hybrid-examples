@@ -27,9 +27,6 @@ dotnet restore Authentication/Wisej.Hybrid.Authentication.sln
 dotnet build Authentication/HybridClient/HybridClient.csproj -f net9.0-android -m:1 -p:BuildInParallel=false
 ```
 
-Build DynamicUpdates through its solution when producing its distribution
-folder; the shared project's distribution step uses `SolutionDir`.
-
 ## Test source-built Hybrid packages
 
 From this repository on Windows:

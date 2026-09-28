@@ -112,7 +112,6 @@ version, rather than a published package or project reference.
 | --- | --- | --- | --- |
 | Authentication | Passed | Passed | Passed |
 | DocumentScanner | Passed | Passed | Not targeted |
-| DynamicUpdates | Passed | Passed | Passed |
 | ExternalApps | Passed | Passed | Not targeted |
 | Flashlight | Passed | Passed | Not targeted |
 | LocalDatabase | Passed | Passed | Passed |

@@ -1,6 +1,6 @@
 param(
     [ValidateSet('Android', 'Windows')][string]$Platform = 'Android',
-    [string[]]$Examples = @('Authentication', 'DocumentScanner', 'DynamicUpdates', 'ExternalApps',
+    [string[]]$Examples = @('Authentication', 'DocumentScanner', 'ExternalApps',
         'Flashlight', 'LocalDatabase', 'Navigation', 'NetworkEvents', 'PlatformCode', 'RemoteWebApi', 'Shortcuts', 'Showcase'),
     [switch]$CompileOnly
 )
