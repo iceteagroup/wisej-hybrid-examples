@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wisej-4-Hybrid" Version="4.0.14" ExcludeAssets="all" />
+    <PackageReference Include="Wisej-4-Hybrid" Version="4.1.4" ExcludeAssets="all" />
     <ProjectReference Include="$(HybridSourceRoot)Wisej.Hybrid\Wisej.Hybrid.csproj" />
   </ItemGroup>
 </Project>

@@ -145,11 +145,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Wisej-4" Version="4.1.4" />
-		<PackageReference Include="Wisej-4-Camera" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-Chat" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-MaterialDesign" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-PullToRefresh" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-Signature" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4-Camera" Version="4.1.4" />
+		<PackageReference Include="Wisej-4-Chat" Version="4.1.4" />
+		<PackageReference Include="Wisej-4-MaterialDesign" Version="4.1.4" />
+		<PackageReference Include="Wisej-4-PullToRefresh" Version="4.1.4" />
+		<PackageReference Include="Wisej-4-Signature" Version="4.1.4" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net48'">
@@ -179,10 +179,10 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wisej-4-Hybrid" Version="4.0.14" ExcludeAssets="all" />
+    <PackageReference Include="Wisej-4-Hybrid" Version="4.1.4" ExcludeAssets="all" />
     <ProjectReference Include="$(HybridSourceRoot)Wisej.Hybrid\Wisej.Hybrid.csproj" />
-    <ProjectReference Include="$(HybridExtensionsSourceRoot)Authentication\Wisej.Hybrid.Authentication\Wisej.Hybrid.Authentication.csproj" />
-    <ProjectReference Include="$(HybridExtensionsSourceRoot)DocumentScanner\Wisej.Hybrid.DocumentScanner\Wisej.Hybrid.DocumentScanner.csproj" />
-    <ProjectReference Include="$(HybridExtensionsSourceRoot)MLKit\Wisej.Hybrid.MLKit\Wisej.Hybrid.MLKit.csproj" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)Authentication\Wisej.Hybrid.Authentication\Wisej.Hybrid.Authentication.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)DocumentScanner\Wisej.Hybrid.DocumentScanner\Wisej.Hybrid.DocumentScanner.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)MLKit\Wisej.Hybrid.MLKit\Wisej.Hybrid.MLKit.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
   </ItemGroup>
 </Project>

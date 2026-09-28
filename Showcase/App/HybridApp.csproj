@@ -24,7 +24,7 @@
 		<ApplicationVersion>34</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
@@ -86,11 +86,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
-    <PackageReference Include="Wisej-4-Hybrid" Version="4.0.14" ExcludeAssets="all" />
-    <PackageReference Include="Wisej-4-Hybrid-Native" Version="4.0.14" ExcludeAssets="all" />
+    <PackageReference Include="Wisej-4-Hybrid" Version="4.1.4" ExcludeAssets="all" />
+    <PackageReference Include="Wisej-4-Hybrid-Native" Version="4.1.4" ExcludeAssets="all" />
     <ProjectReference Include="$(HybridSourceRoot)Wisej.Hybrid.Native\Wisej.Hybrid.Native.csproj" />
-    <ProjectReference Include="$(HybridExtensionsSourceRoot)Authentication\Wisej.Hybrid.Authentication.Native\Wisej.Hybrid.Authentication.Native.csproj" />
-    <ProjectReference Include="$(HybridExtensionsSourceRoot)DocumentScanner\Wisej.Hybrid.DocumentScanner.Native\Wisej.Hybrid.DocumentScanner.Native.csproj" Condition="'$(TargetFramework)' != 'net9.0-windows10.0.19041.0'" />
-    <ProjectReference Include="$(HybridExtensionsSourceRoot)MLKit\Wisej.Hybrid.MLKit.Native\Wisej.Hybrid.MLKit.Native.csproj" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)Authentication\Wisej.Hybrid.Authentication.Native\Wisej.Hybrid.Authentication.Native.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)DocumentScanner\Wisej.Hybrid.DocumentScanner.Native\Wisej.Hybrid.DocumentScanner.Native.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" Condition="'$(TargetFramework)' != 'net9.0-windows10.0.19041.0'" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)MLKit\Wisej.Hybrid.MLKit.Native\Wisej.Hybrid.MLKit.Native.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
   </ItemGroup>
 </Project>
