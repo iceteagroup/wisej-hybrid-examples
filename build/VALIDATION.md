@@ -67,8 +67,12 @@ the scanner completed the async call, re-enabled the page, and left `busy=false`
 with an empty event queue. Evidence is saved in `logs/async-final-before.json`,
 `logs/async-final-after.json`, and `logs/Hybrid-async-final.png` under `.local-nuget`.
 
-Reinstallation on the tablet remains pending because its USB debugging connection
-is offline; a fresh physical barcode scan must still be checked.
+The final APK was also installed and launched on the Mesa MS3A tablet. A fresh
+physical barcode scan through `ScanBarcodeAsync` returned its value successfully,
+confirmed by the user and by the WebView state: `Added 1 code(s). 1 total.`,
+`busy=false`, and an empty event queue. Evidence is saved locally in
+`logs/mesa-async-after.json` and `logs/mesa-final.png`. The tablet's USB debugging
+connection remains intermittent, but reconnected for the post-scan capture.
 
 These checks do not constitute exhaustive hardware, authentication-provider,
 remote-server, or UI testing. Builds retain existing platform and obsolete-API
