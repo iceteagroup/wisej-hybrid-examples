@@ -1,5 +1,6 @@
 ﻿using HybridLocal.Services;
 using System;
+using System.ComponentModel;
 using Wisej.Services;
 using Wisej.Web;
 
@@ -20,8 +21,10 @@ namespace HybridLocal.Views
 		#region Properties
 
 		[Inject]
+		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		internal UserService UserService { get; set; }
 
+		[DefaultValue("View Title")]
 		public string Title
 		{
 			get => labelTitle.Text;

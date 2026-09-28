@@ -1,0 +1,20 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory).local-nuget/LocalHybrid.props"
+          Condition="'$(UseLocalHybridPackages)' == 'true' And Exists('$(MSBuildThisFileDirectory).local-nuget/LocalHybrid.props')" />
+  <PropertyGroup Condition="'$(UseLocalHybridPackages)' == 'true'">
+    <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory).local-nuget/feed;$(RestoreAdditionalProjectSources)</RestoreAdditionalProjectSources>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(UseLocalHybridPackages)' == 'true'">
+    <!-- Replace source references as well as NuGet references, so the test exercises packages. -->
+    <_LocalHybridSource Include="@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Native'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Runtime'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Scanning'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Authentication'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Authentication.Native'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.DocumentScanner'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.DocumentScanner.Native'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.MLKit'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.MLKit.Native'))" />
+    <ProjectReference Remove="@(_LocalHybridSource)" />
+    <_LocalHybridPackage Include="@(_LocalHybridSource->'%(Filename)')" />
+    <_LocalHybridPackageId Include="@(_LocalHybridPackage->Replace('Wisej.Hybrid', 'Wisej-4-Hybrid')->Replace('.', '-'))" />
+    <PackageReference Remove="@(_LocalHybridPackageId)" />
+    <PackageReference Include="@(_LocalHybridPackageId)" Version="$(LocalHybridPackageVersion)" />
+    <PackageReference Update="Wisej-4-Hybrid*" Version="$(LocalHybridPackageVersion)" ExcludeAssets="none" />
+  </ItemGroup>
+  <Target Name="ValidateLocalHybridFeed" BeforeTargets="CollectPackageReferences" Condition="'$(UseLocalHybridPackages)' == 'true'">
+    <Error Condition="'$(LocalHybridPackageVersion)' == ''" Text="Run build/Build-LocalHybrid.ps1 before enabling UseLocalHybridPackages." />
+  </Target>
+</Project>

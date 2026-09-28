@@ -1,5 +1,6 @@
 <Project>
   <!-- Project references do not import the build targets supplied by Hybrid NuGet packages. -->
-  <Import Project="$(HybridSourceRoot)Wisej.Hybrid\Wisej.Hybrid.targets" />
-  <Import Project="$(HybridSourceRoot)Wisej.Hybrid.Native\Wisej.Hybrid.Native.targets" Condition="'$(MSBuildProjectName)' == 'HybridApp'" />
+  <Import Project="$(HybridSourceRoot)Wisej.Hybrid\Wisej.Hybrid.targets" Condition="'$(UseLocalHybridPackages)' != 'true'" />
+  <Import Project="$(HybridSourceRoot)Wisej.Hybrid.Native\Wisej.Hybrid.Native.targets" Condition="'$(UseLocalHybridPackages)' != 'true' And '$(MSBuildProjectName)' == 'HybridApp'" />
+  <Import Project="../Directory.Build.targets" />
 </Project>

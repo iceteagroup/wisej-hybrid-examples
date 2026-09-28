@@ -1,0 +1,26 @@
+<Project>
+  <!-- Imported after the original project, only by Build-LocalHybrid.ps1. -->
+  <PropertyGroup>
+    <PackageId>$(MSBuildProjectName.Replace('Wisej.Hybrid', 'Wisej-4-Hybrid').Replace('.', '-'))</PackageId>
+    <PackageVersion>$(LocalHybridPackageVersion)</PackageVersion>
+    <Version>$(LocalHybridPackageVersion)</Version>
+    <Authors>Ice Tea Group LLC</Authors>
+    <Description>Local source build of $(MSBuildProjectName).</Description>
+    <IsPackable>true</IsPackable>
+    <IncludeSymbols>false</IncludeSymbols>
+    <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net9.0-maccatalyst'">15.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="Wisej-4" Version="4.1.4" />
+    <PackageReference Update="Managed.System.Drawing" Version="4.1.4" />
+    <PackageReference Update="Wisej-4-Hybrid*" Version="$(LocalHybridPackageVersion)" />
+    <_LocalHybridProject Include="@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Runtime'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Scanning'))" />
+    <ProjectReference Remove="@(_LocalHybridProject)" />
+    <_LocalHybridProjectName Include="@(_LocalHybridProject->'%(Filename)')" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="@(_LocalHybridProjectName->Replace('Wisej.Hybrid', 'Wisej-4-Hybrid')->Replace('.', '-'))" Version="$(LocalHybridPackageVersion)" />
+    <None Include="$(MSBuildProjectDirectory)/Wisej.Hybrid.targets" Pack="true" PackagePath="build/Wisej-4-Hybrid.targets" Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid'" />
+    <None Include="$(MSBuildProjectDirectory)/Wisej.Hybrid.Native.targets" Pack="true" PackagePath="build/Wisej-4-Hybrid-Native.targets" Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid.Native'" />
+  </ItemGroup>
+</Project>
