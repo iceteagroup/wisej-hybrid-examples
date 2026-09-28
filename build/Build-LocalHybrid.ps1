@@ -61,6 +61,8 @@ try {
         ('<Project>{0}<PropertyGroup><TargetFrameworks>{1}</TargetFrameworks></PropertyGroup><Import Project="{2}" /></Project>' -f $originalImport, ($frameworks -join ';'), $packTargets) |
             Set-Content -LiteralPath $wrapper -Encoding utf8
         $properties = @(
+            # Keep restore assets separate from IDE/background restores of the source projects.
+            "-p:MSBuildProjectExtensionsPath=$(Join-Path $local "packobj/$name/")",
             "-p:LocalHybridPackageVersion=$Version",
             "-p:WisejVersion=$Version", '-p:SdmVersion=4.1.4',
             "-p:DirectoryBuildTargetsPath=$wrapper",

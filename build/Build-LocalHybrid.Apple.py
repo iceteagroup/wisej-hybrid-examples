@@ -46,6 +46,7 @@ for project in projects:
 </Project>''')
     command = ['dotnet', 'pack', str(project), '-c', 'Release', '-o', str(feed), '-m:1',
                '--verbosity', 'quiet', f'-p:DirectoryBuildTargetsPath={wrapper}',
+               f'-p:MSBuildProjectExtensionsPath={local / "pack-obj-apple" / name}/',
                f'-p:RestoreConfigFile={config}', f'-p:LocalHybridPackageVersion={version}',
                f'-p:WisejVersion={version}', '-p:SdmVersion=4.1.4', '-p:BuildInParallel=false']
     print(f'Packing {name}: {", ".join(frameworks)}', flush=True)
