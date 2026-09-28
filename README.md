@@ -59,10 +59,12 @@ camera APIs. Copy the same source revisions and use the Windows feed's version:
 ```sh
 python3 build/Build-LocalHybrid.Apple.py '../../Hybrid/4.1' '../../Hybrid Extensions/4.1' VERSION
 python3 build/Test-LocalHybrid.Apple.py VERSION
+python3 build/Test-LocalHybrid.Apple.py VERSION Showcase --platform MacCatalyst
 ```
 
 The Apple builder creates iOS and Mac Catalyst package assets. The test script
-builds ad hoc signed iOS simulator apps on Apple Silicon; RemoteWebApi is Android-only.
+builds ad hoc signed iOS simulator apps or the native Mac Catalyst Showcase on
+Apple Silicon; RemoteWebApi is Android-only.
 It does not exercise camera, authentication, or other device features automatically.
 The local packaging overlay raises the Mac Catalyst minimum to 15.0 for the MAUI 9
 toolchain and bypasses the extensions' Windows-only artifact staging commands.
@@ -73,9 +75,25 @@ To combine separately built Windows and Apple feeds, use a new output directory:
 python3 build/Merge-LocalHybrid.py WINDOWS_FEED APPLE_FEED COMBINED_FEED
 ```
 
-Both inputs must use identical package versions and source revisions. If you
+Both inputs must contain only the matching package version from the same source
+revisions; copy the selected version to separate staging folders when a feed
+contains older builds. Package restores use isolated intermediate folders to
+avoid interference from IDE restores of the source projects. If you
 already restored that version before merging, clear only those local-version
 Hybrid packages from the NuGet cache before restoring the combined packages.
 
 See [the validation record](build/VALIDATION.md) for the tested source revisions,
 platform results, and runtime coverage.
+
+## Showcase integrations
+
+Showcase creates demos when opened and releases their native subscriptions when
+they close or become inactive. Its media handlers call `Device.Media` async
+methods directly. Images are disposed with their preview; video previews support
+HTTP byte ranges for playback and seeking.
+
+The existing host is retained. Screen recording uses native Android, Windows,
+and Apple APIs. The Screen demo checks availability, records without microphone
+audio, and previews completed MP4 files. Windows microphone recording is currently
+unsupported; the Hybrid API reports that explicitly. See the Hybrid repository's
+README for recording limits, cancellation behavior, and image ownership.
