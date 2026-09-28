@@ -79,8 +79,10 @@ avoid interference from IDE restores of the source projects. If you
 already restored that version before merging, clear only those local-version
 Hybrid packages from the NuGet cache before restoring the combined packages.
 
-See [the validation record](build/VALIDATION.md) for the tested source revisions,
-platform results, and runtime coverage.
+See [the compatibility report](build/COMPATIBILITY.md) for the `.10` package audit
+and tests of unchanged 4.0 sample source. The [validation history](build/VALIDATION.md)
+records earlier Showcase/platform checks. The corrected `.10` portable feed
+supersedes the invalid merged `.9` archive.
 
 ## Showcase integrations
 

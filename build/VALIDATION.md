@@ -1,5 +1,19 @@
 # Local Hybrid validation — 2026-09-28
 
+## Current compatibility result and artifact correction
+
+The current compatibility candidate is **`4.1.4-local.20260928.10`**; see
+[COMPATIBILITY.md](COMPATIBILITY.md) for the unchanged-source 4.0 migration
+matrix, final API checks, existing migration requirements and exact limitations.
+
+The merged `.9` archive referenced below was not usable in a fresh NuGet cache:
+its metadata used a namespace prefix that NuGet did not accept. Original
+platform-slice builds and runtime checks remain historical evidence, but did
+not validate that portable archive. The corrected `.10` archive supersedes it
+and has passed fresh-cache server restore/build checks. The following sections
+describe earlier candidates; their references to "final" mean final within
+that earlier pass, not the current compatibility candidate.
+
 ## Showcase and native integration cleanup
 
 Final source package version: `4.1.4-local.20260928.9`.
