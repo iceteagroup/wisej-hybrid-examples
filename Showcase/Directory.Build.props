@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- Override these paths when the Hybrid repositories are checked out elsewhere. -->
+    <HybridSourceRoot Condition="'$(HybridSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\Hybrid\4.1\</HybridSourceRoot>
+    <HybridExtensionsSourceRoot Condition="'$(HybridExtensionsSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\Hybrid Extensions\4.1\</HybridExtensionsSourceRoot>
+  </PropertyGroup>
+</Project>

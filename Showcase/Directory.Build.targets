@@ -1,0 +1,5 @@
+<Project>
+  <!-- Project references do not import the build targets supplied by Hybrid NuGet packages. -->
+  <Import Project="$(HybridSourceRoot)Wisej.Hybrid\Wisej.Hybrid.targets" />
+  <Import Project="$(HybridSourceRoot)Wisej.Hybrid.Native\Wisej.Hybrid.Native.targets" Condition="'$(MSBuildProjectName)' == 'HybridApp'" />
+</Project>

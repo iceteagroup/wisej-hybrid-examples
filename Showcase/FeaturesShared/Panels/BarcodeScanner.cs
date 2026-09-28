@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
 using Wisej.Hybrid.MLKit;
@@ -12,26 +13,47 @@ namespace FeaturesShared.Panels
 	[Category("Hardware")]
 	public partial class BarcodeScanner : TestBase
 	{
+		private readonly ListBox _results = new() { Dock = DockStyle.Fill };
+		private readonly Label _status = new() { Dock = DockStyle.Top, Height = 42, Text = "Scan a single code, or collect a batch." };
+
 		public BarcodeScanner()
 		{
 			InitializeComponent();
+			buttonNative.Text = "Scan one code";
+			buttonEmbedded.Text = "Scan a batch";
+			buttonNative.Height = buttonEmbedded.Height = 48;
+			Hint = "Point your camera at a barcode or QR code. Scanned values stay here until you clear them.";
+			var resultsPanel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(0, 20, 0, 0) };
+			var clear = new Button { Text = "Clear results", Dock = DockStyle.Bottom, Height = 44 };
+			clear.Click += (_, _) => { _results.Items.Clear(); _status.Text = "Ready for your next scan."; };
+			resultsPanel.Controls.Add(_results);
+			resultsPanel.Controls.Add(_status);
+			resultsPanel.Controls.Add(clear);
+			Controls.Add(resultsPanel);
+			resultsPanel.BringToFront();
 		}
 
-		private void buttonNative_Click(object sender, EventArgs e)
+		public override void Activate() { base.Activate(); MinimizeTitle(); }
+
+		private async void buttonNative_Click(object sender, EventArgs e) => await ScanAsync(false);
+		private async void buttonEmbedded_Click(object sender, EventArgs e) => await ScanAsync(true);
+
+		private async Task ScanAsync(bool multiple)
 		{
-			Device.Use<DeviceML>().ScanBarcode(new CaptureConfiguration());
+			buttonNative.Enabled = buttonEmbedded.Enabled = false;
+			try
+			{
+				var values = await Device.Use<DeviceML>().ScanBarcodeAsync(new CaptureConfiguration
+				{
+					AllowMultiple = multiple, UniqueCapturesOnly = true
+				});
+				foreach (var value in values ?? Array.Empty<string>()) _results.Items.Add(value);
+				_status.Text = values?.Length > 0 ? $"Added {values.Length} code(s). {_results.Items.Count} total." : "No codes added. Ready when you are.";
+			}
+			catch (Exception error) { _status.Text = error.Message; }
+			finally { buttonNative.Enabled = buttonEmbedded.Enabled = true; }
 		}
 
-		private void buttonEmbedded_Click(object sender, EventArgs e)
-		{
-			new BarcodeWindow().Show();
-		}
-
-		public override bool IsSupported()
-		{
-			return base.IsSupported() && 
-				(Device.System.Platform == DevicePlatform.iOS ||
-				Device.System.Platform == DevicePlatform.Android);
-		}
+		public override bool IsSupported() => base.IsSupported();
 	}
 }

@@ -13,7 +13,7 @@ namespace FeaturesOffline
 			server.WithWisej();
 			server.Run(token);
 
-			return url;
+			return url + "/Offline.html";
 		}
 	}
 }

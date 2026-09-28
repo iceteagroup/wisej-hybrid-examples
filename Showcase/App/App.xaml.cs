@@ -1,15 +1,17 @@
-﻿using Wisej.Hybrid.Native.Controls;
-using Wisej.Hybrid.Native;
+using Wisej.Hybrid.Native.Controls;
 
 namespace HybridApp
 {
-	public partial class App : Application
-	{
-		public App()
-		{
-			InitializeComponent();
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+        }
 
-			MainPage = new HybridShell();
-		}
-	}
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            return new Window(new HybridShell());
+        }
+    }
 }

@@ -1,11 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net48;net9.0;net9.0-android;net9.0-ios</TargetFrameworks>
+		<TargetFrameworks>net48;net9.0;net9.0-android;net9.0-ios;net9.0-windows10.0.19041.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
+		<NoWarn>$(NoWarn);WFO1000</NoWarn>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net9.0-windows10.0.19041.0'">10.0.19041.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'=='net'">
@@ -142,13 +144,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Wisej-4" Version="4.0.*-*" />
+		<PackageReference Include="Wisej-4" Version="4.1.4" />
 		<PackageReference Include="Wisej-4-Camera" Version="4.0.*-*" />
 		<PackageReference Include="Wisej-4-Chat" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-Hybrid" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-Hybrid-Authentication" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-Hybrid-DocumentScanner" Version="4.0.*-*" />
-		<PackageReference Include="Wisej-4-Hybrid-MLKit" Version="4.0.*-*" />
 		<PackageReference Include="Wisej-4-MaterialDesign" Version="4.0.*-*" />
 		<PackageReference Include="Wisej-4-PullToRefresh" Version="4.0.*-*" />
 		<PackageReference Include="Wisej-4-Signature" Version="4.0.*-*" />
@@ -180,4 +178,11 @@
 		<Compile Update="Controls\AppItem.cs" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Wisej-4-Hybrid" Version="4.0.14" ExcludeAssets="all" />
+    <ProjectReference Include="$(HybridSourceRoot)Wisej.Hybrid\Wisej.Hybrid.csproj" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)Authentication\Wisej.Hybrid.Authentication\Wisej.Hybrid.Authentication.csproj" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)DocumentScanner\Wisej.Hybrid.DocumentScanner\Wisej.Hybrid.DocumentScanner.csproj" />
+    <ProjectReference Include="$(HybridExtensionsSourceRoot)MLKit\Wisej.Hybrid.MLKit\Wisej.Hybrid.MLKit.csproj" />
+  </ItemGroup>
 </Project>

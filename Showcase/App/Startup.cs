@@ -1,42 +1,34 @@
-﻿using FeaturesOffline;
-
+using FeaturesOffline;
 using Wisej.Hybrid.Authentication.Native;
-using Wisej.Hybrid.DocumentScanner.Native;
-#if !WINDOWS
-using Wisej.Hybrid.MLKit.Native;
-using Wisej.Hybrid.MLKit.Native.Middleware;
-
-#endif
 using Wisej.Hybrid.Native;
+using Wisej.Hybrid.MLKit.Native.Middleware;
+#if !WINDOWS
+using Wisej.Hybrid.DocumentScanner.Native;
+#endif
 
 namespace HybridApp
 {
-	public static class Startup
-	{
-		public static MauiApp Main()
-		{
-			var builder = MauiApp.CreateBuilder();
-			builder
-				.UseMauiApp<App>()
+    public static class Startup
+    {
+        public static MauiApp Main()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .UseWisejOffline<OfflineStartup>()
+                .UseWisejHybrid(config =>
+                {
+                    config.LicenseKey = "";
+                    config.StartupUrl = "http://localhost:5000/";
+                })
+                .UseWisejAuthentication();
 
-				// Uncomment and replace with Offline startup Type to use embedded web server.
-				.UseWisejOffline<OfflineStartup>()
-
-				.UseWisejHybrid((config) =>
-				{
-					config.LicenseKey = "";
-
-					// Provide the startup URL for the Hybrid WebView.
-					config.StartupUrl = "http://localhost:5000/";
-				})
-
+            builder.UseWisejMLKit();
 #if !WINDOWS
-				.UseWisejMLKit()
+            builder.UseWisejDocumentScanner();
 #endif
-				.UseWisejAuthentication()
-				.UseWisejDocumentScanner();
 
-			return builder.Build();
-		}
-	}
+            return builder.Build();
+        }
+    }
 }
