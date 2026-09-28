@@ -108,7 +108,9 @@ namespace Wisej.Hybrid.Features
 				this.currentView.ViewRequested -= View_ViewRequested;
 				this.currentView.ViewRequested += View_ViewRequested;
 
-				this.panelContainer.Controls.Add(this.currentView);
+				if (this.currentView.Parent != this.panelContainer)
+					this.panelContainer.Controls.Add(this.currentView);
+				this.currentView.BringToFront();
 				this.currentView.Show();
 			}
 			catch (Exception ex) 

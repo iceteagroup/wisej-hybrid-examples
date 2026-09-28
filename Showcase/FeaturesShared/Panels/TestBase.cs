@@ -32,6 +32,7 @@ namespace Wisej.Hybrid.Features
 		public TestBase()
 		{
 			InitializeComponent();
+			this.BackColor = System.Drawing.Color.FromName("@window");
 			this.Disposed += (_, _) => SetActive(false);
 		}
 

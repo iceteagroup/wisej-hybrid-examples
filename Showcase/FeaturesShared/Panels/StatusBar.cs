@@ -22,10 +22,6 @@ namespace Wisej.Mobile.Features.Panels
 								? StatusBarTextColor.Black : StatusBarTextColor.White;
 		}
 
-		private void checkBoxVisible_CheckedChanged(object sender, EventArgs e)
-		{
-		}
-
 		private void textBoxBackColor_TextChanged(object sender, EventArgs e)
 		{
 			Device.StatusBar.BackColor = ColorTranslator.FromHtml(this.textBoxBackColor.Text);

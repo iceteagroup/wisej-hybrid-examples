@@ -13,7 +13,13 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override void Activate()
 		{
-			//this.propertyGridInfo.SelectedObject = Device;
+			this.propertyGridInfo.SelectedObject = new
+			{
+				System = Device.System,
+				Battery = Device.Battery,
+				Display = Device.Display,
+				Networking = Device.Networking
+			};
 			this.propertyGridInfo.Refresh(true);
 
 			Device.Battery.BatteryInfoChanged += Device_InfoChanged;

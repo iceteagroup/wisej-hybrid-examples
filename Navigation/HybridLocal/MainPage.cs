@@ -1,14 +1,19 @@
 ﻿using HybridLocal.Views;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Wisej.Web;
 
 namespace HybridLocal
 {
 	public partial class MainPage : Page
 	{
-		private ViewBase _currentView;
+		private readonly Stack<ViewBase> _views = new Stack<ViewBase>();
+
+		private ViewBase CurrentView => _views.Count == 0 ? null : _views.Peek();
+
+		// Both views must finish before reversing a transition.
+		private bool IsNavigating => _views.Any(view => view.Busy);
 
 		public MainPage()
 		{
@@ -24,34 +29,33 @@ namespace HybridLocal
 		// Pop the top view off the stack.
 		private void PopView()
 		{
-			if (Controls.Count < 1)
+			if (_views.Count <= 1 || IsNavigating)
 				return;
 
-			_currentView?.PopDisappear();
-			_currentView = Controls.OfType<ViewBase>().LastOrDefault();
-			_currentView?.PopAppear();
+			_views.Pop().PopDisappear();
+			CurrentView.PopAppear();
 		}
 
 		// Pop views off the stack until the specified view type is found.
 		private void PopToView(Type type)
 		{
-			// continue popping until the specified view is found.
-			while (_currentView.GetType() != type)
-			{
-				_currentView?.PopDisappear();
-				_currentView = Controls.OfType<ViewBase>().LastOrDefault(c => !c.Busy);
-			}
+			var target = _views.FirstOrDefault(view => view.GetType() == type);
+			if (target == null || target == CurrentView || IsNavigating)
+				return;
 
-			_currentView?.PopAppear();
+			var outgoing = _views.Pop();
+			while (CurrentView != target)
+				_views.Pop().Dispose();
+
+			outgoing.PopDisappear();
+			target.PopAppear();
 		}
 
 		// Push a new view onto the stack.
 		private void PushView(Type type)
 		{
-			if (_currentView != null && _currentView.Busy)
+			if (IsNavigating)
 				return;
-
-			_currentView?.PushDisappear();
 
 			// Create a new instance of the requested view.
 			var view = (ViewBase)Activator.CreateInstance(type);
@@ -63,26 +67,29 @@ namespace HybridLocal
 
 			// Configure the view.
 			view.Dock = DockStyle.Fill;
+			CurrentView?.PushDisappear();
+			_views.Push(view);
 			view.Parent = this;
 
 			view.PushAppear();
-
-			_currentView = view;
 		}
 
 		private void View_PopToView(object sender, Type e)
 		{
-			PopToView(e);
+			if (sender == CurrentView)
+				PopToView(e);
 		}
 
 		private void View_PopView(object sender, EventArgs e)
 		{
-			PopView();
+			if (sender == CurrentView)
+				PopView();
 		}
 
 		private void View_ViewRequested(object sender, Type e)
 		{
-			PushView(e);
+			if (sender == CurrentView)
+				PushView(e);
 		}
 	}
 }
