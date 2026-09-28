@@ -1,4 +1,4 @@
-﻿#if !WINDOWS
+#if !WINDOWS
 
 using FeaturesShared.Windows;
 using System;
@@ -37,10 +37,6 @@ namespace Wisej.Hybrid.Features.Panels
 			}
 		}
 
-		public override bool IsSupported()
-		{
-			return base.IsSupported() && Device.System.IsMobile;
-		}
 	}
 }
 

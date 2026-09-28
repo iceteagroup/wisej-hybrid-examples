@@ -11,7 +11,8 @@ namespace Wisej.Hybrid.Features.Panels
 
 		#region Properties
 
-		private readonly TestBase _instance;
+		private TestBase _instance;
+		private readonly Type _viewType;
 
 		private readonly Random _rand = new((int)DateTime.Now.Ticks);
 
@@ -28,17 +29,17 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		public AppItem(TestBase instance)
+		public AppItem(Type viewType)
 		{
 			InitializeComponent();
 
 			if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
 				return;
 
-			this._instance = instance;
+			this._viewType = viewType;
 
-			var category = GetCategory(instance.GetType());
-			var title = String.Join(" ", Regex.Split(this._instance.GetType().Name, @"(?<!^)(?=[A-Z])"));
+			var category = GetCategory(viewType);
+			var title = String.Join(" ", Regex.Split(viewType.Name, @"(?<!^)(?=[A-Z])"));
 
 			this.Title = title;
 
@@ -46,6 +47,12 @@ namespace Wisej.Hybrid.Features.Panels
 				this.ImageSource = $"resource.wx/{category}.svg?color={GetRandomColor()}";
 
 			Application.ThemeChanged += Application_ThemeChanged;
+			this.Disposed += (_, _) =>
+			{
+				Application.ThemeChanged -= Application_ThemeChanged;
+				if (this._instance != null && !this._instance.IsDisposed)
+					this._instance.Dispose();
+			};
 
 			SetNativeColors();
 		}
@@ -72,9 +79,11 @@ namespace Wisej.Hybrid.Features.Panels
 		{
 			this.labelTitle.Text = this.Title;
 			this.pictureBoxIcon.ImageSource = this.ImageSource;
-			this.labelDescription.Text = GetCategory(this._instance.GetType());
+			if (this._viewType == null)
+				return;
+			this.labelDescription.Text = GetCategory(this._viewType);
 
-			if (this._instance.Pinned)
+			if (DemoCapabilities.IsPinned(this._viewType))
 				BringToFront();
 		}
 
@@ -87,7 +96,7 @@ namespace Wisej.Hybrid.Features.Panels
 		public string GetDescription(Type type)
 		{
 			var attribute = Attribute.GetCustomAttribute(type, typeof(DescriptionAttribute));
-			return ((DescriptionAttribute)attribute).Description ?? "";
+			return ((DescriptionAttribute)attribute)?.Description ?? "";
 		}
 
 		public string GetCategory(Type type)
@@ -98,7 +107,21 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void AppItemView_Click(object sender, EventArgs e)
 		{
-			this.OnViewRequested(new WidgetEventArgs("ViewRequested", this._instance));
+			try
+			{
+				if (this._viewType == null || !DemoCapabilities.IsSupported(this._viewType))
+					return;
+
+				if (this._instance == null || this._instance.IsDisposed)
+					this._instance = (TestBase)Activator.CreateInstance(this._viewType);
+
+				if (this._instance.IsSupported())
+					this.OnViewRequested(new WidgetEventArgs("ViewRequested", this._instance));
+			}
+			catch (Exception ex)
+			{
+				AlertBox.Show($"Unable to open {this.Title}: {ex.GetBaseException().Message}");
+			}
 		}
 
 		private void SetNativeColors()
@@ -117,12 +140,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void AppItemView_Appear(object sender, EventArgs e)
 		{
-			if (this._supported == null)
-			{
-				this._supported = this._instance != null && this._instance.IsSupported();
-				this.Enabled = (bool)this._supported;
-			}
+			this.Enabled = this._viewType != null && DemoCapabilities.IsSupported(this._viewType);
 		}
-		private bool? _supported = null;
 	}
 }

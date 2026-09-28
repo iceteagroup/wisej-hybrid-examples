@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Wisej.Web;
@@ -33,9 +33,5 @@ namespace Wisej.Hybrid.Features.Panels
 			});
 		}
 
-		public override bool IsSupported()
-		{
-			return Device.Valid && Device.Sms.IsComposeSupported;
-		}
 	}
 }

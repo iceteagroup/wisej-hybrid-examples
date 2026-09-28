@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 
 using Wisej.Web;
@@ -25,9 +25,5 @@ namespace Wisej.Hybrid.Features.Panels
 			AlertBox.Show(result.ToJSON());
 		}
 
-		public override bool IsSupported()
-		{
-			return Device.Valid && Device.System.Platform != DevicePlatform.WinUI;
-		}
 	}
 }

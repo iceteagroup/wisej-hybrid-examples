@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
@@ -21,11 +21,13 @@ namespace FeaturesShared.Panels
 		public Chat()
 		{
 			InitializeComponent();
+			this.Disposed += (_, _) => NewMessage -= Chat_NewMessage;
 		}
 
 		private async void Chat_Appear(object sender, EventArgs e)
 		{
 			// listen for new messages.
+			NewMessage -= Chat_NewMessage;
 			NewMessage += Chat_NewMessage;
 
 			// initialize user.
@@ -74,11 +76,6 @@ namespace FeaturesShared.Panels
 			});
 		}
 
-		public override bool IsSupported()
-		{
-			// only run this example when connected to a remote web server.
-			return Application.StartupUri.Host != "localhost";
-		}
 
 		private void Chat_Disappear(object sender, EventArgs e)
 		{

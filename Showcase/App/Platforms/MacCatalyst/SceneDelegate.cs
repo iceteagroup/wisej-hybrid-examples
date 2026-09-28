@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Foundation;
 
 namespace HybridApp.Platforms.MacCatalyst
 {
-	internal class SceneDelegate
+	[Register("SceneDelegate")]
+	public class SceneDelegate : MauiUISceneDelegate
 	{
 	}
 }

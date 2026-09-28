@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -13,29 +13,45 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Compass_Appear(object sender, EventArgs e)
 		{
-			Device.Sensors.Start(SensorType.Compass);
+			if (this._listening)
+				return;
+
 			Device.Sensors.CompassChanged += Compass_ReadingChanged;
+			try
+			{
+				Device.Sensors.Start(SensorType.Compass);
+				this._listening = true;
+			}
+			catch
+			{
+				Device.Sensors.CompassChanged -= Compass_ReadingChanged;
+				throw;
+			}
 		}
+
+		private bool _listening;
 
 		private void Compass_Disappear(object sender, EventArgs e)
 		{
-			Device.Sensors.Stop(SensorType.Compass);
-			Device.Sensors.CompassChanged -= Compass_ReadingChanged;
+			Deactivate();
 		}
 
-		private void Lifecycle_Resumed(object sender, EventArgs e)
+		public override void Deactivate()
 		{
-			Device.Sensors.Start(SensorType.Compass);
+			if (!this._listening)
+				return;
+
+			this._listening = false;
+			Device.Sensors.CompassChanged -= Compass_ReadingChanged;
+			if (Device.Valid)
+				Device.Sensors.Stop(SensorType.Compass);
 		}
+
 
 		private void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
 		{
 			this.labelHeading.Text = e.Reading.HeadingMagneticNorth.ToString();
 		}
 
-		public override bool IsSupported()
-		{
-			return Device.Valid && Device.Sensors.IsCompassSupported;
-		}
 	}
 }

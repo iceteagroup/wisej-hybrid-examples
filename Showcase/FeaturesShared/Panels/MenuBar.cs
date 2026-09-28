@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using Wisej.Web;
@@ -13,13 +13,10 @@ namespace Wisej.Hybrid.Features.Panels
 			InitializeComponent();
 		}
 
-		public override bool IsSupported()
-		{
-			return base.IsSupported() && Device.System.Idiom == DeviceIdiom.Desktop;
-		}
 
 		private void MenuBar_Appear(object sender, EventArgs e)
 		{
+			Device.MenuBar.ItemClicked -= MenuBar_ItemClicked;
 			Device.MenuBar.ItemClicked += MenuBar_ItemClicked;
 
 			Device.MenuBar.Items = new MenuItem[]
@@ -79,8 +76,14 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void MenuBar_Disappear(object sender, EventArgs e)
 		{
+			Deactivate();
+		}
+
+		public override void Deactivate()
+		{
 			Device.MenuBar.ItemClicked -= MenuBar_ItemClicked;
-			Device.MenuBar.Items = null;
+			if (Device.Valid)
+				Device.MenuBar.Items = null;
 		}
 
 		private void MenuBar_ItemClicked(object sender, MenuItemClickedEventArgs e)

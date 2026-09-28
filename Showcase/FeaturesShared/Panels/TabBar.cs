@@ -27,15 +27,22 @@ namespace Wisej.Hybrid.Features.Panels
 
 			Device.TabBar.TabSelected += this.TabBar_TabSelected;
 
+			Application.ThemeChanged -= Application_ThemeChanged;
 			Application.ThemeChanged += Application_ThemeChanged;
 		}
 
 		private void TabBar_Disappear(object sender, EventArgs e)
 		{
+			Deactivate();
+		}
+
+		public override void Deactivate()
+		{
 			Application.ThemeChanged -= Application_ThemeChanged;
 			Device.TabBar.TabSelected -= this.TabBar_TabSelected;
 
-			Device.TabBar.Visible = false;
+			if (Device.Valid)
+				Device.TabBar.Visible = false;
 		}
 
 		private void Application_ThemeChanged(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Flyout_Appear(object sender, EventArgs e)
 		{
+			Device.Flyout.ItemSelected -= Flyout_ItemSelected;
 			Device.Flyout.ItemSelected += Flyout_ItemSelected;
 
 			Device.Flyout.Behavior = FlyoutBehavior.Flyout;
@@ -44,8 +45,14 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Flyout_Disappear(object sender, EventArgs e)
 		{
-			Device.Flyout.Behavior = FlyoutBehavior.Disabled;
+			Deactivate();
+		}
+
+		public override void Deactivate()
+		{
 			Device.Flyout.ItemSelected -= Flyout_ItemSelected;
+			if (Device.Valid)
+				Device.Flyout.Behavior = FlyoutBehavior.Disabled;
 		}
 
 		private void Flyout_ItemSelected(object sender, FlyoutItemSelectedEventArgs e)

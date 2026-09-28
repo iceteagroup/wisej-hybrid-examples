@@ -1,44 +1,57 @@
-﻿using FeaturesShared.Windows;
+using FeaturesShared.Windows;
 using System;
 using System.ComponentModel;
-using System.IO;
+using Wisej.Web;
 
 namespace Wisej.Hybrid.Features.Panels
 {
 	[Category("Media")]
 	public partial class Media : TestBase
 	{
+		private bool _busy;
+
 		public Media()
 		{
 			InitializeComponent();
 		}
 
-		private void buttonSelectPicture_Click(object sender, EventArgs e)
+		private async void buttonPhoto_Click(object sender, EventArgs e)
 		{
-			var picture = Device.Media.PickPhoto(1280, 720);
-
-			new ImageWindow(picture).Show();
+			if (_busy) return;
+			SetBusy(true);
+			try
+			{
+				var picture = sender == buttonTakePicture
+					? await Device.Media.CapturePhotoAsync(1280, 720)
+					: await Device.Media.PickPhotoAsync(1280, 720);
+				if (IsDisposed) picture?.Dispose();
+				else if (picture != null) new ImageWindow(picture).Show();
+			}
+			catch (Exception error) { if (!IsDisposed) AlertBox.Show(error.Message); }
+			finally { SetBusy(false); }
 		}
 
-		private void buttonTakePicture_Click(object sender, EventArgs e)
+		private async void buttonVideo_Click(object sender, EventArgs e)
 		{
-			var picture = Device.Media.CapturePhoto(1280, 720);
-
-			new ImageWindow(picture).Show();
+			if (_busy) return;
+			SetBusy(true);
+			try
+			{
+				var video = sender == buttonTakeVideo
+					? await Device.Media.CaptureVideoAsync()
+					: await Device.Media.PickVideoAsync();
+				if (!IsDisposed && video?.Length > 0) new VideoWindow(video).Show();
+			}
+			catch (Exception error) { if (!IsDisposed) AlertBox.Show(error.Message); }
+			finally { SetBusy(false); }
 		}
 
-		private void buttonSelectVideo_Click(object sender, EventArgs e)
+		private void SetBusy(bool busy)
 		{
-			var video = Device.Media.PickVideo();
-
-			//new VideoWindow(video.ToArray()).Show();
-		}
-
-		private void buttonTakeVideo_Click(object sender, EventArgs e)
-		{
-			var video = Device.Media.CaptureVideo();
-
-			//new VideoWindow(video.ToArray()).Show();
+			_busy = busy;
+			if (IsDisposed) return;
+			buttonSelectPicture.Enabled = buttonTakePicture.Enabled =
+				buttonSelectVideo.Enabled = buttonTakeVideo.Enabled = !busy;
 		}
 	}
 }

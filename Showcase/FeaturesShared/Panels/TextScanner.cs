@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
@@ -27,11 +27,5 @@ namespace FeaturesShared.Panels
 			new TextWindow().Show();
 		}
 
-		public override bool IsSupported()
-		{
-			return Device.Valid &&
-				(Device.System.Platform == DevicePlatform.iOS ||
-				Device.System.Platform == DevicePlatform.Android);
-		}
 	}
 }

@@ -13,10 +13,16 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Clipboard_Appear(object sender, EventArgs e)
 		{
+			Device.Clipboard.ContentChanged -= Clipboard_ContentChanged;
 			Device.Clipboard.ContentChanged += Clipboard_ContentChanged;
 		}
 
 		private void Clipboard_Disappear(object sender, EventArgs e)
+		{
+			Deactivate();
+		}
+
+		public override void Deactivate()
 		{
 			Device.Clipboard.ContentChanged -= Clipboard_ContentChanged;
 		}

@@ -89,7 +89,7 @@
 			this.Controls.Add(this.hint);
 			this.Controls.Add(this.buttonSource);
 			this.Controls.Add(this.labelTitle);
-			this.MinimumSize = new System.Drawing.Size(350, 0);
+			this.MinimumSize = new System.Drawing.Size(0, 0);
 			this.Name = "TestBase";
 			this.Padding = new Wisej.Web.Padding(16, 0, 16, 0);
 			this.ScrollBars = Wisej.Web.ScrollBars.Hidden;

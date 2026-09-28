@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
@@ -14,6 +14,7 @@ namespace FeaturesShared.Panels
 		public SyncFlashlight()
 		{
 			InitializeComponent();
+			this.Disposed += (_, _) => ToggleFlash -= SyncFlashlight_ToggleFlash;
 
 			if (Application.Uri.Host != "localhost")
 				this.Pinned = true;
@@ -79,9 +80,5 @@ namespace FeaturesShared.Panels
 			}
 		}
 
-		public override bool IsSupported()
-		{
-			return Application.StartupUri.Host != "localhost";
-		}
 	}
 }

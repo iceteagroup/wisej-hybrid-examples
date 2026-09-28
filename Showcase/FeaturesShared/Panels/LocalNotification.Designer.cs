@@ -119,7 +119,6 @@
 			this.Hint = "Schedule local push notifications with a timestamp.";
 			this.Name = "LocalNotification";
 			this.Size = new System.Drawing.Size(650, 495);
-			this.Load += new System.EventHandler(this.LocalNotification_Load);
 			this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownBadge)).EndInit();
 			this.flowLayoutPanel1.ResumeLayout(false);

@@ -25,6 +25,7 @@ namespace Wisej.Hybrid.Features.Panels
 
 			Device.Toolbar.ItemClicked += Toolbar_ItemClicked;
 
+			Application.ThemeChanged -= Application_ThemeChanged;
 			Application.ThemeChanged += Application_ThemeChanged;
 		}
 
@@ -35,8 +36,15 @@ namespace Wisej.Hybrid.Features.Panels
 
 		private void Toolbar_Disappear(object sender, EventArgs e)
 		{
-			Device.Toolbar.Visible = false;
+			Deactivate();
+		}
+
+		public override void Deactivate()
+		{
+			Application.ThemeChanged -= Application_ThemeChanged;
 			Device.Toolbar.ItemClicked -= Toolbar_ItemClicked;
+			if (Device.Valid)
+				Device.Toolbar.Visible = false;
 		}
 
 		private void SetThemeColors()

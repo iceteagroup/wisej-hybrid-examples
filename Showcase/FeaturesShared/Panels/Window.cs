@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Wisej.Hybrid;
 
@@ -18,11 +18,5 @@ namespace FeaturesShared.Panels
 			Device.Windows.TryOpen(this.textBoxUrl.Text);
 		}
 
-		public override bool IsSupported()
-		{
-			return Device.Valid && 
-			// iPhone doesn't support multiple windows.
-			(Device.System.Platform != DevicePlatform.iOS || Device.System.Idiom == DeviceIdiom.Tablet);
-		}
 	}
 }

@@ -32,6 +32,22 @@ namespace Wisej.Hybrid.Features
 		public TestBase()
 		{
 			InitializeComponent();
+			this.Disposed += (_, _) => SetActive(false);
+		}
+
+		private bool _active;
+		private bool _loaded;
+
+		private void SetActive(bool active)
+		{
+			if (this._active == active)
+				return;
+
+			this._active = active;
+			if (active)
+				Activate();
+			else
+				Deactivate();
 		}
 
 		private void TestBase_Load(object sender, EventArgs e)
@@ -39,7 +55,8 @@ namespace Wisej.Hybrid.Features
 			if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
 				return;
 
-			Activate();
+			this._loaded = true;
+			SetActive(this.Visible);
 
 			this.labelTitle.Text = String.Join(" ", Regex.Split(this.GetType().Name, "(?<!^)(?=[A-Z])"));
 			this.hint.Visible = !String.IsNullOrEmpty(this.Hint);
@@ -66,12 +83,12 @@ namespace Wisej.Hybrid.Features
 		private void buttonSource_Click(object sender, EventArgs e)
 		{
 			var name = this.GetType().Name;
-			Device.Browser.Open($"https://github.com/iceteagroup/wisej-hybrid-examples/tree/main/Showcase/FeaturesShared/Panels/{name}.cs", BrowserLaunchMode.SystemPreferred);
+			Device.Browser.Open($"https://github.com/iceteagroup/wisej-hybrid-examples/tree/4.1/Showcase/FeaturesShared/Panels/{name}.cs", BrowserLaunchMode.SystemPreferred);
 		}
 
 		public virtual bool IsSupported()
 		{
-			return Device.Valid;
+			return DemoCapabilities.IsSupported(GetType());
 		}
 
 		public virtual void Activate() { }
@@ -80,10 +97,8 @@ namespace Wisej.Hybrid.Features
 
 		private void TestBase_VisibleChanged(object sender, EventArgs e)
 		{
-			if (this.Visible)
-				Activate();
-			else
-				Deactivate();
+			if (this._loaded)
+				SetActive(this.Visible);
 		}
 	}
 }

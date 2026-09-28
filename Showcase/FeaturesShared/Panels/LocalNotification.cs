@@ -33,17 +33,21 @@ namespace FeaturesShared.Panels
 			Schedule(DateTime.Now.AddDays(1));
 		}
 
-		private void LocalNotification_Load(object sender, EventArgs e)
+		public override void Activate()
 		{
-			Device.LocalNotification.Presented += (s, e) =>
-			{
-				AlertBox.Show(JSON.Stringify(e));
-			};
+			Device.LocalNotification.Presented += Notification_Changed;
+			Device.LocalNotification.Responded += Notification_Changed;
+		}
 
-			Device.LocalNotification.Responded += (s, e) =>
-			{
-				AlertBox.Show(JSON.Stringify(e));
-			};
+		public override void Deactivate()
+		{
+			Device.LocalNotification.Presented -= Notification_Changed;
+			Device.LocalNotification.Responded -= Notification_Changed;
+		}
+
+		private void Notification_Changed(object sender, dynamic e)
+		{
+			AlertBox.Show(JSON.Stringify(e));
 		}
 	}
 }

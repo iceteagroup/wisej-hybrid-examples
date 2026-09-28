@@ -1,4 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 //
 // (C) 2023 ICE TEA GROUP LLC - ALL RIGHTS RESERVED
 //
@@ -39,26 +39,33 @@ namespace Wisej.Hybrid.Features
 
 		private async void MainPage_Load(object sender, EventArgs e)
 		{
-			var x = new Popups();
 			var loader = new LoadingWindow();
 			loader.Show();
+			try
+			{
+				// set padding for device.
+				if (Application.Browser.Device == "Desktop")
+					this.panelContainer.Padding = new Padding(16, 16, 16, 16);
 
-			// set padding for device.
-			if (Application.Browser.Device == "Desktop")
-				this.panelContainer.Padding = new Padding(16, 16, 16, 16);
+				LoadTheme(Application.Browser.IsDarkMode);
 
-			LoadTheme(Application.Browser.IsDarkMode);
+				var offline = Application.Uri.Host == "localhost";
+				this.buttonNetwork.Text = offline ? "Offline" : "Online";
+				this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
 
-			var offline = Application.Uri.Host == "localhost";
-			this.buttonNetwork.Text = offline ? "Offline" : "Online";
-			this.buttonNetwork.ImageSource = offline ? Icons.CloudOff : Icons.CloudOutline;
-
-			// default view.
-			SwitchView(this._integrations);
-			await this._integrations.Initialize();
-
-			loader.Dispose();
-			Application.Update(this);
+				// default view.
+				SwitchView(this._integrations);
+				await this._integrations.Initialize();
+			}
+			catch (Exception ex)
+			{
+				AlertBox.Show($"Unable to load integrations: {ex.Message}");
+			}
+			finally
+			{
+				loader.Dispose();
+				Application.Update(this);
+			}
 		}
 
 		private void MainPage_Appear(object sender, EventArgs e)
@@ -88,17 +95,21 @@ namespace Wisej.Hybrid.Features
 				return;
 
 			if (this.currentView != null)
+			{
+				this.currentView.ViewRequested -= View_ViewRequested;
 				this.currentView.Hide();
+			}
 
 			try
 			{
 				this.currentView = instance;
 
-				this.currentView.Show();
 				this.currentView.Dock = DockStyle.Fill;
+				this.currentView.ViewRequested -= View_ViewRequested;
 				this.currentView.ViewRequested += View_ViewRequested;
 
 				this.panelContainer.Controls.Add(this.currentView);
+				this.currentView.Show();
 			}
 			catch (Exception ex) 
 			{

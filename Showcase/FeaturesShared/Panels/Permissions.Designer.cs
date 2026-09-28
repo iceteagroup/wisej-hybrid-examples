@@ -118,7 +118,7 @@
 			this.Controls.Add(this.spacer1);
 			this.Controls.Add(this.buttonCamera);
 			this.Hint = "Manage application permissions directly.";
-			this.MinimumSize = new System.Drawing.Size(350, 394);
+			this.MinimumSize = new System.Drawing.Size(0, 394);
 			this.Name = "Permissions";
 			this.Controls.SetChildIndex(this.buttonCamera, 0);
 			this.Controls.SetChildIndex(this.spacer1, 0);

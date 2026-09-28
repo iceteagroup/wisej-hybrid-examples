@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 
 namespace Wisej.Hybrid.Features.Panels
@@ -12,14 +12,39 @@ namespace Wisej.Hybrid.Features.Panels
 		}
 
 		private void Accelerometer_Appear(object sender, EventArgs e)
-		{ 
-			Device.Sensors.Start(SensorType.Accelerometer);
+		{
+			if (this._listening)
+				return;
+
 			Device.Sensors.AccelerometerChanged += Accelerometer_ReadingChanged;
+			try
+			{
+				Device.Sensors.Start(SensorType.Accelerometer);
+				this._listening = true;
+			}
+			catch
+			{
+				Device.Sensors.AccelerometerChanged -= Accelerometer_ReadingChanged;
+				throw;
+			}
 		}
+
+		private bool _listening;
 
 		private void Accelerometer_Disappear(object sender, EventArgs e)
 		{
+			Deactivate();
+		}
+
+		public override void Deactivate()
+		{
+			if (!this._listening)
+				return;
+
+			this._listening = false;
 			Device.Sensors.AccelerometerChanged -= Accelerometer_ReadingChanged;
+			if (Device.Valid)
+				Device.Sensors.Stop(SensorType.Accelerometer);
 		}
 
 		private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
@@ -29,9 +54,5 @@ namespace Wisej.Hybrid.Features.Panels
 			this.labelZ.Text = $"Z: {e.Reading.Acceleration.Z}";
 		}
 
-		public override bool IsSupported()
-		{
-			return base.IsSupported() && Device.Sensors.IsAccelerometerSupported;
-		}
 	}
 }

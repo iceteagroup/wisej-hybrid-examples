@@ -1,4 +1,4 @@
-﻿namespace Wisej.Hybrid.Features.Panels
+namespace Wisej.Hybrid.Features.Panels
 {
     partial class Media
     {
@@ -43,7 +43,7 @@
 			this.buttonSelectPicture.Size = new System.Drawing.Size(612, 37);
 			this.buttonSelectPicture.TabIndex = 19;
 			this.buttonSelectPicture.Text = "Select Picture";
-			this.buttonSelectPicture.Click += new System.EventHandler(this.buttonSelectPicture_Click);
+			this.buttonSelectPicture.Click += new System.EventHandler(this.buttonPhoto_Click);
 			// 
 			// buttonTakePicture
 			// 
@@ -52,7 +52,7 @@
 			this.buttonTakePicture.Size = new System.Drawing.Size(612, 37);
 			this.buttonTakePicture.TabIndex = 20;
 			this.buttonTakePicture.Text = "Take Picture";
-			this.buttonTakePicture.Click += new System.EventHandler(this.buttonTakePicture_Click);
+			this.buttonTakePicture.Click += new System.EventHandler(this.buttonPhoto_Click);
 			// 
 			// flexLayoutPanel1
 			// 
@@ -74,7 +74,7 @@
 			this.buttonSelectVideo.Size = new System.Drawing.Size(612, 37);
 			this.buttonSelectVideo.TabIndex = 21;
 			this.buttonSelectVideo.Text = "Select Video";
-			this.buttonSelectVideo.Click += new System.EventHandler(this.buttonSelectVideo_Click);
+			this.buttonSelectVideo.Click += new System.EventHandler(this.buttonVideo_Click);
 			// 
 			// buttonTakeVideo
 			// 
@@ -83,7 +83,7 @@
 			this.buttonTakeVideo.Size = new System.Drawing.Size(612, 37);
 			this.buttonTakeVideo.TabIndex = 22;
 			this.buttonTakeVideo.Text = "Take Video";
-			this.buttonTakeVideo.Click += new System.EventHandler(this.buttonTakeVideo_Click);
+			this.buttonTakeVideo.Click += new System.EventHandler(this.buttonVideo_Click);
 			// 
 			// Media
 			// 

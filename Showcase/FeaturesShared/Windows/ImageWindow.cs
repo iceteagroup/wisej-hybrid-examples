@@ -17,6 +17,8 @@ namespace FeaturesShared.Windows
 		public ImageWindow(Image image) : this()
 		{
 			this.pictureBox1.Image = image;
+			// The preview owns images returned by capture/picker APIs.
+			this.Disposed += (_, _) => image?.Dispose();
 		}
 
 		public ImageWindow(string imageSource) : this()

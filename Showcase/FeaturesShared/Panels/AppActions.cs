@@ -32,9 +32,14 @@ namespace FeaturesShared.Panels
 			Device.Popups.DisplayAlert("Success", "Hold down the app on the home screen to select an app action.", "OK");
 		}
 
-		private void AppActions_Load(object sender, EventArgs e)
+		public override void Activate()
 		{
 			Device.AppActions.AppActionChanged += AppActions_AppActionChanged;
+		}
+
+		public override void Deactivate()
+		{
+			Device.AppActions.AppActionChanged -= AppActions_AppActionChanged;
 		}
 	}
 }
