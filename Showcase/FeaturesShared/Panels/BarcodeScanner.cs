@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Wisej.Hybrid;
 using Wisej.Hybrid.Features;
 using Wisej.Hybrid.MLKit;
@@ -34,17 +35,15 @@ namespace FeaturesShared.Panels
 
 		public override void Activate() { base.Activate(); MinimizeTitle(); }
 
-		private void buttonNative_Click(object sender, EventArgs e) => Scan(false);
-		private void buttonEmbedded_Click(object sender, EventArgs e) => Scan(true);
+		private async void buttonNative_Click(object sender, EventArgs e) => await ScanAsync(false);
+		private async void buttonEmbedded_Click(object sender, EventArgs e) => await ScanAsync(true);
 
-		private void Scan(bool multiple)
+		private async Task ScanAsync(bool multiple)
 		{
 			buttonNative.Enabled = buttonEmbedded.Enabled = false;
 			try
 			{
-				// Keep the server in its modal loop while the native scanner is open,
-				// so its result can return even when the client is showing a loader.
-				var values = Device.Use<DeviceML>().ScanBarcode(new CaptureConfiguration
+				var values = await Device.Use<DeviceML>().ScanBarcodeAsync(new CaptureConfiguration
 				{
 					AllowMultiple = multiple, UniqueCapturesOnly = true
 				});

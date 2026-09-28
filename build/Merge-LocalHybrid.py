@@ -15,6 +15,13 @@ if output in (windows, apple):
 output.mkdir(parents=True, exist_ok=True)
 def local_name(element):
     return element.tag.rsplit('}', 1)[-1]
+def metadata_key(element):
+    # NuGet metadata is unordered; pack can emit the same dependencies in a
+    # different order on Windows and macOS. Ignore formatting, not values.
+    return (element.tag, tuple(sorted(element.attrib.items())),
+            (element.text or '').strip(),
+            tuple(sorted(metadata_key(child) for child in element)))
+
 def merge_xml(a, b):
     base, other = ET.fromstring(a), ET.fromstring(b)
     if local_name(base) == 'package':
@@ -32,7 +39,7 @@ def merge_xml(a, b):
                 base_metadata.append(deepcopy(section))
             else:
                 for child in section:
-                    identical = any(ET.tostring(child) == ET.tostring(existing) for existing in target)
+                    identical = any(metadata_key(child) == metadata_key(existing) for existing in target)
                     if not identical:
                         tfm = child.get('targetFramework')
                         if tfm and any(existing.get('targetFramework') == tfm for existing in target):

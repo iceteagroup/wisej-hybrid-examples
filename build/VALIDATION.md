@@ -1,6 +1,6 @@
 # Local Hybrid validation — 2026-09-28
 
-Package version: `4.1.4-local.20260928.1`.
+Initial upgrade validation package version: `4.1.4-local.20260928.1`.
 
 The ten local packages were built from these source revisions:
 
@@ -40,12 +40,35 @@ and Navigation needs designer serialization metadata for .NET 9.
 
 Showcase was installed on a Mesa MS3A Android tablet. A physical barcode scan
 exposed a queued asynchronous callback while the page's busy loader was active.
-Releasing that callback recovered the scanned value. The example now uses the
-modal barcode API so scanner completion participates in the server's modal loop.
-The revised Android app opened the native scanner and returned from cancellation
-with the page responsive, no busy loader, and an empty event queue in an emulator.
+Releasing that callback recovered the scanned value. This led to a Hybrid bridge
+fix in `16b9644faa1cc0c0821b2955bb3d47000ee68534`, with no changes to Wisej.NET
+source. Hybrid now correlates asynchronous responses itself and delivers native
+completion events through the existing event transport even while UI events wait
+behind the loader. Modal completion also preserves preceding Hybrid notifications
+so startup device information arrives before initialization resumes. Showcase uses
+`ScanBarcodeAsync` again; the temporary synchronous workaround is removed.
+
+The final candidate packages use version `4.1.4-local.20260928.4`, built from that
+Hybrid commit and the same Extensions revision listed above. Eight JavaScript
+regression tests passed, including busy completion, concurrent requests, camel-case
+serialization, reconnect/replay, errors, and modal notification ordering. The C#
+request tracker checks passed on both .NET 9 and .NET Framework 4.8.
+
+Against the final candidate, Showcase passed full Android, Windows, and iOS
+simulator builds. All eleven other Android examples passed compilation and local
+dependency checks. Showcase launched on the iOS simulator and rendered its
+integration list. The complete example build/startup matrix above records the
+initial upgrade validation, not a repeat of every platform on the final candidate.
+
+The final Android APK was installed on a test emulator without any live bridge
+patches. Startup completed, then `ScanBarcodeAsync` opened the native scanner.
+With its request pending (`-1`), the busy loader was explicitly activated. Closing
+the scanner completed the async call, re-enabled the page, and left `busy=false`
+with an empty event queue. Evidence is saved in `logs/async-final-before.json`,
+`logs/async-final-after.json`, and `logs/Hybrid-async-final.png` under `.local-nuget`.
+
 Reinstallation on the tablet remains pending because its USB debugging connection
-dropped repeatedly during deployment; a fresh physical scan must still be checked.
+is offline; a fresh physical barcode scan must still be checked.
 
 These checks do not constitute exhaustive hardware, authentication-provider,
 remote-server, or UI testing. Builds retain existing platform and obsolete-API
@@ -54,4 +77,6 @@ warnings. Mac Catalyst package assets were built; example apps do not target it.
 Generated packages, manifests, build logs, screenshots, and JSON reports are kept
 under the ignored `.local-nuget` directory. The merged `combined-feed` contains
 Windows, Android, iOS, and Mac Catalyst assets; `CombinedFeed.zip` is a portable
-copy. See the repository README for commands to reproduce the packages and builds.
+copy of the initial packages. The final candidate feed is `combined-feed-final`
+and its portable archive is `CombinedFeedFinal.zip`. See the repository README
+for commands to reproduce the packages and builds.
