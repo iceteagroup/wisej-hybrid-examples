@@ -23,6 +23,17 @@ config.write_text(f'''<configuration><packageSources><clear />
 </packageSources></configuration>''')
 projects = [hybrid / name / (name + '.csproj') for name in
             ('Wisej.Hybrid.Runtime', 'Wisej.Hybrid.Scanning', 'Wisej.Hybrid', 'Wisej.Hybrid.Native')]
+camera = extensions / 'CameraPreview/Wisej.Hybrid.Native.CameraPreview/Wisej.Hybrid.CameraPreview.Native.csproj'
+camera_targets = local / 'CameraPreview.targets'
+camera_targets.write_text(f'''<Project><Import Project="{escape(str(extensions / 'Directory.Build.targets'))}" />
+<Target Name="PostBuild" /></Project>''')
+with (logs / 'CameraPreview-apple-build.log').open('w') as output:
+    subprocess.run(['dotnet', 'build', str(camera), '-c', 'Release', '-f', 'net9.0-ios',
+                    '-p:TargetFrameworks=net9.0-ios',
+                    f'-p:DirectoryBuildTargetsPath={camera_targets}',
+                    f'-p:MSBuildProjectExtensionsPath={local / "pack-obj-apple/CameraPreview"}/',
+                    f'-p:RestoreConfigFile={config}', '--verbosity', 'quiet'],
+                   cwd=root, stdout=output, stderr=subprocess.STDOUT, check=True)
 for extension in ('Authentication', 'DocumentScanner', 'MLKit'):
     for suffix in ('', '.Native'):
         name = f'Wisej.Hybrid.{extension}{suffix}'

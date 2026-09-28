@@ -49,6 +49,10 @@ def merge_xml(a, b):
         for child in other:
             if not any(child.attrib == existing.attrib for existing in base):
                 base.append(deepcopy(child))
+    # NuGet's nuspec reader expects an unprefixed package/metadata tree. Preserve
+    # the default namespace instead of ElementTree's generated ns0 prefix.
+    if base.tag.startswith('{'):
+        ET.register_namespace('', base.tag[1:].split('}', 1)[0])
     return ET.tostring(base, encoding='utf-8', xml_declaration=True)
 
 packages = list(windows.glob('*.nupkg'))

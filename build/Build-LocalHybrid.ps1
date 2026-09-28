@@ -42,6 +42,14 @@ foreach ($extension in @('Authentication', 'DocumentScanner', 'MLKit')) {
 
 Push-Location $root
 try {
+    if ($Platforms -contains 'Android') {
+        # MLKit historically ships this separate assembly as well as its linked adapters.
+        $camera = Join-Path $ExtensionsRoot 'CameraPreview/Wisej.Hybrid.Native.CameraPreview/Wisej.Hybrid.CameraPreview.Native.csproj'
+        & dotnet build $camera -c Release -f net9.0-android '-p:TargetFrameworks=net9.0-android' `
+            "-p:MSBuildProjectExtensionsPath=$(Join-Path $local 'packobj/CameraPreview/')" `
+            "-p:RestoreConfigFile=$config" --verbosity quiet *> (Join-Path $logs 'CameraPreview-build.log')
+        if ($LASTEXITCODE) { throw 'CameraPreview compatibility assembly build failed. See CameraPreview-build.log.' }
+    }
     foreach ($project in $projects) {
         $name = [IO.Path]::GetFileNameWithoutExtension($project)
         $frameworkOutput = & dotnet msbuild $project -getProperty:TargetFrameworks -verbosity:quiet

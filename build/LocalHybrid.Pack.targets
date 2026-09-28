@@ -8,6 +8,7 @@
     <Description>Local source build of $(MSBuildProjectName).</Description>
     <IsPackable>true</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeCameraPreviewCompatibilityAssembly</TargetsForTfmSpecificBuildOutput>
     <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net9.0-maccatalyst'">15.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -23,4 +24,10 @@
     <None Include="$(MSBuildProjectDirectory)/Wisej.Hybrid.targets" Pack="true" PackagePath="build/Wisej-4-Hybrid.targets" Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid'" />
     <None Include="$(MSBuildProjectDirectory)/Wisej.Hybrid.Native.targets" Pack="true" PackagePath="build/Wisej-4-Hybrid-Native.targets" Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid.Native'" />
   </ItemGroup>
+  <Target Name="IncludeCameraPreviewCompatibilityAssembly"
+          Condition="'$(MSBuildProjectName)' == 'Wisej.Hybrid.MLKit.Native' And ('$(TargetFramework)' == 'net9.0-android' Or '$(TargetFramework)' == 'net9.0-ios')">
+    <PropertyGroup><_CameraPreviewOutput>$(MSBuildProjectDirectory)/../../CameraPreview/Wisej.Hybrid.Native.CameraPreview/bin/$(Configuration)/$(TargetFramework)/Wisej.Hybrid.CameraPreview.Native.dll</_CameraPreviewOutput></PropertyGroup>
+    <Error Condition="!Exists('$(_CameraPreviewOutput)')" Text="Build the CameraPreview compatibility assembly before packing MLKit." />
+    <ItemGroup><BuildOutputInPackage Include="$(_CameraPreviewOutput)" /></ItemGroup>
+  </Target>
 </Project>
