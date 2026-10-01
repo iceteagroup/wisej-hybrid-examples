@@ -1,0 +1,251 @@
+{
+  "candidate": {
+    "package": "com.iceteagroup.hybrid",
+    "versionCode": 40,
+    "versionName": "1.3.5",
+    "minSdk": 23,
+    "targetSdk": 36,
+    "aabSha256": "2F18441F19CC19927B34FD6D6076763752EE4E9A6AFB0AB071582DD86657B606",
+    "testedApkSha256": "E5A3F9B7234F0221BCA149AC99F10180EF0D24924130C3794D25B15381277608"
+  },
+  "source": {
+    "showcaseBase": "7a4fc1308b2d646bd048ee651ab5d9b98038f591",
+    "hybrid": "54e5abd656df6db37daef71dbc8ba034495d195f",
+    "extensions": "5690ba81b7a0c7cb23362e8477ee61b6792bde6e",
+    "isolatedHybridCorrection": "BarcodeScannerActivity.cs: Results.AsEnumerable().Reverse()",
+    "noOtherWorktreeEdited": true
+  },
+  "toolchain": {
+    "dotnetSdk": "10.0.401",
+    "androidWorkload": "36.1.69",
+    "mauiControls": "10.0.20",
+    "androidBuildTools": "36.0.0",
+    "jdk": "21.0.8",
+    "bundletool": "1.17.0"
+  },
+  "packaging": {
+    "nativeLibrariesCompressed": true,
+    "extractNativeLibs": true,
+    "bundleConfigSpecifiesPageAlignment16K": false,
+    "generatedApkZipalignP16Passed": true,
+    "nativeHashesMatched": 24,
+    "nativeHashCount": 24,
+    "productionSigned": false
+  },
+  "elfLoadAlignmentPassed": true,
+  "relroEndAlignmentPassed": false,
+  "libraries": [
+    {
+      "library": "base/lib/arm64-v8a/libassembly-store.so",
+      "sha256": "ABF5DB01A2FBBE415C898DFEB92FE5F9A3C0EA80953430D5EE90CBEF54ADC66B",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libassembly-store.so",
+      "sha256": "E3A16626BDB2D52D93533BE63F7E33951D49B25ED641025AF57E03D2B0BA9A93",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libarc.bin.so",
+      "sha256": "D62497B172F047252478353D75EF286760F32170BF5D87D259430F1D6892AC0E",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libarc.bin.so",
+      "sha256": "E0B7FCCDE5105E08AB155AECCB24BD54B9EFEB809F416096E6312D0DE989369A",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libxamarin-app.so",
+      "sha256": "11E0E397E8641FF402676B2FC9138C5C0224CEFA875787221D2E43D041911BBA",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libxamarin-app.so",
+      "sha256": "8DAB67EAE534066769F5A1E424F5F0021434DF9DF385E757CE2537797B007731",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": true
+    },
+    {
+      "library": "base/lib/arm64-v8a/libSystem.Globalization.Native.so",
+      "sha256": "B917AAE2973E3BC7286655B8DD85F331FC39DD3DB3820D7374D6440EB092EA18",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libSystem.IO.Compression.Native.so",
+      "sha256": "EBB9A6B7C216A6461A8F2C212524AE41F44662496AC01DB56A6AA098FF810F71",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libSystem.Native.so",
+      "sha256": "9C39E80C604E34DA94388518E91C64024302FB92E5E45F54B9EE9FC9A638AF76",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libSystem.Security.Cryptography.Native.Android.so",
+      "sha256": "94AEF7FE4ABEE08912313D1A1B7B3E8754DD7A8ABF4F13DF0621FFF02FB43D63",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": true
+    },
+    {
+      "library": "base/lib/arm64-v8a/libmono-component-marshal-ilgen.so",
+      "sha256": "4D7482352AFD571769F3E70A62F0A89A254D0A5FD1FC9A466CCA4D5D3666C453",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libmonosgen-2.0.so",
+      "sha256": "13C160BF504107E2FED22F74BF88D6FDE281C4334E081BB48FDB26ADD060FBD8",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libmonodroid.so",
+      "sha256": "60B5A7FBC513A26BE52E1F895B8C3EF05CCE25A81AB86A5F4EF90BE8721FF848",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libSystem.Globalization.Native.so",
+      "sha256": "134404BDC693FF60E9A363F407E180A81D440A98000FA78CBF798E44A8936130",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libSystem.IO.Compression.Native.so",
+      "sha256": "BE42B89EFADFD7409787BA33D8800A408D9B4BD141590FA3281001C137265253",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libSystem.Native.so",
+      "sha256": "496DE7E983B2A27BA92FA9F9DCCC323504705C66459750B4B23EA72ACE64F81E",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libSystem.Security.Cryptography.Native.Android.so",
+      "sha256": "A0719AFEF5094B5CC1C0C9F019073A4489ED29216C8FC96BBF811A6D06D07CFC",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": true
+    },
+    {
+      "library": "base/lib/x86_64/libmono-component-marshal-ilgen.so",
+      "sha256": "CF8A9EA55288CAE01418F5046C52FDB580D344E865C17F10D0CF91E7BD95C7B1",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libmonosgen-2.0.so",
+      "sha256": "EEC01A889DC71F5DB5C98A32A4877FF2C1AC5119E654C3B8AA3EEA0BD2D4F6D0",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libmonodroid.so",
+      "sha256": "293EB7C8752BF678C6AA317E80F051305BB9C31926D83155A5807393FE7AE784",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libbarhopper_v3.so",
+      "sha256": "EC09597E9EB3AEE0EB55AE3366DA0D4BA416F5AA35A1AF0B3811F50FF46743A1",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": true
+    },
+    {
+      "library": "base/lib/x86_64/libbarhopper_v3.so",
+      "sha256": "6C5DEEA87D962AF008FD48C3229DB13AB68EEF2E9FEECCB2DF5B33A920C0579A",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/arm64-v8a/libmlkit_google_ocr_pipeline.so",
+      "sha256": "FA41D509A661E8AA8B3E3AC1A28541F8823F308414FCAD733FE26D61FEEA2646",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    },
+    {
+      "library": "base/lib/x86_64/libmlkit_google_ocr_pipeline.so",
+      "sha256": "3DDFFB498B60F7F9512E341D4EE3ABE4E1580C4FD65EF9B2C8CE9E490DE467D8",
+      "loadAlignmentPassed": true,
+      "minimumLoadAlignment": 16384.0,
+      "relroEndAligned": false
+    }
+  ],
+  "emulator": {
+    "image": "Google APIs x86_64 API 36 16 KB revision 7",
+    "archiveSha1": "DD783282E84BF475A02EBA6777C79FC5695E1583",
+    "sdk": 36,
+    "pageSize": 16384,
+    "installNoIncrementalPassed": true,
+    "startupRendered": true,
+    "barcodeNativeLoaded": true,
+    "ocrNativeLoaded": true,
+    "scannersReturnedToShowcase": true,
+    "scannerFatalErrorCount": 0,
+    "recognitionResultsAsserted": false,
+    "incrementalInstall": "SIGBUS in Android native ELF loader retained in local trace",
+    "arm64RuntimeTested": false
+  },
+  "mergedPermissions": [
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.BATTERY_STATS",
+    "android.permission.CAMERA",
+    "android.permission.FLASHLIGHT",
+    "android.permission.FOREGROUND_SERVICE",
+    "android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION",
+    "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+    "android.permission.INTERNET",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.READ_CONTACTS",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.READ_MEDIA_AUDIO",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.USE_BIOMETRIC",
+    "android.permission.USE_FINGERPRINT",
+    "android.permission.VIBRATE",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "com.iceteagroup.hybrid.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "remainingGates": [
+    "Coordinate isolated core compile correction",
+    "Investigate RELRO/incremental-install findings and test ARM64 16 KB",
+    "Assert barcode/OCR recognition and hardware integration behavior",
+    "Compare permissions against production 39 before upload",
+    "Apply approved production signing and recheck next versionCode"
+  ]
+}
