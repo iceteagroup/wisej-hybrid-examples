@@ -33,8 +33,10 @@ try {
         for ($i = 0; $i -lt $phcount; $i++) {
             $offset = [int]($phoff + $i * $phsize)
             $type = [BitConverter]::ToUInt32($bytes, $offset)
+            $flags = [BitConverter]::ToUInt32($bytes, $offset + 4)
             $fileOffset = [BitConverter]::ToUInt64($bytes, $offset + 8)
             $address = [BitConverter]::ToUInt64($bytes, $offset + 16)
+            $fileSize = [BitConverter]::ToUInt64($bytes, $offset + 32)
             $size = [BitConverter]::ToUInt64($bytes, $offset + 40)
             $alignment = [BitConverter]::ToUInt64($bytes, $offset + 48)
             if ($type -eq 1) {
@@ -42,6 +44,9 @@ try {
                     alignment = $alignment
                     offset = $fileOffset
                     virtualAddress = $address
+                    fileSize = $fileSize
+                    memorySize = $size
+                    flags = $flags
                     passed = ($alignment -ge 16384 -and $fileOffset % 16384 -eq $address % 16384)
                 }
             }
@@ -53,8 +58,22 @@ try {
                 }
             }
         }
+        foreach ($segment in $relro) {
+            $end = [long]$segment.virtualAddress + [long]$segment.memorySize
+            $roundedEnd = [long]([Math]::Ceiling($end / 16384) * 16384)
+            $segment.endAddress = $end
+            $segment.roundedEndAddress = $roundedEnd
+            # This explains layout separately; it never overrides the strict end check.
+            $segment.writableTailOverlaps = @($loads | ForEach-Object {
+                if (($_.flags -band 2) -eq 0) { return }
+                $start = [Math]::Max($end, [long]$_.virtualAddress)
+                $stop = [Math]::Min($roundedEnd, [long]$_.virtualAddress + [long]$_.memorySize)
+                if ($stop -gt $start) { [ordered]@{ start = $start; end = $stop } }
+            })
+        }
         $results += [ordered]@{
             library = $entry.FullName
+            fileLength = $bytes.Length
             sha256 = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes))
             loadSegments = $loads
             relroSegments = $relro

@@ -18,7 +18,10 @@ New-Item -ItemType Directory -Force -Path $local | Out-Null
 if (!$PackageRoot) { $PackageRoot = Join-Path $local 'packages' }
 # Short per-project intermediates avoid Windows aapt2 path limits. Existing obj/bin
 # directories must stay excluded when changing BaseIntermediateOutputPath.
-$hash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes($repo))).Substring(0, 8)
+# Source-root changes need a distinct cache: JNI/typemap intermediates from a
+# different source graph must not be reused simply because project names match.
+$cacheKey = "$repo|$HybridRoot|$ExtensionsRoot"
+$hash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes($cacheKey))).Substring(0, 8)
 $intermediates = Join-Path ([IO.Path]::GetTempPath()) "wisej-a36-$hash"
 $escape = { param($value) [Security.SecurityElement]::Escape($value) }
 $props = Join-Path $local 'Android.props'

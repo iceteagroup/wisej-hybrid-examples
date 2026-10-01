@@ -68,6 +68,7 @@
     <ApplicationDisplayVersion>1.3.5</ApplicationDisplayVersion>
     <ApplicationVersion>40</ApplicationVersion>
     <AndroidPackageFormats>aab;apk</AndroidPackageFormats>
+    <AndroidBundleConfigurationFile>$(MSBuildProjectDirectory)\Platforms\Android\BundleConfig.json</AndroidBundleConfigurationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">

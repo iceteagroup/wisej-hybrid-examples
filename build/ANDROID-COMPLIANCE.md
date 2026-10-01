@@ -1,121 +1,175 @@
-# Showcase Android release candidate — 2026-10-01
+# Showcase Android candidate 40 — 2026-10-01
 
-This is a draft release candidate, with binary checks and limited emulator tests.
-It is not a Play rollout or approval to broaden permissions.
+The Release candidate targets API 36, replaces production 39's reported ML Kit
+LOAD-alignment offenders, and fixes a reproduced incremental-install startup
+failure by embedding native libraries with 16 KB APK alignment. It remains a
+**draft with release gates**: the strict GNU_RELRO-end check fails for 21 libraries,
+physical ARM64 coverage and production-permission comparison are outstanding,
+and the AAB has not been production-signed or uploaded.
 
-The Android application targets `net10.0-android36.0` and MAUI 10.0.20.
-Existing iOS, Mac Catalyst and Windows targets retain .NET 9 / MAUI 9.0.120.
-Wisej 4.1.4 contracts, package IDs, and source references are retained. Android
-code 40 / version 1.3.5 exceeds the console inventory's maximum 39 checked on
-2026-10-01; recheck every uploaded artifact before any final upload.
+Android alone uses `net10.0-android36.0` / MAUI 10.0.20. iOS, Mac Catalyst and
+Windows retain their .NET 9 / MAUI 9.0.120 targets. Existing Wisej 4.1.4 contracts,
+NuGet IDs and source references remain. Android version is 1.3.5 / code 40;
+the console worker checked all uploaded artifacts and maximum code 39 on October 1.
+Recheck that inventory before any separately authorized upload.
 
-Production 39's reported offenders were `libbarhopper_v3.so` and
-`libmlkit_google_ocr_pipeline.so`, for arm64-v8a and x86_64. The application now
-pins the existing package IDs `Xamarin.Google.MLKit.BarcodeScanning` 117.3.0.7
-and `Xamarin.Google.MLKit.TextRecognition` 116.0.1.7. These resolve Google's
-barcode 17.3.0 and bundled text-recognition 16.0.1 binaries. Google's
-[ML Kit release notes](https://developers.google.com/ml-kit/release-notes)
-identify the August 7, 2024 updates as adding 16 KB support.
+Production 39 reportedly flags `libbarhopper_v3.so` and
+`libmlkit_google_ocr_pipeline.so` in both arm64-v8a and x86_64. Android pins the
+existing IDs `Xamarin.Google.MLKit.BarcodeScanning` 117.3.0.7 and
+`Xamarin.Google.MLKit.TextRecognition` 116.0.1.7. They supply Google barcode 17.3.0
+and bundled text-recognition 16.0.1, identified in Google's
+[August 7, 2024 release notes](https://developers.google.com/ml-kit/release-notes)
+as adding 16 KB support. All four replacement binaries pass actual LOAD checks.
 
-## Reproduce
+## Reproduce the build
 
-Use PowerShell 7 and stable .NET 10 with Android API 36 tooling. The verified environment used
-SDK 10.0.401, Android workload 36.1.69, SDK/build-tools 36.0.0, JDK 21.0.8,
-and bundletool 1.17.0. No system SDK/workload installation was needed.
+Use PowerShell 7. The verified installed toolchain is .NET SDK 10.0.401, Android
+workload 36.1.69, Mono runtime packs 10.0.12, Android SDK/build-tools 36.0.0,
+JDK 21.0.8 and bundletool 1.17.0. No system SDK/workload installation was needed.
+An official API 36 x86_64 16 KB image, revision 7, was added to an isolated test
+SDK/AVD; its downloaded archive SHA-1 matched
+`DD783282E84BF475A02EBA6777C79FC5695E1583`.
 
-```powershell
-./build/Build-ShowcaseAndroid.ps1 -HybridRoot PATH_TO_ISOLATED_HYBRID_4_1 -ExtensionsRoot PATH_TO_ISOLATED_EXTENSIONS_4_1
-```
+Use isolated committed source snapshots:
 
-The script accepts explicit Android/Java SDK directories, NuGet config and a
-writable package-cache path. It prunes restore to Android, preserves the source
-dependencies' existing net9.0-android targets, and uses short temporary paths.
-Existing SDK9 dependency EOL warnings remain; no server contract upgrade was
-made. Run from `Showcase` when invoking dotnet manually so its scoped SDK applies.
-
-Source snapshots used core `54e5abd656df6db37daef71dbc8ba034495d195f` and extensions
-`5690ba81b7a0c7cb23362e8477ee61b6792bde6e`; no other worker's worktree was changed.
-The core snapshot additionally required this compile correction at
-`Wisej.Hybrid.Scanning/Platforms/Android/BarcodeScannerActivity.cs:263`:
-
-```diff
-- foreach (var result in _request.Session.Results.Reverse().Take(_request.Session.Options.RecentScanCount))
-+ foreach (var result in _request.Session.Results.AsEnumerable().Reverse().Take(_request.Session.Options.RecentScanCount))
-```
-
-`Results` is a list, so its instance `Reverse()` returns void. The core owner
-must apply/review this correction through the coordinating thread before the
-candidate is reproducible from those committed dependencies alone.
-
-## Binary evidence
-
-The Android-only script successfully produced the Release AAB and APK.
-The unsigned AAB SHA-256 is:
-
-`2F18441F19CC19927B34FD6D6076763752EE4E9A6AFB0AB071582DD86657B606`
-
-The checked artifact metadata, per-library hashes and runtime observations are
-recorded in [release-40 evidence](evidence/showcase-android-release-40.json).
-
-- The actual AAB manifest has package `com.iceteagroup.hybrid`, target SDK 36,
-  minimum SDK 23, version code 40 and version name 1.3.5.
-- Every shipped arm64-v8a and x86_64 ELF library passes 16 KB PT_LOAD alignment
-  and file-offset/virtual-address congruence: 24/24. Both production offender
-  names are present with 16 KB-aligned replacements.
-- The bundled barcode 17.2.0 negative control fails the same LOAD checks.
-- The direct Release APK and bundletool-generated universal APK both pass
-  `zipalign -c -P 16 -v 4`; the generated test-signed APK also passes.
-- All 24 native hashes in the tested, generated APK match the final AAB.
-- Native `.so` entries are compressed and the actual manifest sets
-  `extractNativeLibs=true`. The AAB config does not specify
-  `PAGE_ALIGNMENT_16K`; this candidate uses compressed native packaging rather
-  than an uncompressed alignment claim. Android documents compressed native
-  libraries as an alternative in its [16 KB guidance](https://developer.android.com/guide/practices/page-sizes).
-- The verifier separately records non-aligned GNU_RELRO ends. Those observations
-  are not silently treated as overall compatibility approval. Use
-  `-RequireAlignedRelroEnd` for the stricter check and retain runtime evidence.
+- Hybrid 4.1: `16f0b7bbee120df5198ac01ae0c99067fb39d149`
+- Hybrid Extensions 4.1: `5690ba81b7a0c7cb23362e8477ee61b6792bde6e`
+- Showcase base: `7a4fc1308b2d646bd048ee651ab5d9b98038f591`
 
 ```powershell
-./build/Test-Android16Kb.ps1 -Archive PATH_TO_ACTUAL_AAB -Report aab-elf.json
-java -jar bundletool.jar dump manifest --bundle=PATH_TO_ACTUAL_AAB --module=base
-java -jar bundletool.jar dump config --bundle=PATH_TO_ACTUAL_AAB
-java -jar bundletool.jar build-apks --bundle=PATH_TO_ACTUAL_AAB --output=test.apks --aapt2=PATH_TO_AAPT2 --mode=universal
+./build/Build-ShowcaseAndroid.ps1 -HybridRoot PATH_TO_HYBRID_16F0B7B -ExtensionsRoot PATH_TO_EXTENSIONS_5690BA8
+```
+
+The script accepts explicit Android/Java SDK directories, NuGet configuration
+and a writable package cache. It restores only Android, retains dependency
+`net9.0-android` targets, and uses short, source-root-specific intermediate paths.
+A source-root switch previously reused JNI/typemap state and failed startup;
+the isolated fresh build and source-specific cache resolve that case. Use fresh
+snapshot directories when changing dependency revisions. Existing .NET 9
+dependency EOL warnings remain; this change does not migrate server contracts.
+
+Hybrid's committed correction explicitly calls `Results.AsEnumerable().Reverse()`.
+`Results` is a `BarcodeScanResult[]`; C# 14 otherwise binds `array.Reverse()` to
+the void-returning `MemoryExtensions.Reverse(Span<T>)`. The current artifact uses
+the committed fix, with no temporary patch. The core owner independently reports
+six existing scanner targets compiling under SDKs 9.0.311 and 10.0.401, with 11
+scanner checks passing under each. Those results are separate from this app's
+artifact/runtime checks. No other worker's worktree was modified.
+
+## Actual binary checks
+
+Unsigned AAB SHA-256:
+
+`24F370C0D281F1237DD00B414AEA2B7545542321F36A6121FAAB27A99FD75CF4`
+
+AAB-generated universal APK, signed with the existing Android Debug certificate:
+
+`B23403BDECB0691B40156B98B061052C28434A6450FEEF8F55EEB9980A0C9CB7`
+
+[Structured evidence](evidence/showcase-android-release-40.json) contains source
+revisions, native providers/hashes, LOAD and RELRO segments, permissions and runtime
+results. The [actual merged manifest](evidence/showcase-android-release-40-manifest.xml)
+has package `com.iceteagroup.hybrid`, minimum SDK 23, target SDK 36, code 40 and
+`extractNativeLibs=false`. Actual bundle config specifies `PAGE_ALIGNMENT_16K`.
+All 24 native entries in the generated APK are uncompressed, pass
+`zipalign -c -P 16 -v 4`, and match the AAB's native hashes. Every arm64-v8a and
+x86_64 library passes 16 KB PT_LOAD alignment and offset/address congruence.
+The older bundled barcode 17.2.0 AAR fails the same verifier as a negative control.
+
+```powershell
+./build/Test-Android16Kb.ps1 -Archive ACTUAL_AAB -Report aab-elf.json
+./build/Test-Android16Kb.ps1 -Archive ACTUAL_AAB -RequireAlignedRelroEnd
+java -jar bundletool.jar dump manifest --bundle=ACTUAL_AAB --module=base
+java -jar bundletool.jar dump config --bundle=ACTUAL_AAB
+java -jar bundletool.jar build-apks --bundle=ACTUAL_AAB --output=test.apks --aapt2=PATH_TO_AAPT2 --mode=universal
 zipalign -c -P 16 -v 4 GENERATED_APK
 adb -s TEST_DEVICE shell getconf PAGE_SIZE
 ```
 
-Generated artifacts are test-signed with the existing Android Debug certificate,
-not a production upload certificate. The unsigned AAB is the candidate for the
-owner's approved release-signing workflow; no signing keys were exported.
+The second command deliberately fails for this candidate. Android's current
+[RELRO guidance](https://developer.android.com/guide/practices/page-sizes#relro)
+requires `(VirtAddr + MemSiz) % 0x4000 == 0`. The 21 failures comprise:
 
-## Runtime and release gates
+| Provider | Libraries with non-aligned RELRO ends |
+| --- | --- |
+| Generated by Android SDK 36.1.69 | `libassembly-store.so`, `libarc.bin.so`, `libxamarin-app.so`, both ABIs (6) |
+| Mono runtime 10.0.12 | `libSystem.Globalization.Native.so`, `libSystem.IO.Compression.Native.so`, `libSystem.Native.so`, `libmono-component-marshal-ilgen.so`, `libmonosgen-2.0.so`, both ABIs (10) |
+| Android SDK runtime | `libmonodroid.so`, both ABIs (2) |
+| Google ML Kit | x86_64 `libbarhopper_v3.so`; both ABI `libmlkit_google_ocr_pipeline.so` (3) |
 
-The separate Google API 36 x86_64 16 KB emulator reports SDK 36 and page size
-16384. Google's image archive SHA-1 matched
-`dd783282e84bf475a02eba6777c79fc5695e1583` (revision 7). The final AAB-generated,
-test-signed APK installs with `adb install --no-incremental` and renders the
-Showcase Integrations UI. A first incremental install produced SIGBUS inside
-Android's native ELF loader; a streamed reinstall of the same APK passed startup.
-Both traces are retained; no claim is made that every installation path passes.
+Static layout inspection finds **zero intersections** between each rounded RELRO
+end tail and writable PT_LOAD data outside RELRO. Android's
+[linker source](https://android.googlesource.com/platform/bionic/+/refs/heads/main/linker/linker_phdr.cpp)
+rounds the protection range to pages. Padding gaps plausibly explain the observed
+successful native loads and recognition, but this is an inference, not a waiver
+of the documented check. The verifier reports both facts independently. Native
+SDK/toolchain owner resolution and physical ARM64 testing remain release gates.
+App XML cannot safely relink Google's or Microsoft's prebuilt native binaries.
+No binary header patch or runtime-library substitution was applied.
 
-On the same final APK, the barcode scanner opened, loaded `libbarhopper_v3.so`
-successfully, initialized its native decoder, and returned to Showcase. The
-native text scanner opened, loaded `libmlkit_google_ocr_pipeline.so` successfully,
-initialized its OCR models, and returned to Showcase. The process stayed alive
-and neither scanner trace contained a fatal exception, fatal signal or
-`UnsatisfiedLinkError`. These are camera/initialization smoke tests; no barcode
-or text recognition result was asserted using the emulated scene.
+## Incremental-install failure and source fix
 
-Before release, the owner must coordinate the core compile correction, inspect
-the native/RELRO findings with 16 KB arm64 runtime coverage, exercise barcode/OCR
-recognition and remaining hardware integrations, compare the merged permissions
-against production 39, apply approved production signing, and recheck the next
-version code. The merged source graph already declares foreground-service,
-media-projection and microphone service permissions; this PR adds no manifest
-permissions, but it does not establish that production 39 already has that set.
-Any permission expansion needs the user's specific confirmation.
+The preserved compressed candidate (`2F18441F…606`) reproducibly crashed in the
+loader's writable-segment tail memset, on IncFS, in x86_64 `libxamarin-app.so`.
+The file pulled from the device exactly matched the AAB's SHA-256:
+`8DAB67EAE534066769F5A1E424F5F0021434DF9DF385E757CE2537797B007731`.
+That original library's RELRO end **was aligned**.
 
-No Play upload, public rollout, paid device farm, legal declaration, production
-signing change, or persistent credential setup was performed. Local evidence
-includes AAB/ZIP/ELF reports, merged manifest, native hashes, test certificate,
-emulator metadata, install/launch traces and screenshots.
+Its length was `0x20d8a0`; writing at file mapping offset `0x20fff0` lies beyond
+its 4 KB-rounded EOF and inside its 16 KB-rounded EOF (`0x210000`). The
+[syscall-only probe](probes/IncfsTailProbe.S) reproduces SIGBUS (exit 135) on the
+IncFS file while the identical copied file on ext4 exits 0. It maps privately,
+changes no underlying file, and involves no ELF loader or RELRO protection.
+This isolates a partial 16 KB file-page tail issue on the tested image kernel;
+it does not establish the behavior of every Android kernel or install method.
+
+```powershell
+llvm-mc -filetype=obj -triple=x86_64-linux-android -o probe.o build/probes/IncfsTailProbe.S
+ld -m elf_x86_64 -e _start --build-id -z max-page-size=16384 -o probe probe.o
+# Run on the isolated emulator against the preserved matching IncFS library,
+# then an identical ext4 copy. Constants intentionally identify that exact file.
+```
+
+The source fix sets `extractNativeLibs=false` and supplies an Android-only
+bundle config with uncompressed 16 KB native alignment. The final generated APK
+passes fresh incremental installation and startup; the streamed install path
+also passes. Local traces retain the original crash, byte comparison, mapping
+probe controls, final installs and launches.
+
+## Recognition and runtime evidence
+
+The separate API 36 test emulator reports page size 16384. On the current APK:
+
+- x86_64 native barcode single scan returns `WISEJ16KB` to Showcase.
+- Batch scan displays `1 scanned`, the `WISEJ16KB` history item, and `Done (1)`,
+  exercising the committed scanner enumeration correction.
+- Native OCR recognizes `WISEJ 16 KB TEST` and `SDK 36 PAGE 16384` in its live
+  overlay. Barcode/OCR libraries load from `base.apk!/lib/x86_64`; no fatal signal,
+  fatal exception or `UnsatisfiedLinkError` occurs in those test traces.
+- A forced `arm64-v8a` install selects that primary ABI. Through the image's
+  `libndk_translation.so` bridge, ARM64 runtime, barcode and OCR binaries load;
+  barcode returns `WISEJ16KB` and OCR recognizes both fixture lines. This is
+  **translated ARM64 coverage on an x86_64 emulator**, not physical ARM64 testing.
+
+The [fixture](evidence/recognition-fixture.png) and recognition screenshots are
+committed under `build/evidence`. The virtual-scene wall poster was loaded through
+the emulator console; a camera pose facing its front was set through the local
+emulator controller. Barcode pose: position `(-1.807, 0.32, 3.584)`, rotation
+`(0, -150, 0)` degrees. OCR uses position `(-2.807, 0.32, 1.852)` with the same
+rotation. This avoids claiming success from initialization alone.
+
+## Remaining release gates
+
+Resolve the strict native RELRO findings and run physical ARM64 16 KB and remaining
+hardware integration tests. Compare the committed merged permissions against
+production 39 before upload: that production manifest/list has not been supplied
+by the console worker. The source graph already declares foreground-service,
+media-projection and microphone service permissions; this app patch adds no
+`uses-permission`, but production parity is unverified. Any expansion needs the
+user's specific authorization.
+
+The AAB is unsigned; only the existing test Debug certificate was used locally.
+Production upload signing must use the owner's approved workflow and next code
+must be rechecked. No signing keys were exported, no persistent release credential
+was created, and no Play upload, rollout, deployment or pack/release workflow was
+performed. The candidate remains unshipped.
