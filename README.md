@@ -2,11 +2,22 @@
 
 These examples use Wisej.NET and Hybrid 4.1.4, .NET 9, and MAUI 9.0.120.
 Existing .NET Framework 4.8 targets remain available for the shared and web projects.
-The repository's `global.json` selects a .NET 9 SDK.
+The repository's `global.json` selects a .NET 9 SDK. Showcase's Android app
+targets `net10.0-android36.0` with MAUI 10.0.20; run its build from `Showcase`
+to select the scoped .NET 10 SDK. Its other platform targets retain .NET 9
+and MAUI 9.0.120.
 
 Install the .NET 9 SDK and the workloads needed for your target platforms.
 Open an example's solution to restore and build it. iOS builds require a Mac
 with the matching Apple tools and signing configuration.
+
+For the Android-only Showcase release build, install a stable .NET 10 SDK and
+Android workload with API 36 support, then use `build/Build-ShowcaseAndroid.ps1`
+with isolated `-HybridRoot` and `-ExtensionsRoot` source directories. This script
+prunes restore to Android, uses short per-project intermediate paths, and keeps
+the dependencies' existing .NET 9 targets and Wisej package IDs. See
+[Android release validation](build/ANDROID-COMPLIANCE.md) for prerequisites,
+artifact checks, and outstanding release gates.
 
 ## Local source dependencies
 

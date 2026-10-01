@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst;net9.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net10.0-android36.0;net9.0-ios;net9.0-maccatalyst;net9.0-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<WindowsPackageType Condition="'$(TargetFramework)' == 'net9.0-windows10.0.19041.0'">MSIX</WindowsPackageType>
 		<RootNamespace>HybridApp</RootNamespace>
@@ -51,17 +51,24 @@
 	<MtouchDebug>True</MtouchDebug>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android36.0|AnyCPU'">
 	<PublishTrimmed>False</PublishTrimmed>
 	<RunAOTCompilation>False</RunAOTCompilation>
 	<DebugSymbols>False</DebugSymbols>
-	<AndroidUseAapt2>False</AndroidUseAapt2>
+	<AndroidUseAapt2>True</AndroidUseAapt2>
 	<Optimize>False</Optimize>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android36.0|AnyCPU'">
 	<AndroidUseAapt2>True</AndroidUseAapt2>
 	<DebugSymbols>False</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <ApplicationDisplayVersion>1.3.5</ApplicationDisplayVersion>
+    <ApplicationVersion>40</ApplicationVersion>
+    <AndroidPackageFormats>aab;apk</AndroidPackageFormats>
+    <AndroidBundleConfigurationFile>$(MSBuildProjectDirectory)\Platforms\Android\BundleConfig.json</AndroidBundleConfigurationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
@@ -85,12 +92,18 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'android'" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.20" Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" />
     <PackageReference Include="Wisej-4-Hybrid" Version="4.1.4" ExcludeAssets="all" />
     <PackageReference Include="Wisej-4-Hybrid-Native" Version="4.1.4" ExcludeAssets="all" />
     <ProjectReference Include="$(HybridSourceRoot)Wisej.Hybrid.Native\Wisej.Hybrid.Native.csproj" />
     <ProjectReference Include="$(HybridExtensionsSourceRoot)Authentication\Wisej.Hybrid.Authentication.Native\Wisej.Hybrid.Authentication.Native.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
     <ProjectReference Include="$(HybridExtensionsSourceRoot)DocumentScanner\Wisej.Hybrid.DocumentScanner.Native\Wisej.Hybrid.DocumentScanner.Native.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" Condition="'$(TargetFramework)' != 'net9.0-windows10.0.19041.0'" />
     <ProjectReference Include="$(HybridExtensionsSourceRoot)MLKit\Wisej.Hybrid.MLKit.Native\Wisej.Hybrid.MLKit.Native.csproj" AdditionalProperties="WisejVersion=4.1.4;SdmVersion=4.1.4" />
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <!-- These ML Kit revisions contain the 16 KB-compatible barcode and OCR binaries. -->
+    <PackageReference Include="Xamarin.Google.MLKit.BarcodeScanning" Version="117.3.0.7" />
+    <PackageReference Include="Xamarin.Google.MLKit.TextRecognition" Version="116.0.1.7" />
   </ItemGroup>
 </Project>
