@@ -240,3 +240,12 @@ All 24 native LOAD alignment checks and APK ZIP alignment checks pass. There are
 The earlier API 36/16 KB recognition results in ANDROID-COMPLIANCE.md apply to the
 earlier candidate, not this newly rebuilt APK. This APK uses test signing only.
 The production upload key and store declarations still need verification.
+
+Mac Catalyst on macOS 26.4.1 ARM64 passes all seven image-recognition bridge
+checks in Showcase: OCR, EXIF-oriented and large images, two barcode images,
+invalid input and recovery with a data URL. The probe sends the actual WebView
+message and checks native callbacks and scaled result bounds.
+[Runtime results](evidence/showcase-image-bridge-maccatalyst-20261016.json).
+This uses the MAUI Showcase host with the shared native image scanner; it does
+not validate a live Mac camera or the separate experimental host. Temporary probe
+instrumentation was removed from the release source after testing.

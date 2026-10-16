@@ -1,0 +1,30 @@
+[
+  {
+    "name": "embedded.ocr.text.png",
+    "passed": true
+  },
+  {
+    "name": "embedded.ocr.text-oriented.jpg",
+    "passed": true
+  },
+  {
+    "name": "embedded.ocr.text-large.png",
+    "passed": true
+  },
+  {
+    "name": "embedded.barcode.qr.png",
+    "passed": true
+  },
+  {
+    "name": "embedded.barcode.qr-portrait.png",
+    "passed": true
+  },
+  {
+    "name": "embedded.invalid-image",
+    "passed": true
+  },
+  {
+    "name": "embedded.data-url-after-error",
+    "passed": true
+  }
+]
