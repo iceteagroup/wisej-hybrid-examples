@@ -8,10 +8,15 @@
     <!-- Replace source references as well as NuGet references, so the test exercises packages. -->
     <_LocalHybridSource Include="@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Native'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Runtime'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Scanning'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Authentication'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.Authentication.Native'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.DocumentScanner'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.DocumentScanner.Native'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.MLKit'));@(ProjectReference->WithMetadataValue('Filename', 'Wisej.Hybrid.MLKit.Native'))" />
     <ProjectReference Remove="@(_LocalHybridSource)" />
+    <!-- Runtime and Scanning are assemblies inside the existing packages. -->
+    <_LocalHybridBundled Include="@(_LocalHybridSource->WithMetadataValue('Filename', 'Wisej.Hybrid.Runtime'));@(_LocalHybridSource->WithMetadataValue('Filename', 'Wisej.Hybrid.Scanning'))" />
+    <_LocalHybridSource Remove="@(_LocalHybridBundled)" />
     <_LocalHybridPackage Include="@(_LocalHybridSource->'%(Filename)')" />
+    <_LocalHybridPackage Include="Wisej.Hybrid.Native" Condition="'@(_LocalHybridBundled)' != ''" />
+    <_LocalHybridPackage Include="Wisej.Hybrid.MLKit.Native" Condition="'@(_LocalHybridBundled->WithMetadataValue('Filename', 'Wisej.Hybrid.Scanning'))' != ''" />
     <_LocalHybridPackageId Include="@(_LocalHybridPackage->Replace('Wisej.Hybrid', 'Wisej-4-Hybrid')->Replace('.', '-'))" />
     <PackageReference Remove="@(_LocalHybridPackageId)" />
-    <PackageReference Include="@(_LocalHybridPackageId)" Version="$(LocalHybridPackageVersion)" />
+    <PackageReference Include="@(_LocalHybridPackageId->Distinct())" Version="$(LocalHybridPackageVersion)" />
     <PackageReference Update="Wisej-4-Hybrid*" Version="$(LocalHybridPackageVersion)" ExcludeAssets="none" />
   </ItemGroup>
   <Target Name="ValidateLocalHybridFeed" BeforeTargets="CollectPackageReferences" Condition="'$(UseLocalHybridPackages)' == 'true'">

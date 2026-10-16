@@ -30,15 +30,11 @@
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to your location to show local data.</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
-	<array>
-	  <dict>
+	<dict>
 		<key>TemporaryFullAccuracyUsageDescription</key>
 		<string>This app needs access to your location to show local data.</string>
-	  </dict>
-	</array>
+	</dict>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app needs access to microphone for taking videos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

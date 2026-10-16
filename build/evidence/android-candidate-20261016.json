@@ -1,0 +1,9 @@
+{
+  "sha256": "5070D30B875CB06D383C48ADB8432EFFAD084CD3159558BFDBEA69023E56EF7D",
+  "elfCount": 24,
+  "loadPass": true,
+  "relroFindings": 21,
+  "zipAlignment": "passed",
+  "runtime": "API 35 x86_64, 4096-byte pages; startup only",
+  "releaseSigned": false
+}

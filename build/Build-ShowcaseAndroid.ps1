@@ -55,6 +55,8 @@ $shortRoot = & $escape $intermediates
 "@ | Set-Content -LiteralPath $targets -Encoding utf8
 $properties = @(
     "-p:HybridSourceRoot=$HybridRoot", "-p:HybridExtensionsSourceRoot=$ExtensionsRoot",
+    "-p:HybridScanningProject=$(Join-Path $HybridRoot 'Wisej.Hybrid.Scanning/Wisej.Hybrid.Scanning.csproj')",
+    '-p:WisejVersion=4.1.6',
     "-p:DirectoryBuildPropsPath=$props", "-p:DirectoryBuildTargetsPath=$targets",
     "-p:RestorePackagesPath=$PackageRoot",
     '-p:MauiVersion=9.0.120', '-p:BuildInParallel=false'
@@ -67,7 +69,9 @@ Push-Location $showcase
 try {
     & dotnet restore 'App/HybridApp.csproj' @properties @restoreArgs --verbosity minimal *> (Join-Path $local 'restore.log')
     if ($LASTEXITCODE) { throw "Restore failed. See $local/restore.log" }
-    & dotnet publish 'App/HybridApp.csproj' -c Release -f net10.0-android36.0 --no-restore -m:1 @properties --verbosity minimal *> (Join-Path $local 'publish.log')
+    # Rebuild JNI wrappers and marshal tables together. Reusing rewritten assemblies
+    # can produce a valid APK whose native application callbacks are missing.
+    & dotnet msbuild 'App/HybridApp.csproj' '-t:Rebuild,Publish' -p:Configuration=Release -p:TargetFramework=net10.0-android36.0 -m:1 @properties -v:minimal *> (Join-Path $local 'publish.log')
     if ($LASTEXITCODE) { throw "Publish failed. See $local/publish.log" }
     Write-Host "Release artifacts: $showcase/App/bin/Release/net10.0-android36.0/publish"
     Write-Host 'Validate the unsigned AAB and generated APKs before selecting release signing or uploading.'

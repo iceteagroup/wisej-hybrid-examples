@@ -1,0 +1,50 @@
+[
+  {
+    "package": "Wisej-4-Hybrid-Authentication-Native",
+    "baseline": "wisej-4-hybrid-authentication-native.4.0.11.nupkg",
+    "passed": true,
+    "sha256": "24773f733df210ddad26399462aa0d4f456f2053349fee4df9ccc6ba9284cdd4"
+  },
+  {
+    "package": "Wisej-4-Hybrid-Authentication",
+    "baseline": "wisej-4-hybrid-authentication.4.0.11.nupkg",
+    "passed": true,
+    "sha256": "c30df3d6a830b7bf1f87308db5c5fed0e16c2fc827ada5a3424ac821381603ec"
+  },
+  {
+    "package": "Wisej-4-Hybrid-DocumentScanner-Native",
+    "baseline": "Wisej-4-Hybrid-DocumentScanner-Native.4.1.6.nupkg",
+    "passed": true,
+    "sha256": "3f10b06f0f40814b11f3b3f69d8d9968e054b2dc1ea6eb97eaac402275a1929c"
+  },
+  {
+    "package": "Wisej-4-Hybrid-DocumentScanner",
+    "baseline": "Wisej-4-Hybrid-DocumentScanner.4.1.6.nupkg",
+    "passed": true,
+    "sha256": "91d636375b004fff8119af38973910ac3f9d8adb4151d99d7792677a9bc17e04"
+  },
+  {
+    "package": "Wisej-4-Hybrid-MLKit-Native",
+    "baseline": "Wisej-4-Hybrid-MLKit-Native.4.1.6.nupkg",
+    "passed": true,
+    "sha256": "23709ba813af9e0f071ee66dbc25f2fadd225be9f354340704b752cb02224255"
+  },
+  {
+    "package": "Wisej-4-Hybrid-MLKit",
+    "baseline": "Wisej-4-Hybrid-MLKit.4.1.6.nupkg",
+    "passed": true,
+    "sha256": "782187fc46811363f741633573232ca8b3b74d430f8adb0ccb7783e559061b85"
+  },
+  {
+    "package": "Wisej-4-Hybrid-Native",
+    "baseline": "Wisej-4-Hybrid-Native.4.1.6.nupkg",
+    "passed": true,
+    "sha256": "47d29a34761d4242b3528296117fc70086b8da2e1b2f051a8ee98291fdd0f1d1"
+  },
+  {
+    "package": "Wisej-4-Hybrid",
+    "baseline": "Wisej-4-Hybrid.4.1.6.nupkg",
+    "passed": true,
+    "sha256": "5e4600a89d88f72a7bc7c984e4d44328da1eccc965c62eb97210925d1c77a9f8"
+  }
+]
