@@ -193,3 +193,59 @@ Windows, Android, iOS, and Mac Catalyst assets; `CombinedFeed.zip` is a portable
 copy of the initial packages. The final candidate feed is `combined-feed-final`
 and its portable archive is `CombinedFeedFinal.zip`. See the repository README
 for commands to reproduce the packages and builds.
+
+## October 16, 2026 release candidate (unreleased)
+
+The local feed now uses the original release NuSpec files. All eight 4.x packages
+pass public API comparison (Authentication baseline 4.0.11; the other packages
+4.1.6). Runtime and Scanning remain payloads of Native/MLKit, with no new package
+IDs. [API results](evidence/package-api-20261016.json).
+
+Windows Showcase passes source and package-only builds. The latter resolves all
+eight local packages at 4.1.6-validation.manifest2. The 3.5 extension manifests
+also pack successfully, including the existing Mesa packages. Core and extension
+builds retain existing warnings; 4.0 remains on hold.
+
+The iOS 26 simulator initially loaded another app's server on localhost:5000.
+Showcase now selects its own loopback port, surfaces startup failures and disposes
+its server on shutdown. The new process rendered the integration list on port
+52185, released that listener on termination, and rendered again on port 52197.
+[Startup screenshot](evidence/showcase-ios-42-startup.png).
+
+The signed iOS candidate is 1.3.5 (42). Deep/strict code-signature verification
+passes. IPA SHA-256:
+`2a1803e2b9e3348d2d6528a09c7ffbecad153d7bb715a1d83d0c8fc23f484bbb`.
+It has not been uploaded to App Store Connect.
+
+Windows hardware checks exercised a GUSGU G910 camera at 2560x1440, OCR,
+ownership, cancellation and reopening. The image adapter suite passes 14 checks
+on both 4.1 and 3.5, using real Windows OCR with a simulated host dispatcher.
+These are not complete Showcase camera or document-scanner UI tests.
+
+The unpackaged Windows runtime still fails in the released EmbedIO framework's
+ApplicationData.Current access; this does not establish an MSIX failure.
+The Mac has no camera. Physical Android ARM64, physical iOS, authentication
+providers, push delivery and full peripheral coverage remain unverified.
+No NuGet packages or store releases were published.
+
+The current Android candidate 1.3.5 (40) installs and renders the integration list
+on an API 35 x86_64 emulator with 4096-byte pages. Its startup log has no fatal
+exception, fatal signal or missing JNI method. The release helper now rebuilds
+before publishing in the same MSBuild invocation, after a stale marshal table
+caused an installable APK to crash in MauiApplication.n_onCreate.
+[Startup screenshot](evidence/showcase-android-40-startup-20261016.png).
+
+All 24 native LOAD alignment checks and APK ZIP alignment checks pass. There are
+21 strict RELRO-end findings. [Candidate hash and results](evidence/android-candidate-20261016.json).
+The earlier API 36/16 KB recognition results in ANDROID-COMPLIANCE.md apply to the
+earlier candidate, not this newly rebuilt APK. This APK uses test signing only.
+The production upload key and store declarations still need verification.
+
+Mac Catalyst on macOS 26.4.1 ARM64 passes all seven image-recognition bridge
+checks in Showcase: OCR, EXIF-oriented and large images, two barcode images,
+invalid input and recovery with a data URL. The probe sends the actual WebView
+message and checks native callbacks and scaled result bounds.
+[Runtime results](evidence/showcase-image-bridge-maccatalyst-20261016.json).
+This uses the MAUI Showcase host with the shared native image scanner; it does
+not validate a live Mac camera or the separate experimental host. Temporary probe
+instrumentation was removed from the release source after testing.

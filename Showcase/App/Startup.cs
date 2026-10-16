@@ -2,9 +2,7 @@ using FeaturesOffline;
 using Wisej.Hybrid.Authentication.Native;
 using Wisej.Hybrid.Native;
 using Wisej.Hybrid.MLKit.Native.Middleware;
-#if !WINDOWS
 using Wisej.Hybrid.DocumentScanner.Native;
-#endif
 
 namespace HybridApp
 {
@@ -24,9 +22,7 @@ namespace HybridApp
                 .UseWisejAuthentication();
 
             builder.UseWisejMLKit();
-#if !WINDOWS
             builder.UseWisejDocumentScanner();
-#endif
 
             return builder.Build();
         }

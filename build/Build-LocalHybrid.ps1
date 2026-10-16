@@ -1,14 +1,16 @@
+#requires -Version 7.0
 param(
-    [string]$HybridRoot,
-    [string]$ExtensionsRoot,
-    [string]$Version = ('4.1.4-local.' + (Get-Date -Format 'yyyyMMddHHmmss')),
-    [ValidateSet('Android', 'Windows')][string[]]$Platforms = @('Android', 'Windows')
+    [Parameter(Mandatory)][string]$HybridRoot,
+    [Parameter(Mandatory)][string]$ExtensionsRoot,
+    [string]$Version = ('4.1.6-local.' + (Get-Date -Format 'yyyyMMddHHmmss')),
+    [string]$WisejVersion = '4.1.6',
+    [string]$MSBuild = 'MSBuild.exe',
+    [string]$NuGet = 'nuget.exe',
+    [string]$PackageRoot
 )
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
-if (!$HybridRoot) { $HybridRoot = Join-Path $root '../../Hybrid/4.1' }
-if (!$ExtensionsRoot) { $ExtensionsRoot = Join-Path $root '../../Hybrid Extensions/4.1' }
 $HybridRoot = (Resolve-Path -LiteralPath $HybridRoot).Path
 $ExtensionsRoot = (Resolve-Path -LiteralPath $ExtensionsRoot).Path
 $local = Join-Path $root '.local-nuget'
@@ -16,88 +18,42 @@ $feed = Join-Path $local 'feed'
 $logs = Join-Path $local 'logs'
 New-Item -ItemType Directory -Force -Path $feed, $logs | Out-Null
 $config = Join-Path $local 'NuGet.Config'
-$escapedFeed = [System.Security.SecurityElement]::Escape($feed)
-@"
-<configuration>
-  <packageSources>
-    <clear />
-    <add key="Local Hybrid" value="$escapedFeed" />
-    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
-  </packageSources>
-</configuration>
-"@ | Set-Content -LiteralPath $config -Encoding utf8
+@'
+<configuration><packageSources><clear />
+  <add key="Local Hybrid" value="feed" />
+  <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+</packageSources></configuration>
+'@ | Set-Content -LiteralPath $config -Encoding utf8
 
-$projects = @(
-    (Join-Path $HybridRoot 'Wisej.Hybrid.Runtime/Wisej.Hybrid.Runtime.csproj'),
-    (Join-Path $HybridRoot 'Wisej.Hybrid.Scanning/Wisej.Hybrid.Scanning.csproj'),
-    (Join-Path $HybridRoot 'Wisej.Hybrid/Wisej.Hybrid.csproj'),
-    (Join-Path $HybridRoot 'Wisej.Hybrid.Native/Wisej.Hybrid.Native.csproj')
-)
-foreach ($extension in @('Authentication', 'DocumentScanner', 'MLKit')) {
-    foreach ($suffix in @('', '.Native')) {
-        $name = "Wisej.Hybrid.$extension$suffix"
-        $projects += Join-Path $ExtensionsRoot "$extension/$name/$name.csproj"
-    }
-}
+$properties = @('-restore', '-m:1', '-v:minimal', '-p:Configuration=Release',
+    '-p:BuildInParallel=false', "-p:RestoreConfigFile=$config")
+if ($PackageRoot) { $properties += "-p:RestorePackagesPath=$PackageRoot" }
 
-Push-Location $root
-try {
-    if ($Platforms -contains 'Android') {
-        # MLKit historically ships this separate assembly as well as its linked adapters.
-        $camera = Join-Path $ExtensionsRoot 'CameraPreview/Wisej.Hybrid.Native.CameraPreview/Wisej.Hybrid.CameraPreview.Native.csproj'
-        & dotnet build $camera -c Release -f net9.0-android '-p:TargetFrameworks=net9.0-android' `
-            "-p:MSBuildProjectExtensionsPath=$(Join-Path $local 'packobj/CameraPreview/')" `
-            "-p:RestoreConfigFile=$config" --verbosity quiet *> (Join-Path $logs 'CameraPreview-build.log')
-        if ($LASTEXITCODE) { throw 'CameraPreview compatibility assembly build failed. See CameraPreview-build.log.' }
-    }
-    foreach ($project in $projects) {
-        $name = [IO.Path]::GetFileNameWithoutExtension($project)
-        $frameworkOutput = & dotnet msbuild $project -getProperty:TargetFrameworks -verbosity:quiet
-        if ($LASTEXITCODE -ne 0) { throw "Cannot evaluate $project" }
-        $frameworks = @($frameworkOutput.Trim().Split(';') | Where-Object {
-            $_ -eq 'net48' -or $_ -eq 'net9.0' -or
-            ($Platforms -contains 'Android' -and $_ -eq 'net9.0-android') -or
-            ($Platforms -contains 'Windows' -and $_ -like 'net9.0-windows*')
-        })
-        if (!$frameworks.Count) { continue }
-        $wrapper = Join-Path $local "$name.targets"
-        $originalTargets = if ($project.StartsWith($ExtensionsRoot)) { Join-Path $ExtensionsRoot 'Directory.Build.targets' } else { '' }
-        $originalImport = if ($originalTargets -and (Test-Path -LiteralPath $originalTargets)) {
-            '<Import Project="' + [Security.SecurityElement]::Escape($originalTargets) + '" />'
-        } else { '' }
-        $packTargets = [Security.SecurityElement]::Escape((Join-Path $PSScriptRoot 'LocalHybrid.Pack.targets'))
-        ('<Project>{0}<PropertyGroup><TargetFrameworks>{1}</TargetFrameworks></PropertyGroup><Import Project="{2}" /></Project>' -f $originalImport, ($frameworks -join ';'), $packTargets) |
-            Set-Content -LiteralPath $wrapper -Encoding utf8
-        $properties = @(
-            # Keep restore assets separate from IDE/background restores of the source projects.
-            "-p:MSBuildProjectExtensionsPath=$(Join-Path $local "packobj/$name/")",
-            "-p:LocalHybridPackageVersion=$Version",
-            "-p:WisejVersion=$Version", '-p:SdmVersion=4.1.4',
-            "-p:DirectoryBuildTargetsPath=$wrapper",
-            "-p:RestoreConfigFile=$config", '-p:BuildInParallel=false'
-        )
-        $log = Join-Path $logs "$name-pack.log"
-        Write-Host "Packing $name ($($frameworks -join ', '))"
-        & dotnet pack $project -c Release -o $feed -m:1 --verbosity quiet @properties *> $log
-        if ($LASTEXITCODE -ne 0) {
-            Get-Content -LiteralPath $log -Tail 30 | Write-Host
-            throw "Package build failed: $name. See $log"
-        }
-    }
-    $manifest = [ordered]@{
-        version = $Version
-        platforms = $Platforms
-        hybridCommit = (& git -C $HybridRoot rev-parse HEAD)
-        extensionsCommit = (& git -C $ExtensionsRoot rev-parse HEAD)
-        hybridDirty = [bool](& git -C $HybridRoot status --porcelain)
-        extensionsDirty = [bool](& git -C $ExtensionsRoot status --porcelain)
-        packages = @(Get-ChildItem -LiteralPath $feed -Filter "*.$Version.nupkg" | ForEach-Object {
-            @{ file = $_.Name; sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash }
-        })
-    }
-    $manifest | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $local 'manifest.json') -Encoding utf8
-    "<Project><PropertyGroup><LocalHybridPackageVersion>$Version</LocalHybridPackageVersion></PropertyGroup></Project>" |
-        Set-Content (Join-Path $local 'LocalHybrid.props') -Encoding utf8
-    Write-Host "Local feed ready: $feed ($Version)"
+# Use the same staged assets, manifests and pack entry points as release builds.
+# Runtime and Scanning remain payloads of the existing Native/MLKit packages.
+& $MSBuild (Join-Path $HybridRoot 'Wisej.Hybrid.sln') @properties "-p:WisejVersion=$WisejVersion" *> (Join-Path $logs 'Hybrid-build.log')
+if ($LASTEXITCODE) { throw "Hybrid build failed. See $logs/Hybrid-build.log" }
+& (Join-Path $HybridRoot 'build/Pack.ps1') -Version $Version -WisejVersion $WisejVersion -OutputDirectory $feed -NuGet $NuGet *> (Join-Path $logs 'Hybrid-pack.log')
+
+& $MSBuild (Join-Path $ExtensionsRoot 'Wisej.Hybrid.Extensions.sln') @properties "-p:WisejVersion=$Version" `
+    "-p:HybridScanningProject=$(Join-Path $HybridRoot 'Wisej.Hybrid.Scanning/Wisej.Hybrid.Scanning.csproj')" *> (Join-Path $logs 'Extensions-build.log')
+if ($LASTEXITCODE) { throw "Extensions build failed. See $logs/Extensions-build.log" }
+& (Join-Path $ExtensionsRoot 'build/Pack.ps1') -Version $Version -OutputDirectory $feed -NuGet $NuGet *> (Join-Path $logs 'Extensions-pack.log')
+
+function Get-Revision([string]$path) {
+    if (Test-Path (Join-Path $path '.git')) { & git -C $path rev-parse HEAD }
 }
-finally { Pop-Location }
+$manifest = [ordered]@{
+    version = $Version
+    wisejVersion = $WisejVersion
+    hybridCommit = Get-Revision $HybridRoot
+    extensionsCommit = Get-Revision $ExtensionsRoot
+    packageLayout = 'release-nuspec'
+    packages = @(Get-ChildItem -LiteralPath $feed -Filter "*.$Version.nupkg" | ForEach-Object {
+        @{ file = $_.Name; sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash }
+    })
+}
+$manifest | ConvertTo-Json -Depth 5 | Set-Content (Join-Path $local 'manifest.json') -Encoding utf8
+"<Project><PropertyGroup><LocalHybridPackageVersion>$Version</LocalHybridPackageVersion></PropertyGroup></Project>" |
+    Set-Content (Join-Path $local 'LocalHybrid.props') -Encoding utf8
+Write-Host "Local release-layout feed ready: $feed ($Version)"
