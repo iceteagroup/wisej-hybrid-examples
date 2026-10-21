@@ -2,11 +2,12 @@
 param(
     [Parameter(Mandatory)][string]$HybridRoot,
     [Parameter(Mandatory)][string]$ExtensionsRoot,
-    [string]$Version = ('4.1.6-local.' + (Get-Date -Format 'yyyyMMddHHmmss')),
-    [string]$WisejVersion = '4.1.6',
+    [string]$Version = ('4.2.0-local.' + (Get-Date -Format 'yyyyMMddHHmmss')),
+    [string]$WisejVersion = '4.2.*-*',
     [string]$MSBuild = 'MSBuild.exe',
     [string]$NuGet = 'nuget.exe',
-    [string]$PackageRoot
+    [string]$PackageRoot,
+    [string]$FrameworkFeed
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,6 +25,14 @@ $config = Join-Path $local 'NuGet.Config'
   <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
 </packageSources></configuration>
 '@ | Set-Content -LiteralPath $config -Encoding utf8
+if ($FrameworkFeed) {
+    [xml]$settings = Get-Content -Raw $config
+    $source = $settings.CreateElement('add')
+    $source.SetAttribute('key', 'Local Wisej framework')
+    $source.SetAttribute('value', (Resolve-Path -LiteralPath $FrameworkFeed).Path)
+    [void]$settings.configuration.packageSources.AppendChild($source)
+    $settings.Save($config)
+}
 
 $properties = @('-restore', '-m:1', '-v:minimal', '-p:Configuration=Release',
     '-p:BuildInParallel=false', "-p:RestoreConfigFile=$config")
@@ -35,7 +44,7 @@ if ($PackageRoot) { $properties += "-p:RestorePackagesPath=$PackageRoot" }
 if ($LASTEXITCODE) { throw "Hybrid build failed. See $logs/Hybrid-build.log" }
 & (Join-Path $HybridRoot 'build/Pack.ps1') -Version $Version -WisejVersion $WisejVersion -OutputDirectory $feed -NuGet $NuGet *> (Join-Path $logs 'Hybrid-pack.log')
 
-& $MSBuild (Join-Path $ExtensionsRoot 'Wisej.Hybrid.Extensions.sln') @properties "-p:WisejVersion=$Version" `
+& $MSBuild (Join-Path $ExtensionsRoot 'Wisej.Hybrid.Extensions.sln') @properties "-p:WisejVersion=$WisejVersion" "-p:HybridPackageVersion=$Version" `
     "-p:HybridScanningProject=$(Join-Path $HybridRoot 'Wisej.Hybrid.Scanning/Wisej.Hybrid.Scanning.csproj')" *> (Join-Path $logs 'Extensions-build.log')
 if ($LASTEXITCODE) { throw "Extensions build failed. See $logs/Extensions-build.log" }
 & (Join-Path $ExtensionsRoot 'build/Pack.ps1') -Version $Version -OutputDirectory $feed -NuGet $NuGet *> (Join-Path $logs 'Extensions-pack.log')

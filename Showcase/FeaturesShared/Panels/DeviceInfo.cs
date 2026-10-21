@@ -13,6 +13,14 @@ namespace Wisej.Hybrid.Features.Panels
 
 		public override void Activate()
 		{
+			if (DemoCapabilities.IsFrameworkDesktop)
+			{
+				// Other providers expose native operations this host does not implement.
+				this.propertyGridInfo.SelectedObject = new { System = Device.System };
+				this.propertyGridInfo.Refresh(true);
+				return;
+			}
+
 			this.propertyGridInfo.SelectedObject = new
 			{
 				System = Device.System,

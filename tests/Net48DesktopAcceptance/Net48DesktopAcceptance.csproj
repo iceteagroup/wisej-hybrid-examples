@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>false</IsPackable><TargetFramework>net48</TargetFramework><OutputType>Exe</OutputType><UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects><PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Wisej-4-Hybrid-Native" Version="$(HybridPackageVersion)" />
+    <PackageReference Include="Wisej.Hybrid.Extensions.Desktop" Version="$(HybridPackageVersion)" />
+  </ItemGroup>
+  <ItemGroup><Content Include="Fixtures/qr.png" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+</Project>

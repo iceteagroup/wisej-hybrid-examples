@@ -17,6 +17,8 @@ namespace WisejHybridLocalApplication
 			modelName = Android.OS.Build.Model;
 #elif IOS
 			modelName = UIKit.UIDevice.CurrentDevice.Model;
+#elif NETFRAMEWORK
+			modelName = Wisej.Hybrid.Device.System.Model;
 #endif
 
 			AlertBox.Show(modelName);
@@ -28,6 +30,8 @@ namespace WisejHybridLocalApplication
 			Dialog.ShowDialog("Welcome", "Hello!", (r) => {
 				Application.Update(this, () => AlertBox.Show($"Dialog closed: {r}"));
 			});
+#elif NETFRAMEWORK
+			Wisej.Hybrid.Device.Popups.DisplayAlert("Welcome", "Hello!", "OK");
 #endif
 		}
 	}

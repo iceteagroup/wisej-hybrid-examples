@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <WisejVersion Condition="'$(WisejVersion)' == ''">4.2.*-*</WisejVersion>
+    <HybridPackageVersion Condition="'$(HybridPackageVersion)' == ''">4.2.*-*</HybridPackageVersion>
+    <LocalHybridPackageVersion Condition="'$(LocalHybridPackageVersion)' == ''">$(HybridPackageVersion)</LocalHybridPackageVersion>
+    <UseLocalHybridPackages Condition="'$(UseLocalHybridPackages)' == ''">true</UseLocalHybridPackages>
+  </PropertyGroup>
+</Project>

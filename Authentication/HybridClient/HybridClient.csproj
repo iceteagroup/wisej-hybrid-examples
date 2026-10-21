@@ -62,8 +62,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\Hybrid Extensions\4.1\Authentication\Wisej.Hybrid.Authentication.Native\Wisej.Hybrid.Authentication.Native.csproj" AdditionalProperties="WisejVersion=4.1.4" />
-		<PackageReference Include="Wisej-4-Hybrid-Native" Version="4.1.4" />
+		<ProjectReference Include="..\..\..\..\Hybrid Extensions\4.2\Authentication\Wisej.Hybrid.Authentication.Native\Wisej.Hybrid.Authentication.Native.csproj" AdditionalProperties="WisejVersion=$(WisejVersion);HybridPackageVersion=$(HybridPackageVersion)" />
+		<PackageReference Include="Wisej-4-Hybrid-Native" Version="$(HybridPackageVersion)" />
 	</ItemGroup>
 
 	<ItemGroup>

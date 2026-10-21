@@ -141,6 +141,8 @@ namespace Wisej.Hybrid.Features.Panels
 		private void AppItemView_Appear(object sender, EventArgs e)
 		{
 			this.Enabled = this._viewType != null && DemoCapabilities.IsSupported(this._viewType);
+			if (!this.Enabled && DemoCapabilities.IsFrameworkDesktop)
+				this.labelDescription.Text = "Unavailable on this desktop";
 		}
 	}
 }

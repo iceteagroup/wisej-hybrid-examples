@@ -6,7 +6,8 @@ namespace HybridLocal
 	{
 		static Program()
 		{
-			var apiUrl = "https://8snsmzqh-5000.use.devtunnels.ms/";
+			var apiUrl = System.Environment.GetEnvironmentVariable("HYBRID_REMOTE_API_URL")
+				?? "https://8snsmzqh-5000.use.devtunnels.ms/";
 			Application.Services.AddService<DataRepository>(new DataRepository(apiUrl));
 		}
 

@@ -5,7 +5,9 @@ param(
     [string]$AndroidSdkDirectory,
     [string]$JavaSdkDirectory,
     [string]$NuGetConfig,
-    [string]$PackageRoot
+    [string]$PackageRoot,
+    [string]$WisejVersion = '4.2.*-*',
+    [string]$HybridPackageVersion = '4.2.*-*'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -56,7 +58,8 @@ $shortRoot = & $escape $intermediates
 $properties = @(
     "-p:HybridSourceRoot=$HybridRoot", "-p:HybridExtensionsSourceRoot=$ExtensionsRoot",
     "-p:HybridScanningProject=$(Join-Path $HybridRoot 'Wisej.Hybrid.Scanning/Wisej.Hybrid.Scanning.csproj')",
-    '-p:WisejVersion=4.1.6',
+    "-p:WisejVersion=$WisejVersion", "-p:HybridPackageVersion=$HybridPackageVersion",
+    '-p:UseLocalHybridPackages=false',
     "-p:DirectoryBuildPropsPath=$props", "-p:DirectoryBuildTargetsPath=$targets",
     "-p:RestorePackagesPath=$PackageRoot",
     '-p:MauiVersion=9.0.120', '-p:BuildInParallel=false'

@@ -7,7 +7,7 @@
     <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_").Replace("-", "_"))</RootNamespace>
     <NoWarn>CA1416</NoWarn>
-	<UseMaui>true</UseMaui>
+	<UseMaui Condition="'$(TargetFramework)' != 'net48'">true</UseMaui>
   </PropertyGroup>
 
   <ItemGroup>
@@ -52,12 +52,12 @@
 
   <ItemGroup>  
     <PackageReference Include="EmbedIO" Version="3.5.2" />
-    <PackageReference Include="Wisej-4" Version="4.1.4" />
+    <PackageReference Include="Wisej-4" Version="$(WisejVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="4.*" />
-    <PackageReference Include="Wisej-4-Hybrid" Version="4.1.4" />
+    <PackageReference Include="Wisej-4-Hybrid" Version="$(HybridPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" Condition="'$(TargetFramework)' != 'net48'" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,11 @@ namespace WisejWebPageApplication
 {
 	internal class DataRepository
 	{
+#if NETFRAMEWORK
+		private static readonly string DATA_PATH = System.Web.Hosting.HostingEnvironment.MapPath("~/data.txt");
+#else
 		private static readonly string DATA_PATH = Application.MapPath("data.txt");
+#endif
 
 		/// <summary>
 		/// Retrieves the value from the file (or database).

@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$(MSBuildThisFileDirectory).local-nuget/LocalHybrid.props"
           Condition="'$(UseLocalHybridPackages)' == 'true' And Exists('$(MSBuildThisFileDirectory).local-nuget/LocalHybrid.props')" />
-  <PropertyGroup Condition="'$(UseLocalHybridPackages)' == 'true'">
+  <PropertyGroup Condition="'$(UseLocalHybridPackages)' == 'true' And Exists('$(MSBuildThisFileDirectory).local-nuget/feed')">
     <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory).local-nuget/feed;$(RestoreAdditionalProjectSources)</RestoreAdditionalProjectSources>
   </PropertyGroup>
   <ItemGroup Condition="'$(UseLocalHybridPackages)' == 'true'">

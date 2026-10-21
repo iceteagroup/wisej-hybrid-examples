@@ -63,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wisej-4" Version="4.1.4" />
+    <PackageReference Include="Wisej-4" Version="$(WisejVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="4.*" />
   </ItemGroup>
 

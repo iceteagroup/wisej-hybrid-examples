@@ -12,11 +12,14 @@ namespace HybridOffline
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
+		static Program()
+		{
+			// Register once, including when another browser session starts in this process.
+			Application.Services.AddService<UserRepository>(CreateUserRepository, ServiceLifetime.Shared);
+		}
+
 		static void Main()
 		{
-			// inject user repository service.
-			Application.Services.AddService<UserRepository>(CreateUserRepository, ServiceLifetime.Shared);
-
 			Application.MainPage = new MainPage();
 		}
 

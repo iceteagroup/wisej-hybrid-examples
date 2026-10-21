@@ -6,8 +6,32 @@ namespace Wisej.Hybrid.Features
 	/// <summary>Checks availability without constructing a demo or its controls.</summary>
 	internal static class DemoCapabilities
 	{
+		internal static bool IsFrameworkDesktop => Device.Valid && Device.System.Platform.ToString() == "WinForms";
+
 		internal static bool IsSupported(Type type)
 		{
+			// The Framework host has an explicit set of desktop implementations.
+			// Keep unsupported native demos disabled instead of presenting mobile APIs
+			// as available just because this is a valid Hybrid session.
+			if (IsFrameworkDesktop)
+			{
+				switch (type.Name)
+				{
+					case "DeviceInfo":
+					case "Preferences":
+					case "Storage":
+					case "BarcodeScanner":
+					case "DocumentScanner":
+					case "Signature":
+					case "PullToRefresh":
+					case "iFrame":
+					case "VideoViewer":
+						return true;
+					default:
+						return false;
+				}
+			}
+
 			if (type == typeof(global::FeaturesShared.Panels.Chat) ||
 				type == typeof(global::FeaturesShared.Panels.SyncFlashlight))
 				return Application.StartupUri.Host != "localhost";

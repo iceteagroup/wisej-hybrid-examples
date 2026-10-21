@@ -1,7 +1,8 @@
 <Project>
+  <Import Project="../Directory.Build.props" />
   <PropertyGroup>
     <!-- Override these paths when the Hybrid repositories are checked out elsewhere. -->
-    <HybridSourceRoot Condition="'$(HybridSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\Hybrid\4.1\</HybridSourceRoot>
-    <HybridExtensionsSourceRoot Condition="'$(HybridExtensionsSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\Hybrid Extensions\4.1\</HybridExtensionsSourceRoot>
+    <HybridSourceRoot Condition="'$(HybridSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\Hybrid\4.2\</HybridSourceRoot>
+    <HybridExtensionsSourceRoot Condition="'$(HybridExtensionsSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\..\..\Hybrid Extensions\4.2\</HybridExtensionsSourceRoot>
   </PropertyGroup>
 </Project>

@@ -61,8 +61,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Wisej-4-Hybrid-DocumentScanner-Native" Version="4.1.4" />
-		<PackageReference Include="Wisej-4-Hybrid-Native" Version="4.1.4" />
+		<PackageReference Include="Wisej-4-Hybrid-DocumentScanner-Native" Version="$(HybridPackageVersion)" />
+		<PackageReference Include="Wisej-4-Hybrid-Native" Version="$(HybridPackageVersion)" />
 	</ItemGroup>
 
 	<ItemGroup>
